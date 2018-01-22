@@ -1,7 +1,7 @@
 package br.ufrpe.geekMart.negocio.classesBasicas;
 
 public class Administrador extends Usuario {
-    private boolean adm = false;
+    private boolean adm = true;
 
     public Administrador(){
 
