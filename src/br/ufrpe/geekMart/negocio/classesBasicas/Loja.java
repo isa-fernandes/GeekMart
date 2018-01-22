@@ -73,7 +73,6 @@ public class Loja {
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", categoria=" + categoria +
-                ", anuncios=" + anuncios +
                 '}';
     }
 

@@ -97,6 +97,15 @@ public class Fachada {
     public void enviarChatParaCliente(Cliente comprador , Cliente vendedor, Anuncio anuncio, String msg){
         this.cadastroAnuncio.enviarChatParaCliente(comprador,vendedor,anuncio,msg);
     }
+    public Anuncio procurarAnuncio (String titulo){
+        return this.repositorioAnuncio.procurarAnuncio(titulo);
+    }
+    public void removerAnuncio (String titulo){
+        this.repositorioAnuncio.removerAnuncio(titulo);
+    }
+    public void alterarAnuncio (Anuncio anuncio){
+        this.repositorioAnuncio.alterarAnuncio(anuncio);
+    }
 
 
 
@@ -107,15 +116,23 @@ public class Fachada {
     }
 
     public Loja buscarLoja (String nome) {
-        return this.cadastroLoja.buscarLoja(nome);
+        return this.repositorioLoja.procurarLoja(nome);
+    }
+
+    public Loja buscarLojaPorCategoria (Categorias categoria) {
+        return this.repositorioLoja.procurarLojaPorCategoria(categoria);
+    }
+
+    public Loja buscarLojaPorCliente (Cliente cliente) {
+        return this.repositorioLoja.procurarLojaPorCliente(cliente);
     }
 
     public void removerLoja (String cpf) {
-        this.cadastroLoja.removerLoja(cpf);
+        this.repositorioLoja.removerLoja(cpf);
     }
 
     public void alterarLoja (String cpf, Loja loja) {
-        this.cadastroLoja.alterarLoja(cpf, loja);
+        this.repositorioLoja.alterarLoja(cpf, loja);
     }
 
 }

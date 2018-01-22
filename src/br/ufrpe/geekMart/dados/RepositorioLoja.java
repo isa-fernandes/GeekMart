@@ -1,5 +1,7 @@
 package br.ufrpe.geekMart.dados;
 
+import br.ufrpe.geekMart.negocio.classesBasicas.Categorias;
+import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
 
 public class RepositorioLoja implements IRepositorioLoja{
@@ -18,9 +20,9 @@ public class RepositorioLoja implements IRepositorioLoja{
         this.lojas = new Loja[tamanho];
         this.proxima = 0;
     }
-    @Override
-    public void cadastrar (Loja c) {
-        boolean r = this.existe(c.getNome());
+
+    public void cadastrarLoja (Loja c) {
+        boolean r = this.existeLoja(c.getNome());
         if (r == false) {
             this.lojas[this.proxima] = c;
             this.proxima = this.proxima +1;
@@ -29,24 +31,50 @@ public class RepositorioLoja implements IRepositorioLoja{
             }
         }
     }
-    @Override
-    public Loja procurar (String num) {
-        int i = this.procurarIndice(num);
+
+    public Loja procurarLoja (String titulo) {
         Loja resultado = null;
-        if (i < this.proxima) {
-            resultado = this.lojas[i];
+        if( titulo != null) {
+            int i = this.procurarIndice(titulo);
+            if (i < this.proxima) {
+                resultado = this.lojas[i];
+            }
         }
         return resultado;
     }
-    @Override
-    public void remover (String cpf){
-        int i = this.procurarIndiceCpf(cpf);
-        if (i < this.proxima){
-            this.lojas[i]= this.lojas[this.proxima -1];
-            this.lojas[this.proxima -1]= null;
-            this.proxima = this.proxima -1;
-        } else {
 
+    public Loja procurarLojaPorCategoria (Categorias categoria) {
+        Loja resultado = null;
+        if( categoria != null) {
+            int i = this.procurarIndiceCategoria(categoria);
+            if (i < this.proxima) {
+                resultado = this.lojas[i];
+            }
+        }
+        return resultado;
+    }
+
+    public Loja procurarLojaPorCliente (Cliente cliente) {
+        Loja resultado = null;
+        if( cliente != null) {
+            int i = this.procurarIndiceCpf(cliente.getCpf());
+            if (i < this.proxima) {
+                resultado = this.lojas[i];
+            }
+        }
+        return resultado;
+    }
+
+    public void removerLoja (String cpf){
+        if(cpf != null) {
+            int i = this.procurarIndiceCpf(cpf);
+            if (i < this.proxima) {
+                this.lojas[i] = this.lojas[this.proxima - 1];
+                this.lojas[this.proxima - 1] = null;
+                this.proxima = this.proxima - 1;
+            } else {
+
+            }
         }
     }
 
@@ -62,16 +90,6 @@ public class RepositorioLoja implements IRepositorioLoja{
         }
         return i;
     }
-    @Override
-    public boolean existe (String titulo) {
-        boolean existe = false;
-        int indice = this.procurarIndice(titulo);
-        if (indice != this.proxima) {
-            existe = true;
-        }
-        return existe;
-    }
-
 
     private int procurarIndiceCpf (String titulo) {
         int i = 0;
@@ -86,6 +104,31 @@ public class RepositorioLoja implements IRepositorioLoja{
         return i;
     }
 
+
+    private int procurarIndiceCategoria (Categorias categoria) {
+        int i = 0;
+        boolean achou = false;
+        while ((!achou) && (i < this.proxima)){
+            if (categoria.equals(this.lojas[i].getCategoria())) {
+                achou = true;
+            } else {
+                i = i+1;
+            }
+        }
+        return i;
+    }
+
+    public boolean existeLoja (String titulo) {
+        boolean existe = false;
+        if(titulo != null) {
+            int indice = this.procurarIndice(titulo);
+            if (indice != this.proxima) {
+                existe = true;
+            }
+        }
+        return existe;
+    }
+
     public boolean existeCpf (String titulo) {
         boolean existe = false;
         int indice = this.procurarIndiceCpf(titulo);
@@ -94,7 +137,7 @@ public class RepositorioLoja implements IRepositorioLoja{
         }
         return existe;
     }
-    @Override
+
     public void duplicaArrayLojas(){
         if (this.lojas != null && this.lojas.length>0) {
             Loja[] arrayDuplicado = new Loja[this.lojas.length*2];
@@ -106,9 +149,11 @@ public class RepositorioLoja implements IRepositorioLoja{
     }
     @Override
     public void alterarLoja (String cpf, Loja loja) {
-        int indice = this.procurarIndiceCpf(cpf);
-        if (indice < this.proxima) {
-            lojas[indice] = loja;
+        if (cpf != null && loja != null) {
+            int indice = this.procurarIndiceCpf(cpf);
+            if (indice < this.proxima) {
+                lojas[indice] = loja;
+            }
         }
     }
 }
