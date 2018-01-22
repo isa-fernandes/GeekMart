@@ -1,12 +1,12 @@
 package br.ufrpe.geekMart.negocio;
 
+import br.ufrpe.geekMart.dados.IRepositorioAnuncio;
+import br.ufrpe.geekMart.dados.IRepositorioLoja;
 import br.ufrpe.geekMart.dados.IRepositorioUsuario;
 import br.ufrpe.geekMart.exceptions.JaExisteException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
-import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
-import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
-import br.ufrpe.geekMart.negocio.classesBasicas.Usuario;
+import br.ufrpe.geekMart.negocio.classesBasicas.*;
 
 public class Fachada {
     private ControladorAnuncio cadastroAnuncio;
@@ -14,6 +14,8 @@ public class Fachada {
     private ControladorUsuario cadastroUsuario;
     private ControladorLoja cadastroLoja;
     private IRepositorioUsuario repositorioUsuario;
+    private IRepositorioAnuncio repositorioAnuncio;
+    private IRepositorioLoja repositorioLoja;
 
 
     private Fachada() {
@@ -21,6 +23,9 @@ public class Fachada {
         this.cadastroLoja = ControladorLoja.getInstancia();
         this.cadastroUsuario = ControladorUsuario.getInstancia();
         this.repositorioUsuario = repositorioUsuario;
+        this.repositorioAnuncio = repositorioAnuncio;
+        this.repositorioLoja = repositorioLoja;
+
 
     }
 
@@ -65,27 +70,34 @@ public class Fachada {
         this.cadastroAnuncio.cadastrarAnuncio(anuncio);
     }
 
-    public Anuncio buscarAnuncio (String nome) {
-        return this.cadastroAnuncio.buscarAnuncio(nome);
+    public void expirarAnuncio(Anuncio c){
+        this.cadastroAnuncio.expirarAnuncio(c);
     }
 
-
-    public void removerAnuncio (String titulo) {
-        this.cadastroAnuncio.removerAnuncio(titulo);
+    public void desativarAnuncioSemEstoque(Anuncio c){
+        this.cadastroAnuncio.desativarAnuncioSemEstoque(c);
     }
 
-
-    public void alterarAnuncio (Anuncio anuncio) {
-        this.cadastroAnuncio.alterarAnuncio(anuncio);
+    public void incluirComentario(Anuncio c , String s){
+        this.cadastroAnuncio.incluirComentario(c,s);
     }
 
-    public Anuncio[] getAnunciosCategoria (String categoria) {
-        return this.cadastroAnuncio.getAnunciosCategoria(categoria);
+    public void avaliarProduto(Anuncio c , int i){
+        this.cadastroAnuncio.avaliarProduto(c,i);
     }
 
-    public Anuncio[] getAnunciosCategoria (int categoria) {
-        return this.cadastroAnuncio.getAnunciosCategoria(categoria);
+    public void criarChat(Cliente comprador , Cliente vendedor, Anuncio anuncio){
+        this.cadastroAnuncio.criarChat(comprador,vendedor,anuncio);
     }
+
+    public void enviarChatParaVendedor(Cliente comprador , Cliente vendedor, Anuncio anuncio, String msg){
+        this.cadastroAnuncio.enviarChatParaVendedor(comprador,vendedor,anuncio,msg);
+    }
+
+    public void enviarChatParaCliente(Cliente comprador , Cliente vendedor, Anuncio anuncio, String msg){
+        this.cadastroAnuncio.enviarChatParaCliente(comprador,vendedor,anuncio,msg);
+    }
+
 
 
     // LOJA

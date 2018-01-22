@@ -3,6 +3,10 @@ package br.ufrpe.geekMart.negocio;
 import br.ufrpe.geekMart.dados.IRepositorioAnuncio;
 import br.ufrpe.geekMart.dados.RepositorioAnuncio;
 import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
+import br.ufrpe.geekMart.negocio.classesBasicas.Chat;
+import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
+
+import java.time.LocalDate;
 
 public class ControladorAnuncio {
     private static ControladorAnuncio instancia;
@@ -22,38 +26,81 @@ public class ControladorAnuncio {
         if (anuncio != null) {
             boolean existe = this.repositorio.existe(anuncio.getTitulo());
             if (!existe) {
-                this.repositorio.cadastrar(anuncio);
-            }
-        }
-    }
-    public Anuncio buscarAnuncio (String titulo) {
-        Anuncio retorno = null;
-        if (titulo != null) {
-            retorno = this.repositorio.procurar(titulo);
-        }
-        return retorno;
-    }
-
-    public void removerAnuncio (String titulo) {
-        if (titulo != null) {
-            if (this.repositorio.existe(titulo)) {
-                this.repositorio.remover(titulo);
-            }
-        }
-    }
-    public void alterarAnuncio (Anuncio anuncio) {
-        if (anuncio != null) {
-            if (this.repositorio.existe(anuncio.getTitulo())) {
-                this.repositorio.alterarAnuncio(anuncio);
+                this.repositorio.cadastrarAnuncio(anuncio);
             }
         }
     }
 
-    public Anuncio[] getAnunciosCategoria (int categoria) {
-        return this.repositorio.getAnunciosCategoria(categoria);
+    public void expirarAnuncio(Anuncio c){
+        LocalDate hoje = LocalDate.now();
+        LocalDate data = c.getDataFim();
+        if( c != null) {
+            if (hoje == data || hoje.isAfter(data)) {
+                this.repositorio.removerAnuncio(c.getTitulo());
+            }
+        }
     }
 
-    public Anuncio[] getAnunciosCategoria (String categoria) {
-        return this.repositorio.getAnunciosCategoria(categoria);
+    public void desativarAnuncioSemEstoque(Anuncio c){
+        if( c!= null){
+            if(c.getQuantidadeProdutos() == 0){
+                c.setAtivo(false);
+            }
+        }
     }
+
+    public void incluirComentario(Anuncio c , String s){
+        if(c != null && s != null){
+            c.getComentarios().add(c.getIndexComentario(),s);
+            c.setIndexComentario(c.getIndexComentario()+1);
+        }
+
+    }
+
+    public void avaliarProduto(Anuncio c , int i){
+        if(c != null){
+            c.setQuantidadeAvaliacoes(c.getQuantidadeProdutos() +1);
+            c.setEstrela((c.getEstrela() + i)/c.getQuantidadeAvaliacoes() );
+        }
+    }
+
+    public void criarChat(Cliente comprador , Cliente vendedor, Anuncio anuncio){
+        if(comprador != null && vendedor != null && anuncio != null) {
+            Chat chat = new Chat(comprador, vendedor, anuncio);
+            anuncio.getChat().add(anuncio.getQuantidadeChats(), chat);
+            anuncio.setQuantidadeChats(anuncio.getQuantidadeChats() + 1);
+        }
+    }
+
+    public Chat procurarChat(Cliente comprador , Cliente vendedor, Anuncio anuncio){
+        Chat retorno = null;
+        if(comprador != null && vendedor != null && anuncio != null) {
+            for (int i = 0; i < anuncio.getChat().size(); i++) {
+                if((anuncio.getChat().get(i).getAnuncio().getTitulo() == anuncio.getTitulo()) &&
+                        (anuncio.getChat().get(i).getUsuarioCliente().getCpf() == comprador.getCpf()) &&
+                        (anuncio.getChat().get(i).getUsuarioVendedor().getCpf() == vendedor.getCpf())  ){
+                    retorno = anuncio.getChat().get(i);
+                }
+            }
+
+        }
+        return  retorno;
+    }
+
+    public void enviarChatParaVendedor(Cliente comprador , Cliente vendedor, Anuncio anuncio, String msg){
+        Chat uol = instancia.procurarChat(comprador,vendedor,anuncio);
+        uol.getMsgCliente().add(uol.getQuantidadeMsgCliente(),msg);
+        uol.setQuantidadeMsgCliente(uol.getQuantidadeMsgCliente() + 1);
+
+    }
+
+    public void enviarChatParaCliente(Cliente comprador , Cliente vendedor, Anuncio anuncio, String msg){
+        Chat uol = instancia.procurarChat(comprador,vendedor,anuncio);
+        uol.getMsgVendedor().add(uol.getQuantidadeMsgVendedor(),msg);
+        uol.setQuantidadeMsgVendedor(uol.getQuantidadeMsgVendedor() + 1);
+
+    }
+
+
+
 }

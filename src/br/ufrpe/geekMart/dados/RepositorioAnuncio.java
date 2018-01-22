@@ -19,8 +19,8 @@ public class RepositorioAnuncio implements IRepositorioAnuncio {
         this.anuncios = new Anuncio[tamanho];
         this.proxima = 0;
     }
-    @Override
-    public void cadastrar (Anuncio c) {
+
+    public void cadastrarAnuncio (Anuncio c) {
         this.anuncios[this.proxima] = c;
         this.proxima = this.proxima + 1;
         if (this.proxima == this.anuncios.length) {
@@ -65,19 +65,19 @@ public class RepositorioAnuncio implements IRepositorioAnuncio {
         }
         return result;
     }
-    @Override
-    public Anuncio procurar (String num){
-        int i = this.procurarIndice(num);
+
+    public Anuncio procurarAnuncio (String titulo){
+        int i = this.procurarIndice(titulo);
         Anuncio resultado = null;
-        if (i < this.proxima) {
+        if (i < this.proxima && titulo != null) {
             resultado = this.anuncios[i];
         }
         return resultado;
     }
-    @Override
-    public void remover (String num){
-        int i = this.procurarIndice(num);
-        if (i < this.proxima){
+
+    public void removerAnuncio (String titulo){
+        int i = this.procurarIndice(titulo);
+        if (i < this.proxima && titulo != null){
             this.anuncios[i]= this.anuncios[this.proxima -1];
             this.anuncios[this.proxima -1]= null;
             this.proxima = this.proxima -1 ;
@@ -94,7 +94,7 @@ public class RepositorioAnuncio implements IRepositorioAnuncio {
         }
         return existe;
     }
-    @Override
+
     public void duplicaArrayAnuncios () {
         if (this.anuncios != null && this.anuncios.length>0) {
             Anuncio[] arrayDuplicado = new Anuncio[this.anuncios.length*2];
@@ -108,7 +108,7 @@ public class RepositorioAnuncio implements IRepositorioAnuncio {
 
     public void alterarAnuncio (Anuncio anuncio){
         int i = this.procurarIndice(anuncio.getTitulo());
-        if (i < this.proxima) {
+        if (i < this.proxima && anuncio != null) {
             this.anuncios[i] = anuncio;
         }
     }

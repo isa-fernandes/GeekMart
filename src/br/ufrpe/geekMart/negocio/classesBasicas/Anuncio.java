@@ -1,24 +1,41 @@
 package br.ufrpe.geekMart.negocio.classesBasicas;
 
+import java.lang.reflect.Array;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
 
 public class Anuncio {
     private Cliente cliente;
-    private double preco;
+    private String preco;
     private String titulo;
     private String descricao;
     private String[] categoria = new String[2];
     private String cep, estado;
-    //private Image[] imagens = new Image[5]; -- vamos adicionar quando der pra usar FileChooser
-    //private int qtImagem = 0;
-    private LocalDateTime data = null;
+    private LocalDate data , dataFim;
+    private boolean ativo;
+    private int estrelas[] = {1,2,3,4,5};
+    private double estrela = 0;
+    private int quantidadeAvaliacoes = 0;
+    private ArrayList<String> comentarios = new ArrayList<>();
+    private int quantidadeProdutos;
+    private int indexComentario = 0;
+    private ArrayList<Chat> chat;
+    private int quantidadeChats = 0;
+
+
+
 
     public Anuncio(){
 
     }
-    public Anuncio (Cliente cliente, double preco, String titulo, String descricao, String[] categoria, String cep,
-                    String estado) {
+
+
+    public Anuncio (Cliente cliente, String preco, String titulo, String descricao, String[] categoria, String cep,
+                    String estado, int quantidadeProdutos) {
         this.cliente = cliente;
         this.preco = preco;
         this.titulo = titulo;
@@ -26,15 +43,91 @@ public class Anuncio {
         this.categoria = categoria;
         this.cep = cep;
         this.estado = estado;
-        this.data = LocalDateTime.now();
+        this.data = LocalDate.now();
+        this.dataFim = data.plusDays(45);
+        this.quantidadeProdutos = quantidadeProdutos;
+        this.comentarios = new ArrayList<>();
+        this.chat = new ArrayList<>();
+
     }
 
-    public double getPreco() {
+    public int getQuantidadeProdutos() {
+        return quantidadeProdutos;
+    }
+
+    public void setQuantidadeProdutos(int quantidadeProdutos) {
+        this.quantidadeProdutos = quantidadeProdutos;
+    }
+
+    public String getPreco() {
         return preco;
     }
-    public void setPreco(double preco) {
+
+    public void setPreco(String preco) {
         this.preco = preco;
     }
+
+    public void setData(LocalDate data) {
+        this.data = data;
+    }
+
+    public LocalDate getDataFim() {
+        return dataFim;
+    }
+
+    public void setDataFim(LocalDate dataFim) {
+        this.dataFim = dataFim;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    public int getIndexComentario() {
+        return indexComentario;
+    }
+
+    public void setIndexComentario(int indexComentario) {
+        this.indexComentario = indexComentario;
+    }
+
+    public int[] getEstrelas() {
+        return estrelas;
+    }
+
+    public void setEstrelas(int[] estrelas) {
+        this.estrelas = estrelas;
+    }
+
+    public double getEstrela() {
+        return estrela;
+    }
+
+    public void setEstrela(double estrela) {
+        this.estrela = estrela;
+    }
+
+    public ArrayList<String> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(ArrayList<String> comentarios) {
+        this.comentarios = comentarios;
+    }
+
+
+    public ArrayList<Chat> getChat() {
+        return chat;
+    }
+
+    public void setChat(ArrayList<Chat> chat) {
+        this.chat = chat;
+    }
+
     public String getTitulo() {
         return titulo;
     }
@@ -68,7 +161,7 @@ public class Anuncio {
     public Cliente getCliente() {
         return cliente;
     }
-    public LocalDateTime getData() {
+    public LocalDate getData() {
         return data;
     }
     public void setCliente(Cliente cliente){
@@ -76,35 +169,57 @@ public class Anuncio {
     }
     public void setData () {
         if (this.data == null) {
-            this.data = LocalDateTime.now();
+            this.data = LocalDate.now();
         }
     }
 
-    public boolean equals (Anuncio c) {
-        boolean r;
-        if(c != null && this.titulo != null && this.categoria != null){
-            r = (this.titulo.equals(c.getTitulo()) && this.categoria.equals(c.getCategoria()));
-        }else{
-            r = false;
-        }
-        return r;
-
-    }
-    public String toString(){
-        DateTimeFormatter formatar = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String c = this.titulo + "\t" + this.data.format(formatar) + "\nVendedor: " + this.cliente.getNome() + "\nR$: " + this.preco +
-                "\nDescrição: " + this.descricao + "\nCategorias " + this.categoria[0] + ", " + this.categoria[1];
-        return c;
+    public int getQuantidadeAvaliacoes() {
+        return quantidadeAvaliacoes;
     }
 
-	/*public Image[] getImagens() {
-		return imagens;
-	}
+    public void setQuantidadeAvaliacoes(int quantidadeAvaliacoes) {
+        this.quantidadeAvaliacoes = quantidadeAvaliacoes;
+    }
 
-	public void setImagem (Image imagem) {
-	    if (imagem != null && qtImagem < 3) {
-	    	this.imagens[this.qtImagem] = imagem;
-			this.qtImagem++;
-		}
-	}*/
+    public int getQuantidadeChats() {
+        return quantidadeChats;
+    }
+
+    public void setQuantidadeChats(int quantidadeChats) {
+        this.quantidadeChats = quantidadeChats;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Anuncio)) return false;
+        Anuncio anuncio = (Anuncio) o;
+        return getQuantidadeProdutos() == anuncio.getQuantidadeProdutos() &&
+                Objects.equals(getCliente(), anuncio.getCliente()) &&
+                Objects.equals(getTitulo(), anuncio.getTitulo()) &&
+                Objects.equals(getComentarios(), anuncio.getComentarios());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getCliente(), getTitulo());
+    }
+
+    @Override
+    public String toString() {
+        return "Anuncio{" +
+                "cliente=" + cliente +
+                ", preco='" + preco + '\'' +
+                ", titulo='" + titulo + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", categoria=" + Arrays.toString(categoria) +
+                ", cep='" + cep + '\'' +
+                ", estado='" + estado + '\'' +
+                ", data de publicação do anúncio=" + data +
+                ", data de encerramento do anúncio=" + dataFim +
+                ", avaliação dos usuários=" + estrela +
+                ", quantidade de produtos=" + quantidadeProdutos +
+                '}';
+    }
 }
