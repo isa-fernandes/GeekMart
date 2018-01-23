@@ -3,10 +3,10 @@ package br.ufrpe.geekMart.negocio;
 import br.ufrpe.geekMart.dados.IRepositorioAnuncio;
 import br.ufrpe.geekMart.dados.IRepositorioLoja;
 import br.ufrpe.geekMart.dados.IRepositorioUsuario;
-import br.ufrpe.geekMart.exceptions.JaExisteException;
-import br.ufrpe.geekMart.exceptions.NaoExisteException;
-import br.ufrpe.geekMart.exceptions.ParametroNullException;
+import br.ufrpe.geekMart.exceptions.*;
 import br.ufrpe.geekMart.negocio.classesBasicas.*;
+
+import java.util.ArrayList;
 
 public class Fachada {
     private ControladorAnuncio cadastroAnuncio;
@@ -39,11 +39,13 @@ public class Fachada {
 
     // USUARIO
 
-    public void cadastrarUsuario  (Usuario user) throws NaoExisteException,ParametroNullException, JaExisteException {
+    public void cadastrarUsuario  (Usuario user)
+            throws NaoExisteException,ParametroNullException, JaExisteException {
         this.cadastroUsuario.cadastrarUsuario(user);
     }
 
-    public Usuario buscaUsuario (String cpf) throws NaoExisteException,ParametroNullException, JaExisteException {
+    public Usuario buscaUsuario (String cpf)
+            throws NaoExisteException,ParametroNullException, JaExisteException {
         return this.repositorioUsuario.buscarUsuario(cpf);
     }
 
@@ -53,86 +55,101 @@ public class Fachada {
 
     //ADM
 
-    public void admBloquearDesbloquearUsuario (String cpf) throws ParametroNullException, NaoExisteException {
+    public void admBloquearDesbloquearUsuario (String cpf)
+            throws ParametroNullException, NaoExisteException {
         this.cadastroUsuario.admBloquearDesbloquearUsuario(cpf);
     }
 
 
     //LOGIN
 
-    public boolean autenticarLogin(String senha, String cpf) throws ParametroNullException, NaoExisteException {
+    public boolean autenticarLogin(String senha, String cpf)
+            throws ParametroNullException, NaoExisteException {
         return this.cadastroUsuario.autenticarLogin(senha,cpf);
     }
 
     // ANUNCIO
 
-    public void adicionarAnuncio (Anuncio anuncio) {
+    public void adicionarAnuncio (Anuncio anuncio)
+            throws ParametroNullException, JaExisteException {
         this.cadastroAnuncio.cadastrarAnuncio(anuncio);
     }
 
-    public void expirarAnuncio(Anuncio c){
+    public void expirarAnuncio(Anuncio c) throws ParametroNullException,
+            DataExpirarNaoChegouException, NaoExisteException {
         this.cadastroAnuncio.expirarAnuncio(c);
     }
 
-    public void desativarAnuncioSemEstoque(Anuncio c){
+    public void desativarAnuncioSemEstoque(Anuncio c)
+            throws ParametroNullException, HaEstoqueException {
         this.cadastroAnuncio.desativarAnuncioSemEstoque(c);
     }
 
-    public void incluirComentario(Anuncio c , String s){
+    public void incluirComentario(Anuncio c , String s) throws ParametroNullException {
         this.cadastroAnuncio.incluirComentario(c,s);
     }
 
-    public void avaliarProduto(Anuncio c , int i){
+    public void avaliarProduto(Anuncio c , int i) throws ParametroNullException {
         this.cadastroAnuncio.avaliarProduto(c,i);
     }
 
-    public void criarChat(Cliente comprador , Cliente vendedor, Anuncio anuncio){
+    public void criarChat(Cliente comprador , Cliente vendedor, Anuncio anuncio)
+            throws ParametroNullException {
         this.cadastroAnuncio.criarChat(comprador,vendedor,anuncio);
     }
 
-    public void enviarChatParaVendedor(Cliente comprador , Cliente vendedor, Anuncio anuncio, String msg){
+    public void enviarChatParaVendedor(Cliente comprador , Cliente vendedor, Anuncio anuncio, String msg)
+            throws ParametroNullException, NaoEncontradoException {
         this.cadastroAnuncio.enviarChatParaVendedor(comprador,vendedor,anuncio,msg);
     }
 
-    public void enviarChatParaCliente(Cliente comprador , Cliente vendedor, Anuncio anuncio, String msg){
+    public void enviarChatParaCliente(Cliente comprador , Cliente vendedor, Anuncio anuncio, String msg)
+            throws ParametroNullException, NaoEncontradoException {
         this.cadastroAnuncio.enviarChatParaCliente(comprador,vendedor,anuncio,msg);
     }
-    public Anuncio procurarAnuncio (String titulo){
+
+    public Anuncio procurarAnuncio (String titulo)
+            throws ParametroNullException, NaoExisteException {
         return this.repositorioAnuncio.procurarAnuncio(titulo);
     }
-    public void removerAnuncio (String titulo){
+
+    public void removerAnuncio (String titulo) throws ParametroNullException, NaoExisteException {
         this.repositorioAnuncio.removerAnuncio(titulo);
     }
-    public void alterarAnuncio (Anuncio anuncio){
-        this.repositorioAnuncio.alterarAnuncio(anuncio);
+
+    public void alterarAnuncio (String nomeAntigo, Anuncio anuncio)
+            throws ParametroNullException, NaoExisteException {
+        this.repositorioAnuncio.alterarAnuncio(nomeAntigo, anuncio);
     }
 
 
 
     // LOJA
 
-    public void novaLoja (String cpf, Loja loja) {
-        this.cadastroLoja.cadastrarLoja(cpf, loja);
+    public void novaLoja (Loja loja) throws ParametroNullException, JaExisteException{
+        this.repositorioLoja.cadastrarLoja(loja);
     }
 
-    public Loja buscarLoja (String nome) {
+    public Loja buscarLoja (String nome) throws ParametroNullException, NaoExisteException {
         return this.repositorioLoja.procurarLoja(nome);
     }
 
-    public Loja buscarLojaPorCategoria (Categorias categoria) {
+    public Loja buscarLojaPorCategoria (Categorias categoria)
+            throws ParametroNullException, NaoExisteException {
         return this.repositorioLoja.procurarLojaPorCategoria(categoria);
     }
 
-    public Loja buscarLojaPorCliente (Cliente cliente) {
+    public ArrayList<Loja> buscarLojaPorCliente (Cliente cliente) throws ParametroNullException {
         return this.repositorioLoja.procurarLojaPorCliente(cliente);
     }
 
-    public void removerLoja (String cpf) {
-        this.repositorioLoja.removerLoja(cpf);
+    public void removerLoja (Loja loja) throws ParametroNullException, NaoExisteException {
+        this.repositorioLoja.removerLoja(loja);
     }
 
-    public void alterarLoja (String cpf, Loja loja) {
-        this.repositorioLoja.alterarLoja(cpf, loja);
+    public void alterarLoja (String nomeAntigo, Loja loja)
+            throws ParametroNullException, NaoExisteException {
+        this.repositorioLoja.alterarLoja(nomeAntigo, loja);
     }
 
 }

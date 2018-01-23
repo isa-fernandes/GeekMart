@@ -1,9 +1,8 @@
 package br.ufrpe.geekMart.negocio.classesBasicas;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
@@ -14,41 +13,33 @@ public class Anuncio {
     private String titulo;
     private String descricao;
     private String[] categoria = new String[2];
-    private String cep, estado;
-    private LocalDate data , dataFim;
+    private Endereco endereco;
+    private LocalDate data, dataFim;
     private boolean ativo;
     private int estrelas[] = {1,2,3,4,5};
     private double estrela = 0;
     private int quantidadeAvaliacoes = 0;
     private ArrayList<String> comentarios = new ArrayList<>();
     private int quantidadeProdutos;
-    private int indexComentario = 0;
     private ArrayList<Chat> chat;
-    private int quantidadeChats = 0;
-
-
-
 
     public Anuncio(){
 
     }
 
-
-    public Anuncio (Cliente cliente, String preco, String titulo, String descricao, String[] categoria, String cep,
-                    String estado, int quantidadeProdutos) {
+    public Anuncio (Cliente cliente, String preco, String titulo, String descricao, String[] categoria,
+                    Endereco endereco, int quantidadeProdutos) {
         this.cliente = cliente;
         this.preco = preco;
         this.titulo = titulo;
         this.descricao = descricao;
         this.categoria = categoria;
-        this.cep = cep;
-        this.estado = estado;
+        this.endereco = endereco;
         this.data = LocalDate.now();
         this.dataFim = data.plusDays(45);
         this.quantidadeProdutos = quantidadeProdutos;
         this.comentarios = new ArrayList<>();
         this.chat = new ArrayList<>();
-
     }
 
     public int getQuantidadeProdutos() {
@@ -85,14 +76,6 @@ public class Anuncio {
 
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
-    }
-
-    public int getIndexComentario() {
-        return indexComentario;
-    }
-
-    public void setIndexComentario(int indexComentario) {
-        this.indexComentario = indexComentario;
     }
 
     public int[] getEstrelas() {
@@ -146,18 +129,11 @@ public class Anuncio {
     public void setCategoria(String[] categoria) {
         this.categoria = categoria;
     }
-    public String getCep() {
-        return cep;
+
+    public Endereco getEndereco() {
+        return endereco;
     }
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-    public String getEstado() {
-        return estado;
-    }
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+
     public Cliente getCliente() {
         return cliente;
     }
@@ -182,11 +158,7 @@ public class Anuncio {
     }
 
     public int getQuantidadeChats() {
-        return quantidadeChats;
-    }
-
-    public void setQuantidadeChats(int quantidadeChats) {
-        this.quantidadeChats = quantidadeChats;
+        return this.chat.size();
     }
 
     @Override
@@ -202,7 +174,6 @@ public class Anuncio {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(getCliente(), getTitulo());
     }
 
@@ -214,10 +185,9 @@ public class Anuncio {
                 ", titulo='" + titulo + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", categoria=" + Arrays.toString(categoria) +
-                ", cep='" + cep + '\'' +
-                ", estado='" + estado + '\'' +
-                ", data de publicação do anúncio=" + data +
-                ", data de encerramento do anúncio=" + dataFim +
+                ", endereço='" + endereco + '\'' +
+                ", data de publicação do anúncio=" + data.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)) +
+                ", data de encerramento do anúncio=" + dataFim.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)) +
                 ", avaliação dos usuários=" + estrela +
                 ", quantidade de produtos=" + quantidadeProdutos +
                 '}';

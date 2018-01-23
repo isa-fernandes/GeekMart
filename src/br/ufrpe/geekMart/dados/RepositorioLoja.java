@@ -1,10 +1,15 @@
 package br.ufrpe.geekMart.dados;
 
+import br.ufrpe.geekMart.exceptions.JaExisteException;
+import br.ufrpe.geekMart.exceptions.NaoExisteException;
+import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.classesBasicas.Categorias;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
 
-public class RepositorioLoja implements IRepositorioLoja{
+import java.util.ArrayList;
+
+public class RepositorioLoja implements IRepositorioLoja {
     private Loja[] lojas;
     private int proxima;
     private static RepositorioLoja instancia;
@@ -21,60 +26,73 @@ public class RepositorioLoja implements IRepositorioLoja{
         this.proxima = 0;
     }
 
-    public void cadastrarLoja (Loja c) {
-        boolean r = this.existeLoja(c.getNome());
-        if (r == false) {
-            this.lojas[this.proxima] = c;
-            this.proxima = this.proxima +1;
-            if (this.proxima == lojas.length) {
-                this.duplicaArrayLojas();
+    public void cadastrarLoja (Loja c) throws ParametroNullException, JaExisteException {
+        if (c != null) {
+            boolean r = this.existeLoja(c.getNome());
+            if (!r) {
+                this.lojas[this.proxima] = c;
+                this.proxima = this.proxima + 1;
+                if (this.proxima == lojas.length) {
+                    this.duplicaArrayLojas();
+                }
+            } else {
+                throw new JaExisteException("loja", "nome " + c.getNome());
             }
+        } else {
+            throw new ParametroNullException("loja");
         }
     }
 
-    public Loja procurarLoja (String titulo) {
+    public Loja procurarLoja (String titulo) throws ParametroNullException, NaoExisteException {
         Loja resultado = null;
         if( titulo != null) {
             int i = this.procurarIndice(titulo);
             if (i < this.proxima) {
                 resultado = this.lojas[i];
+                return resultado;
+            } else {
+                throw new NaoExisteException("loja", "título " + titulo);
             }
+        } else {
+            throw new ParametroNullException("título");
         }
-        return resultado;
     }
 
-    public Loja procurarLojaPorCategoria (Categorias categoria) {
+    public Loja procurarLojaPorCategoria (Categorias categoria) throws ParametroNullException, NaoExisteException {
         Loja resultado = null;
         if( categoria != null) {
             int i = this.procurarIndiceCategoria(categoria);
             if (i < this.proxima) {
                 resultado = this.lojas[i];
+                return resultado;
+            } else {
+                throw new NaoExisteException("loja", "categoria" + ); //lembrar de alterar quando categoria for enum
             }
+        } else {
+            throw new ParametroNullException("categoria");
         }
-        return resultado;
     }
 
-    public Loja procurarLojaPorCliente (Cliente cliente) {
-        Loja resultado = null;
+    public ArrayList<Loja> procurarLojaPorCliente (Cliente cliente) throws ParametroNullException {
         if( cliente != null) {
-            int i = this.procurarIndiceCpf(cliente.getCpf());
-            if (i < this.proxima) {
-                resultado = this.lojas[i];
-            }
+            return cliente.getLojas();
+        } else {
+            throw new ParametroNullException("cliente");
         }
-        return resultado;
     }
 
-    public void removerLoja (String cpf){
-        if(cpf != null) {
-            int i = this.procurarIndiceCpf(cpf);
+    public void removerLoja (Loja loja) throws ParametroNullException, NaoExisteException {
+        if(loja != null) {
+            int i = this.procurarIndice(loja.getNome());
             if (i < this.proxima) {
                 this.lojas[i] = this.lojas[this.proxima - 1];
                 this.lojas[this.proxima - 1] = null;
                 this.proxima = this.proxima - 1;
             } else {
-
+                throw new NaoExisteException("loja", "nome " + loja.getNome());
             }
+        } else {
+            throw new ParametroNullException("loja");
         }
     }
 
@@ -91,20 +109,6 @@ public class RepositorioLoja implements IRepositorioLoja{
         return i;
     }
 
-    private int procurarIndiceCpf (String titulo) {
-        int i = 0;
-        boolean achou = false;
-        while ((!achou) && (i < this.proxima)){
-            if (titulo.equals(this.lojas[i].getCliente().getCpf())) {
-                achou = true;
-            } else {
-                i = i+1;
-            }
-        }
-        return i;
-    }
-
-
     private int procurarIndiceCategoria (Categorias categoria) {
         int i = 0;
         boolean achou = false;
@@ -118,22 +122,15 @@ public class RepositorioLoja implements IRepositorioLoja{
         return i;
     }
 
-    public boolean existeLoja (String titulo) {
+    public boolean existeLoja (String titulo) throws ParametroNullException {
         boolean existe = false;
         if(titulo != null) {
             int indice = this.procurarIndice(titulo);
             if (indice != this.proxima) {
                 existe = true;
             }
-        }
-        return existe;
-    }
-
-    public boolean existeCpf (String titulo) {
-        boolean existe = false;
-        int indice = this.procurarIndiceCpf(titulo);
-        if (indice != this.proxima) {
-            existe = true;
+        } else {
+            throw new ParametroNullException("título");
         }
         return existe;
     }
@@ -148,12 +145,16 @@ public class RepositorioLoja implements IRepositorioLoja{
         }
     }
     @Override
-    public void alterarLoja (String cpf, Loja loja) {
-        if (cpf != null && loja != null) {
-            int indice = this.procurarIndiceCpf(cpf);
+    public void alterarLoja (String nomeAntigo, Loja loja) throws ParametroNullException, NaoExisteException {
+        if (nomeAntigo != null && loja != null) {
+            int indice = this.procurarIndice(nomeAntigo);
             if (indice < this.proxima) {
                 lojas[indice] = loja;
+            } else {
+                throw new NaoExisteException("loja", "nome " + nomeAntigo);
             }
+        } else {
+            throw new ParametroNullException("antigo nome ou nova loja");
         }
     }
 }

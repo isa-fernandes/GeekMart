@@ -1,5 +1,7 @@
 package br.ufrpe.geekMart.dados;
 
+import br.ufrpe.geekMart.exceptions.NaoExisteException;
+import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
 import br.ufrpe.geekMart.negocio.classesBasicas.Categorias;
 
@@ -15,7 +17,7 @@ public class RepositorioAnuncio implements IRepositorioAnuncio {
         return instancia;
     }
 
-    private RepositorioAnuncio (int tamanho){
+    private RepositorioAnuncio (int tamanho) {
         this.anuncios = new Anuncio[tamanho];
         this.proxima = 0;
     }
@@ -66,25 +68,36 @@ public class RepositorioAnuncio implements IRepositorioAnuncio {
         return result;
     }
 
-    public Anuncio procurarAnuncio (String titulo){
-        int i = this.procurarIndice(titulo);
-        Anuncio resultado = null;
-        if (i < this.proxima && titulo != null) {
-            resultado = this.anuncios[i];
-        }
-        return resultado;
-    }
-
-    public void removerAnuncio (String titulo){
-        int i = this.procurarIndice(titulo);
-        if (i < this.proxima && titulo != null){
-            this.anuncios[i]= this.anuncios[this.proxima -1];
-            this.anuncios[this.proxima -1]= null;
-            this.proxima = this.proxima -1 ;
+    public Anuncio procurarAnuncio (String titulo) throws ParametroNullException, NaoExisteException {
+        if (titulo != null) {
+            int i = this.procurarIndice(titulo);
+            Anuncio resultado;
+            if (i < this.proxima) {
+                resultado = this.anuncios[i];
+                return resultado;
+            } else {
+                throw new NaoExisteException("anúncio", "título " + titulo);
+            }
         } else {
-
+            throw new ParametroNullException("título");
         }
     }
+
+    public void removerAnuncio (String titulo) throws ParametroNullException, NaoExisteException {
+        if (titulo != null) {
+            int i = this.procurarIndice(titulo);
+            if (i < this.proxima) {
+                this.anuncios[i] = this.anuncios[this.proxima - 1];
+                this.anuncios[this.proxima - 1] = null;
+                this.proxima = this.proxima - 1;
+            } else {
+                throw new NaoExisteException("anúncio ", "título " + titulo);
+            }
+        } else {
+            throw new ParametroNullException("título");
+        }
+    }
+
     @Override
     public boolean existe (String titulo) {
         boolean existe = false;
@@ -98,7 +111,7 @@ public class RepositorioAnuncio implements IRepositorioAnuncio {
     public void duplicaArrayAnuncios () {
         if (this.anuncios != null && this.anuncios.length>0) {
             Anuncio[] arrayDuplicado = new Anuncio[this.anuncios.length*2];
-            for (int i=0; i< this.anuncios.length; i++){
+            for (int i=0; i< this.anuncios.length; i++) {
                 arrayDuplicado[i] = this.anuncios[i];
             }
             this.anuncios = arrayDuplicado;
@@ -106,10 +119,16 @@ public class RepositorioAnuncio implements IRepositorioAnuncio {
     }
 
 
-    public void alterarAnuncio (Anuncio anuncio){
-        int i = this.procurarIndice(anuncio.getTitulo());
-        if (i < this.proxima && anuncio != null) {
-            this.anuncios[i] = anuncio;
+    public void alterarAnuncio (String nomeAntigo, Anuncio anuncio) throws ParametroNullException, NaoExisteException {
+        if (nomeAntigo != null && anuncio != null) {
+            int i = this.procurarIndice(nomeAntigo);
+            if (i < this.proxima) {
+                this.anuncios[i] = anuncio;
+            } else {
+                throw new NaoExisteException("anúncio", "título " + nomeAntigo);
+            }
+        } else {
+            throw new ParametroNullException("anúncio");
         }
     }
 
