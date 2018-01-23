@@ -49,7 +49,7 @@ public class Fachada {
         return this.repositorioUsuario.buscarUsuario(cpf);
     }
 
-    public void removerUsuario (String cpf){
+    public void removerUsuario (String cpf) throws ParametroNullException, NaoExisteException {
         this.cadastroUsuario.removerUsuario(cpf);
     }
 

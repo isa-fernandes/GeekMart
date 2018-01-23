@@ -35,10 +35,15 @@ public class ControladorUsuario {
         }
     }
 
-    public void removerUsuario(String cpf){
+    public void removerUsuario(String cpf) throws ParametroNullException, NaoExisteException {
         if(cpf != null){
-            if(this.repositorio.existeUsuario(cpf) != false)
+            if(this.repositorio.existeUsuario(cpf)) {
                 this.repositorio.removerUsuario(cpf);
+            } else {
+                throw new NaoExisteException("usuário", "CPF " + cpf);
+            }
+        } else {
+            throw new ParametroNullException("CPF");
         }
     }
 

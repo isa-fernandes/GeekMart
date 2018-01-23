@@ -26,7 +26,6 @@ public class RepositorioUsuario implements IRepositorioUsuario {
 
     @Override
     public void cadastrarUsuario (Usuario c) {
-
         this.usuarios[this.proxima] = c;
         this.proxima = this.proxima + 1;
 
