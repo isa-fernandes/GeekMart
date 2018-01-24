@@ -27,7 +27,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="600.0" prefWidth="900.0" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.geekMart.gui.controller.TelaLoginController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -70,7 +70,7 @@
                                             <children>
                                                 <ComboBox fx:id="cbCategorias" prefWidth="150.0" promptText="Categorias" />
                                                 <ComboBox fx:id="cbLojas" prefWidth="150.0" promptText="Lojas " />
-                                    <Button fx:id="btHome" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Home" />
+                                    <Button fx:id="btHome" mnemonicParsing="false" onAction="#btHomeAction" prefHeight="25.0" prefWidth="127.0" text="Home" />
                                             </children>
                                         </VBox>
                                     </children>
@@ -162,7 +162,6 @@
                             <children>
                                 <Button fx:id="btCadastrar" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Cadastrar-se" textAlignment="CENTER" />
                                 <Button fx:id="btEntre" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Entre" textAlignment="CENTER" />
-                                <Button fx:id="btContato" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Contato" textAlignment="CENTER" />
                             </children>
                         </VBox>
                     </children>

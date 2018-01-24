@@ -114,7 +114,6 @@
                             <children>
                                 <Button fx:id="btCadastrar" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Cadastrar-se" textAlignment="CENTER" />
                                 <Button fx:id="btEntre" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Entre" textAlignment="CENTER" />
-                                <Button fx:id="btContato" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Contato" textAlignment="CENTER" />
                             </children>
                         </VBox>
                     </children>
