@@ -69,6 +69,7 @@
                                             <children>
                                                 <ComboBox fx:id="cbCategorias" prefWidth="150.0" promptText="Categorias" />
                                                 <ComboBox fx:id="cbLojas" prefWidth="150.0" promptText="Lojas " />
+                                                <Button fx:id="btHome" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Home" />
                                             </children>
                                         </VBox>
                                     </children>
@@ -106,9 +107,10 @@
                                             </content></ScrollPane>
                                         <GridPane prefHeight="538.0" prefWidth="564.0">
                                             <columnConstraints>
-                                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="221.0" minWidth="10.0" prefWidth="196.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="235.0" minWidth="10.0" prefWidth="216.0" />
-                                                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="152.0" minWidth="10.0" prefWidth="152.0" />
+                                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                             </columnConstraints>
                                             <rowConstraints>
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -121,57 +123,95 @@
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                             <children>
-                                                <Label text="Bloqueio/Desbloqueio">
+                                                <Label text="Novo Cadastro">
                                                     <font>
-                                                        <Font name="System Bold" size="18.0" />
+                                                        <Font name="System Bold" size="19.0" />
                                                     </font>
                                                 </Label>
-                                                <Label text="CPF do Cliente: " GridPane.rowIndex="1">
-                                                    <font>
-                                                        <Font size="18.0" />
-                                                    </font>
-                                                </Label>
-                                                <Label text="Nome :" GridPane.rowIndex="2">
+                                                <Label text="Nome :" GridPane.rowIndex="1">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
                                                 </Label>
-                                                <Button fx:id="btAlterarCadastro" mnemonicParsing="false" prefHeight="26.0" prefWidth="141.0" text="Bloquear/Desbloquear" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-                                                <Label fx:id="lbCPF" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                <Label text="CPF :" GridPane.rowIndex="2">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
                                                 </Label>
-                                                <Label fx:id="lbEmail" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                <Label text="Senha :" GridPane.rowIndex="3">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
                                                 </Label>
-                                                <Label fx:id="lbTelefone" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                <Label text="E-mail :" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                                     <font>
                                                         <Font size="18.0" />
                                                     </font>
                                                 </Label>
-                                    <Label text="Status:" GridPane.rowIndex="3">
+                                                <Label text="Telefone :" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label text="Logradouro :" GridPane.rowIndex="4">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label text="Número:" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label text="Bairro:" GridPane.rowIndex="5">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label text="Cidade :" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label text="Estado :" GridPane.rowIndex="6">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label text="CEP:" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label text="Complemento :" GridPane.rowIndex="7">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <TextField fx:id="tfEmail" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                <TextField fx:id="tfTelefone" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                <TextField fx:id="tfLogradouro" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <TextField fx:id="tfNumero" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                                                <TextField fx:id="tfCidade" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                                                <TextField fx:id="tfCEP" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                                                <TextField fx:id="tfComplemento" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <PasswordField fx:id="pqSenha" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <ComboBox fx:id="cbEstado" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <Button fx:id="btCancelar" mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" text="Cancelar" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                                                <Button fx:id="btAlterarCliente" mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" text="Alterar" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                                    <Label fx:id="lbNome" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="lbNome" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <Label fx:id="lbCPF" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="lbStatus" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                       <font>
-                                          <Font name="System Bold Italic" size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <Button mnemonicParsing="false" text="Buscar" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                             </children>
                                         </GridPane>
-
                                     </children>
                                 </AnchorPane>
                             </items>
@@ -193,10 +233,10 @@
                                     </font>
                                 </Label>
                                 <Button fx:id="btMeuCadastro" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Meu Cadastro" textAlignment="CENTER" />
-                                <Button fx:id="btMeusAnuncios" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="(Des)Bloquear" textAlignment="CENTER" />
-                                <Button fx:id="btMinhasLojas" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Deletar Anúncio" textAlignment="CENTER" />
-                                <Button fx:id="btNovoAnuncio" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Deletar Loja" textAlignment="CENTER" />
-                                <Button fx:id="btNovaLoja" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Novo ADM" textAlignment="CENTER" />
+                                <Button fx:id="btMeusAnuncios" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Meus Anúncios" textAlignment="CENTER" />
+                                <Button fx:id="btMinhasLojas" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Minhas Lojas" textAlignment="CENTER" />
+                                <Button fx:id="btNovoAnuncio" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Novo Anúncio" textAlignment="CENTER" />
+                                <Button fx:id="btNovaLoja" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Nova Loja" textAlignment="CENTER" />
                                 <Button fx:id="btCHAT" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="CHAT" textAlignment="CENTER" />
                             </children>
                         </VBox>

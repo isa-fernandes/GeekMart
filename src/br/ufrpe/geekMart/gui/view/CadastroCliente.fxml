@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -105,105 +106,142 @@
                                                     </image>
                                                 </ImageView>
                                             </content></ScrollPane>
-                              <GridPane prefHeight="538.0" prefWidth="564.0">
-                                <columnConstraints>
-                                    <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <children>
-                                    <Label text="Novo Cadastro">
-                                       <font>
-                                          <Font name="System Bold" size="19.0" />
-                                       </font>
-                                    </Label>
-                                    <Label text="Nome :" GridPane.rowIndex="1">
+                                        <GridPane prefHeight="538.0" prefWidth="564.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="139.0" minWidth="10.0" prefWidth="139.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="205.0" minWidth="10.0" prefWidth="158.0" />
+                                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="146.0" minWidth="10.0" prefWidth="104.0" />
+                                                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="152.0" minWidth="10.0" prefWidth="152.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <Label text="Meu Cadastro">
+                                                    <font>
+                                                        <Font name="System Bold" size="19.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label text="Nome :" GridPane.rowIndex="1">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label text="CPF :" GridPane.rowIndex="2">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label text="E-mail :" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label text="Telefone :" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label text="Logradouro :" GridPane.rowIndex="4">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label text="Número:" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label text="Bairro:" GridPane.rowIndex="5">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label text="Cidade :" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label text="Estado :" GridPane.rowIndex="6">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label text="CEP:" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label text="Complemento :" GridPane.rowIndex="7">
+                                                    <font>
+                                                        <Font size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Button fx:id="btAlterarCadastro" mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" text="Alterar" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                                    <Label fx:id="lbNome" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label text="CPF :" GridPane.rowIndex="2">
+                                    <Label fx:id="lbCPF" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Senha :" GridPane.rowIndex="3">
+                                    <Label fx:id="lbEmail" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label text="E-mail :" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                    <Label fx:id="lbTelefone" GridPane.columnIndex="3" GridPane.rowIndex="2">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Telefone :" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                    <Label fx:id="lbNumero" GridPane.columnIndex="3" GridPane.rowIndex="4">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Logradouro :" GridPane.rowIndex="4">
+                                    <Label fx:id="lbLogradouro" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Número:" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                    <Label fx:id="lbBairro" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Bairro:" GridPane.rowIndex="5">
+                                    <Label fx:id="lbEstado" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Cidade :" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                    <Label fx:id="lnComplemento" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Estado :" GridPane.rowIndex="6">
+                                    <Label fx:id="lbCidade" GridPane.columnIndex="3" GridPane.rowIndex="5">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label text="CEP:" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                                    <Label fx:id="lbCEP" GridPane.columnIndex="3" GridPane.rowIndex="6">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Complemento :" GridPane.rowIndex="7">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="tfNome" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <TextField fx:id="tfCPF" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    <TextField fx:id="tfEmail" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                    <TextField fx:id="tfTelefone" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                    <TextField fx:id="tfLogradouro" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                    <TextField fx:id="tfNumero" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                                    <TextField fx:id="tfCidade" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-                                    <TextField fx:id="tfCEP" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-                                    <TextField fx:id="tfComplemento" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                    <PasswordField fx:id="pqSenha" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <ComboBox fx:id="cbEstado" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                    <Button fx:id="btCancelar" mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" text="Cancelar" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-                                    <Button fx:id="btSalvar" mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" text="Cadastrar" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-                                 </children>
-                              </GridPane>
+                                            </children>
+                                        </GridPane>
                                     </children>
                                 </AnchorPane>
                             </items>
@@ -217,11 +255,19 @@
                                 <Image url="@../../imagens/painelEsquerdoJPEG.jpg" />
                             </image>
                         </ImageView>
-                        <VBox alignment="CENTER" layoutX="-2.0" prefHeight="579.0" prefWidth="177.0" spacing="50.0">
+                        <VBox alignment="CENTER" layoutX="-2.0" prefHeight="579.0" prefWidth="177.0" spacing="20.0">
                             <children>
-                                <Button fx:id="btCadastrar" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Cadastrar-se" textAlignment="CENTER" />
-                                <Button fx:id="btEntre" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Entre" textAlignment="CENTER" />
-                                <Button fx:id="btContato" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Contato" textAlignment="CENTER" />
+                                <Label text="Minha Conta" textFill="WHITE">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <Button fx:id="btMeuCadastro" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Meu Cadastro" textAlignment="CENTER" />
+                                <Button fx:id="btMeusAnuncios" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Meus Anúncios" textAlignment="CENTER" />
+                                <Button fx:id="btMinhasLojas" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Minhas Lojas" textAlignment="CENTER" />
+                                <Button fx:id="btNovoAnuncio" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Novo Anúncio" textAlignment="CENTER" />
+                                <Button fx:id="btNovaLoja" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Nova Loja" textAlignment="CENTER" />
+                                <Button fx:id="btCHAT" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="CHAT" textAlignment="CENTER" />
                             </children>
                         </VBox>
                     </children>
