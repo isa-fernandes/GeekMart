@@ -5,6 +5,7 @@ import br.ufrpe.geekMart.dados.RepositorioUsuario;
 import br.ufrpe.geekMart.exceptions.JaExisteException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
+import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
 import br.ufrpe.geekMart.negocio.classesBasicas.Usuario;
 
 public class ControladorUsuario {
@@ -46,6 +47,20 @@ public class ControladorUsuario {
             throw new ParametroNullException("CPF");
         }
     }
+
+    public Usuario buscarUsuario(String cpf) throws ParametroNullException, NaoExisteException{
+        return this.repositorio.buscarUsuario(cpf);
+    }
+
+    public boolean existeUsuario(String cpf){
+        return  this.repositorio.existeUsuario(cpf);
+    }
+
+    public  void alterarUsuario(Usuario usuario){
+        this.repositorio.alterarUsuario(usuario);
+    }
+
+
 
     public boolean autenticarLogin(String senha, String cpf) throws ParametroNullException, NaoExisteException {
         boolean retorno = false;

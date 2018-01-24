@@ -13,19 +13,13 @@ public class Fachada {
     private static Fachada instancia;
     private ControladorUsuario cadastroUsuario;
     private ControladorLoja cadastroLoja;
-    private IRepositorioUsuario repositorioUsuario;
-    private IRepositorioAnuncio repositorioAnuncio;
-    private IRepositorioLoja repositorioLoja;
+
 
 
     private Fachada() {
         this.cadastroAnuncio = ControladorAnuncio.getInstancia();
         this.cadastroLoja = ControladorLoja.getInstancia();
         this.cadastroUsuario = ControladorUsuario.getInstancia();
-        this.repositorioUsuario = repositorioUsuario;
-        this.repositorioAnuncio = repositorioAnuncio;
-        this.repositorioLoja = repositorioLoja;
-
 
     }
 
@@ -46,11 +40,19 @@ public class Fachada {
 
     public Usuario buscaUsuario (String cpf)
             throws NaoExisteException,ParametroNullException, JaExisteException {
-        return this.repositorioUsuario.buscarUsuario(cpf);
+        return this.cadastroUsuario.buscarUsuario(cpf);
     }
 
     public void removerUsuario (String cpf) throws ParametroNullException, NaoExisteException {
         this.cadastroUsuario.removerUsuario(cpf);
+    }
+
+    public boolean existeUsuario(String cpf){
+        return this.cadastroUsuario.existeUsuario(cpf);
+    }
+
+    public  void alterarUsuario(Usuario usuario){
+        this.cadastroUsuario.alterarUsuario(usuario);
     }
 
     //ADM
@@ -69,6 +71,14 @@ public class Fachada {
     }
 
     // ANUNCIO
+
+    public Anuncio[] getAnunciosCategoria (String categoria) {
+        return this.cadastroAnuncio.getAnunciosCategoria(categoria);
+    }
+
+    public Anuncio[] getAnunciosCategoria (int categoria){
+        return cadastroAnuncio.getAnunciosCategoria(categoria);
+    }
 
     public void adicionarAnuncio (Anuncio anuncio)
             throws ParametroNullException, JaExisteException {
@@ -110,16 +120,16 @@ public class Fachada {
 
     public Anuncio procurarAnuncio (String titulo)
             throws ParametroNullException, NaoExisteException {
-        return this.repositorioAnuncio.procurarAnuncio(titulo);
+        return this.cadastroAnuncio.procurarAnuncio(titulo);
     }
 
     public void removerAnuncio (String titulo) throws ParametroNullException, NaoExisteException {
-        this.repositorioAnuncio.removerAnuncio(titulo);
+        this.cadastroAnuncio.removerAnuncio(titulo);
     }
 
     public void alterarAnuncio (String nomeAntigo, Anuncio anuncio)
             throws ParametroNullException, NaoExisteException {
-        this.repositorioAnuncio.alterarAnuncio(nomeAntigo, anuncio);
+        this.cadastroAnuncio.alterarAnuncio(nomeAntigo, anuncio);
     }
 
 
@@ -127,29 +137,32 @@ public class Fachada {
     // LOJA
 
     public void novaLoja (Loja loja) throws ParametroNullException, JaExisteException{
-        this.repositorioLoja.cadastrarLoja(loja);
+        this.cadastroLoja.cadastrarLoja(loja);
     }
 
     public Loja buscarLoja (String nome) throws ParametroNullException, NaoExisteException {
-        return this.repositorioLoja.procurarLoja(nome);
+        return this.cadastroLoja.procurarLoja(nome);
     }
 
     public Loja buscarLojaPorCategoria (Categorias categoria)
             throws ParametroNullException, NaoExisteException {
-        return this.repositorioLoja.procurarLojaPorCategoria(categoria);
+        return this.cadastroLoja.procurarLojaPorCategoria(categoria);
     }
 
     public ArrayList<Loja> buscarLojaPorCliente (Cliente cliente) throws ParametroNullException {
-        return this.repositorioLoja.procurarLojaPorCliente(cliente);
+        return this.cadastroLoja.procurarLojaPorCliente(cliente);
     }
 
     public void removerLoja (Loja loja) throws ParametroNullException, NaoExisteException {
-        this.repositorioLoja.removerLoja(loja);
+        this.cadastroLoja.removerLoja(loja);
     }
 
     public void alterarLoja (String nomeAntigo, Loja loja)
             throws ParametroNullException, NaoExisteException {
-        this.repositorioLoja.alterarLoja(nomeAntigo, loja);
+        this.cadastroLoja.alterarLoja(nomeAntigo, loja);
+    }
+    public  boolean existeLoja(String titulo) throws ParametroNullException{
+        return this.cadastroLoja.existeLoja(titulo);
     }
 
 }

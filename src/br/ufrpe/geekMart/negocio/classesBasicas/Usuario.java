@@ -2,7 +2,7 @@ package br.ufrpe.geekMart.negocio.classesBasicas;
 
 import java.util.Objects;
 
-public class Usuario {
+public abstract class Usuario {
     protected boolean ativo,adm;
     protected String nome, email , cpf, senha;
 

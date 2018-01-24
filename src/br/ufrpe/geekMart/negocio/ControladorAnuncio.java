@@ -36,6 +36,31 @@ public class ControladorAnuncio {
         }
     }
 
+
+    public Anuncio procurarAnuncio (String titulo) throws ParametroNullException, NaoExisteException{
+        return this.repositorio.procurarAnuncio(titulo);
+    }
+
+    public void removerAnuncio (String titulo) throws ParametroNullException, NaoExisteException{
+        this.repositorio.removerAnuncio(titulo);
+    }
+
+    public boolean existe (String titulo){
+        return this.repositorio.existe(titulo);
+    }
+
+    public void alterarAnuncio (String nomeAntigo, Anuncio anuncio) throws ParametroNullException, NaoExisteException{
+         this.repositorio.alterarAnuncio(nomeAntigo, anuncio);
+    }
+
+    public Anuncio[] getAnunciosCategoria (String categoria) {
+        return repositorio.getAnunciosCategoria(categoria);
+    }
+
+    public Anuncio[] getAnunciosCategoria (int categoria){
+        return repositorio.getAnunciosCategoria(categoria);
+    }
+
     public void expirarAnuncio(Anuncio c) throws ParametroNullException,
             DataExpirarNaoChegouException,  NaoExisteException {
         LocalDate hoje = LocalDate.now();

@@ -66,7 +66,7 @@ public class RepositorioLoja implements IRepositorioLoja {
                 resultado = this.lojas[i];
                 return resultado;
             } else {
-                throw new NaoExisteException("loja", "categoria" + ); //lembrar de alterar quando categoria for enum
+                throw new NaoExisteException("loja", "categoria" ); //lembrar de alterar quando categoria for enum
             }
         } else {
             throw new ParametroNullException("categoria");
