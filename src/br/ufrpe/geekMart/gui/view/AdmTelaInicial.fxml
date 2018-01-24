@@ -96,7 +96,14 @@
                                 </HBox>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                     <children>
-                                        <ScrollPane layoutX="187.0" layoutY="155.0" prefHeight="510.0" prefWidth="574.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                        <ScrollPane layoutX="187.0" layoutY="155.0" prefHeight="510.0" prefWidth="574.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <content>
+                                                <ImageView fitHeight="538.0" fitWidth="574.0" pickOnBounds="true">
+                                                    <image>
+                                                        <Image url="@../../imagens/painelCentralMinhaConta.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </content></ScrollPane>
                                     </children>
                                 </AnchorPane>
                             </items>
@@ -118,10 +125,10 @@
                                     </font>
                                 </Label>
                                 <Button fx:id="btMeuCadastro" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Meu Cadastro" textAlignment="CENTER" />
-                                <Button fx:id="btMeusAnuncios" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Meus Anúncios" textAlignment="CENTER" />
-                                <Button fx:id="btMinhasLojas" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Minhas Lojas" textAlignment="CENTER" />
-                                <Button fx:id="btNovoAnuncio" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Novo Anúncio" textAlignment="CENTER" />
-                                <Button fx:id="btNovaLoja" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Nova Loja" textAlignment="CENTER" />
+                                <Button fx:id="btMeusAnuncios" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="(Des)Bloquear" textAlignment="CENTER" />
+                                <Button fx:id="btMinhasLojas" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Deletar Anúncio" textAlignment="CENTER" />
+                                <Button fx:id="btNovoAnuncio" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Deletar Loja" textAlignment="CENTER" />
+                                <Button fx:id="btNovaLoja" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Nova ADM" textAlignment="CENTER" />
                                 <Button fx:id="btCHAT" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="CHAT" textAlignment="CENTER" />
                             </children>
                         </VBox>

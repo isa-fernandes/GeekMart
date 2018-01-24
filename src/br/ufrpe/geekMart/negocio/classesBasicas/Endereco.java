@@ -19,6 +19,10 @@ public class Endereco {
         this.complemento = complemento;
     }
 
+    public Endereco(String estado){
+        this.estado=estado;
+    }
+
     public String getLogradouro(){
         return logradouro;
     }

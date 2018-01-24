@@ -96,7 +96,14 @@
                                 </HBox>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                     <children>
-                                        <ScrollPane layoutX="187.0" layoutY="155.0" prefHeight="510.0" prefWidth="574.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                        <ScrollPane layoutX="187.0" layoutY="155.0" prefHeight="510.0" prefWidth="574.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <content>
+                                                <ImageView fitHeight="538.0" fitWidth="574.0" pickOnBounds="true">
+                                                    <image>
+                                                        <Image url="@../../imagens/painelCentralMinhaConta.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </content></ScrollPane>
                                     </children>
                                 </AnchorPane>
                             </items>
