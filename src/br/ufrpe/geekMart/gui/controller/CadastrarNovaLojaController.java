@@ -1,4 +1,5 @@
 package br.ufrpe.geekMart.gui.controller;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -94,7 +95,38 @@ public class CadastrarNovaLojaController {
         @FXML
         private Button btCancelar;
 
+        @FXML
+        protected  void btHomeAction(ActionEvent e){
+                Main.trocarTela("telaInicialLogadoScene");
+        }
 
+        @FXML
+        protected  void btMeuCadastroAction(ActionEvent e){
+                Main.trocarTela("cadastroClienteScene");
+        }
+
+        @FXML
+        protected  void btMeusAnunciosAction(ActionEvent e){ Main.trocarTela("meusAnunciosScene"); }
+
+        @FXML
+        protected  void btMinhasLojasAction(ActionEvent e){
+                Main.trocarTela("minhasLojasScene");
+        }
+
+        @FXML
+        protected  void btNovoAnuncioAction(ActionEvent e){
+                Main.trocarTela("cadastrarNovoAnuncioScene");
+        }
+
+        @FXML
+        protected  void btNovaLojaAction(ActionEvent e){
+                Main.trocarTela("cadastrarNovaLojaScene");
+        }
+
+        @FXML
+        protected  void btChatAction(ActionEvent e){
+                Main.trocarTela("ChatScene");
+        }
 
 
 }

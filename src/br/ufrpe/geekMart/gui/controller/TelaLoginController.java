@@ -61,5 +61,8 @@ public class TelaLoginController {
                 Main.trocarTela("telaInicialDeslogadoScene");
         }
 
+        @FXML
+        protected  void btCadastrarAction(ActionEvent e){ Main.trocarTela("cadastrarNovoClienteScene"); }
+
 
 }

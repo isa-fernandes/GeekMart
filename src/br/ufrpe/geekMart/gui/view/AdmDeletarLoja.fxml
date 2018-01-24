@@ -26,7 +26,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="600.0" prefWidth="900.0" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.geekMart.gui.controller.AdmDeletarLojaController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -177,12 +177,12 @@
                                         <Font size="24.0" />
                                     </font>
                                 </Label>
-                                <Button fx:id="btMeuCadastro" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Meu Cadastro" textAlignment="CENTER" />
-                                <Button fx:id="btMeusAnuncios" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="(Des)Bloquear" textAlignment="CENTER" />
-                                <Button fx:id="btMinhasLojas" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Deletar Anúncio" textAlignment="CENTER" />
-                                <Button fx:id="btNovoAnuncio" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Deletar Loja" textAlignment="CENTER" />
-                                <Button fx:id="btNovaLoja" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Novo ADM" textAlignment="CENTER" />
-                                <Button fx:id="btCHAT" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="CHAT" textAlignment="CENTER" />
+                                <Button fx:id="btMeuCadastro" mnemonicParsing="false" onAction="#btMeuCadastroADMAction" prefHeight="35.0" prefWidth="115.0" text="Meu Cadastro" textAlignment="CENTER" />
+                                <Button fx:id="btMeusAnuncios" mnemonicParsing="false" onAction="#btDesbloquearBloquearAction" prefHeight="35.0" prefWidth="115.0" text="(Des)Bloquear" textAlignment="CENTER" />
+                                <Button fx:id="btMinhasLojas" mnemonicParsing="false" onAction="#btDeletarAnuncioAction" prefHeight="35.0" prefWidth="115.0" text="Deletar Anúncio" textAlignment="CENTER" />
+                                <Button fx:id="btNovoAnuncio" mnemonicParsing="false" onAction="#btDeletarLojaAction" prefHeight="35.0" prefWidth="115.0" text="Deletar Loja" textAlignment="CENTER" />
+                                <Button fx:id="btNovaLoja" mnemonicParsing="false" onAction="#btNovoAdmAction" prefHeight="35.0" prefWidth="115.0" text="Novo ADM" textAlignment="CENTER" />
+                                <Button fx:id="btCHAT" mnemonicParsing="false" onAction="#btAdmChatAction" prefHeight="35.0" prefWidth="115.0" text="CHAT" textAlignment="CENTER" />
                             </children>
                         </VBox>
                     </children>

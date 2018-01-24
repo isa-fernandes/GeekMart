@@ -26,7 +26,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="600.0" prefWidth="900.0" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.geekMart.gui.controller.ResultadoBuscaLogadoController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -69,6 +69,7 @@
                                             <children>
                                                 <ComboBox fx:id="cbCategorias" prefWidth="150.0" promptText="Categorias" />
                                                 <ComboBox fx:id="cbLojas" prefWidth="150.0" promptText="Lojas " />
+                                    <Button fx:id="btHome" mnemonicParsing="false" onAction="#btHomeAction" prefHeight="25.0" prefWidth="128.0" text="Home" />
                                             </children>
                                         </VBox>
                                     </children>
@@ -117,12 +118,12 @@
                                         <Font size="24.0" />
                                     </font>
                                 </Label>
-                                <Button fx:id="btMeuCadastro" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Meu Cadastro" textAlignment="CENTER" />
-                                <Button fx:id="btMeusAnuncios" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Meus Anúncios" textAlignment="CENTER" />
-                                <Button fx:id="btMinhasLojas" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Minhas Lojas" textAlignment="CENTER" />
-                                <Button fx:id="btNovoAnuncio" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Novo Anúncio" textAlignment="CENTER" />
-                                <Button fx:id="btNovaLoja" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Nova Loja" textAlignment="CENTER" />
-                                <Button fx:id="btCHAT" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="CHAT" textAlignment="CENTER" />
+                                <Button fx:id="btMeuCadastro" mnemonicParsing="false" onAction="#btMeuCadastroAction" prefHeight="35.0" prefWidth="115.0" text="Meu Cadastro" textAlignment="CENTER" />
+                                <Button fx:id="btMeusAnuncios" mnemonicParsing="false" onAction="#btMeusAnunciosAction" prefHeight="35.0" prefWidth="115.0" text="Meus Anúncios" textAlignment="CENTER" />
+                                <Button fx:id="btMinhasLojas" mnemonicParsing="false" onAction="#btMinhasLojasAction" prefHeight="35.0" prefWidth="115.0" text="Minhas Lojas" textAlignment="CENTER" />
+                                <Button fx:id="btNovoAnuncio" mnemonicParsing="false" onAction="#btNovoAnuncioAction" prefHeight="35.0" prefWidth="115.0" text="Novo Anúncio" textAlignment="CENTER" />
+                                <Button fx:id="btNovaLoja" mnemonicParsing="false" onAction="#btNovaLojaAction" prefHeight="35.0" prefWidth="115.0" text="Nova Loja" textAlignment="CENTER" />
+                                <Button fx:id="btCHAT" mnemonicParsing="false" onAction="#btChatAction" prefHeight="35.0" prefWidth="115.0" text="CHAT" textAlignment="CENTER" />
                             </children>
                         </VBox>
                     </children>

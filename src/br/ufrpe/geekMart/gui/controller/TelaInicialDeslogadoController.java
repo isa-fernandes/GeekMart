@@ -41,11 +41,10 @@ public class TelaInicialDeslogadoController {
         private MenuItem menuSobreApp;
 
         @FXML
-    protected  void btCadastrarAction(ActionEvent e){
-        Main.trocarTela("cadastrarNovoClienteScene");
-    }
-    @FXML
-    protected  void btEntrarAction(ActionEvent e){
+         protected  void btCadastrarAction(ActionEvent e){ Main.trocarTela("cadastrarNovoClienteScene"); }
+
+        @FXML
+         protected  void btEntrarAction(ActionEvent e){
         Main.trocarTela("telaLoginScene");
     }
 

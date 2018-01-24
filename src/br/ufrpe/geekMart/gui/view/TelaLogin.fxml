@@ -160,7 +160,7 @@
                         </ImageView>
                         <VBox alignment="CENTER" layoutX="-2.0" prefHeight="579.0" prefWidth="177.0" spacing="50.0">
                             <children>
-                                <Button fx:id="btCadastrar" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Cadastrar-se" textAlignment="CENTER" />
+                                <Button fx:id="btCadastrar" mnemonicParsing="false" onAction="#btCadastrarAction" prefHeight="35.0" prefWidth="115.0" text="Cadastrar-se" textAlignment="CENTER" />
                                 <Button fx:id="btEntre" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" text="Entre" textAlignment="CENTER" />
                             </children>
                         </VBox>

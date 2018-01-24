@@ -53,6 +53,8 @@ public class Main extends Application {
     private static  Scene admCadastrarNovoAdmScene;
     private static  Scene admBloqueioDesbloqueioScene;
     private static  Scene admAlterarCadastroScene;
+    private static  Scene meusAnunciosScene;
+    private static  Scene minhasLojasScene;
 
 
 
@@ -133,8 +135,14 @@ public class Main extends Application {
         Parent fxmlAdmBloqueioDesbloqueio = FXMLLoader.load(getClass().getResource("../view/AdmBloqueioDesbloqueio.fxml"));
         admBloqueioDesbloqueioScene = new Scene(fxmlAdmBloqueioDesbloqueio,900,600);
 
-        Parent fxmlAdmAlterarCadastroScene = FXMLLoader.load(getClass().getResource("../view/AdmAlterarCadastro.fxml"));
-        admAlterarCadastroScene = new Scene(fxmlAdmAlterarCadastroScene,900,600);
+        Parent fxmlAdmAlterarCadastro = FXMLLoader.load(getClass().getResource("../view/AdmAlterarCadastro.fxml"));
+        admAlterarCadastroScene = new Scene(fxmlAdmAlterarCadastro,900,600);
+
+        Parent fxmlMeusAnuncios = FXMLLoader.load(getClass().getResource("../view/MeusAnuncios.fxml"));
+        meusAnunciosScene = new Scene(fxmlMeusAnuncios,900,600);
+
+        Parent fxmlMinhasLojas = FXMLLoader.load(getClass().getResource("../view/MinhasLojas.fxml"));
+        minhasLojasScene = new Scene(fxmlMinhasLojas,900,600);
 
 
 
@@ -231,6 +239,15 @@ public class Main extends Application {
             case "admAlterarCadastroScene":
                 stage.setScene(admAlterarCadastroScene);
                 notificarAllListeners("admAlterarCadastroScene", userData);
+                break;
+
+            case "meusAnunciosScene":
+                stage.setScene(meusAnunciosScene);
+                notificarAllListeners("meusAnunciosScene", userData);
+                break;
+            case "minhasLojasScene":
+                stage.setScene(minhasLojasScene);
+                notificarAllListeners("minhasLojasScene", userData);
                 break;
 
         }

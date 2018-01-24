@@ -26,7 +26,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.geekMart.gui.controller.TelaInicialLogadoController">
+<VBox prefHeight="600.0" prefWidth="900.0" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.geekMart.gui.controller.MinhasLojasController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -69,6 +69,7 @@
                                             <children>
                                                 <ComboBox fx:id="cbCategorias" prefWidth="150.0" promptText="Categorias" />
                                                 <ComboBox fx:id="cbLojas" prefWidth="150.0" promptText="Lojas " />
+                                    <Button fx:id="btHome" mnemonicParsing="false" onAction="#btHomeAction" prefHeight="25.0" prefWidth="127.0" text="Home" />
                                             </children>
                                         </VBox>
                                     </children>
@@ -96,14 +97,7 @@
                                 </HBox>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                     <children>
-                                        <ScrollPane layoutX="187.0" layoutY="155.0" prefHeight="510.0" prefWidth="574.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <content>
-                                                <ImageView fitHeight="538.0" fitWidth="574.0" pickOnBounds="true">
-                                                    <image>
-                                                        <Image url="@../../imagens/painelCentral.png" />
-                                                    </image>
-                                                </ImageView>
-                                            </content></ScrollPane>
+                                        <ScrollPane layoutX="187.0" layoutY="155.0" prefHeight="510.0" prefWidth="574.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                     </children>
                                 </AnchorPane>
                             </items>
@@ -119,17 +113,17 @@
                         </ImageView>
                         <VBox alignment="CENTER" layoutX="-2.0" prefHeight="579.0" prefWidth="177.0" spacing="20.0">
                             <children>
-                        <Label text="Minha Conta" textFill="WHITE">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
+                                <Label text="Minha Conta" textFill="WHITE">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
                                 <Button fx:id="btMeuCadastro" mnemonicParsing="false" onAction="#btMeuCadastroAction" prefHeight="35.0" prefWidth="115.0" text="Meu Cadastro" textAlignment="CENTER" />
                                 <Button fx:id="btMeusAnuncios" mnemonicParsing="false" onAction="#btMeusAnunciosAction" prefHeight="35.0" prefWidth="115.0" text="Meus Anúncios" textAlignment="CENTER" />
                                 <Button fx:id="btMinhasLojas" mnemonicParsing="false" onAction="#btMinhasLojasAction" prefHeight="35.0" prefWidth="115.0" text="Minhas Lojas" textAlignment="CENTER" />
-                        <Button fx:id="btNovoAnuncio" mnemonicParsing="false" onAction="#btNovoAnuncioAction" prefHeight="35.0" prefWidth="115.0" text="Novo Anúncio" textAlignment="CENTER" />
-                        <Button fx:id="btNovaLoja" mnemonicParsing="false" onAction="#btNovaLojaAction" prefHeight="35.0" prefWidth="115.0" text="Nova Loja" textAlignment="CENTER" />
-                        <Button fx:id="btCHAT" mnemonicParsing="false" onAction="#btChatAction" prefHeight="35.0" prefWidth="115.0" text="CHAT" textAlignment="CENTER" />
+                                <Button fx:id="btNovoAnuncio" mnemonicParsing="false" onAction="#btNovoAnuncioAction" prefHeight="35.0" prefWidth="115.0" text="Novo Anúncio" textAlignment="CENTER" />
+                                <Button fx:id="btNovaLoja" mnemonicParsing="false" onAction="#btNovaLojaAction" prefHeight="35.0" prefWidth="115.0" text="Nova Loja" textAlignment="CENTER" />
+                                <Button fx:id="btCHAT" mnemonicParsing="false" onAction="#btChatAction" prefHeight="35.0" prefWidth="115.0" text="CHAT" textAlignment="CENTER" />
                             </children>
                         </VBox>
                     </children>

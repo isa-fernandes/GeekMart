@@ -4,36 +4,17 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 
-
-public class CadastrarNovoAnuncioController {
-
+public class ResultadoBuscaLogadoController {
 
 
 
         @FXML
-        private TextField tfPreco;
+        private  Button btHome;
 
         @FXML
-        private Button btTrocarImagem1;
-
-        @FXML
-        private ComboBox<?> cbCategoria;
-
-        @FXML
-        private Button btTrocarImagem2;
-
-        @FXML
-        private ImageView imageV2;
-
-        @FXML
-        private ImageView imageV1;
-
-        @FXML
-        private Button btTrocarImagem3;
+        private Button btMeusAnuncios;
 
         @FXML
         private ComboBox<?> cbCategorias;
@@ -45,25 +26,26 @@ public class CadastrarNovoAnuncioController {
         private Button btMeuCadastro;
 
         @FXML
-        private ImageView imageV3;
+        private TextField tfBuscar;
 
         @FXML
         private Button btMinhasLojas;
 
         @FXML
-        private TextArea taDescricao;
+        private MenuItem menuSair;
 
         @FXML
-        private TextField tfTitulo;
-
-        @FXML
-        private Button btCriarAnuncio;
+        private MenuItem menuLoginCliente;
 
         @FXML
         private Button btCHAT;
 
         @FXML
+        private ComboBox<?> cbLojas;
+
+        @FXML
         private Button btNovaLoja;
+
 
         @FXML
         private MenuItem menuLoginAdm;
@@ -73,36 +55,6 @@ public class CadastrarNovoAnuncioController {
 
         @FXML
         private MenuItem menuSobreApp;
-
-        @FXML
-        private TextField tfQuantidade;
-
-        @FXML
-        private Button btMeusAnuncios;
-
-        @FXML
-        private ComboBox<?> cbEstado;
-
-        @FXML
-        private TextField tfBuscar;
-
-        @FXML
-        private Button btHome;
-
-        @FXML
-        private TextField tfTelefone;
-
-        @FXML
-        private MenuItem menuSair;
-
-        @FXML
-        private MenuItem menuLoginCliente;
-
-        @FXML
-        private ComboBox<?> cbLojas;
-
-        @FXML
-        private Button btCancelar;
 
         @FXML
         protected  void btHomeAction(ActionEvent e){

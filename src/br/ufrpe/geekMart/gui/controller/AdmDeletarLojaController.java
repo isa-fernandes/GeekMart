@@ -1,4 +1,5 @@
 package br.ufrpe.geekMart.gui.controller;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -71,6 +72,34 @@ public class AdmDeletarLojaController {
 
         @FXML
         private MenuItem menuSobreApp;
+
+        @FXML
+        protected  void btMeuCadastroADMAction(ActionEvent e){
+                Main.trocarTela("AdmCadastroScene");
+        }
+
+        @FXML
+        protected  void btDesbloquearBloquearAction(ActionEvent e){ Main.trocarTela("AdmBloqueioDesbloqueioScene"); }
+
+        @FXML
+        protected  void btDeletarAnuncioAction(ActionEvent e){
+                Main.trocarTela("AdmDeletarAnuncioScene");
+        }
+
+        @FXML
+        protected  void btDeletarLojaAction(ActionEvent e){
+                Main.trocarTela("AdmDeletarLojaScene");
+        }
+
+        @FXML
+        protected  void btNovoAdmAction(ActionEvent e){
+                Main.trocarTela("AdmCadastrarNovoAdmScene");
+        }
+
+        @FXML
+        protected  void btAdmChatAction(ActionEvent e){
+                Main.trocarTela("AdmChatScene");
+        }
 
 
 

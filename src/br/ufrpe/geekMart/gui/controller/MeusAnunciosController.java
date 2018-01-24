@@ -1,8 +1,5 @@
 package br.ufrpe.geekMart.gui.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,59 +7,49 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 
-public class TelaInicialLogadoController {
+public class MeusAnunciosController {
 
+    @FXML
+    private Button btMeusAnuncios;
 
+    @FXML
+    private ComboBox<?> cbCategorias;
 
+    @FXML
+    private Button btBuscar;
 
+    @FXML
+    private Button btMeuCadastro;
 
-        @FXML
-        private ResourceBundle resources;
+    @FXML
+    private TextField tfBuscar;
 
-        @FXML
-        private URL location;
+    @FXML
+    private Button btMinhasLojas;
 
-        @FXML
-        private Button btMeusAnuncios;
+    @FXML
+    private MenuItem menuSair;
 
-        @FXML
-        private ComboBox<?> cbCategorias;
+    @FXML
+    private MenuItem menuLoginCliente;
 
-        @FXML
-        private Button btBuscar;
+    @FXML
+    private Button btCHAT;
 
-        @FXML
-        private Button btMeuCadastro;
+    @FXML
+    private ComboBox<?> cbLojas;
 
-        @FXML
-        private TextField tfBuscar;
+    @FXML
+    private Button btNovaLoja;
 
-        @FXML
-        private Button btMinhasLojas;
+    @FXML
+    private MenuItem menuLoginAdm;
 
-        @FXML
-        private MenuItem menuSair;
+    @FXML
+    private Button btNovoAnuncio;
 
-        @FXML
-        private MenuItem menuLoginCliente;
-
-        @FXML
-        private Button btCHAT;
-
-        @FXML
-        private ComboBox<?> cbLojas;
-
-        @FXML
-        private Button btNovaLoja;
-
-        @FXML
-        private MenuItem menuLoginAdm;
-
-        @FXML
-        private Button btNovoAnuncio;
-
-        @FXML
-        private MenuItem menuSobreApp;
+    @FXML
+    private MenuItem menuSobreApp;
 
     @FXML
     protected  void btHomeAction(ActionEvent e){
@@ -96,7 +83,6 @@ public class TelaInicialLogadoController {
     protected  void btChatAction(ActionEvent e){
         Main.trocarTela("ChatScene");
     }
-
 
 
 
