@@ -6,12 +6,12 @@ public abstract class Usuario {
     protected boolean ativo,adm;
     protected String nome, email , cpf, senha;
 
-    public Usuario(String nome, String email, String cpf, String senha, boolean adm){
+    public Usuario(String nome, String email, String cpf, String senha, boolean adm,boolean ativo){
         this.nome = nome;
         this.email=email;
         this.cpf=cpf;
         this.senha=senha;
-        this.ativo =true;
+        this.ativo =ativo;
         this.adm = adm;
     }
 

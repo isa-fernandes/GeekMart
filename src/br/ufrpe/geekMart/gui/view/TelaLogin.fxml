@@ -140,7 +140,7 @@
                                           </Label>
                                           <TextField fx:id="tfCPF" GridPane.rowIndex="1" />
                                           <PasswordField fx:id="tfSenha" GridPane.rowIndex="3" />
-                                          <Button fx:id="btEntrar" mnemonicParsing="false" prefHeight="33.0" prefWidth="96.0" text="Entrar" GridPane.rowIndex="4" />
+                                          <Button fx:id="btEntrar" mnemonicParsing="false" onAction="#fazerLoginAction" prefHeight="33.0" prefWidth="96.0" text="Entrar" GridPane.rowIndex="4" />
                                        </children>
                                     </GridPane>
                                  </children>

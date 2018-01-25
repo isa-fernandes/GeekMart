@@ -66,7 +66,7 @@ public class Fachada {
     //LOGIN
 
     public boolean autenticarLogin(String senha, String cpf)
-            throws ParametroNullException, NaoExisteException {
+            throws ParametroNullException, NaoExisteException, LoginSemSucessoException {
         return this.cadastroUsuario.autenticarLogin(senha,cpf);
     }
 

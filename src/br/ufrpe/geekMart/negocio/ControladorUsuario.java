@@ -3,9 +3,9 @@ package br.ufrpe.geekMart.negocio;
 import br.ufrpe.geekMart.dados.IRepositorioUsuario;
 import br.ufrpe.geekMart.dados.RepositorioUsuario;
 import br.ufrpe.geekMart.exceptions.JaExisteException;
+import br.ufrpe.geekMart.exceptions.LoginSemSucessoException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
-import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
 import br.ufrpe.geekMart.negocio.classesBasicas.Usuario;
 
 public class ControladorUsuario {
@@ -62,7 +62,7 @@ public class ControladorUsuario {
 
 
 
-    public boolean autenticarLogin(String senha, String cpf) throws ParametroNullException, NaoExisteException {
+    public boolean autenticarLogin(String senha, String cpf) throws ParametroNullException, NaoExisteException ,LoginSemSucessoException {
         boolean retorno = false;
         if (cpf != null && senha != null) {
             boolean existe = this.repositorio.existeUsuario(cpf);
@@ -71,6 +71,9 @@ public class ControladorUsuario {
                 boolean equivale = repositorio.buscarUsuario(cpf).getSenha().equals(senha);
                 if(equivale != false){
                     retorno = true;
+                } else {
+                    LoginSemSucessoException lss = new LoginSemSucessoException(senha,cpf);
+                    throw lss;
                 }
             }
 

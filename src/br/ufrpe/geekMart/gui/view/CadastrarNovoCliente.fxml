@@ -193,15 +193,15 @@
                                     <TextField fx:id="tfEmail" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                     <TextField fx:id="tfTelefone" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                     <TextField fx:id="tfLogradouro" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <TextField fx:id="tfBairro" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                                     <TextField fx:id="tfNumero" GridPane.columnIndex="3" GridPane.rowIndex="4" />
                                     <TextField fx:id="tfCidade" GridPane.columnIndex="3" GridPane.rowIndex="5" />
                                     <TextField fx:id="tfCEP" GridPane.columnIndex="3" GridPane.rowIndex="6" />
                                     <TextField fx:id="tfComplemento" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                     <PasswordField fx:id="pqSenha" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <ComboBox fx:id="cbEstado" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                    <Button fx:id="btCancelar" mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" text="Cancelar" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-                                    <Button fx:id="btSalvar" mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" text="Cadastrar" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                                    <Button fx:id="btCancelar" mnemonicParsing="false" onAction="#cancelarAction" prefHeight="26.0" prefWidth="99.0" text="Cancelar" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                                    <Button fx:id="btSalvar" mnemonicParsing="false" onAction="#cadastrarNovoClienteAction" prefHeight="26.0" prefWidth="99.0" text="Cadastrar" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                                    <TextField fx:id="tfEstado" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                                  </children>
                               </GridPane>
                                     </children>

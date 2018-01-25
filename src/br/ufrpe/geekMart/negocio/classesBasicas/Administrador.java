@@ -6,8 +6,8 @@ public class Administrador extends Usuario {
     public Administrador(){
 
     }
-    public Administrador(String nome, String cpf, String email, String senha, boolean adm) {
-        super(nome, cpf, email, senha,adm);
+    public Administrador(String nome, String cpf, String email, String senha, boolean adm, boolean ativo) {
+        super(nome, cpf, email, senha,adm, ativo);
 
         this.setAdm(this.adm);
     }

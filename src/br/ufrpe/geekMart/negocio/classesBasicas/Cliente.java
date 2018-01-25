@@ -7,16 +7,16 @@ public class Cliente extends Usuario {
     private Endereco endereco = new Endereco();
     private ArrayList<Anuncio> anuncios = new ArrayList<>();
     private ArrayList<Loja> lojas = new ArrayList<>();
-    private boolean adm = false;
+
 
     public Cliente(){
 
     }
 
-    public Cliente (String nome, String cpf, String email, String telefone, Endereco endereco, String senha, boolean adm){
-        super(nome,cpf,email,senha,adm);
+    public Cliente (String nome, String cpf, String email, String telefone, Endereco endereco, String senha, boolean adm, boolean ativo){
+        super(nome,cpf,email,senha,adm,ativo);
 
-        this.setAdm(this.adm);
+
         this.telefone = telefone;
         this.endereco = new Endereco(endereco.getLogradouro(), endereco.getNumero(), endereco.getBairro(), endereco.getCidade(), endereco.getEstado(), endereco.getCep(),
                 endereco.getComplemento());
@@ -66,6 +66,19 @@ public class Cliente extends Usuario {
         return adm;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "telefone='" + telefone + '\'' +
+                ", endereco=" + endereco +
+                ", anuncios=" + anuncios +
+                ", lojas=" + lojas +
+                ", ativo=" + ativo +
+                ", adm=" + adm +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", senha='" + senha + '\'' +
+                '}';
+    }
 }

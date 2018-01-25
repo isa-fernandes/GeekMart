@@ -124,7 +124,7 @@ public class CadastroClienteController {
 
         @FXML
         protected  void btChatAction(ActionEvent e){
-                Main.trocarTela("ChatScene");
+                Main.trocarTela("chatScene");
         }
 
 
