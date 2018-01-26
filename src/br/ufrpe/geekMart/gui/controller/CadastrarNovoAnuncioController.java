@@ -157,59 +157,58 @@ public class CadastrarNovoAnuncioController {
 
         @FXML
         protected  void btHomeAction(ActionEvent e){
-                Main.trocarTela("telaInicialLogadoScene");
+                Main.trocarTela("telaInicialLogadoScene",user);
         }
 
         @FXML
         protected  void btMeuCadastroAction(ActionEvent e){
-                Main.trocarTela("cadastroClienteScene");
+                Main.trocarTela("cadastroClienteScene",user);
         }
 
         @FXML
-        protected  void btMeusAnunciosAction(ActionEvent e){ Main.trocarTela("meusAnunciosScene"); }
+        protected  void btMeusAnunciosAction(ActionEvent e){ Main.trocarTela("meusAnunciosScene",user); }
 
         @FXML
         protected  void btMinhasLojasAction(ActionEvent e){
-                Main.trocarTela("minhasLojasScene");
+                Main.trocarTela("minhasLojasScene",user);
         }
 
         @FXML
         protected  void btNovoAnuncioAction(ActionEvent e){
-                Main.trocarTela("cadastrarNovoAnuncioScene");
+                Main.trocarTela("cadastrarNovoAnuncioScene",user);
         }
 
         @FXML
         protected  void btNovaLojaAction(ActionEvent e){
-                Main.trocarTela("cadastrarNovaLojaScene");
+                Main.trocarTela("cadastrarNovaLojaScene",user);
         }
 
         @FXML
         protected  void btChatAction(ActionEvent e){
-                Main.trocarTela("chatScene");
+                Main.trocarTela("chatScene",user);
         }
 
         @FXML
-        protected  void cadastrarNovoAnuncioAction(ActionEvent e){
+        protected  void cadastrarNovoAnuncioAction(ActionEvent e) {
 
-        try {
-                if(tfTitulo.getText().isEmpty())
-                        throw new RuntimeException("O campo nome não pode ser vazio");
-                if(tfPreco.getText().isEmpty())
-                        throw new RuntimeException("O campo cpf não pode ser vazio");
-                if(tfQuantidade.getText().isEmpty())
-                        throw new RuntimeException("O campo e-mail não pode ser vazio");
-                if(tfTelefone.getText().isEmpty())
-                        throw new RuntimeException("O campo telefone não pode ser vazio");
-                if(tfEstado.getText().isEmpty())
-                        throw new RuntimeException("O campo estado não pode ser vazio");
-                if(cbCategoria.getSelectionModel().isEmpty())
-                        throw new RuntimeException("O campo categoria não pode ser vazio");
-                if(taDescricao.getText().isEmpty())
-                        throw new RuntimeException("O campo descrição não pode ser vazio");
+            try {
+                if (tfTitulo.getText().isEmpty())
+                    throw new RuntimeException("O campo nome não pode ser vazio");
+                if (tfPreco.getText().isEmpty())
+                    throw new RuntimeException("O campo cpf não pode ser vazio");
+                if (tfQuantidade.getText().isEmpty())
+                    throw new RuntimeException("O campo e-mail não pode ser vazio");
+                if (tfTelefone.getText().isEmpty())
+                    throw new RuntimeException("O campo telefone não pode ser vazio");
+                if (tfEstado.getText().isEmpty())
+                    throw new RuntimeException("O campo estado não pode ser vazio");
+                if (cbCategoria.getSelectionModel().isEmpty())
+                    throw new RuntimeException("O campo categoria não pode ser vazio");
+                if (taDescricao.getText().isEmpty())
+                    throw new RuntimeException("O campo descrição não pode ser vazio");
 
 
                 Endereco c = new Endereco(tfEstado.getText());
-
 
 
                 Anuncio g = new Anuncio(
@@ -217,55 +216,62 @@ public class CadastrarNovoAnuncioController {
                         tfPreco.getText(),
                         tfTitulo.getText(),
                         taDescricao.getText(),
-                        (String)cbCategoria.getSelectionModel().getSelectedItem(),
+                        (String) cbCategoria.getSelectionModel().getSelectedItem(),
                         c,
                         Integer.parseInt(tfQuantidade.getText()),
                         tfTelefone.getText());
 
 
-
-
                 fachada.cadastrarAnuncio(g);
+                user.listarAnuncios().add(g);
+                fachada.alterarUsuario(fachada.buscaUsuario(user.getCpf()),user);
+                System.out.println(user.listarAnuncios());
+                Cliente cll = (Cliente)fachada.buscaUsuario(user.getCpf());
+                System.out.println(cll.listarAnuncios());
+
 
                 Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
                 alert2.setTitle("Informação");
                 alert2.setHeaderText("Criação de Anúncio");
-                alert2.setContentText("Anúncio "+tfTitulo.getText()+" criado com sucesso!");
+                alert2.setContentText("Anúncio " + tfTitulo.getText() + " criado com sucesso!");
                 alert2.showAndWait();
 
-            tfPreco.setText("");
-            tfTitulo.setText("");
-            taDescricao.setText("");
-            tfQuantidade.setText("");
-            tfEstado.setText("");
-            tfTelefone.setText("");
+                tfPreco.setText("");
+                tfTitulo.setText("");
+                taDescricao.setText("");
+                tfQuantidade.setText("");
+                tfEstado.setText("");
+                tfTelefone.setText("");
 
-        } catch (RuntimeException ex){
+            } catch (RuntimeException ex) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erro");
                 alert.setHeaderText("Erro ao criar o Anúncio");
                 alert.setContentText(ex.getMessage());
                 alert.showAndWait();
-        } catch (ParametroNullException exx){
+            } catch (ParametroNullException exx) {
                 Alert alertw = new Alert(Alert.AlertType.ERROR);
                 alertw.setTitle("Erro");
                 alertw.setHeaderText("Erro ao criar o Anúncio");
                 alertw.setContentText("Não foi possível completar o cadastro!!");
                 alertw.showAndWait();
-        } catch (JaExisteException exx) {
+            } catch (JaExisteException exx) {
                 Alert alertw = new Alert(Alert.AlertType.ERROR);
                 alertw.setTitle("Erro");
                 alertw.setHeaderText("Erro ao criar o Anúncio");
                 alertw.setContentText("Esse Anúncio já existe!");
                 alertw.showAndWait();
+            } catch (NaoExisteException exx) {
+                Alert alertw = new Alert(Alert.AlertType.ERROR);
+                alertw.setTitle("Erro");
+                alertw.setHeaderText("Erro ao criar o Anúncio");
+                alertw.setContentText("Esse Anúncio já existe!!!");
+                alertw.showAndWait();
+            }
         }
 
-
-
-}
-
         @FXML
-        protected  void cancelarAction(ActionEvent ee){
+        protected  void cancelarAction(ActionEvent e){
                 tfPreco.setText("");
                 tfTitulo.setText("");
                 taDescricao.setText("");

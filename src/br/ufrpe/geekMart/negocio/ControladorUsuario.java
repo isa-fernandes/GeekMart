@@ -56,8 +56,8 @@ public class ControladorUsuario {
         return  this.repositorio.existeUsuario(cpf);
     }
 
-    public  void alterarUsuario(Usuario usuario){
-        this.repositorio.alterarUsuario(usuario);
+    public  void alterarUsuario(Usuario usuario, Usuario usuarioNovo){
+        this.repositorio.alterarUsuario(usuario,usuarioNovo);
     }
 
 

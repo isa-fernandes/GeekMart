@@ -254,7 +254,7 @@ public class Main extends Application {
     private static ArrayList<OnChangeScreen> listerners = new ArrayList<>();
 
     public static interface OnChangeScreen{
-        void onScreenChanged(String newScreen, Object userData);
+        void onScreenChanged(String newScreen, Object userData) ;
     }
 
     public static  void addOnChangesScreenListener(OnChangeScreen newListener){

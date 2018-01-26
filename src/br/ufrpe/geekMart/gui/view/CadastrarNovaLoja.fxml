@@ -140,7 +140,7 @@
                                                             </font>
                                                         </Label>
                                                         <TextField fx:id="tfTelefone" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                        <ComboBox fx:id="cbEstado" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                        <ComboBox fx:id="cbCategoria" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                     </children>
                                                 </GridPane>
                                                 <GridPane prefHeight="131.0" prefWidth="567.0">
@@ -196,8 +196,8 @@
                                           </VBox>
                                           <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.columnIndex="3">
                                              <children>
-                                                <Button fx:id="btAdd" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" text="Add" />
-                                                <Button fx:id="btDeletar" mnemonicParsing="false" text="Deletar" />
+                                                <Button fx:id="btAdd" mnemonicParsing="false" onAction="#btAddPersonAction" prefHeight="25.0" prefWidth="55.0" text="Add" />
+                                                <Button fx:id="btDeletar" mnemonicParsing="false" onAction="#btDelPersonAction" text="Deletar" />
                                              </children>
                                           </VBox>
                                           <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="4">
@@ -214,8 +214,8 @@
                                                 </GridPane>
                                                 <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="38.0" prefWidth="565.0" spacing="30.0">
                                                     <children>
-                                                        <Button fx:id="btCancelar" mnemonicParsing="false" prefHeight="34.0" prefWidth="103.0" text="Cancelar" />
-                                          <Button fx:id="btCriarLoja" mnemonicParsing="false" prefHeight="34.0" prefWidth="103.0" text="Criar Loja" />
+                                                        <Button fx:id="btCancelar" mnemonicParsing="false" onAction="#btCancelsAction" prefHeight="34.0" prefWidth="103.0" text="Cancelar" />
+                                          <Button fx:id="btCriarLoja" mnemonicParsing="false" onAction="#cadastrarNovaLojaAction" prefHeight="34.0" prefWidth="103.0" text="Criar Loja" />
                                                     </children>
                                                 </HBox>
                                             </children>

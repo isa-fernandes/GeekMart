@@ -1,4 +1,6 @@
 package br.ufrpe.geekMart.gui.controller;
+import br.ufrpe.geekMart.negocio.Fachada;
+import br.ufrpe.geekMart.negocio.classesBasicas.Administrador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,7 +13,25 @@ import javafx.scene.control.TextField;
 public class AdmDeletarLojaController {
 
 
+        Administrador user;
+        Fachada fachada = Fachada.getInstancia();
 
+        @FXML
+        protected  void  initialize(){
+                Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
+                        @Override
+                        public void onScreenChanged(String newScreen, Object userData) {
+                                if(newScreen.equals("admDeletarLojaScene")) {
+                                        user=(Administrador)userData;
+
+
+                                } }
+                });
+
+
+
+
+        }
 
         @FXML
         private Button btMeusAnuncios;
