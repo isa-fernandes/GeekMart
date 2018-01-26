@@ -3,6 +3,7 @@ package br.ufrpe.geekMart.dados;
 import br.ufrpe.geekMart.exceptions.JaExisteException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
+import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
 import br.ufrpe.geekMart.negocio.classesBasicas.Categorias;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
@@ -81,19 +82,32 @@ public class RepositorioLoja implements IRepositorioLoja {
         }
     }
 
-    public void removerLoja (Loja loja) throws ParametroNullException, NaoExisteException {
-        if(loja != null) {
-            int i = this.procurarIndice(loja.getNome());
+    public void removerLoja (String nomeDaLoja,String cpf) throws ParametroNullException, NaoExisteException {
+        if(nomeDaLoja != null && cpf != null) {
+            int i = this.procurarIndiceRemover(nomeDaLoja,cpf);
             if (i < this.proxima) {
                 this.lojas[i] = this.lojas[this.proxima - 1];
                 this.lojas[this.proxima - 1] = null;
                 this.proxima = this.proxima - 1;
             } else {
-                throw new NaoExisteException("loja", "nome " + loja.getNome());
+                throw new NaoExisteException("loja", "nome " + nomeDaLoja);
             }
         } else {
             throw new ParametroNullException("loja");
         }
+    }
+
+    public int procurarIndiceRemover (String titulo, String cpf){
+        int i = 0;
+        boolean achou = false;
+        while ((!achou) && (i < this.proxima)){
+            if (titulo.equals(this.lojas[i].getNome()) && cpf.equals(this.lojas[i].getCliente().getCpf())){
+                achou = true;
+            } else {
+                i = i + 1;
+            }
+        }
+        return i;
     }
 
     private int procurarIndice (String titulo) {
@@ -166,7 +180,5 @@ public class RepositorioLoja implements IRepositorioLoja {
         return proxima;
     }
 
-    public void setProxima(int proxima) {
-        this.proxima = proxima;
-    }
+
 }

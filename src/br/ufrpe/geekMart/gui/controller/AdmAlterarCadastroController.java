@@ -3,12 +3,7 @@ import br.ufrpe.geekMart.negocio.Fachada;
 import br.ufrpe.geekMart.negocio.classesBasicas.Administrador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 
 public class AdmAlterarCadastroController {
@@ -23,6 +18,7 @@ public class AdmAlterarCadastroController {
                         public void onScreenChanged(String newScreen, Object userData) {
                                 if(newScreen.equals("admAlterarCadastroScene")) {
                                         user=(Administrador)userData;
+                                        updateCadastroTela();
 
 
                                 } }
@@ -32,6 +28,58 @@ public class AdmAlterarCadastroController {
 
 
         }
+
+        private void updateCadastroTela(){
+                lbNome.setText(user.getNome());
+                lbCPF.setText(user.getCpf());
+                tfEmail.setText(user.getEmail());
+                tfTelefone.setText(user.getTelefone());
+
+
+
+        }
+
+        @FXML
+        protected  void btAlterarADMAction(ActionEvent e){
+                try {
+
+                        if (tfEmail.getText().isEmpty())
+                                throw new RuntimeException("O campo e-mail não pode ser vazio");
+                        if (tfTelefone.getText().isEmpty())
+                                throw new RuntimeException("O campo telefone não pode ser vazio");
+                        if (pwfSenha.getText().isEmpty())
+                                throw new RuntimeException("O campo senha não pode ser vazio");
+
+
+                        Administrador g = new Administrador(
+                                user.getNome(),
+                                user.getCpf(),
+                                tfEmail.getText(),
+                                pwfSenha.getText(),
+                                true,
+                                true,
+                                tfTelefone.getText());
+
+                        fachada.alterarUsuario(user, g);
+                        user = g;
+
+                        Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                        alert2.setTitle("Informação");
+                        alert2.setHeaderText("Alteração de ADM");
+                        alert2.setContentText("Asm "+g.getNome()+" alterado com sucesso!");
+                        alert2.showAndWait();
+
+
+                } catch (RuntimeException ex) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Erro");
+                        alert.setHeaderText("Erro ao alterar o Adm!!");
+                        alert.setContentText(ex.getMessage());
+                        alert.showAndWait();
+                }
+
+        }
+
 
 
 

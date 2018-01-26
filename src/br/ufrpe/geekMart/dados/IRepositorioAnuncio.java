@@ -9,7 +9,7 @@ public interface IRepositorioAnuncio {
     //Anuncio[] getAnunciosCategoria (String categoria);
     //Anuncio[] getAnunciosCategoria (int categoria);
     Anuncio procurarAnuncio (String titulo) throws ParametroNullException, NaoExisteException;
-    void removerAnuncio (String titulo) throws ParametroNullException, NaoExisteException;
+    void removerAnuncio (String titulo,String cpf) throws ParametroNullException, NaoExisteException;
     boolean existe (String titulo);
     void alterarAnuncio (String nomeAntigo, Anuncio anuncio) throws ParametroNullException, NaoExisteException;
     Anuncio[] listarAnuncios();

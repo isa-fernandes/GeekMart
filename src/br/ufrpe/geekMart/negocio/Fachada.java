@@ -142,8 +142,8 @@ public class Fachada {
         return this.cadastroAnuncio.procurarAnuncio(titulo);
     }
 
-    public void removerAnuncio (String titulo) throws ParametroNullException, NaoExisteException {
-        this.cadastroAnuncio.removerAnuncio(titulo);
+    public void removerAnuncio (String titulo,String cpf) throws ParametroNullException, NaoExisteException {
+        this.cadastroAnuncio.removerAnuncio(titulo,cpf);
     }
 
     public void alterarAnuncio (String nomeAntigo, Anuncio anuncio)
@@ -187,8 +187,8 @@ public class Fachada {
         return this.cadastroLoja.procurarLojaPorCliente(cliente);
     }
 
-    public void removerLoja (Loja loja) throws ParametroNullException, NaoExisteException {
-        this.cadastroLoja.removerLoja(loja);
+    public void removerLoja (String nomeDaLoja,String cpf) throws ParametroNullException, NaoExisteException {
+        this.cadastroLoja.removerLoja(nomeDaLoja,cpf);
     }
 
     public void alterarLoja (String nomeAntigo, Loja loja)

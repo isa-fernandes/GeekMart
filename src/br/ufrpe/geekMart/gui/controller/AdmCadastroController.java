@@ -112,25 +112,25 @@ public class AdmCadastroController {
 
         @FXML
         protected  void btMeuCadastroADMAction(ActionEvent e){
-                Main.trocarTela("admCadastroScene");
+                Main.trocarTela("admCadastroScene",user);
         }
 
         @FXML
-        protected  void btDesbloquearBloquearAction(ActionEvent e){ Main.trocarTela("admBloqueioDesbloqueioScene"); }
+        protected  void btDesbloquearBloquearAction(ActionEvent e){ Main.trocarTela("admBloqueioDesbloqueioScene",user); }
 
         @FXML
         protected  void btDeletarAnuncioAction(ActionEvent e){
-                Main.trocarTela("admDeletarAnuncioScene");
+                Main.trocarTela("admDeletarAnuncioScene",user);
         }
 
         @FXML
         protected  void btDeletarLojaAction(ActionEvent e){
-                Main.trocarTela("admDeletarLojaScene");
+                Main.trocarTela("admDeletarLojaScene",user);
         }
 
         @FXML
         protected  void btNovoAdmAction(ActionEvent e){
-                Main.trocarTela("admCadastrarNovoAdmScene");
+                Main.trocarTela("admCadastrarNovoAdmScene",user);
         }
 
         @FXML

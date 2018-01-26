@@ -155,13 +155,13 @@
                                                             </font>
                                                         </Label>
                                                         <TextField fx:id="tfTelefone" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                        <ComboBox fx:id="cbEstado" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                           <Label text="Categoria :" GridPane.rowIndex="5">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
                                           <ComboBox fx:id="cbCategoria" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                          <TextField fx:id="tfEstado" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                                     </children>
                                                 </GridPane>
                                                 <GridPane prefHeight="131.0" prefWidth="567.0">
@@ -213,15 +213,15 @@
                                                                 <Image url="@../../imagens/imagem.Nova.jpg" />
                                                             </image>
                                                         </ImageView>
-                                                        <Button fx:id="btTrocarImagem1" mnemonicParsing="false" text="Trocar Imagem" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                        <Button fx:id="btTrocarImagem2" mnemonicParsing="false" text="Trocar Imagem" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                                        <Button fx:id="btTrocarImagem3" mnemonicParsing="false" text="Trocar Imagem" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                        <Button fx:id="btTrocarImagem1" mnemonicParsing="false" onAction="#trocarImagemAction" text="Trocar Imagem" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                        <Button fx:id="btTrocarImagem2" mnemonicParsing="false" onAction="#trocarImagemAction" text="Trocar Imagem" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                        <Button fx:id="btTrocarImagem3" mnemonicParsing="false" onAction="#trocarImagemAction" text="Trocar Imagem" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                                     </children>
                                                 </GridPane>
                                                 <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                                                     <children>
-                                                        <Button fx:id="btCancelar" mnemonicParsing="false" prefHeight="47.0" prefWidth="121.0" text="Cancelar" />
-                                                        <Button fx:id="btSalvarAnuncio" mnemonicParsing="false" prefHeight="47.0" prefWidth="121.0" text="Salvar" />
+                                                        <Button fx:id="btCancelar" mnemonicParsing="false" onAction="#cancelarAction" prefHeight="47.0" prefWidth="121.0" text="Cancelar" />
+                                                        <Button fx:id="btSalvarAnuncio" mnemonicParsing="false" onAction="#alterarAnuncioAction" prefHeight="47.0" prefWidth="121.0" text="Salvar" />
                                                     </children>
                                                 </HBox>
                                             </children>

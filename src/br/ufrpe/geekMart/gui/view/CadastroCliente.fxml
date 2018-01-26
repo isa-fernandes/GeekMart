@@ -184,7 +184,7 @@
                                                         <Font size="18.0" />
                                                     </font>
                                                 </Label>
-                                                <Button fx:id="btAlterarCadastro" mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" text="Alterar" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                                                <Button fx:id="btAlterarCadastro" mnemonicParsing="false" onAction="#btAlterarAction" prefHeight="26.0" prefWidth="99.0" text="Alterar" GridPane.columnIndex="3" GridPane.rowIndex="7" />
                                     <Label fx:id="lbNome" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <font>
                                           <Font size="18.0" />

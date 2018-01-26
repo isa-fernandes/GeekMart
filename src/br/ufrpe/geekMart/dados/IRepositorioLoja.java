@@ -15,7 +15,7 @@ public interface IRepositorioLoja {
     Loja procurarLoja(String titulo) throws ParametroNullException, NaoExisteException;
     ArrayList<Loja> procurarLojaPorCliente (Cliente cliente) throws ParametroNullException;
     Loja procurarLojaPorCategoria (Categorias categoria) throws ParametroNullException, NaoExisteException;
-    void removerLoja(Loja loja) throws ParametroNullException, NaoExisteException;
+    void removerLoja(String nomeDaLoja,String cpf) throws ParametroNullException, NaoExisteException;
     boolean existeLoja(String titulo) throws ParametroNullException;
     void alterarLoja (String cpf, Loja loja) throws ParametroNullException, NaoExisteException;
     Loja[] listarLoja();

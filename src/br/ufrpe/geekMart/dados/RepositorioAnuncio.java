@@ -4,6 +4,7 @@ import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
 import br.ufrpe.geekMart.negocio.classesBasicas.Categorias;
+import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 
 public class RepositorioAnuncio implements IRepositorioAnuncio {
     private Anuncio[] anuncios;
@@ -35,6 +36,19 @@ public class RepositorioAnuncio implements IRepositorioAnuncio {
         boolean achou = false;
         while ((!achou) && (i < this.proxima)){
             if (num.equals(this.anuncios[i].getTitulo())){
+                achou = true;
+            } else {
+                i = i + 1;
+            }
+        }
+        return i;
+    }
+
+    public int procurarIndiceRemover (String titulo, String cpf){
+        int i = 0;
+        boolean achou = false;
+        while ((!achou) && (i < this.proxima)){
+            if (titulo.equals(this.anuncios[i].getTitulo()) && cpf.equals(this.anuncios[i].getCliente().getCpf())){
                 achou = true;
             } else {
                 i = i + 1;
@@ -83,13 +97,14 @@ public class RepositorioAnuncio implements IRepositorioAnuncio {
         }
     }
 
-    public void removerAnuncio (String titulo) throws ParametroNullException, NaoExisteException {
+    public void removerAnuncio (String titulo, String cpf) throws ParametroNullException, NaoExisteException {
         if (titulo != null) {
-            int i = this.procurarIndice(titulo);
+            int i = this.procurarIndiceRemover(titulo,cpf);
             if (i < this.proxima) {
                 this.anuncios[i] = this.anuncios[this.proxima - 1];
                 this.anuncios[this.proxima - 1] = null;
                 this.proxima = this.proxima - 1;
+
             } else {
                 throw new NaoExisteException("anúncio ", "título " + titulo);
             }

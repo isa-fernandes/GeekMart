@@ -4,7 +4,9 @@ import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
 import br.ufrpe.geekMart.negocio.classesBasicas.Administrador;
+import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
+import br.ufrpe.geekMart.negocio.classesBasicas.Endereco;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -34,6 +36,7 @@ public class TelaInicialDeslogadoController {
                 updateComboBoxCategorias();
                 updateComboBoxLojas();
                 admPadrao();
+                clientePadrao();
 
         }
 
@@ -57,6 +60,39 @@ public class TelaInicialDeslogadoController {
 
                 }
         }
+
+        private void clientePadrao(){
+                try {
+                        Endereco end = new Endereco(
+                                "Alto do Deodato",
+                                "278",
+                                "Agua Fria",
+                                "Recife",
+                                "Pernambuco",
+                                "52211500",
+                                "Casa");
+
+                        Cliente huan = new Cliente(
+                                "Huan Christopher",
+                                "huan@gm",
+                                "071",
+                                "(81)996074398",
+                                end,
+                                "071",
+                                false,
+                                true);
+
+                        fachada.cadastrarUsuario(huan);
+                } catch (NaoExisteException ee){
+
+                }  catch (ParametroNullException ee){
+
+                } catch (JaExisteException ee){
+
+                }
+        }
+
+
 
 
         private void updateComboBoxCategorias(){

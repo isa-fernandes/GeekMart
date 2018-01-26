@@ -1,14 +1,12 @@
 package br.ufrpe.geekMart.gui.controller;
 
+import br.ufrpe.geekMart.exceptions.NaoExisteException;
+import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
 import br.ufrpe.geekMart.negocio.classesBasicas.Administrador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class AdmDeletarAnuncioController {
 
@@ -32,8 +30,38 @@ public class AdmDeletarAnuncioController {
 
         }
 
-
         @FXML
+        protected  void deletarAnuncioAction(ActionEvent e) {
+
+                try {
+                        if(tfCpfDoCliente.getText().isEmpty())
+                                throw new RuntimeException("O campo CPF não pode ser vazio");
+                        if(tfTituloDoAnuncio.getText().isEmpty())
+                                throw new RuntimeException("O campo Título não pode ser vazio");
+
+                        fachada.removerAnuncio(tfTituloDoAnuncio.getText(), tfCpfDoCliente.getText());
+                } catch (ParametroNullException ss){
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Erro");
+                        alert.setContentText("Dados informados estão errados");
+                        alert.show();
+                } catch (NaoExisteException hh) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Erro");
+                        alert.setContentText("Cliente ou Anúncio não existem ");
+                        alert.show();
+                } catch (NullPointerException ex){
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Erro");
+                        alert.setHeaderText("Erro ao deletar o anúncio!!");
+                        alert.setContentText(ex.getMessage());
+                        alert.showAndWait();
+                }
+
+        }
+
+
+                @FXML
         private TextField tfTituloDoAnuncio;
 
         @FXML
@@ -95,25 +123,25 @@ public class AdmDeletarAnuncioController {
 
         @FXML
         protected  void btMeuCadastroADMAction(ActionEvent e){
-                Main.trocarTela("admCadastroScene");
+                Main.trocarTela("admCadastroScene",user);
         }
 
         @FXML
-        protected  void btDesbloquearBloquearAction(ActionEvent e){ Main.trocarTela("admBloqueioDesbloqueioScene"); }
+        protected  void btDesbloquearBloquearAction(ActionEvent e){ Main.trocarTela("admBloqueioDesbloqueioScene",user); }
 
         @FXML
         protected  void btDeletarAnuncioAction(ActionEvent e){
-                Main.trocarTela("admDeletarAnuncioScene");
+                Main.trocarTela("admDeletarAnuncioScene",user);
         }
 
         @FXML
         protected  void btDeletarLojaAction(ActionEvent e){
-                Main.trocarTela("admDeletarLojaScene");
+                Main.trocarTela("admDeletarLojaScene",user);
         }
 
         @FXML
         protected  void btNovoAdmAction(ActionEvent e){
-                Main.trocarTela("AdmCadastrarNovoAdmScene");
+                Main.trocarTela("AdmCadastrarNovoAdmScene",user);
         }
 
 

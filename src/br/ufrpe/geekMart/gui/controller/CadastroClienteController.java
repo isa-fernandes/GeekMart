@@ -184,6 +184,12 @@ public class CadastroClienteController {
                 Main.trocarTela("chatScene",user);
         }
 
+        @FXML
+        protected  void btAlterarAction(ActionEvent e){
+                Main.trocarTela("alterarClienteScene",user);
+        }
+
+
 
 
 }

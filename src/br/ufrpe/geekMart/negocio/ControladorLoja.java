@@ -43,8 +43,8 @@ public class ControladorLoja {
         return this.procurarLojaPorCategoria(categoria);
     }
 
-    public void removerLoja(Loja loja) throws ParametroNullException, NaoExisteException{
-        this.repositorio.removerLoja(loja);
+    public void removerLoja(String nomeDaLoja,String cpf) throws ParametroNullException, NaoExisteException{
+        this.repositorio.removerLoja(nomeDaLoja,cpf);
     }
 
     public  boolean existeLoja(String titulo) throws ParametroNullException{

@@ -1,13 +1,14 @@
 package br.ufrpe.geekMart.gui.controller;
+import br.ufrpe.geekMart.exceptions.JaExisteException;
+import br.ufrpe.geekMart.exceptions.NaoExisteException;
+import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
 import br.ufrpe.geekMart.negocio.classesBasicas.Administrador;
+import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
+import br.ufrpe.geekMart.negocio.classesBasicas.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class AdmBloqueioDesbloqueioController {
 
@@ -95,28 +96,89 @@ public class AdmBloqueioDesbloqueioController {
 
         @FXML
         protected  void btMeuCadastroADMAction(ActionEvent e){
-                Main.trocarTela("admCadastroScene");
+                Main.trocarTela("admCadastroScene",user);
         }
 
         @FXML
-        protected  void btDesbloquearBloquearAction(ActionEvent e){ Main.trocarTela("admBloqueioDesbloqueioScene"); }
+        protected  void btDesbloquearBloquearAction(ActionEvent e){ Main.trocarTela("admBloqueioDesbloqueioScene",user); }
 
         @FXML
         protected  void btDeletarAnuncioAction(ActionEvent e){
-                Main.trocarTela("admDeletarAnuncioScene");
+                Main.trocarTela("admDeletarAnuncioScene",user);
         }
 
         @FXML
         protected  void btDeletarLojaAction(ActionEvent e){
-                Main.trocarTela("admDeletarLojaScene");
+                Main.trocarTela("admDeletarLojaScene",user);
         }
 
         @FXML
         protected  void btNovoAdmAction(ActionEvent e){
-                Main.trocarTela("admCadastrarNovoAdmScene");
+                Main.trocarTela("admCadastrarNovoAdmScene",user);
+        }
+
+        @FXML
+        protected void buscarClienteAction(ActionEvent e){
+                try {
+                        Cliente usuario = (Cliente)fachada.buscaUsuario(tfBuscar.getText());
+                        lbNome.setText(usuario.getNome());
+                        String ativo;
+                        if(usuario.isAtivo()){
+                                ativo = "Ativo";
+                        } else {
+                                ativo = "Bloqueado";
+                        }
+                        lbStatus.setText(usuario.getCpf());
+
+
+                } catch (NaoExisteException ee){
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Erro");
+                        alert.setHeaderText("Erro buscar usuário");
+                        alert.setContentText("Cliente não existe");
+                        alert.showAndWait();
+
+                } catch (ParametroNullException eee){
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Erro");
+                        alert.setHeaderText("Erro buscar usuário");
+                        alert.setContentText("Campo 'CPF do Cliente' vazio!");
+                        alert.showAndWait();
+
+                } catch (JaExisteException a){
+
+                }
         }
 
 
+        @FXML
+        protected void bloquearDesbloquearClienteAction(ActionEvent e){
+
+                try {
+                        fachada.admBloquearDesbloquearUsuario(lbCPF.getText());
+
+                        Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                        alert2.setTitle("Informação");
+                        alert2.setHeaderText("Bloqueio de Cliente");
+                        alert2.setContentText("Status do cliente "+lbNome.getText()+" alterado com sucesso!");
+                        alert2.showAndWait();
+
+                } catch (NaoExisteException ee){
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Erro");
+                        alert.setHeaderText("Erro  buscar usuário");
+                        alert.setContentText("Cliente não existe");
+                        alert.showAndWait();
+
+                } catch (ParametroNullException eee){
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Erro");
+                        alert.setHeaderText("Erro  buscar usuário");
+                        alert.setContentText("Campo 'CPF do Cliente' vazio!");
+                        alert.showAndWait();
+
+                }
+        }
 
 
 

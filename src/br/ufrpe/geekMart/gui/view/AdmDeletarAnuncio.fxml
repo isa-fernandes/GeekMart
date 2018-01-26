@@ -122,7 +122,7 @@
                                                         <Font size="18.0" />
                                                     </font>
                                                 </Label>
-                                                <Button fx:id="btDeletarAnuncio" mnemonicParsing="false" prefHeight="26.0" prefWidth="141.0" text="Deletar" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                                                <Button fx:id="btDeletarAnuncio" mnemonicParsing="false" onAction="#deletarAnuncioAction" prefHeight="26.0" prefWidth="141.0" text="Deletar" GridPane.columnIndex="2" GridPane.rowIndex="7" />
                                                 <Label fx:id="lbCPF" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                     <font>
                                                         <Font size="18.0" />

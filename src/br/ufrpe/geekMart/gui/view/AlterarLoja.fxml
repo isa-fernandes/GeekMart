@@ -178,12 +178,12 @@
                                                                 <Font size="18.0" />
                                                             </font>
                                                         </Label>
-                                                        <ImageView fx:id="imageV2" fitHeight="85.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                                                        <ImageView fx:id="imageV" fitHeight="85.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                                                             <image>
                                                                 <Image url="@../../imagens/imagem.Nova.jpg" />
                                                             </image>
                                                         </ImageView>
-                                                        <Button fx:id="btTrocarImagem2" mnemonicParsing="false" text="Trocar Imagem" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                        <Button fx:id="btTrocarImagem2" mnemonicParsing="false" onAction="#trocarImagem" text="Trocar Imagem" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                         <VBox alignment="TOP_CENTER" prefHeight="196.0" prefWidth="147.0" GridPane.columnIndex="2">
                                                             <children>
                                                                 <Label text="Meus Anúncios">
@@ -196,8 +196,8 @@
                                                         </VBox>
                                                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.columnIndex="3">
                                                             <children>
-                                                                <Button fx:id="btAdd" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" text="Add" />
-                                                                <Button fx:id="btDeletar" mnemonicParsing="false" text="Deletar" />
+                                                                <Button fx:id="btAdd" mnemonicParsing="false" onAction="#btAddPersonAction" prefHeight="25.0" prefWidth="55.0" text="Add" />
+                                                                <Button fx:id="btDeletar" mnemonicParsing="false" onAction="#btDelPersonAction" text="Deletar" />
                                                             </children>
                                                         </VBox>
                                                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="4">
@@ -214,8 +214,8 @@
                                                 </GridPane>
                                                 <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="38.0" prefWidth="565.0" spacing="30.0">
                                                     <children>
-                                                        <Button fx:id="btCancelar" mnemonicParsing="false" prefHeight="34.0" prefWidth="103.0" text="Cancelar" />
-                                                        <Button fx:id="btSalvar" mnemonicParsing="false" prefHeight="34.0" prefWidth="103.0" text="Salvar" />
+                                                        <Button fx:id="btCancelar" mnemonicParsing="false" onAction="#btCancelsAction" prefHeight="34.0" prefWidth="103.0" text="Cancelar" />
+                                                        <Button fx:id="btSalvar" mnemonicParsing="false" onAction="#alterarLojaAction" prefHeight="34.0" prefWidth="103.0" text="Salvar" />
                                                     </children>
                                                 </HBox>
                                             </children>

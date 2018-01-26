@@ -43,8 +43,8 @@ public class ControladorAnuncio {
         return this.repositorio.procurarAnuncio(titulo);
     }
 
-    public void removerAnuncio (String titulo) throws ParametroNullException, NaoExisteException{
-        this.repositorio.removerAnuncio(titulo);
+    public void removerAnuncio (String titulo,String cpf) throws ParametroNullException, NaoExisteException{
+        this.repositorio.removerAnuncio(titulo,cpf);
     }
 
     public boolean existe (String titulo){
@@ -69,7 +69,7 @@ public class ControladorAnuncio {
         if( c != null) {
             LocalDate data = c.getDataFim();
             if (hoje == data || hoje.isAfter(data)) {
-                this.repositorio.removerAnuncio(c.getTitulo());
+                this.repositorio.removerAnuncio(c.getTitulo(),c.getCliente().getCpf());
             } else {
                 throw new DataExpirarNaoChegouException(data, c);
             }

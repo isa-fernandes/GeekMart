@@ -1,18 +1,29 @@
 package br.ufrpe.geekMart.gui.controller;
+import br.ufrpe.geekMart.exceptions.HaEstoqueException;
+import br.ufrpe.geekMart.exceptions.JaExisteException;
+import br.ufrpe.geekMart.exceptions.NaoExisteException;
+import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
+import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
+import br.ufrpe.geekMart.negocio.classesBasicas.Endereco;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class AlterarAnuncioController {
 
-        Cliente user;
+        Anuncio user;
         Fachada fachada = Fachada.getInstancia();
 
         @FXML
@@ -21,9 +32,10 @@ public class AlterarAnuncioController {
                         @Override
                         public void onScreenChanged(String newScreen, Object userData) {
                                 if(newScreen.equals("alterarAnuncioScene")) {
-                                        user=(Cliente)userData;
+                                        user=(Anuncio)userData;
                                         updateComboBoxCategorias();
                                         updateComboBoxLojas();
+                                        updateAnuncio();
 
                                 } }
                 });
@@ -32,8 +44,17 @@ public class AlterarAnuncioController {
                 updateComboBoxCategorias();
                 updateComboBoxLojas();
 
+
         }
 
+        private  void updateAnuncio(){
+                tfTitulo.setText(user.getTitulo());
+                tfPreco.setText(user.getPreco());
+                tfQuantidade.setText(Integer.toString(user.getQuantidadeProdutos()));
+                tfTelefone.setText(user.getTelefone());
+                tfEstado.setText(user.getEndereco().getEstado());
+                taDescricao.setText(user.getDescricao());
+        }
 
 
         private void updateComboBoxCategorias(){
@@ -48,12 +69,23 @@ public class AlterarAnuncioController {
                 }
         }
 
-
+        @FXML
+        protected  void cancelarAction(ActionEvent e){
+                tfPreco.setText("");
+                tfTitulo.setText("");
+                taDescricao.setText("");
+                tfQuantidade.setText("");
+                tfEstado.setText("");
+                tfTelefone.setText("");
+        }
 
 
 
         @FXML
         private TextField tfPreco;
+
+        @FXML
+        private  TextField tfEstado;
 
         @FXML
         private Button btTrocarImagem1;
@@ -174,6 +206,111 @@ public class AlterarAnuncioController {
         protected  void btChatAction(ActionEvent e){
                 Main.trocarTela("chatScene",user);
         }
+
+        @FXML
+        protected  void alterarAnuncioAction(ActionEvent e) {
+
+                try {
+                        if (tfTitulo.getText().isEmpty())
+                                throw new RuntimeException("O campo nome não pode ser vazio");
+                        if (tfPreco.getText().isEmpty())
+                                throw new RuntimeException("O campo cpf não pode ser vazio");
+                        if (tfQuantidade.getText().isEmpty())
+                                throw new RuntimeException("O campo e-mail não pode ser vazio");
+                        if (tfTelefone.getText().isEmpty())
+                                throw new RuntimeException("O campo telefone não pode ser vazio");
+                        if (tfEstado.getText().isEmpty())
+                                throw new RuntimeException("O campo estado não pode ser vazio");
+                        if (cbCategoria.getSelectionModel().isEmpty())
+                                throw new RuntimeException("O campo categoria não pode ser vazio");
+                        if (taDescricao.getText().isEmpty())
+                                throw new RuntimeException("O campo descrição não pode ser vazio");
+
+
+                        Endereco c = new Endereco(tfEstado.getText());
+
+
+                        Anuncio g = new Anuncio(
+                                user.getCliente(),
+                                tfPreco.getText(),
+                                tfTitulo.getText(),
+                                taDescricao.getText(),
+                                (String) cbCategoria.getSelectionModel().getSelectedItem(),
+                                c,
+                                Integer.parseInt(tfQuantidade.getText()),
+                                tfTelefone.getText(),
+                                imageV1.getImage(),
+                                imageV2.getImage(),
+                                imageV3.getImage());
+
+
+                        fachada.alterarAnuncio(user.getTitulo(),g);
+                        user = g;
+                        if(Integer.parseInt(tfQuantidade.getText()) == 0){
+                                try {
+                                        fachada.desativarAnuncioSemEstoque(g);
+                                }catch (HaEstoqueException ee){
+
+                                }
+                        }
+
+                        Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                        alert2.setTitle("Informação");
+                        alert2.setHeaderText("Alteração de Anúncio");
+                        alert2.setContentText("Anúncio " + tfTitulo.getText() + " alterado com sucesso!");
+                        alert2.showAndWait();
+
+
+
+                } catch (RuntimeException ex) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Erro");
+                        alert.setHeaderText("Erro ao alterar o Anúncio");
+                        alert.setContentText(ex.getMessage());
+                        alert.showAndWait();
+                } catch (ParametroNullException exx) {
+                        Alert alertw = new Alert(Alert.AlertType.ERROR);
+                        alertw.setTitle("Erro");
+                        alertw.setHeaderText("Erro ao alterar o Anúncio");
+                        alertw.setContentText("Não foi possível completara ação!!");
+                        alertw.showAndWait();
+                } catch (NaoExisteException exx) {
+                        Alert alertw = new Alert(Alert.AlertType.ERROR);
+                        alertw.setTitle("Erro");
+                        alertw.setHeaderText("Erro ao alterar o Anúncio");
+                        alertw.setContentText("Esse Anúncio já existe!!!");
+                        alertw.showAndWait();
+                }
+        }
+
+    @FXML
+    protected void trocarImagemAction (ActionEvent e) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Abrir arquivo");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Images",
+                        "*.*"), new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("PNG", "*.png"));
+        File file = fileChooser.showOpenDialog(new Stage());
+        if (file != null) {
+            try {
+                BufferedImage bufferedImage = ImageIO.read(file);
+                Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+                if (e.getSource() == this.btTrocarImagem1) {
+                    this.imageV1.setImage(image);
+                } else if (e.getSource() == this.btTrocarImagem2) {
+                    this.imageV2.setImage(image);
+                } else if (e.getSource() == this.btTrocarImagem3) {
+                    this.imageV3.setImage(image);
+                }
+            } catch (IOException ioException) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setContentText("Arquivo inválido");
+                alert.show();
+            }
+        }
+    }
+
 
 
 
