@@ -23,11 +23,15 @@ public enum CategoriasEnum {
     DVDS_E_CDS(Arrays.asList(SubcategoriasEnum.FILMES, SubcategoriasEnum.SÉRIES, SubcategoriasEnum.ANIMES)),
     COSPLAY(Arrays.asList(SubcategoriasEnum.ANIMES, SubcategoriasEnum.SÉRIES, SubcategoriasEnum.FILMES,
             SubcategoriasEnum.MANGÁS)),
-    OUTROS(Arrays.asList());
+    OUTROS;
 
     public List<SubcategoriasEnum> subcategorias;
 
     CategoriasEnum (List<SubcategoriasEnum> subcategoriasEnum) {
         this.subcategorias = subcategorias;
+    }
+
+    CategoriasEnum () {
+
     }
 }

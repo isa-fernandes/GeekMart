@@ -1,5 +1,7 @@
 package br.ufrpe.geekMart.negocio.classesBasicas;
 
+import javafx.scene.image.Image;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -22,13 +24,14 @@ public class Anuncio {
     private ArrayList<String> comentarios = new ArrayList<>();
     private int quantidadeProdutos;
     private ArrayList<Chat> chat;
+    private ArrayList<Image> imagens = new ArrayList<>();
 
     public Anuncio(){
 
     }
 
     public Anuncio (Cliente cliente, String preco, String titulo, String descricao, String categoria,
-                    Endereco endereco, int quantidadeProdutos, String telefone) {
+                    Endereco endereco, int quantidadeProdutos, String telefone, Image prim, Image seg, Image ter) {
         this.cliente = cliente;
         this.preco = preco;
         this.titulo = titulo;
@@ -42,6 +45,10 @@ public class Anuncio {
         this.comentarios = new ArrayList<>();
         this.chat = new ArrayList<>();
         this.telefone=telefone;
+        this.imagens.clear();
+        this.imagens.add(prim);
+        this.imagens.add(seg);
+        this.imagens.add(ter);
     }
 
     public String getTelefone() {
