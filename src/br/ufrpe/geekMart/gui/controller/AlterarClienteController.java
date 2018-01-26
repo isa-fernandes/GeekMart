@@ -3,6 +3,7 @@ import br.ufrpe.geekMart.exceptions.JaExisteException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
+import br.ufrpe.geekMart.negocio.classesBasicas.CategoriasEnum;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import br.ufrpe.geekMart.negocio.classesBasicas.Endereco;
 import javafx.event.ActionEvent;
@@ -21,7 +22,7 @@ public class AlterarClienteController {
                         public void onScreenChanged(String newScreen, Object userData) {
                                 if(newScreen.equals("alterarClienteScene")) {
                                         user=(Cliente)userData;
-                                        updateComboBoxCategorias();
+                                        updateComboBoxCategorias2();
                                         updateComboBoxLojas();
                                         updateCadastroTela();
 
@@ -29,7 +30,7 @@ public class AlterarClienteController {
                 });
 
 
-                updateComboBoxCategorias();
+                updateComboBoxCategorias2();
                 updateComboBoxLojas();
 
 
@@ -136,10 +137,14 @@ public class AlterarClienteController {
         }
 
 
-        private void updateComboBoxCategorias(){
+        /*private void updateComboBoxCategorias(){
                 for(int i = 0; i < fachada.listarCategorias().size(); i++){
                         cbCategorias.getItems().add(i,fachada.listarCategorias().get(i));
                 }
+        }*/
+
+        private  void  updateComboBoxCategorias2(){
+                this.cbCategorias.getItems().setAll(CategoriasEnum.values());
         }
 
         private void updateComboBoxLojas(){

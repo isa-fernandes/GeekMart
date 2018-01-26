@@ -105,10 +105,10 @@ public class Main extends Application {
         resultadoBuscaLogado3Scene = new Scene(fxmlResultadoBusca3Logado,900,600);
 
         Parent fxmlResultadoBusca2Logado = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaLogado2.fxml"));
-        resultadoBuscaLogado2Scene = new Scene(fxmlResultadoBusca2Logado,900,600);
+       resultadoBuscaLogado2Scene = new Scene(fxmlResultadoBusca2Logado,900,600);
 
-        Parent fxmlResultadoBusca1Logado = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaLogado1.fxml"));
-        resultadoBuscaLogado1Scene = new Scene(fxmlResultadoBusca1Logado,900,600);
+       Parent fxmlResultadoBusca1Logado = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaLogado1.fxml"));
+       resultadoBuscaLogado1Scene = new Scene(fxmlResultadoBusca1Logado,900,600);
 
         Parent fxmlResultadoBuscaDeslogado = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaDeslogado.fxml"));
         resultadoBuscaDeslogadoScene = new Scene(fxmlResultadoBuscaDeslogado,900,600);
@@ -167,6 +167,7 @@ public class Main extends Application {
         AudioClip clip = new AudioClip(AUDIO_URL);// 1
         clip.play(); // 2
         primaryStage.setTitle("GeekMart");
+        primaryStage.setResizable(false);
         primaryStage.setScene(telaInicialDeslogadoScene);
         primaryStage.show();
     }

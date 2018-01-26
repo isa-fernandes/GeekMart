@@ -26,7 +26,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.geekMart.gui.controller.ResultadoBuscaLogado2Controller">
+<VBox prefHeight="600.0" prefWidth="900.0" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.geekMart.gui.controller.ResultadoBuscaLogado2Contoller">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>

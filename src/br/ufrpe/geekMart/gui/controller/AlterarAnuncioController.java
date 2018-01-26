@@ -250,7 +250,7 @@ public class AlterarAnuncioController {
                                 try {
                                         fachada.desativarAnuncioSemEstoque(g);
                                 }catch (HaEstoqueException ee){
-
+                                        //TODO
                                 }
                         }
 
