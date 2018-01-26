@@ -80,11 +80,11 @@ public class RepositorioUsuario implements IRepositorioUsuario {
 
 
 
-    @Override
-    public void alterarUsuario (Usuario usuario) {
-        int indice = this.procurarIndice(usuario.getCpf());
+
+    public void alterarUsuario (Usuario usuarioAntigo, Usuario usuarioNovo) {
+        int indice = this.procurarIndice(usuarioAntigo.getCpf());
         if (indice != this.proxima) {
-            usuarios[indice] = usuario;
+            usuarios[indice] = usuarioNovo;
         }
     }
 

@@ -9,6 +9,6 @@ public interface IRepositorioUsuario {
     Usuario buscarUsuario(String cpf) throws ParametroNullException, NaoExisteException;
     void removerUsuario(String num);
     boolean existeUsuario(String cpf);
-    void alterarUsuario(Usuario usuario);
+    void alterarUsuario(Usuario usuario,Usuario usuarioNovo);
 
 }

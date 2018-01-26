@@ -5,8 +5,8 @@ import java.util.Objects;
 
 public class Loja {
     private Cliente cliente;
-    private String nome, descricao;
-    private Categorias categoria;
+    private String nome, descricao, telefone;
+    private String categoria;
     private ArrayList<Anuncio> anuncios = new ArrayList<>();
 
 
@@ -15,13 +15,22 @@ public class Loja {
 
     }
 
-    public Loja(String nome, String descricao,Categorias categoria,Cliente cliente){
+    public Loja(String nome, String telefone, String descricao,String categoria,Cliente cliente){
         this.nome = nome;
         this.descricao = descricao;
         this.categoria = categoria;
         this.cliente = cliente;
         this.anuncios = anuncios;
+        this.telefone = telefone;
 
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getNome() {
@@ -54,11 +63,11 @@ public class Loja {
     }
 
 
-    public Categorias getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Categorias categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 
@@ -68,12 +77,7 @@ public class Loja {
 
     @Override
     public String toString() {
-        return "Loja{" +
-                "cliente=" + cliente +
-                ", nome='" + nome + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", categoria=" + categoria +
-                '}';
+        return nome;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package br.ufrpe.geekMart.gui.controller;
 import br.ufrpe.geekMart.negocio.Fachada;
+import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,6 +10,7 @@ import javafx.scene.control.TextField;
 
 public class ChatController {
 
+        Cliente user;
         Fachada fachada = Fachada.getInstancia();
 
         @FXML
@@ -17,6 +19,7 @@ public class ChatController {
                         @Override
                         public void onScreenChanged(String newScreen, Object userData) {
                                 if(newScreen.equals("chatScene")) {
+                                        user=(Cliente)userData;
                                         updateComboBoxCategorias();
                                         updateComboBoxLojas();
 
@@ -92,35 +95,35 @@ public class ChatController {
 
         @FXML
         protected  void btHomeAction(ActionEvent e){
-                Main.trocarTela("telaInicialLogadoScene");
+                Main.trocarTela("telaInicialLogadoScene",user);
         }
 
         @FXML
         protected  void btMeuCadastroAction(ActionEvent e){
-                Main.trocarTela("cadastroClienteScene");
+                Main.trocarTela("cadastroClienteScene",user);
         }
 
         @FXML
-        protected  void btMeusAnunciosAction(ActionEvent e){ Main.trocarTela("meusAnunciosScene"); }
+        protected  void btMeusAnunciosAction(ActionEvent e){ Main.trocarTela("meusAnunciosScene",user); }
 
         @FXML
         protected  void btMinhasLojasAction(ActionEvent e){
-                Main.trocarTela("minhasLojasScene");
+                Main.trocarTela("minhasLojasScene",user);
         }
 
         @FXML
         protected  void btNovoAnuncioAction(ActionEvent e){
-                Main.trocarTela("cadastrarNovoAnuncioScene");
+                Main.trocarTela("cadastrarNovoAnuncioScene",user);
         }
 
         @FXML
         protected  void btNovaLojaAction(ActionEvent e){
-                Main.trocarTela("cadastrarNovaLojaScene");
+                Main.trocarTela("cadastrarNovaLojaScene",user);
         }
 
         @FXML
         protected  void btChatAction(ActionEvent e){
-                Main.trocarTela("chatScene");
+                Main.trocarTela("chatScene",user);
         }
 
 }

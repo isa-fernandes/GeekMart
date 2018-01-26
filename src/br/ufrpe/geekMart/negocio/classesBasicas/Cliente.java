@@ -53,7 +53,7 @@ public class Cliente extends Usuario {
         this.endereco = endereco;
     }
 
-    public ArrayList<Anuncio> getAnuncios() {
+    public ArrayList<Anuncio> listarAnuncios() {
         return this.anuncios;
     }
 

@@ -51,8 +51,8 @@ public class Fachada {
         return this.cadastroUsuario.existeUsuario(cpf);
     }
 
-    public  void alterarUsuario(Usuario usuario){
-        this.cadastroUsuario.alterarUsuario(usuario);
+    public  void alterarUsuario(Usuario usuario, Usuario usuarioNovo){
+        this.cadastroUsuario.alterarUsuario(usuario,usuarioNovo);
     }
 
     //ADM
@@ -142,6 +142,10 @@ public class Fachada {
 
 
     // LOJA
+
+    public void cadastrarLoja( Loja c) throws ParametroNullException, JaExisteException{
+        this.cadastroLoja.cadastrarLoja(c);
+    }
 
     public void novaLoja (Loja loja) throws ParametroNullException, JaExisteException{
         this.cadastroLoja.cadastrarLoja(loja);

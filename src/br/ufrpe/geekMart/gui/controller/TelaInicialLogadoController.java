@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import br.ufrpe.geekMart.negocio.Fachada;
+import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,6 +16,7 @@ public class TelaInicialLogadoController {
 
 
     Fachada fachada = Fachada.getInstancia();
+    Cliente user;
 
     @FXML
     protected  void  initialize(){
@@ -22,6 +24,7 @@ public class TelaInicialLogadoController {
             @Override
             public void onScreenChanged(String newScreen, Object userData) {
                 if(newScreen.equals("telaInicialLogadoScene")) {
+                    user = (Cliente)userData;
                     updateComboBoxCategorias();
                     updateComboBoxLojas();
 
@@ -100,35 +103,35 @@ public class TelaInicialLogadoController {
 
     @FXML
     protected  void btHomeAction(ActionEvent e){
-        Main.trocarTela("telaInicialLogadoScene");
+        Main.trocarTela("telaInicialLogadoScene",user);
     }
 
     @FXML
     protected  void btMeuCadastroAction(ActionEvent e){
-        Main.trocarTela("cadastroClienteScene");
+        Main.trocarTela("cadastroClienteScene",user);
     }
 
     @FXML
-    protected  void btMeusAnunciosAction(ActionEvent e){ Main.trocarTela("meusAnunciosScene"); }
+    protected  void btMeusAnunciosAction(ActionEvent e){ Main.trocarTela("meusAnunciosScene",user); }
 
     @FXML
     protected  void btMinhasLojasAction(ActionEvent e){
-        Main.trocarTela("minhasLojasScene");
+        Main.trocarTela("minhasLojasScene",user);
     }
 
     @FXML
     protected  void btNovoAnuncioAction(ActionEvent e){
-        Main.trocarTela("cadastrarNovoAnuncioScene");
+        Main.trocarTela("cadastrarNovoAnuncioScene",user);
     }
 
     @FXML
     protected  void btNovaLojaAction(ActionEvent e){
-        Main.trocarTela("cadastrarNovaLojaScene");
+        Main.trocarTela("cadastrarNovaLojaScene",user);
     }
 
     @FXML
     protected  void btChatAction(ActionEvent e){
-        Main.trocarTela("chatScene");
+        Main.trocarTela("chatScene",user);
     }
 
 

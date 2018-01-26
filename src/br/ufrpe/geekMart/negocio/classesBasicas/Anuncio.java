@@ -202,16 +202,6 @@ public class Anuncio {
 
     @Override
     public String toString() {
-        return "Anuncio{" +
-                "cliente=" + cliente +
-                ", preco='" + preco + '\'' +
-                ", telefone='" + telefone + '\'' +
-                ", titulo='" + titulo + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", categoria=" + categoria +
-                ", endereco=" + endereco +
-                ", dataFim=" + dataFim +
-                ", quantidadeProdutos='" + quantidadeProdutos + '\'' +
-                '}';
+        return titulo;
     }
 }
