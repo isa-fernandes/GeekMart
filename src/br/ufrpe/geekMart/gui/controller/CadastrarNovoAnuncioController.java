@@ -7,10 +7,20 @@ import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
 import br.ufrpe.geekMart.negocio.classesBasicas.Categorias;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import br.ufrpe.geekMart.negocio.classesBasicas.Endereco;
+import javafx.collections.FXCollections;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 
 public class CadastrarNovoAnuncioController {
@@ -220,7 +230,10 @@ public class CadastrarNovoAnuncioController {
                         (String)cbCategoria.getSelectionModel().getSelectedItem(),
                         c,
                         Integer.parseInt(tfQuantidade.getText()),
-                        tfTelefone.getText());
+                        tfTelefone.getText(),
+                        imageV1.getImage(),
+                        imageV2.getImage(),
+                        imageV3.getImage());
 
 
 
@@ -274,5 +287,31 @@ public class CadastrarNovoAnuncioController {
                 tfTelefone.setText("");
         }
 
-
+        @FXML
+        protected void trocarImagem (ActionEvent e) {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Abrir arquivo");
+            fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Images",
+                            "*.*"), new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                    new FileChooser.ExtensionFilter("PNG", "*.png"));
+            File file = fileChooser.showOpenDialog(new Stage());
+            if (file != null) {
+                try {
+                    BufferedImage bufferedImage = ImageIO.read(file);
+                    Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+                    if (e.getSource() == this.btTrocarImagem1) {
+                        this.imageV1.setImage(image);
+                    } else if (e.getSource() == this.btTrocarImagem2) {
+                        this.imageV2.setImage(image);
+                    } else if (e.getSource() == this.btTrocarImagem3) {
+                        this.imageV3.setImage(image);
+                    }
+                } catch (IOException ioException) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erro");
+                    alert.setContentText("Arquivo inválido");
+                    alert.show();
+                }
+            }
+        }
 }

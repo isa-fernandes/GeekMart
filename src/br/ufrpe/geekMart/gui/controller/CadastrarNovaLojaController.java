@@ -1,14 +1,18 @@
 package br.ufrpe.geekMart.gui.controller;
 import br.ufrpe.geekMart.negocio.Fachada;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 
 public class CadastrarNovaLojaController {
@@ -50,10 +54,10 @@ public class CadastrarNovaLojaController {
 
 
         @FXML
-        private Button btTrocarImagem2;
+        private Button btTrocarImagem;
 
         @FXML
-        private ImageView imageV2;
+        private ImageView imageV;
 
         @FXML
         private ComboBox cbCategorias;
@@ -163,5 +167,25 @@ public class CadastrarNovaLojaController {
                 Main.trocarTela("chatScene");
         }
 
-
+        @FXML
+        protected void trocarImagem (ActionEvent e) {
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Abrir arquivo");
+                fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Images",
+                                "*.*"), new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                        new FileChooser.ExtensionFilter("PNG", "*.png"));
+                File file = fileChooser.showOpenDialog(new Stage());
+                if (file != null) {
+                        try {
+                                BufferedImage bufferedImage = ImageIO.read(file);
+                                Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+                                this.imageV.setImage(image);
+                        } catch (IOException ioException) {
+                                Alert alert = new Alert(Alert.AlertType.ERROR);
+                                alert.setTitle("Erro");
+                                alert.setContentText("Arquivo inválido");
+                                alert.show();
+                        }
+                }
+        }
 }
