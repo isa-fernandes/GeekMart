@@ -1,4 +1,5 @@
 package br.ufrpe.geekMart.gui.controller;
+import br.ufrpe.geekMart.negocio.Fachada;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,6 +12,40 @@ import javafx.scene.image.ImageView;
 
 public class AlterarLojaController {
 
+        Fachada fachada = Fachada.getInstancia();
+
+        @FXML
+        protected  void  initialize(){
+                Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
+                        @Override
+                        public void onScreenChanged(String newScreen, Object userData) {
+                                if(newScreen.equals("alterarLojaScene")) {
+                                        updateComboBoxCategorias();
+                                        updateComboBoxLojas();
+
+                                } }
+                });
+
+
+                updateComboBoxCategorias();
+                updateComboBoxLojas();
+
+        }
+
+
+
+        private void updateComboBoxCategorias(){
+                for(int i = 0; i < fachada.listarCategorias().size(); i++){
+                        cbCategorias.getItems().add(i,fachada.listarCategorias().get(i));
+                }
+        }
+
+        private void updateComboBoxLojas(){
+                for(int i = 0; i < fachada.listarCategorias().size(); i++){
+                        cbLojas.getItems().add(i,fachada.listarCategorias().get(i));
+                }
+        }
+
 
 
 
@@ -21,7 +56,7 @@ public class AlterarLojaController {
         private ImageView imageV2;
 
         @FXML
-        private ComboBox<?> cbCategorias;
+        private ComboBox cbCategorias;
 
         @FXML
         private Button btSalvar;
@@ -63,7 +98,7 @@ public class AlterarLojaController {
         private Button btDeletar;
 
         @FXML
-        private ComboBox<?> cbEstado;
+        private ComboBox cbEstado;
 
         @FXML
         private TextField tfBuscar;
@@ -84,13 +119,13 @@ public class AlterarLojaController {
         private Button btAdd;
 
         @FXML
-        private ListView<?> lvMeusAnuncios;
+        private ListView lvMeusAnuncios;
 
         @FXML
-        private ListView<?> lvAnunciosDaLoja;
+        private ListView lvAnunciosDaLoja;
 
         @FXML
-        private ComboBox<?> cbLojas;
+        private ComboBox cbLojas;
 
         @FXML
         private Button btCancelar;

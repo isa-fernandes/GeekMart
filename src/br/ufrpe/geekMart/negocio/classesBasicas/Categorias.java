@@ -1,54 +1,46 @@
 package br.ufrpe.geekMart.negocio.classesBasicas;
 
+import java.util.ArrayList;
+
 public class Categorias {
-    private static String[] categorias = new String[100];
-    private static int qtCategorias = 30;
+    private static ArrayList<String> categoriasX = new ArrayList<>();
+
 
     public Categorias() {
-        categorias[0] = "Figuras, estatuas e bonecos";
-        categorias[1] = "Games";
-        categorias[2] = "Card Games";
-        categorias[3] = "Camisas";
-        categorias[4] = "Canecas";
-        categorias[5] = "Acessórios";
-        categorias[6] = "HQs";
-        categorias[7] = "Mangás";
-        categorias[8] = "DVDs e CDs";
-        categorias[9] = "Cosplay";
-        categorias[10] = "Outros"; //fim das principais
-        categorias[11] = "Animes"; //inicio das subcategorias
-        categorias[12] = "Naruto";
-        categorias[13] = "Cavaleiros do Zodiaco";
-        categorias[14] = "Dragon Ball";
-        categorias[15] = "Marvel";
-        categorias[16] = "DC";
-        categorias[17] = "Disney";
-        categorias[18] = "Yugi-Oh";
-        categorias[19] = "Magic";
-        categorias[20] = "Hot Toy";
-        categorias[21] = "S.H.Figuarts";
-        categorias[22] = "Cloth Myth";
-        categorias[23] = "Play Arts";
-        categorias[24] = "POP Funko";
-        categorias[25] = "Iron Studios";
-        categorias[26] = "Breaking Bad";
-        categorias[27] = "Star Wars";
-        categorias[28] = "Harry Potter";
-        categorias[29] = "Senhor dos Anéis";
-        categorias[30] = "Game of Thrones";
-        categorias[31] = "Chaveiros";
-        categorias[32] = "Colares";
-        categorias[33] = "Pulseiras";
-        categorias[34] = "Brincos";
-        categorias[35] = "DVDs e CDs";
-        categorias[36] = "Filmes";
-        categorias[37] = "Séries";
-        categorias[38] = "Pokemon";
-        categorias[39] = "Mario Bros";
+
+
     }
 
+    public static ArrayList<String> getCategorias() {
+        ArrayList<String> categorias = new ArrayList<>();
+        categorias.add("Figuras, estatuas e bonecos");
+        categorias.add("Games");
+        categorias.add("Card Games");
+        categorias.add("Camisas");
+        categorias.add("Canecas");
+        categorias.add("Acessórios");
+        categorias.add("HQs");
+        categorias.add("Mangás");
+        categorias.add("DVDs e CDs");
+        categorias.add("Cosplay");
+        categorias.add("Outros");
+        categorias.add("Animes");
+        return categorias;
+    }
+
+    public static void setCategorias(ArrayList<String> categorias) {
+        Categorias.categoriasX = categorias;
+    }
+
+
+
+    /*
     public static String getCategoria (int i) {
         return categorias[i];
+    }
+
+    public static String[] listarCategorias(){
+        return categorias;
     }
 
     public static void setCategorias (int num, String novaCategoria) {
@@ -216,6 +208,6 @@ public class Categorias {
             }
         }
         return returnn;
-    }
+    }*/
 
 }

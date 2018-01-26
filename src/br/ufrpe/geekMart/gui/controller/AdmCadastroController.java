@@ -101,10 +101,7 @@ public class AdmCadastroController {
                 Main.trocarTela("AdmCadastrarNovoAdmScene");
         }
 
-        @FXML
-        protected  void btAdmChatAction(ActionEvent e){
-                Main.trocarTela("AdmChatScene");
-        }
+
 
 
 }

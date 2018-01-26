@@ -9,10 +9,10 @@ import java.util.Objects;
 
 public class Anuncio {
     private Cliente cliente;
-    private String preco;
+    private String preco, telefone;
     private String titulo;
     private String descricao;
-    private String[] categoria = new String[2];
+    private String categoria;
     private Endereco endereco;
     private LocalDate data, dataFim;
     private boolean ativo;
@@ -27,8 +27,8 @@ public class Anuncio {
 
     }
 
-    public Anuncio (Cliente cliente, String preco, String titulo, String descricao, String[] categoria,
-                    Endereco endereco, int quantidadeProdutos) {
+    public Anuncio (Cliente cliente, String preco, String titulo, String descricao, String categoria,
+                    Endereco endereco, int quantidadeProdutos, String telefone) {
         this.cliente = cliente;
         this.preco = preco;
         this.titulo = titulo;
@@ -38,8 +38,18 @@ public class Anuncio {
         this.data = LocalDate.now();
         this.dataFim = data.plusDays(45);
         this.quantidadeProdutos = quantidadeProdutos;
+        this.categoria=categoria;
         this.comentarios = new ArrayList<>();
         this.chat = new ArrayList<>();
+        this.telefone=telefone;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public int getQuantidadeProdutos() {
@@ -123,11 +133,17 @@ public class Anuncio {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    public String[] getCategoria() {
+
+    public String getCategoria() {
         return categoria;
     }
-    public void setCategoria(String[] categoria) {
+
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     public Endereco getEndereco() {
@@ -182,14 +198,13 @@ public class Anuncio {
         return "Anuncio{" +
                 "cliente=" + cliente +
                 ", preco='" + preco + '\'' +
+                ", telefone='" + telefone + '\'' +
                 ", titulo='" + titulo + '\'' +
                 ", descricao='" + descricao + '\'' +
-                ", categoria=" + Arrays.toString(categoria) +
-                ", endereço='" + endereco + '\'' +
-                ", data de publicação do anúncio=" + data.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)) +
-                ", data de encerramento do anúncio=" + dataFim.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)) +
-                ", avaliação dos usuários=" + estrela +
-                ", quantidade de produtos=" + quantidadeProdutos +
+                ", categoria=" + categoria +
+                ", endereco=" + endereco +
+                ", dataFim=" + dataFim +
+                ", quantidadeProdutos='" + quantidadeProdutos + '\'' +
                 '}';
     }
 }

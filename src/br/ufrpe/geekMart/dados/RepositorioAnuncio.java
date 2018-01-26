@@ -43,7 +43,7 @@ public class RepositorioAnuncio implements IRepositorioAnuncio {
         return i;
     }
 
-    public Anuncio[] getAnunciosCategoria (String categoria) {
+    /*public Anuncio[] getAnunciosCategoria (String categoria) {
         int i, qt = 0;
         Anuncio[] result = new Anuncio[this.proxima];
         int indice = Categorias.encontrarCategoria(categoria);
@@ -66,7 +66,7 @@ public class RepositorioAnuncio implements IRepositorioAnuncio {
             }
         }
         return result;
-    }
+    }*/
 
     public Anuncio procurarAnuncio (String titulo) throws ParametroNullException, NaoExisteException {
         if (titulo != null) {

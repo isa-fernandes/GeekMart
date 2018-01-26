@@ -5,6 +5,8 @@ import br.ufrpe.geekMart.exceptions.LoginSemSucessoException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
+import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
+import br.ufrpe.geekMart.negocio.classesBasicas.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -12,6 +14,38 @@ import javafx.scene.control.*;
 public class TelaLoginController {
 
         Fachada fachada = Fachada.getInstancia();
+
+        @FXML
+        protected  void  initialize(){
+                Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
+                        @Override
+                        public void onScreenChanged(String newScreen, Object userData) {
+                                if(newScreen.equals("telaLoginScene")) {
+                                        updateComboBoxCategorias();
+                                        updateComboBoxLojas();
+
+                                } }
+                });
+
+
+                updateComboBoxCategorias();
+                updateComboBoxLojas();
+
+        }
+
+
+
+        private void updateComboBoxCategorias(){
+                for(int i = 0; i < fachada.listarCategorias().size(); i++){
+                        cbCategorias.getItems().add(i,fachada.listarCategorias().get(i));
+                }
+        }
+
+        private void updateComboBoxLojas(){
+                for(int i = 0; i < fachada.listarCategorias().size(); i++){
+                        cbLojas.getItems().add(i,fachada.listarCategorias().get(i));
+                }
+        }
 
 
 
@@ -22,7 +56,7 @@ public class TelaLoginController {
         private Button btEntrar;
 
         @FXML
-        private ComboBox<?> cbCategorias;
+        private ComboBox cbCategorias;
 
         @FXML
         private Button btBuscar;
@@ -49,7 +83,7 @@ public class TelaLoginController {
         private Button btCadastrar;
 
         @FXML
-        private ComboBox<?> cbLojas;
+        private ComboBox cbLojas;
 
         @FXML
         private MenuItem menuLoginAdm;
@@ -77,7 +111,8 @@ public class TelaLoginController {
                                         if (fachada.buscaUsuario(tfCPF.getText()).isAdm()) {
                                                 Main.trocarTela("admCadastroScene");
                                         } else {
-                                                Main.trocarTela("cadastroClienteScene");
+                                                Cliente cliente = (Cliente)fachada.buscaUsuario(tfCPF.getText());
+                                                Main.trocarTela("cadastroClienteScene",cliente);
                                         }
 
                                 }

@@ -65,12 +65,7 @@
                                 </AnchorPane>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                     <children>
-                                        <VBox prefHeight="433.0" prefWidth="129.0">
-                                            <children>
-                                                <ComboBox fx:id="cbCategorias" prefWidth="150.0" promptText="Categorias" />
-                                                <ComboBox fx:id="cbLojas" prefWidth="150.0" promptText="Lojas " />
-                                            </children>
-                                        </VBox>
+                                        <VBox prefHeight="433.0" prefWidth="129.0" />
                                     </children>
                                 </AnchorPane>
                             </items>
@@ -197,7 +192,6 @@
                                 <Button fx:id="btMinhasLojas" mnemonicParsing="false" onAction="#btDeletarAnuncioAction" prefHeight="35.0" prefWidth="115.0" text="Deletar Anúncio" textAlignment="CENTER" />
                                 <Button fx:id="btNovoAnuncio" mnemonicParsing="false" onAction="#btDeletarLojaAction" prefHeight="35.0" prefWidth="115.0" text="Deletar Loja" textAlignment="CENTER" />
                                 <Button fx:id="btNovaLoja" mnemonicParsing="false" onAction="#btNovoAdmAction" prefHeight="35.0" prefWidth="115.0" text="Novo ADM" textAlignment="CENTER" />
-                                <Button fx:id="btCHAT" mnemonicParsing="false" onAction="#btAdmChatAction" prefHeight="35.0" prefWidth="115.0" text="CHAT" textAlignment="CENTER" />
                             </children>
                         </VBox>
                     </children>

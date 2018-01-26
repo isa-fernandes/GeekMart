@@ -72,13 +72,17 @@ public class Fachada {
 
     // ANUNCIO
 
-    public Anuncio[] getAnunciosCategoria (String categoria) {
+    public void cadastrarAnuncio (Anuncio anuncio) throws ParametroNullException, JaExisteException {
+        this.cadastroAnuncio.cadastrarAnuncio(anuncio);
+    }
+
+    /*public Anuncio[] getAnunciosCategoria (String categoria) {
         return this.cadastroAnuncio.getAnunciosCategoria(categoria);
     }
 
     public Anuncio[] getAnunciosCategoria (int categoria){
         return cadastroAnuncio.getAnunciosCategoria(categoria);
-    }
+    }*/
 
     public void adicionarAnuncio (Anuncio anuncio)
             throws ParametroNullException, JaExisteException {
@@ -132,6 +136,9 @@ public class Fachada {
         this.cadastroAnuncio.alterarAnuncio(nomeAntigo, anuncio);
     }
 
+    public ArrayList<String> listarCategorias(){
+        return cadastroAnuncio.listarCategorias();
+    }
 
 
     // LOJA

@@ -48,7 +48,6 @@ public class Main extends Application {
     private static  Scene alterarAnuncioScene;
     private static  Scene admDeletarLojaScene;
     private static  Scene admDeletarAnuncioScene;
-    private static  Scene admChatScene;
     private static  Scene admCadastroScene;
     private static  Scene admCadastrarNovoAdmScene;
     private static  Scene admBloqueioDesbloqueioScene;
@@ -122,9 +121,6 @@ public class Main extends Application {
 
         Parent fxmlAdmDeletarAnuncio = FXMLLoader.load(getClass().getResource("../view/AdmDeletarAnuncio.fxml"));
         admDeletarAnuncioScene = new Scene(fxmlAdmDeletarAnuncio,900,600);
-
-        Parent fxmlAdmChat = FXMLLoader.load(getClass().getResource("../view/AdmChat.fxml"));
-        admChatScene = new Scene(fxmlAdmChat,900,600);
 
         Parent fxmlAdmCadastro = FXMLLoader.load(getClass().getResource("../view/AdmCadastro.fxml"));
         admCadastroScene = new Scene(fxmlAdmCadastro,900,600);
@@ -220,10 +216,7 @@ public class Main extends Application {
                 stage.setScene(admDeletarAnuncioScene);
                 notificarAllListeners("admDeletarAnuncioScene", userData);
                 break;
-            case "admChatScene":
-                stage.setScene(admChatScene);
-                notificarAllListeners("admChatScene", userData);
-                break;
+
             case "admCadastroScene":
                 stage.setScene(admCadastroScene);
                 notificarAllListeners("admCadastroScene", userData);

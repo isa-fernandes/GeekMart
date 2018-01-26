@@ -155,13 +155,13 @@
                                              </font>
                                           </Label>
                                           <TextField fx:id="tfTelefone" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                          <ComboBox fx:id="cbEstado" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                           <Label text="Categoria :" GridPane.rowIndex="5">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
                                           <ComboBox fx:id="cbCategoria" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                          <TextField fx:id="tfEstado" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                        </children>
                                     </GridPane>
                                     <GridPane prefHeight="131.0" prefWidth="567.0">
@@ -220,8 +220,8 @@
                                     </GridPane>
                                     <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                                        <children>
-                                          <Button fx:id="btCancelar" mnemonicParsing="false" prefHeight="47.0" prefWidth="121.0" text="Cancelar" />
-                                          <Button fx:id="btCriarAnuncio" mnemonicParsing="false" prefHeight="47.0" prefWidth="121.0" text="Criar Anúncio" />
+                                          <Button fx:id="btCancelar" mnemonicParsing="false" onAction="#cancelarAction" prefHeight="47.0" prefWidth="121.0" text="Cancelar" />
+                                          <Button fx:id="btCriarAnuncio" mnemonicParsing="false" onAction="#cadastrarNovoAnuncioAction" prefHeight="47.0" prefWidth="121.0" text="Criar Anúncio" />
                                        </children>
                                     </HBox>
                                  </children>

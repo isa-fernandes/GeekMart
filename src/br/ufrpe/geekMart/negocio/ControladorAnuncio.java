@@ -4,10 +4,12 @@ import br.ufrpe.geekMart.dados.IRepositorioAnuncio;
 import br.ufrpe.geekMart.dados.RepositorioAnuncio;
 import br.ufrpe.geekMart.exceptions.*;
 import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
+import br.ufrpe.geekMart.negocio.classesBasicas.Categorias;
 import br.ufrpe.geekMart.negocio.classesBasicas.Chat;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class ControladorAnuncio {
     private static ControladorAnuncio instancia;
@@ -53,13 +55,13 @@ public class ControladorAnuncio {
          this.repositorio.alterarAnuncio(nomeAntigo, anuncio);
     }
 
-    public Anuncio[] getAnunciosCategoria (String categoria) {
+    /*public Anuncio[] getAnunciosCategoria (String categoria) {
         return repositorio.getAnunciosCategoria(categoria);
     }
 
     public Anuncio[] getAnunciosCategoria (int categoria){
         return repositorio.getAnunciosCategoria(categoria);
-    }
+    }*/
 
     public void expirarAnuncio(Anuncio c) throws ParametroNullException,
             DataExpirarNaoChegouException,  NaoExisteException {
@@ -149,6 +151,9 @@ public class ControladorAnuncio {
         uol.setQuantidadeMsgVendedor(uol.getQuantidadeMsgVendedor() + 1);
     }
 
+    public ArrayList<String> listarCategorias(){
+        return Categorias.getCategorias();
+    }
 
 
 }

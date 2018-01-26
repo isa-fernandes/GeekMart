@@ -15,10 +15,42 @@ public class CadastrarNovoClienteController {
         Fachada fachada = Fachada.getInstancia();
 
         @FXML
+        protected  void  initialize(){
+                Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
+                        @Override
+                        public void onScreenChanged(String newScreen, Object userData) {
+                                if(newScreen.equals("cadastrarNovoClienteScene")) {
+                                        updateComboBoxCategorias();
+                                        updateComboBoxLojas();
+
+                                } }
+                });
+
+
+                updateComboBoxCategorias();
+                updateComboBoxLojas();
+
+        }
+
+
+
+        private void updateComboBoxCategorias(){
+                for(int i = 0; i < fachada.listarCategorias().size(); i++){
+                        cbCategorias.getItems().add(i,fachada.listarCategorias().get(i));
+                }
+        }
+
+        private void updateComboBoxLojas(){
+                for(int i = 0; i < fachada.listarCategorias().size(); i++){
+                        cbLojas.getItems().add(i,fachada.listarCategorias().get(i));
+                }
+        }
+
+        @FXML
         private TextField tfEstado;
 
         @FXML
-        private ComboBox<?> cbCategorias;
+        private ComboBox cbCategorias;
 
         @FXML
         private Button btSalvar;
@@ -69,7 +101,7 @@ public class CadastrarNovoClienteController {
         private Button btCadastrar;
 
         @FXML
-        private ComboBox<?> cbLojas;
+        private ComboBox cbLojas;
 
         @FXML
         private TextField tfComplemento;

@@ -1,5 +1,6 @@
 package br.ufrpe.geekMart.gui.controller;
 
+import br.ufrpe.geekMart.negocio.Fachada;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,6 +10,40 @@ import javafx.scene.control.TextField;
 
 public class MinhasLojasController {
 
+        Fachada fachada = Fachada.getInstancia();
+
+        @FXML
+        protected  void  initialize(){
+                Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
+                        @Override
+                        public void onScreenChanged(String newScreen, Object userData) {
+                                if(newScreen.equals("minhasLojasScene")) {
+                                        updateComboBoxCategorias();
+                                        updateComboBoxLojas();
+
+                                } }
+                });
+
+
+                updateComboBoxCategorias();
+                updateComboBoxLojas();
+
+        }
+
+
+
+        private void updateComboBoxCategorias(){
+                for(int i = 0; i < fachada.listarCategorias().size(); i++){
+                        cbCategorias.getItems().add(i,fachada.listarCategorias().get(i));
+                }
+        }
+
+        private void updateComboBoxLojas(){
+                for(int i = 0; i < fachada.listarCategorias().size(); i++){
+                        cbLojas.getItems().add(i,fachada.listarCategorias().get(i));
+                }
+        }
+
         @FXML
         private Button btHome;
 
@@ -16,7 +51,7 @@ public class MinhasLojasController {
         private Button btMeusAnuncios;
 
         @FXML
-        private ComboBox<?> cbCategorias;
+        private ComboBox cbCategorias;
 
         @FXML
         private Button btBuscar;
@@ -40,7 +75,7 @@ public class MinhasLojasController {
         private Button btCHAT;
 
         @FXML
-        private ComboBox<?> cbLojas;
+        private ComboBox cbLojas;
 
         @FXML
         private Button btNovaLoja;
