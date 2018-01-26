@@ -79,16 +79,7 @@
                     <children>
                         <SplitPane dividerPositions="0.06304728546409807" layoutX="195.0" layoutY="176.0" orientation="VERTICAL" prefHeight="551.0" prefWidth="576.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <items>
-                                <HBox alignment="CENTER" prefHeight="142.0" prefWidth="574.0" spacing="5.0">
-                                    <children>
-                                        <TextField fx:id="tfBuscar" prefHeight="25.0" prefWidth="499.0" promptText="Buscar Produto/Loja" />
-                                        <Button fx:id="btBuscar" mnemonicParsing="false" prefHeight="25.0" prefWidth="63.0" text="Buscar">
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                        </Button>
-                                    </children>
-                                </HBox>
+                                <HBox alignment="CENTER" prefHeight="142.0" prefWidth="574.0" spacing="5.0" />
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                     <children>
                                         <ScrollPane layoutX="187.0" layoutY="155.0" prefHeight="510.0" prefWidth="574.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -142,7 +133,7 @@
                                                         <Font size="18.0" />
                                                     </font>
                                                 </Label>
-                                                <Button fx:id="btNovoAdm" mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" text="Cadastrar" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                                                <Button fx:id="btNovoAdm" mnemonicParsing="false" onAction="#cadastrarNovoAdmAction" prefHeight="26.0" prefWidth="99.0" text="Cadastrar" GridPane.columnIndex="3" GridPane.rowIndex="7" />
                                                 <Label text="Senha: " GridPane.rowIndex="3">
                                                     <font>
                                                         <Font size="18.0" />
@@ -151,8 +142,8 @@
                                                 <TextField fx:id="tfEmail" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                                 <TextField fx:id="tfTelefone" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                                 <PasswordField fx:id="pwfSenha" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField fx:id="tfNome" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="tfCPF" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                             </children>
                                         </GridPane>
 

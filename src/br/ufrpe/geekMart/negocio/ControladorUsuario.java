@@ -93,4 +93,12 @@ public class ControladorUsuario {
         }
     }
 
+    public Usuario[] listarUsuarios(){
+        return  this.repositorio.listarUsuarios();
+    }
+
+    public int getProxima(){
+        return this.repositorio.getProxima();
+    }
+
 }

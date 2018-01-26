@@ -1,5 +1,9 @@
 package br.ufrpe.geekMart.gui.controller;
+import br.ufrpe.geekMart.exceptions.JaExisteException;
+import br.ufrpe.geekMart.exceptions.NaoExisteException;
+import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
+import br.ufrpe.geekMart.negocio.classesBasicas.Administrador;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,15 +26,37 @@ public class TelaInicialDeslogadoController {
                                         updateComboBoxCategorias();
                                         updateComboBoxLojas();
 
+
                                 } }
                 });
 
 
                 updateComboBoxCategorias();
                 updateComboBoxLojas();
+                admPadrao();
 
         }
 
+        private void admPadrao(){
+                try {
+                        Administrador g = new Administrador(
+                                "Huan Christopher",
+                                "123456",
+                                "adm@adm",
+                                "123456",
+                                true,
+                                true,
+                                "(81)996074398");
+
+                        fachada.cadastrarUsuario(g);
+                } catch (NaoExisteException ee){
+
+                }  catch (ParametroNullException ee){
+
+                } catch (JaExisteException ee){
+
+                }
+        }
 
 
         private void updateComboBoxCategorias(){

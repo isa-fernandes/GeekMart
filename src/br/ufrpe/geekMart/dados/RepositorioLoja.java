@@ -157,4 +157,16 @@ public class RepositorioLoja implements IRepositorioLoja {
             throw new ParametroNullException("antigo nome ou nova loja");
         }
     }
+
+    public Loja[] listarLoja(){
+        return lojas;
+    }
+
+    public int getProxima() {
+        return proxima;
+    }
+
+    public void setProxima(int proxima) {
+        this.proxima = proxima;
+    }
 }

@@ -18,4 +18,6 @@ public interface IRepositorioLoja {
     void removerLoja(Loja loja) throws ParametroNullException, NaoExisteException;
     boolean existeLoja(String titulo) throws ParametroNullException;
     void alterarLoja (String cpf, Loja loja) throws ParametroNullException, NaoExisteException;
+    Loja[] listarLoja();
+    int getProxima();
 }

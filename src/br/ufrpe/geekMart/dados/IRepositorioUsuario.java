@@ -10,5 +10,7 @@ public interface IRepositorioUsuario {
     void removerUsuario(String num);
     boolean existeUsuario(String cpf);
     void alterarUsuario(Usuario usuario,Usuario usuarioNovo);
+    Usuario[] listarUsuarios();
+    int getProxima();
 
 }

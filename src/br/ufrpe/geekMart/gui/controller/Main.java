@@ -4,6 +4,7 @@ package br.ufrpe.geekMart.gui.controller;
 
 
 import br.ufrpe.geekMart.negocio.Fachada;
+import br.ufrpe.geekMart.negocio.classesBasicas.Administrador;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -55,6 +56,13 @@ public class Main extends Application {
     private static  Scene meusAnunciosScene;
     private static  Scene minhasLojasScene;
 
+    Fachada fachada = Fachada.getInstancia();
+
+
+
+
+
+
 
 
 
@@ -68,7 +76,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-
 
 
 

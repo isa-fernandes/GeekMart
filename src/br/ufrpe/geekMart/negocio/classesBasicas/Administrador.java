@@ -1,15 +1,21 @@
 package br.ufrpe.geekMart.negocio.classesBasicas;
 
 public class Administrador extends Usuario {
-    private boolean adm = true;
+    String telefone;
 
     public Administrador(){
 
     }
-    public Administrador(String nome, String cpf, String email, String senha, boolean adm, boolean ativo) {
+    public Administrador(String nome, String cpf, String email, String senha, boolean adm, boolean ativo,String telefone) {
         super(nome, cpf, email, senha,adm, ativo);
 
-        this.setAdm(this.adm);
+        this.nome=nome;
+        this.cpf=cpf;
+        this.email=email;
+        this.senha=senha;
+        this.adm=adm;
+        this.ativo=ativo;
+        this.telefone=telefone;
     }
 
     @Override
@@ -22,5 +28,11 @@ public class Administrador extends Usuario {
         return adm;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
 
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
 }

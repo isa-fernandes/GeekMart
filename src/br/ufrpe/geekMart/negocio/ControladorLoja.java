@@ -8,6 +8,7 @@ import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.classesBasicas.Categorias;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
+import br.ufrpe.geekMart.negocio.classesBasicas.Usuario;
 
 import java.util.ArrayList;
 
@@ -52,5 +53,12 @@ public class ControladorLoja {
 
     public void alterarLoja (String cpf, Loja loja) throws ParametroNullException, NaoExisteException{
         this.repositorio.alterarLoja(cpf,loja);
+    }
+
+    public Loja[] listarLojas(){
+        return  this.repositorio.listarLoja();
+    }
+    public int getProxima(){
+        return this.repositorio.getProxima();
     }
 }

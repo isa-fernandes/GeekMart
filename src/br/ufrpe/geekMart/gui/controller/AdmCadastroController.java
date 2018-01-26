@@ -23,13 +23,24 @@ public class AdmCadastroController {
                         public void onScreenChanged(String newScreen, Object userData) {
                                 if(newScreen.equals("admCadastroScene")) {
                                         user=(Administrador)userData;
-
+                                        updateCadastroTela();
 
                                 } }
                 });
 
 
 
+
+        }
+
+        private void updateCadastroTela(){
+                lbNome.setText(user.getNome());
+                lbCPF.setText(user.getCpf());
+                lbEmail.setText(user.getEmail());
+                lbTelefone.setText(user.getTelefone());
+                lbNdeUsuarios.setText(Integer.toString(fachada.getProximaUsuario()));
+                lbNdeAnuncios.setText(Integer.toString(fachada.getProximaAnuncio()));
+                lbndeLojas.setText(Integer.toString(fachada.getProximaLoja()));
 
         }
 
@@ -80,8 +91,6 @@ public class AdmCadastroController {
         @FXML
         private Label lbndeLojas;
 
-        @FXML
-        private ComboBox<?> cbLojas;
 
         @FXML
         private Label lbCPF;
@@ -103,26 +112,31 @@ public class AdmCadastroController {
 
         @FXML
         protected  void btMeuCadastroADMAction(ActionEvent e){
-                Main.trocarTela("AdmCadastroScene");
+                Main.trocarTela("admCadastroScene");
         }
 
         @FXML
-        protected  void btDesbloquearBloquearAction(ActionEvent e){ Main.trocarTela("AdmBloqueioDesbloqueioScene"); }
+        protected  void btDesbloquearBloquearAction(ActionEvent e){ Main.trocarTela("admBloqueioDesbloqueioScene"); }
 
         @FXML
         protected  void btDeletarAnuncioAction(ActionEvent e){
-                Main.trocarTela("AdmDeletarAnuncioScene");
+                Main.trocarTela("admDeletarAnuncioScene");
         }
 
         @FXML
         protected  void btDeletarLojaAction(ActionEvent e){
-                Main.trocarTela("AdmDeletarLojaScene");
+                Main.trocarTela("admDeletarLojaScene");
         }
 
         @FXML
         protected  void btNovoAdmAction(ActionEvent e){
-                Main.trocarTela("AdmCadastrarNovoAdmScene");
+                Main.trocarTela("admCadastrarNovoAdmScene");
         }
+
+        @FXML
+        protected  void btAlterarAdmAction(ActionEvent e){
+        Main.trocarTela("admAlterarCadastroScene",user);
+    }
 
 
 

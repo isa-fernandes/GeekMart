@@ -12,5 +12,7 @@ public interface IRepositorioAnuncio {
     void removerAnuncio (String titulo) throws ParametroNullException, NaoExisteException;
     boolean existe (String titulo);
     void alterarAnuncio (String nomeAntigo, Anuncio anuncio) throws ParametroNullException, NaoExisteException;
+    Anuncio[] listarAnuncios();
+    int getProxima();
 
 }

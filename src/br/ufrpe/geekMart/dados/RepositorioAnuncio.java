@@ -132,4 +132,13 @@ public class RepositorioAnuncio implements IRepositorioAnuncio {
         }
     }
 
+    public Anuncio[] listarAnuncios(){
+        return anuncios;
+    }
+
+    public int getProxima() {
+        return proxima;
+    }
+
+
 }

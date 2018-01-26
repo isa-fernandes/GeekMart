@@ -55,11 +55,26 @@ public class Fachada {
         this.cadastroUsuario.alterarUsuario(usuario,usuarioNovo);
     }
 
+
+
     //ADM
 
     public void admBloquearDesbloquearUsuario (String cpf)
             throws ParametroNullException, NaoExisteException {
         this.cadastroUsuario.admBloquearDesbloquearUsuario(cpf);
+    }
+    public Usuario[] listarUsuarios(){
+        return  this.cadastroUsuario.listarUsuarios();
+    }
+
+    public int getProximaUsuario(){
+        return this.cadastroUsuario.getProxima();
+    }
+    public int getProximaLoja(){
+        return this.cadastroLoja.getProxima();
+    }
+    public int getProximaAnuncio(){
+        return this.cadastroAnuncio.getProxima();
     }
 
 
@@ -140,8 +155,16 @@ public class Fachada {
         return cadastroAnuncio.listarCategorias();
     }
 
+    public Anuncio[] listarAnuncios(){
+        return this.cadastroAnuncio.listarAnuncios();
+    }
+
 
     // LOJA
+
+    public Loja[] listarLojas(){
+        return this.cadastroLoja.listarLojas();
+    }
 
     public void cadastrarLoja( Loja c) throws ParametroNullException, JaExisteException{
         this.cadastroLoja.cadastrarLoja(c);

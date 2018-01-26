@@ -5,6 +5,7 @@ import br.ufrpe.geekMart.exceptions.LoginSemSucessoException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
+import br.ufrpe.geekMart.negocio.classesBasicas.Administrador;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import br.ufrpe.geekMart.negocio.classesBasicas.Usuario;
 import javafx.event.ActionEvent;
@@ -109,7 +110,8 @@ public class TelaLoginController {
 
                                 if (fachada.autenticarLogin(tfSenha.getText(), tfCPF.getText())) {
                                         if (fachada.buscaUsuario(tfCPF.getText()).isAdm()) {
-                                                Main.trocarTela("admCadastroScene");
+                                                Administrador adm = (Administrador)fachada.buscaUsuario(tfCPF.getText());
+                                                Main.trocarTela("admCadastroScene",adm);
                                         } else {
                                                 Cliente cliente = (Cliente)fachada.buscaUsuario(tfCPF.getText());
                                                 Main.trocarTela("cadastroClienteScene",cliente);

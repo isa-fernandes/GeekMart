@@ -155,5 +155,13 @@ public class ControladorAnuncio {
         return Categorias.getCategorias();
     }
 
+    public Anuncio[] listarAnuncios(){
+        return this.repositorio.listarAnuncios();
+    }
+
+    public int getProxima(){
+        return this.repositorio.getProxima();
+    }
+
 
 }

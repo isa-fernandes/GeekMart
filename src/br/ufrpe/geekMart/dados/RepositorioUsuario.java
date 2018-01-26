@@ -114,4 +114,15 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         }
     }
 
+    public Usuario[] listarUsuarios(){
+        return usuarios;
+    }
+
+    public int getProxima() {
+        return proxima;
+    }
+
+    public void setProxima(int proxima) {
+        this.proxima = proxima;
+    }
 }
