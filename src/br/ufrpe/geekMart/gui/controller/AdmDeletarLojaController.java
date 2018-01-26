@@ -65,7 +65,7 @@ public class AdmDeletarLojaController {
         private Button btMeusAnuncios;
 
         @FXML
-        private ComboBox<?> cbCategorias;
+        private ComboBox cbCategorias;
 
         @FXML
         private Button btBuscar;
@@ -101,10 +101,10 @@ public class AdmDeletarLojaController {
         private Button btCHAT;
 
         @FXML
-        private ComboBox<?> cbLojas;
+        private ComboBox cbLojas;
 
         @FXML
-        private Label lbCPF;
+        private Label lbPrecoII3;;
 
         @FXML
         private Label lbEmail;

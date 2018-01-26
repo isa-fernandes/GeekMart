@@ -2,12 +2,9 @@ package br.ufrpe.geekMart.gui.controller;
 import br.ufrpe.geekMart.negocio.Fachada;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
-public class ResultadoBuscaLogadoController {
+public class ResultadoBuscaLogado6Controller {
 
         Fachada fachada = Fachada.getInstancia();
 
@@ -90,6 +87,42 @@ public class ResultadoBuscaLogadoController {
 
         @FXML
         private MenuItem menuSobreApp;
+
+        @FXML
+        private Label lbPrecoII1;
+
+        @FXML
+        private Label lbTituroII1;
+
+        @FXML
+        private Label lbPrecoII2;
+
+        @FXML
+        private Label lbTituroII2;
+
+        @FXML
+        private Label lbPrecoII3;
+
+        @FXML
+        private Label lbTituroII3;
+
+        @FXML
+        private Label lbPrecoII4;
+
+        @FXML
+        private Label lbTituroII4;
+
+        @FXML
+        private Label lbPrecoII5;
+
+        @FXML
+        private Label lbTituroII5;
+
+        @FXML
+        private Label lbPrecoII6;
+
+        @FXML
+        private Label lbTituroII6;
 
         @FXML
         protected  void btHomeAction(ActionEvent e){

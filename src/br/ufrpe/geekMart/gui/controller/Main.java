@@ -4,18 +4,12 @@ package br.ufrpe.geekMart.gui.controller;
 
 
 import br.ufrpe.geekMart.negocio.Fachada;
-import br.ufrpe.geekMart.negocio.classesBasicas.Administrador;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 
 
 import java.util.ArrayList;
@@ -37,7 +31,12 @@ public class Main extends Application {
     private static  Scene telaInicialDeslogadoScene;
     private static  Scene telaInicialLogadoScene;
     private static  Scene telaLoginScene;
-    private static  Scene resultadoBuscaLogadoScene;
+    private static  Scene resultadoBuscaLogado6Scene;
+    private static  Scene resultadoBuscaLogado5Scene;
+    private static  Scene resultadoBuscaLogado4Scene;
+    private static  Scene resultadoBuscaLogado3Scene;
+    private static  Scene resultadoBuscaLogado2Scene;
+    private static  Scene resultadoBuscaLogado1Scene;
     private static  Scene resultadoBuscaDeslogadoScene;
     private static  Scene chatScene;
     private static  Scene cadastroClienteScene;
@@ -93,8 +92,23 @@ public class Main extends Application {
         Parent fxmlTelaLogin = FXMLLoader.load(getClass().getResource("../view/TelaLogin.fxml"));
         telaLoginScene = new Scene(fxmlTelaLogin,900,600);
 
-        Parent fxmlResultadoBuscaLogado = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaLogado.fxml"));
-        resultadoBuscaLogadoScene = new Scene(fxmlResultadoBuscaLogado,900,600);
+        Parent fxmlResultadoBusca6Logado = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaLogado6.fxml"));
+        resultadoBuscaLogado6Scene = new Scene(fxmlResultadoBusca6Logado,900,600);
+
+        Parent fxmlResultadoBusca5Logado = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaLogado5.fxml"));
+        resultadoBuscaLogado5Scene = new Scene(fxmlResultadoBusca5Logado,900,600);
+
+        Parent fxmlResultadoBusca4Logado = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaLogado4.fxml"));
+        resultadoBuscaLogado4Scene = new Scene(fxmlResultadoBusca4Logado,900,600);
+
+        Parent fxmlResultadoBusca3Logado = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaLogado3.fxml"));
+        resultadoBuscaLogado3Scene = new Scene(fxmlResultadoBusca3Logado,900,600);
+
+        Parent fxmlResultadoBusca2Logado = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaLogado2.fxml"));
+        resultadoBuscaLogado2Scene = new Scene(fxmlResultadoBusca2Logado,900,600);
+
+        Parent fxmlResultadoBusca1Logado = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaLogado1.fxml"));
+        resultadoBuscaLogado1Scene = new Scene(fxmlResultadoBusca1Logado,900,600);
 
         Parent fxmlResultadoBuscaDeslogado = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaDeslogado.fxml"));
         resultadoBuscaDeslogadoScene = new Scene(fxmlResultadoBuscaDeslogado,900,600);
@@ -175,9 +189,29 @@ public class Main extends Application {
                 stage.setScene(telaLoginScene);
                 notificarAllListeners("telaLoginScene", userData);
                 break;
-            case "resultadoBuscaLogadoScene":
-                stage.setScene(resultadoBuscaLogadoScene);
-                notificarAllListeners("resultadoBuscaLogadoScene", userData);
+            case "resultadoBuscaLogado6Scene":
+                stage.setScene(resultadoBuscaLogado6Scene);
+                notificarAllListeners("resultadoBuscaLogado6Scene", userData);
+                break;
+            case "resultadoBuscaLogado5Scene":
+                stage.setScene(resultadoBuscaLogado5Scene);
+                notificarAllListeners("resultadoBuscaLogado5Scene", userData);
+                break;
+            case "resultadoBuscaLogado4Scene":
+                stage.setScene(resultadoBuscaLogado4Scene);
+                notificarAllListeners("resultadoBuscaLogado4Scene", userData);
+                break;
+            case "resultadoBuscaLogado3Scene":
+                stage.setScene(resultadoBuscaLogado3Scene);
+                notificarAllListeners("resultadoBuscaLogado2Scene", userData);
+                break;
+            case "resultadoBuscaLogado2Scene":
+                stage.setScene(resultadoBuscaLogado2Scene);
+                notificarAllListeners("resultadoBuscaLogado6Scene", userData);
+                break;
+            case "resultadoBuscaLogado1Scene":
+                stage.setScene(resultadoBuscaLogado1Scene);
+                notificarAllListeners("resultadoBuscaLogado1Scene", userData);
                 break;
             case "resultadoBuscaDeslogadoScene":
                 stage.setScene(resultadoBuscaDeslogadoScene);

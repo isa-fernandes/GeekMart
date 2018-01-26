@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import br.ufrpe.geekMart.negocio.Fachada;
+import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -132,6 +133,38 @@ public class TelaInicialLogadoController {
     @FXML
     protected  void btChatAction(ActionEvent e){
         Main.trocarTela("chatScene",user);
+    }
+
+    @FXML
+    protected  void buscaAnuncios(ActionEvent e){
+         final int N = 10; //trocar por algo que declare os insteiros positivos
+        int X1 = 1 + (N*6);
+        int X2 = 2 + (N*6);
+        int X3 = 3 + (N*6);
+        int X4 = 4 + (N*6);
+        int X5 = 5 + (N*6);
+        int X6 = 6 + (N*6);
+
+        Anuncio[] anuncios = fachada.listarAnuncios();
+
+        if(anuncios.length == X1){ // anuncios será trocado por dados da busca
+            Main.trocarTela("resultadoBuscaLogado1Scene",anuncios);
+        } else if(anuncios.length == X2){
+            Main.trocarTela("resultadoBuscaLogado2Scene",anuncios);
+        } else if(anuncios.length == X3){
+            Main.trocarTela("resultadoBuscaLogado3Scene",anuncios);
+        } else if(anuncios.length == X4){
+            Main.trocarTela("resultadoBuscaLogado4Scene",anuncios);
+        } else if(anuncios.length == X5){
+            Main.trocarTela("resultadoBuscaLogado5Scene",anuncios);
+        } else if(anuncios.length == X6){
+            Main.trocarTela("resultadoBuscaLogado6Scene",anuncios);
+        }
+
+
+
+
+
     }
 
 
