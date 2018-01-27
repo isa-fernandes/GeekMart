@@ -1,17 +1,12 @@
 package br.ufrpe.geekMart.gui.controller;
 
 import br.ufrpe.geekMart.negocio.Fachada;
-import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
-public class MeusAnunciosController {
+public class BuscaLojasLogado6Controller {
 
-    Cliente user;
     Fachada fachada = Fachada.getInstancia();
 
     @FXML
@@ -19,8 +14,7 @@ public class MeusAnunciosController {
         Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
             @Override
             public void onScreenChanged(String newScreen, Object userData) {
-                if(newScreen.equals("meusAnunciosScene")) {
-                    user=(Cliente)userData;
+                if(newScreen.equals("resultadoBuscaLogadoScene")) {
                     updateComboBoxCategorias();
                     updateComboBoxLojas();
 
@@ -47,6 +41,10 @@ public class MeusAnunciosController {
         }
     }
 
+
+
+    @FXML
+    private Button btHome;
 
     @FXML
     private Button btMeusAnuncios;
@@ -81,6 +79,7 @@ public class MeusAnunciosController {
     @FXML
     private Button btNovaLoja;
 
+
     @FXML
     private MenuItem menuLoginAdm;
 
@@ -91,39 +90,72 @@ public class MeusAnunciosController {
     private MenuItem menuSobreApp;
 
     @FXML
+    private Label lbPrecoII1;
+
+    @FXML
+    private Label lbTituroII1;
+
+    @FXML
+    private Label lbPrecoII2;
+
+    @FXML
+    private Label lbTituroII2;
+
+    @FXML
+    private Label lbPrecoII3;
+
+    @FXML
+    private Label lbTituroII3;
+
+    @FXML
+    private Label lbPrecoII4;
+
+    @FXML
+    private Label lbTituroII4;
+
+    @FXML
+    private Label lbPrecoII5;
+
+    @FXML
+    private Label lbTituroII5;
+
+    @FXML
+    private Label lbPrecoII6;
+
+    @FXML
+    private Label lbTituroII6;
+
+    @FXML
     protected  void btHomeAction(ActionEvent e){
-        Main.trocarTela("telaInicialLogadoScene",user);
+        Main.trocarTela("telaInicialLogadoScene");
     }
 
     @FXML
     protected  void btMeuCadastroAction(ActionEvent e){
-        Main.trocarTela("cadastroClienteScene",user);
+        Main.trocarTela("cadastroClienteScene");
     }
 
     @FXML
-    protected  void btMeusAnunciosAction(ActionEvent e){ Main.trocarTela("meusAnunciosScene",user); }
+    protected  void btMeusAnunciosAction(ActionEvent e){ Main.trocarTela("meusAnunciosScene"); }
 
     @FXML
     protected  void btMinhasLojasAction(ActionEvent e){
-        Main.trocarTela("minhasLojasScene",user);
+        Main.trocarTela("minhasLojasScene");
     }
 
     @FXML
     protected  void btNovoAnuncioAction(ActionEvent e){
-        Main.trocarTela("cadastrarNovoAnuncioScene",user);
+        Main.trocarTela("cadastrarNovoAnuncioScene");
     }
 
     @FXML
     protected  void btNovaLojaAction(ActionEvent e){
-        Main.trocarTela("cadastrarNovaLojaScene",user);
+        Main.trocarTela("cadastrarNovaLojaScene");
     }
 
     @FXML
     protected  void btChatAction(ActionEvent e){
-        Main.trocarTela("chatScene",user);
+        Main.trocarTela("chatScene");
     }
-
-
-
 
 }

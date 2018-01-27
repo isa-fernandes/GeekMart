@@ -118,14 +118,10 @@ public class TelaInicialDeslogadoController {
         @FXML
         private ComboBox cbCategorias;
 
-        @FXML
-        private Button btEntre;
 
         @FXML
         private Button btBuscar;
 
-        @FXML
-        private Button btCadastrar;
 
         @FXML
         private ComboBox cbLojas;
@@ -138,6 +134,12 @@ public class TelaInicialDeslogadoController {
 
         @FXML
         private MenuItem menuSobreApp;
+
+        @FXML
+        private Button btEntre;
+
+        @FXML
+        private Button btCadastrar;
 
         @FXML
          protected  void btCadastrarAction(ActionEvent e){ Main.trocarTela("cadastrarNovoClienteScene"); }

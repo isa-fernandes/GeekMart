@@ -31,12 +31,48 @@ public class Main extends Application {
     private static  Scene telaInicialDeslogadoScene;
     private static  Scene telaInicialLogadoScene;
     private static  Scene telaLoginScene;
+    private static  Scene buscaLojasDeslogado6Scene;
+    private static  Scene buscaLojasDeslogado5Scene;
+    private static  Scene buscaLojasDeslogado4Scene;
+    private static  Scene buscaLojasDeslogado3Scene;
+    private static  Scene buscaLojasDeslogado2Scene;
+    private static  Scene buscaLojasDeslogado1Scene;
+    private static  Scene buscaLojasDeslogado0Scene;
+    private static  Scene buscaLojasLogado6Scene;
+    private static  Scene buscaLojasLogado5Scene;
+    private static  Scene buscaLojasLogado4Scene;
+    private static  Scene buscaLojasLogado3Scene;
+    private static  Scene buscaLojasLogado2Scene;
+    private static  Scene buscaLojasLogado1Scene;
+    private static  Scene buscaLojasLogado0Scene;
+    private static  Scene meusAnuncios6Scene;
+    private static  Scene meusAnuncios5Scene;
+    private static  Scene meusAnuncios4Scene;
+    private static  Scene meusAnuncios3Scene;
+    private static  Scene meusAnuncios2Scene;
+    private static  Scene meusAnuncios1Scene;
+    private static  Scene meusAnuncios0Scene;
+    private static  Scene minhasLojas6Scene;
+    private static  Scene minhasLojas5Scene;
+    private static  Scene minhasLojas4Scene;
+    private static  Scene minhasLojas3Scene;
+    private static  Scene minhasLojas2Scene;
+    private static  Scene minhasLojas1Scene;
+    private static  Scene minhasLojas0Scene;
+    private static  Scene resultadoBuscaDeslogado6Scene;
+    private static  Scene resultadoBuscaDeslogado5Scene;
+    private static  Scene resultadoBuscaDeslogado4Scene;
+    private static  Scene resultadoBuscaDeslogado3Scene;
+    private static  Scene resultadoBuscaDeslogado2Scene;
+    private static  Scene resultadoBuscaDeslogado1Scene;
+    private static  Scene resultadoBuscaDeslogado0Scene;
     private static  Scene resultadoBuscaLogado6Scene;
     private static  Scene resultadoBuscaLogado5Scene;
     private static  Scene resultadoBuscaLogado4Scene;
     private static  Scene resultadoBuscaLogado3Scene;
     private static  Scene resultadoBuscaLogado2Scene;
     private static  Scene resultadoBuscaLogado1Scene;
+    private static  Scene resultadoBuscaLogado0Scene;
     private static  Scene resultadoBuscaDeslogadoScene;
     private static  Scene chatScene;
     private static  Scene cadastroClienteScene;
@@ -56,15 +92,6 @@ public class Main extends Application {
     private static  Scene minhasLojasScene;
 
     Fachada fachada = Fachada.getInstancia();
-
-
-
-
-
-
-
-
-
 
 
 
@@ -110,7 +137,10 @@ public class Main extends Application {
        Parent fxmlResultadoBusca1Logado = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaLogado1.fxml"));
        resultadoBuscaLogado1Scene = new Scene(fxmlResultadoBusca1Logado,900,600);
 
-        Parent fxmlResultadoBuscaDeslogado = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaDeslogado.fxml"));
+        Parent fxmlResultadoBusca0Logado = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaLogado0.fxml"));
+        resultadoBuscaLogado0Scene = new Scene(fxmlResultadoBusca0Logado,900,600);
+
+        Parent fxmlResultadoBuscaDeslogado = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaDeslogado0.fxml"));
         resultadoBuscaDeslogadoScene = new Scene(fxmlResultadoBuscaDeslogado,900,600);
 
         Parent fxmlChat = FXMLLoader.load(getClass().getResource("../view/Chat.fxml"));
@@ -160,6 +190,114 @@ public class Main extends Application {
 
         Parent fxmlMinhasLojas = FXMLLoader.load(getClass().getResource("../view/MinhasLojas.fxml"));
         minhasLojasScene = new Scene(fxmlMinhasLojas,900,600);
+
+        Parent fxmlResultadoBuscaDeslogado0 = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaDeslogado0.fxml"));
+        resultadoBuscaDeslogado0Scene = new Scene(fxmlResultadoBuscaDeslogado0,900,600);
+
+        Parent fxmlResultadoBuscaDeslogado1 = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaDeslogado1.fxml"));
+        resultadoBuscaDeslogado1Scene = new Scene(fxmlResultadoBuscaDeslogado1,900,600);
+
+        Parent fxmlResultadoBuscaDeslogado2 = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaDeslogado2.fxml"));
+        resultadoBuscaDeslogado2Scene = new Scene(fxmlResultadoBuscaDeslogado2,900,600);
+
+        Parent fxmlResultadoBuscaDeslogado3 = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaDeslogado3.fxml"));
+        resultadoBuscaDeslogado3Scene = new Scene(fxmlResultadoBuscaDeslogado3,900,600);
+
+        Parent fxmlResultadoBuscaDeslogado4 = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaDeslogado4.fxml"));
+        resultadoBuscaDeslogado4Scene = new Scene(fxmlResultadoBuscaDeslogado4,900,600);
+
+        Parent fxmlResultadoBuscaDeslogado5 = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaDeslogado5.fxml"));
+        resultadoBuscaDeslogado5Scene = new Scene(fxmlResultadoBuscaDeslogado5,900,600);
+
+        Parent fxmlResultadoBuscaDeslogado6 = FXMLLoader.load(getClass().getResource("../view/ResultadoBuscaDeslogado6.fxml"));
+        resultadoBuscaDeslogado6Scene = new Scene(fxmlResultadoBuscaDeslogado6,900,600);
+
+        Parent fxmlMinhasLojas0 = FXMLLoader.load(getClass().getResource("../view/MinhasLojas0.fxml"));
+        minhasLojas0Scene = new Scene(fxmlMinhasLojas0,900,600);
+
+        Parent fxmlMinhasLojas1 = FXMLLoader.load(getClass().getResource("../view/MinhasLojas1.fxml"));
+        minhasLojas1Scene = new Scene(fxmlMinhasLojas1,900,600);
+
+        Parent fxmlMinhasLojas2 = FXMLLoader.load(getClass().getResource("../view/MinhasLojas2.fxml"));
+        minhasLojas2Scene = new Scene(fxmlMinhasLojas2,900,600);
+
+        Parent fxmlMinhasLojas3 = FXMLLoader.load(getClass().getResource("../view/MinhasLojas3.fxml"));
+        minhasLojas3Scene = new Scene(fxmlMinhasLojas3,900,600);
+
+        Parent fxmlMinhasLojas4 = FXMLLoader.load(getClass().getResource("../view/MinhasLojas4.fxml"));
+        minhasLojas4Scene = new Scene(fxmlMinhasLojas4,900,600);
+
+        Parent fxmlMinhasLojas5 = FXMLLoader.load(getClass().getResource("../view/MinhasLojas5.fxml"));
+        minhasLojas5Scene = new Scene(fxmlMinhasLojas5,900,600);
+
+        Parent fxmlMinhasLojas6 = FXMLLoader.load(getClass().getResource("../view/MinhasLojas6.fxml"));
+        minhasLojas6Scene = new Scene(fxmlMinhasLojas6,900,600);
+
+        Parent fxmlMeusAnuncios0 = FXMLLoader.load(getClass().getResource("../view/MeusAnuncios0.fxml"));
+        meusAnuncios0Scene = new Scene(fxmlMeusAnuncios0,900,600);
+
+        Parent fxmlMeusAnuncios1 = FXMLLoader.load(getClass().getResource("../view/MeusAnuncios1.fxml"));
+        meusAnuncios1Scene = new Scene(fxmlMeusAnuncios1,900,600);
+
+        Parent fxmlMeusAnuncios2 = FXMLLoader.load(getClass().getResource("../view/MeusAnuncios2.fxml"));
+        meusAnuncios2Scene = new Scene(fxmlMeusAnuncios2,900,600);
+
+        Parent fxmlMeusAnuncios3 = FXMLLoader.load(getClass().getResource("../view/MeusAnuncios3.fxml"));
+        meusAnuncios3Scene = new Scene(fxmlMeusAnuncios3,900,600);
+
+        Parent fxmlMeusAnuncios4 = FXMLLoader.load(getClass().getResource("../view/MeusAnuncios4.fxml"));
+        meusAnuncios4Scene = new Scene(fxmlMeusAnuncios4,900,600);
+
+        Parent fxmlMeusAnuncios5 = FXMLLoader.load(getClass().getResource("../view/MeusAnuncios5.fxml"));
+        meusAnuncios0Scene = new Scene(fxmlMeusAnuncios5,900,600);
+
+        Parent fxmlMeusAnuncios6 = FXMLLoader.load(getClass().getResource("../view/MeusAnuncios6.fxml"));
+        meusAnuncios6Scene = new Scene(fxmlMeusAnuncios6,900,600);
+
+        Parent fxmlBuscarLojasDeslogado0 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasDeslogado0.fxml"));
+        buscaLojasDeslogado0Scene = new Scene(fxmlBuscarLojasDeslogado0,900,600);
+
+        Parent fxmlBuscarLojasDeslogado1 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasDeslogado1.fxml"));
+        buscaLojasDeslogado1Scene = new Scene(fxmlBuscarLojasDeslogado1,900,600);
+
+        Parent fxmlBuscarLojasDeslogado2 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasDeslogado2.fxml"));
+        buscaLojasDeslogado2Scene = new Scene(fxmlBuscarLojasDeslogado2,900,600);
+
+        Parent fxmlBuscarLojasDeslogado3 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasDeslogado3.fxml"));
+        buscaLojasDeslogado3Scene = new Scene(fxmlBuscarLojasDeslogado3,900,600);
+
+        Parent fxmlBuscarLojasDeslogado4 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasDeslogado4.fxml"));
+        buscaLojasDeslogado4Scene = new Scene(fxmlBuscarLojasDeslogado4,900,600);
+
+        Parent fxmlBuscarLojasDeslogado5 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasDeslogado5.fxml"));
+        buscaLojasDeslogado5Scene = new Scene(fxmlBuscarLojasDeslogado5,900,600);
+
+        Parent fxmlBuscarLojasDeslogado6 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasDeslogado6.fxml"));
+        buscaLojasDeslogado6Scene = new Scene(fxmlBuscarLojasDeslogado6,900,600);
+
+        Parent fxmlBuscarLojasLogado0 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasLogado0.fxml"));
+        buscaLojasLogado0Scene = new Scene(fxmlBuscarLojasLogado0,900,600);
+
+        Parent fxmlBuscarLojasLogado1 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasLogado1.fxml"));
+        buscaLojasLogado1Scene = new Scene(fxmlBuscarLojasLogado1,900,600);
+
+        Parent fxmlBuscarLojasLogado2 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasLogado2.fxml"));
+        buscaLojasLogado2Scene = new Scene(fxmlBuscarLojasLogado2,900,600);
+
+        Parent fxmlBuscarLojasLogado3 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasLogado3.fxml"));
+        buscaLojasLogado3Scene = new Scene(fxmlBuscarLojasLogado3,900,600);
+
+        Parent fxmlBuscarLojasLogado4 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasLogado4.fxml"));
+        buscaLojasLogado4Scene = new Scene(fxmlBuscarLojasLogado4,900,600);
+
+        Parent fxmlBuscarLojasLogado5 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasLogado5.fxml"));
+        buscaLojasLogado5Scene = new Scene(fxmlBuscarLojasLogado5,900,600);
+
+        Parent fxmlBuscarLojasLogado6 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasLogado6.fxml"));
+        buscaLojasLogado6Scene = new Scene(fxmlBuscarLojasLogado6,900,600);
+
+
+
 
 
 
@@ -284,6 +422,148 @@ public class Main extends Application {
                 stage.setScene(minhasLojasScene);
                 notificarAllListeners("minhasLojasScene", userData);
                 break;
+            case "resultadoBuscaDeslogado0Scene":
+                stage.setScene(resultadoBuscaDeslogado0Scene);
+                notificarAllListeners("resultadoBuscaDeslogado0Scene", userData);
+                break;
+            case "resultadoBuscaDeslogado1Scene":
+                stage.setScene(resultadoBuscaDeslogado1Scene);
+                notificarAllListeners("resultadoBuscaDeslogado1Scene", userData);
+                break;
+            case "resultadoBuscaDeslogado2Scene":
+                stage.setScene(resultadoBuscaDeslogado2Scene);
+                notificarAllListeners("resultadoBuscaDeslogado2Scene", userData);
+                break;
+            case "resultadoBuscaDeslogado3Scene":
+                stage.setScene(resultadoBuscaDeslogado3Scene);
+                notificarAllListeners("resultadoBuscaDeslogado3Scene", userData);
+                break;
+            case "resultadoBuscaDeslogado4Scene":
+                stage.setScene(resultadoBuscaDeslogado4Scene);
+                notificarAllListeners("resultadoBuscaDeslogado4Scene", userData);
+                break;
+            case "resultadoBuscaDeslogado5Scene":
+                stage.setScene(resultadoBuscaDeslogado5Scene);
+                notificarAllListeners("resultadoBuscaDeslogado5Scene", userData);
+                break;
+            case "resultadoBuscaDeslogado6Scene":
+                stage.setScene(resultadoBuscaDeslogado6Scene);
+                notificarAllListeners("resultadoBuscaDeslogado6Scene", userData);
+                break;
+            case "minhasLojas0Scene":
+                stage.setScene(minhasLojas0Scene);
+                notificarAllListeners("minhasLojas0Scene", userData);
+                break;
+            case "minhasLojas1Scene":
+                stage.setScene(minhasLojas1Scene);
+                notificarAllListeners("minhasLojas1Scene", userData);
+                break;
+            case "minhasLojas2Scene":
+                stage.setScene(minhasLojas2Scene);
+                notificarAllListeners("minhasLojas2Scene", userData);
+                break;
+            case "minhasLojas3Scene":
+                stage.setScene(minhasLojas3Scene);
+                notificarAllListeners("minhasLojas3Scene", userData);
+                break;
+            case "minhasLojas4Scene":
+                stage.setScene(minhasLojas4Scene);
+                notificarAllListeners("minhasLojas4Scene", userData);
+                break;
+            case "minhasLojas5Scene":
+                stage.setScene(minhasLojas5Scene);
+                notificarAllListeners("minhasLojas5Scene", userData);
+                break;
+            case "minhasLojas6Scene":
+                stage.setScene(minhasLojas6Scene);
+                notificarAllListeners("minhasLojas6Scene", userData);
+                break;
+            case "meusAnuncios0Scene":
+                stage.setScene(meusAnuncios0Scene);
+                notificarAllListeners("meusAnuncios0Scene", userData);
+                break;
+            case "meusAnuncios1Scene":
+                stage.setScene(meusAnuncios1Scene);
+                notificarAllListeners("meusAnuncios1Scene", userData);
+                break;
+            case "meusAnuncios2Scene":
+                stage.setScene(meusAnuncios2Scene);
+                notificarAllListeners("meusAnuncios2Scene", userData);
+                break;
+            case "meusAnuncios3Scene":
+                stage.setScene(meusAnuncios3Scene);
+                notificarAllListeners("meusAnuncios3Scene", userData);
+                break;
+            case "meusAnuncios4Scene":
+                stage.setScene(meusAnuncios4Scene);
+                notificarAllListeners("meusAnuncios4Scene", userData);
+                break;
+            case "meusAnuncios5Scene":
+                stage.setScene(meusAnuncios5Scene);
+                notificarAllListeners("meusAnuncios5Scene", userData);
+                break;
+            case "meusAnuncios6Scene":
+                stage.setScene(meusAnuncios6Scene);
+                notificarAllListeners("meusAnuncios6Scene", userData);
+                break;
+            case "buscaLojasLogado0Scene":
+                stage.setScene(buscaLojasLogado0Scene);
+                notificarAllListeners("buscaLojasLogado0Scene", userData);
+                break;
+            case "buscaLojasLogado1Scene":
+                stage.setScene(buscaLojasLogado1Scene);
+                notificarAllListeners("buscaLojasLogado1Scene", userData);
+                break;
+            case "buscaLojasLogado2Scene":
+                stage.setScene(buscaLojasLogado2Scene);
+                notificarAllListeners("buscaLojasLogado2Scene", userData);
+                break;
+            case "buscaLojasLogado3Scene":
+                stage.setScene(buscaLojasLogado3Scene);
+                notificarAllListeners("buscaLojasLogado3Scene", userData);
+                break;
+            case "buscaLojasLogado4Scene":
+                stage.setScene(buscaLojasLogado4Scene);
+                notificarAllListeners("buscaLojasLogado4Scene", userData);
+                break;
+            case "buscaLojasLogado5Scene":
+                stage.setScene(buscaLojasLogado5Scene);
+                notificarAllListeners("buscaLojasLogado5Scene", userData);
+                break;
+            case "buscaLojasLogado6Scene":
+                stage.setScene(buscaLojasLogado6Scene);
+                notificarAllListeners("buscaLojasLogado6Scene", userData);
+                break;
+            case "buscaLojasDeslogado0Scene":
+                stage.setScene(buscaLojasDeslogado0Scene);
+                notificarAllListeners("buscaLojasDeslogado0Scene", userData);
+                break;
+            case "buscaLojasDeslogado1Scene":
+                stage.setScene(buscaLojasDeslogado1Scene);
+                notificarAllListeners("buscaLojasDeslogado1Scene", userData);
+                break;
+            case "buscaLojasDeslogado2Scene":
+                stage.setScene(buscaLojasDeslogado2Scene);
+                notificarAllListeners("buscaLojasDeslogado2Scene", userData);
+                break;
+            case "buscaLojasDeslogado4Scene":
+                stage.setScene(buscaLojasDeslogado4Scene);
+                notificarAllListeners("buscaLojasDeslogado4Scene", userData);
+                break;
+            case "buscaLojasDeslogado3Scene":
+                stage.setScene(buscaLojasDeslogado3Scene);
+                notificarAllListeners("buscaLojasDeslogado3Scene", userData);
+                break;
+            case "buscaLojasDeslogado5Scene":
+                stage.setScene(buscaLojasDeslogado5Scene);
+                notificarAllListeners("buscaLojasDeslogado5Scene", userData);
+                break;
+            case "buscaLojasDeslogado6Scene":
+                stage.setScene(buscaLojasDeslogado6Scene);
+                notificarAllListeners("buscaLojasDeslogado6Scene", userData);
+                break;
+
+
 
         }
 
