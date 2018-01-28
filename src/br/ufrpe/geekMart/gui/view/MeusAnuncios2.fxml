@@ -70,6 +70,7 @@
                                                 <ComboBox fx:id="cbCategorias" prefWidth="150.0" promptText="Categorias" />
                                                 <ComboBox fx:id="cbLojas" prefWidth="150.0" promptText="Lojas " />
                                                 <Button fx:id="btHome" mnemonicParsing="false" onAction="#btHomeAction" prefHeight="25.0" prefWidth="128.0" text="Home" />
+                                    <Button fx:id="btVoltar" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="Voltar" />
                                             </children>
                                         </VBox>
                                     </children>
@@ -150,9 +151,10 @@
                                                                         <Font size="18.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                                <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                                     <children>
                                                                         <Button mnemonicParsing="false" text="Ver Anúncio" />
+                                                      <Button fx:id="Editar1" mnemonicParsing="false" text="Editar" />
                                                                     </children>
                                                                 </HBox>
                                                             </children>
@@ -179,9 +181,10 @@
                                                                         <Font size="18.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                                <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                                     <children>
                                                                         <Button mnemonicParsing="false" text="Ver Anúncio" />
+                                                      <Button fx:id="Editar2" mnemonicParsing="false" text="Editar" />
                                                                     </children>
                                                                 </HBox>
                                                             </children>

@@ -4,6 +4,7 @@ import br.ufrpe.geekMart.negocio.Fachada;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 
 public class BuscaLojasLogado2Controller {
     Fachada fachada = Fachada.getInstancia();
@@ -40,6 +41,47 @@ public class BuscaLojasLogado2Controller {
         }
     }
 
+    @FXML
+    private Button btVoltar;
+
+    @FXML
+    private Button btProxima;
+
+    @FXML
+    private Button btVerLoja1;
+
+    @FXML
+    private Button btVerLoja2;
+
+    @FXML
+    private Button btVerLoja3;
+
+    @FXML
+    private Button btVerLoja4;
+
+    @FXML
+    private Button btVerLoja5;
+
+    @FXML
+    private Button btVerLoja6;
+
+    @FXML
+    private ImageView imBusca1;
+
+    @FXML
+    private ImageView imBusca2;
+
+    @FXML
+    private ImageView imBusca3;
+
+    @FXML
+    private ImageView imBusca4;
+
+    @FXML
+    private ImageView imBusca5;
+
+    @FXML
+    private ImageView imBusca6;
 
 
     @FXML

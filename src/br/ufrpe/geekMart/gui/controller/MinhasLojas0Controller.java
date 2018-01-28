@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 public class MinhasLojas0Controller {
 
@@ -46,6 +47,48 @@ public class MinhasLojas0Controller {
                         cbLojas.getItems().add(i,fachada.listarCategorias().get(i));
                 }
         }
+
+        @FXML
+        private Button btVoltar;
+
+        @FXML
+        private Button btProxima;
+
+        @FXML
+        private Button btVerLoja1;
+
+        @FXML
+        private Button btVerLoja2;
+
+        @FXML
+        private Button btVerLoja3;
+
+        @FXML
+        private Button btVerLoja4;
+
+        @FXML
+        private Button btVerLoja5;
+
+        @FXML
+        private Button btVerLoja6;
+
+        @FXML
+        private ImageView imBusca1;
+
+        @FXML
+        private ImageView imBusca2;
+
+        @FXML
+        private ImageView imBusca3;
+
+        @FXML
+        private ImageView imBusca4;
+
+        @FXML
+        private ImageView imBusca5;
+
+        @FXML
+        private ImageView imBusca6;
 
         @FXML
         private Button btHome;

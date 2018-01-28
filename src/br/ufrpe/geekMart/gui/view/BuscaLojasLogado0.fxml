@@ -141,7 +141,7 @@
                                                                     </font>
                                                                 </Label>
                                                                 <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                                <Label text="Nenhum Anúncio Encontrado!" textFill="#bf1313" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                                <Label text="Nenhuma Loja Encontrada!" textFill="#bf1313" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                                     <font>
                                                                         <Font size="26.0" />
                                                                     </font>

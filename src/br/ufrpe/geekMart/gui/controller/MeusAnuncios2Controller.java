@@ -4,6 +4,7 @@ import br.ufrpe.geekMart.negocio.Fachada;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 
 public class MeusAnuncios2Controller {
     Fachada fachada = Fachada.getInstancia();
@@ -25,6 +26,66 @@ public class MeusAnuncios2Controller {
         updateComboBoxLojas();
 
     }
+
+    @FXML
+    private Button btVoltar;
+
+    @FXML
+    private Button btProxima;
+
+    @FXML
+    private Button btVerAnuncio1;
+
+    @FXML
+    private Button btVerAnuncio2;
+
+    @FXML
+    private Button btVerAnuncio3;
+
+    @FXML
+    private Button btVerAnuncio4;
+
+    @FXML
+    private Button btVerAnuncio5;
+
+    @FXML
+    private Button btVerAnuncio6;
+
+    @FXML
+    private ImageView imBusca1;
+
+    @FXML
+    private ImageView imBusca2;
+
+    @FXML
+    private ImageView imBusca3;
+
+    @FXML
+    private ImageView imBusca4;
+
+    @FXML
+    private ImageView imBusca5;
+
+    @FXML
+    private ImageView imBusca6;
+
+    @FXML
+    private  Button Editar1;
+
+    @FXML
+    private  Button Editar2;
+
+    @FXML
+    private  Button Editar3;
+
+    @FXML
+    private  Button Editar4;
+
+    @FXML
+    private  Button Editar5;
+
+    @FXML
+    private  Button Editar6;
 
 
 

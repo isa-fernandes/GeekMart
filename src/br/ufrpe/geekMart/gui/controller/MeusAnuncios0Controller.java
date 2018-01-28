@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 public class MeusAnuncios0Controller {
 
@@ -32,6 +33,67 @@ public class MeusAnuncios0Controller {
         updateComboBoxLojas();
 
     }
+
+    @FXML
+    private Button btVoltar;
+
+    @FXML
+    private Button btProxima;
+
+    @FXML
+    private Button btVerAnuncio1;
+
+    @FXML
+    private Button btVerAnuncio2;
+
+    @FXML
+    private Button btVerAnuncio3;
+
+    @FXML
+    private Button btVerAnuncio4;
+
+    @FXML
+    private Button btVerAnuncio5;
+
+    @FXML
+    private Button btVerAnuncio6;
+
+    @FXML
+    private ImageView imBusca1;
+
+    @FXML
+    private ImageView imBusca2;
+
+    @FXML
+    private ImageView imBusca3;
+
+    @FXML
+    private ImageView imBusca4;
+
+    @FXML
+    private ImageView imBusca5;
+
+    @FXML
+    private ImageView imBusca6;
+
+    @FXML
+    private  Button Editar1;
+
+    @FXML
+    private  Button Editar2;
+
+    @FXML
+    private  Button Editar3;
+
+    @FXML
+    private  Button Editar4;
+
+    @FXML
+    private  Button Editar5;
+
+    @FXML
+    private  Button Editar6;
+
 
 
 

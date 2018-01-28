@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 public class ResultadoBuscaDeslogado0Controller {
 
@@ -42,6 +43,49 @@ public class ResultadoBuscaDeslogado0Controller {
                         cbLojas.getItems().add(i,fachada.listarCategorias().get(i));
                 }
         }
+
+        @FXML
+        private Button btVoltar;
+
+        @FXML
+        private Button btProxima;
+
+        @FXML
+        private Button btVerAnuncio1;
+
+        @FXML
+        private Button btVerAnuncio2;
+
+        @FXML
+        private Button btVerAnuncio3;
+
+        @FXML
+        private Button btVerAnuncio4;
+
+        @FXML
+        private Button btVerAnuncio5;
+
+        @FXML
+        private Button btVerAnuncio6;
+
+        @FXML
+        private ImageView imBusca1;
+
+        @FXML
+        private ImageView imBusca2;
+
+        @FXML
+        private ImageView imBusca3;
+
+        @FXML
+        private ImageView imBusca4;
+
+        @FXML
+        private ImageView imBusca5;
+
+        @FXML
+        private ImageView imBusca6;
+
 
 
 

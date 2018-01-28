@@ -70,6 +70,7 @@
                                                 <ComboBox fx:id="cbCategorias" prefWidth="150.0" promptText="Categorias" />
                                                 <ComboBox fx:id="cbLojas" prefWidth="150.0" promptText="Lojas " />
                                                 <Button fx:id="btHome" mnemonicParsing="false" onAction="#btHomeAction" prefHeight="25.0" prefWidth="128.0" text="Home" />
+                                    <Button fx:id="btVoltar" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="Voltar" />
                                             </children>
                                         </VBox>
                                     </children>

@@ -26,7 +26,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.geekMart.gui.controller.MinhasLojas0Contoller">
+<VBox prefHeight="600.0" prefWidth="900.0" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.geekMart.gui.controller.MinhasLojas0Controller">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -141,7 +141,7 @@
                                                                     </font>
                                                                 </Label>
                                                                 <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                                <Label text="Nenhum Anúncio Encontrado!" textFill="#bf1313" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                                <Label text="Nenhuma Loja Encontrada!" textFill="#bf1313" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                                     <font>
                                                                         <Font size="26.0" />
                                                                     </font>
