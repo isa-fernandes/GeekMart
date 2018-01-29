@@ -3,8 +3,6 @@ package br.ufrpe.geekMart.dados;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
-import br.ufrpe.geekMart.negocio.classesBasicas.Categorias;
-import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 
 public class RepositorioAnuncio implements IRepositorioAnuncio {
     private Anuncio[] anuncios;

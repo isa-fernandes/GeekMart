@@ -3,9 +3,7 @@ import br.ufrpe.geekMart.exceptions.JaExisteException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
-import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
-import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
-import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
+import br.ufrpe.geekMart.negocio.classesBasicas.*;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -60,22 +58,16 @@ public class AlterarLojaController {
 
 
 
-        private void updateComboBoxCategorias(){
-                for(int i = 0; i < fachada.listarCategorias().size(); i++){
-                        cbCategorias.getItems().add(i,fachada.listarCategorias().get(i));
-                }
-        }
+    private  void  updateComboBoxCategorias(){
+        this.cbCategorias.getItems().setAll(EnumCategorias.values());
+    }
 
-        private void updateComboBoxLojas(){
-                for(int i = 0; i < fachada.listarCategorias().size(); i++){
-                        cbLojas.getItems().add(i,fachada.listarCategorias().get(i));
-                }
-        }
+    private void updateComboBoxLojas(){
+        this.cbLojas.getItems().setAll(EnumCategorias.values());
+    }
 
     private void updateComboBoxCategoria(){
-        for(int i = 0; i < fachada.listarCategorias().size(); i++){
-            cbEstado.getItems().add(i,fachada.listarCategorias().get(i));
-        }
+        this.cbCategoria.getItems().setAll(EnumCategorias.values());
     }
 
     private void updateList() throws NaoExisteException, ParametroNullException, JaExisteException {
@@ -101,6 +93,7 @@ public class AlterarLojaController {
         tfTitulo.setText(user.getNome());
         tfTelefone.setText(user.getTelefone());
         taDescricao.setText(user.getDescricao());
+        cbCategoria.setValue(user.getCategoria().toString());
     }
 
 
@@ -112,6 +105,9 @@ public class AlterarLojaController {
 
         @FXML
         private ComboBox cbCategorias;
+
+        @FXML
+         private ComboBox cbCategoria;
 
         @FXML
         private Button btSalvar;
@@ -228,7 +224,7 @@ public class AlterarLojaController {
                 throw new RuntimeException("O campo telefone não pode ser vazio");
             if(taDescricao.getText().isEmpty())
                 throw new RuntimeException("O campo descrição não pode ser vazio");
-            if(cbEstado.getSelectionModel().isEmpty())
+            if(cbCategoria.getSelectionModel().isEmpty())
                 throw new RuntimeException("O campo categoria não pode ser vazio");
 
 
@@ -239,8 +235,8 @@ public class AlterarLojaController {
             Loja g = new Loja(
                     tfTitulo.getText(),
                     tfTelefone.getText(),
-                    (String)cbEstado.getSelectionModel().getSelectedItem(),
                     taDescricao.getText(),
+                    (EnumCategorias)cbCategoria.getSelectionModel().getSelectedItem(),
                     user.getCliente());
 
 

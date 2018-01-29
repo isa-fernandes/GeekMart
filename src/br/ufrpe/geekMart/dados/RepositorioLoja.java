@@ -3,9 +3,8 @@ package br.ufrpe.geekMart.dados;
 import br.ufrpe.geekMart.exceptions.JaExisteException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
-import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
-import br.ufrpe.geekMart.negocio.classesBasicas.Categorias;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
+import br.ufrpe.geekMart.negocio.classesBasicas.EnumEstados;
 import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
 
 import java.util.ArrayList;
@@ -59,7 +58,7 @@ public class RepositorioLoja implements IRepositorioLoja {
         }
     }
 
-    public Loja procurarLojaPorCategoria (Categorias categoria) throws ParametroNullException, NaoExisteException {
+    public Loja procurarLojaPorCategoria (EnumEstados categoria) throws ParametroNullException, NaoExisteException {
         Loja resultado = null;
         if( categoria != null) {
             int i = this.procurarIndiceCategoria(categoria);
@@ -123,7 +122,7 @@ public class RepositorioLoja implements IRepositorioLoja {
         return i;
     }
 
-    private int procurarIndiceCategoria (Categorias categoria) {
+    private int procurarIndiceCategoria (EnumEstados categoria) {
         int i = 0;
         boolean achou = false;
         while ((!achou) && (i < this.proxima)){

@@ -209,7 +209,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <PasswordField fx:id="tfEstado" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                    <ComboBox fx:id="cbEstado" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                                             </children>
                                         </GridPane>
                                     </children>

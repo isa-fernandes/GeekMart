@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Loja {
     private Cliente cliente;
     private String nome, descricao, telefone;
-    private String categoria;
+    private EnumCategorias categoria;
     private ArrayList<Anuncio> anuncios = new ArrayList<>();
 
 
@@ -15,7 +15,7 @@ public class Loja {
 
     }
 
-    public Loja(String nome, String telefone, String descricao,String categoria,Cliente cliente){
+    public Loja(String nome, String telefone, String descricao, EnumCategorias categoria, Cliente cliente){
         this.nome = nome;
         this.descricao = descricao;
         this.categoria = categoria;
@@ -63,11 +63,11 @@ public class Loja {
     }
 
 
-    public String getCategoria() {
+    public EnumCategorias getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(EnumCategorias categoria) {
         this.categoria = categoria;
     }
 

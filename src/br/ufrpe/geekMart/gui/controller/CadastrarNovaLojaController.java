@@ -3,16 +3,12 @@ import br.ufrpe.geekMart.exceptions.JaExisteException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
+import br.ufrpe.geekMart.negocio.classesBasicas.*;
 import javafx.embed.swing.SwingFXUtils;
-import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
-import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
-import br.ufrpe.geekMart.negocio.classesBasicas.Endereco;
-import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -64,23 +60,22 @@ public class CadastrarNovaLojaController {
 
 
 
-        private void updateComboBoxCategorias(){
-                for(int i = 0; i < fachada.listarCategorias().size(); i++){
-                        cbCategorias.getItems().add(i,fachada.listarCategorias().get(i));
-                }
-        }
-
-    private void updateComboBoxCategoria(){
-        for(int i = 0; i < fachada.listarCategorias().size(); i++){
-            cbCategoria.getItems().add(i,fachada.listarCategorias().get(i));
-        }
+    private  void  updateComboBoxCategorias(){
+        this.cbCategorias.getItems().setAll(EnumCategorias.values());
     }
 
-        private void updateComboBoxLojas(){
-                for(int i = 0; i < fachada.listarCategorias().size(); i++){
-                        cbLojas.getItems().add(i,fachada.listarCategorias().get(i));
-                }
-        }
+    private void updateComboBoxLojas(){
+        this.cbLojas.getItems().setAll(EnumCategorias.values());
+    }
+
+    private void updateComboBoxCategoria(){
+        this.cbCategoria.getItems().setAll(EnumCategorias.values());
+    }
+
+    private void updateComboBoxEstados(){
+        this.cbEstado.getItems().setAll(EnumEstados.values());
+    }
+
 
         private void updateList() throws NaoExisteException, ParametroNullException, JaExisteException{
                 lvMeusAnuncios.getItems().clear();
@@ -92,6 +87,8 @@ public class CadastrarNovaLojaController {
 
         }
 
+         @FXML
+         private ComboBox cbEstado;
 
         @FXML
         private Button btTrocarImagem;
@@ -228,8 +225,8 @@ public class CadastrarNovaLojaController {
                         Loja g = new Loja(
                                 tfTitulo.getText(),
                                 tfTelefone.getText(),
-                                (String)cbCategoria.getSelectionModel().getSelectedItem(),
                                 taDescricao.getText(),
+                                (EnumCategorias) cbCategoria.getSelectionModel().getSelectedItem(),
                                 user);
 
 

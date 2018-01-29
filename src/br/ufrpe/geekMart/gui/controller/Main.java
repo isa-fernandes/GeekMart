@@ -254,46 +254,46 @@ public class Main extends Application {
         Parent fxmlMeusAnuncios6 = FXMLLoader.load(getClass().getResource("../view/MeusAnuncios6.fxml"));
         meusAnuncios6Scene = new Scene(fxmlMeusAnuncios6,900,600);
 
-        Parent fxmlBuscarLojasDeslogado0 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasDeslogado0.fxml"));
+        Parent fxmlBuscarLojasDeslogado0 = FXMLLoader.load(getClass().getResource("../view/BuscaLojasDeslogado0.fxml"));
         buscaLojasDeslogado0Scene = new Scene(fxmlBuscarLojasDeslogado0,900,600);
 
-        Parent fxmlBuscarLojasDeslogado1 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasDeslogado1.fxml"));
+        Parent fxmlBuscarLojasDeslogado1 = FXMLLoader.load(getClass().getResource("../view/BuscaLojasDeslogado1.fxml"));
         buscaLojasDeslogado1Scene = new Scene(fxmlBuscarLojasDeslogado1,900,600);
 
-        Parent fxmlBuscarLojasDeslogado2 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasDeslogado2.fxml"));
+        Parent fxmlBuscarLojasDeslogado2 = FXMLLoader.load(getClass().getResource("../view/BuscaLojasDeslogado2.fxml"));
         buscaLojasDeslogado2Scene = new Scene(fxmlBuscarLojasDeslogado2,900,600);
 
-        Parent fxmlBuscarLojasDeslogado3 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasDeslogado3.fxml"));
+        Parent fxmlBuscarLojasDeslogado3 = FXMLLoader.load(getClass().getResource("../view/BuscaLojasDeslogado3.fxml"));
         buscaLojasDeslogado3Scene = new Scene(fxmlBuscarLojasDeslogado3,900,600);
 
-        Parent fxmlBuscarLojasDeslogado4 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasDeslogado4.fxml"));
+        Parent fxmlBuscarLojasDeslogado4 = FXMLLoader.load(getClass().getResource("../view/BuscaLojasDeslogado4.fxml"));
         buscaLojasDeslogado4Scene = new Scene(fxmlBuscarLojasDeslogado4,900,600);
 
-        Parent fxmlBuscarLojasDeslogado5 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasDeslogado5.fxml"));
+        Parent fxmlBuscarLojasDeslogado5 = FXMLLoader.load(getClass().getResource("../view/BuscaLojasDeslogado5.fxml"));
         buscaLojasDeslogado5Scene = new Scene(fxmlBuscarLojasDeslogado5,900,600);
 
-        Parent fxmlBuscarLojasDeslogado6 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasDeslogado6.fxml"));
+        Parent fxmlBuscarLojasDeslogado6 = FXMLLoader.load(getClass().getResource("../view/BuscaLojasDeslogado6.fxml"));
         buscaLojasDeslogado6Scene = new Scene(fxmlBuscarLojasDeslogado6,900,600);
 
-        Parent fxmlBuscarLojasLogado0 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasLogado0.fxml"));
+        Parent fxmlBuscarLojasLogado0 = FXMLLoader.load(getClass().getResource("../view/BuscaLojasLogado0.fxml"));
         buscaLojasLogado0Scene = new Scene(fxmlBuscarLojasLogado0,900,600);
 
-        Parent fxmlBuscarLojasLogado1 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasLogado1.fxml"));
+        Parent fxmlBuscarLojasLogado1 = FXMLLoader.load(getClass().getResource("../view/BuscaLojasLogado1.fxml"));
         buscaLojasLogado1Scene = new Scene(fxmlBuscarLojasLogado1,900,600);
 
-        Parent fxmlBuscarLojasLogado2 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasLogado2.fxml"));
+        Parent fxmlBuscarLojasLogado2 = FXMLLoader.load(getClass().getResource("../view/BuscaLojasLogado2.fxml"));
         buscaLojasLogado2Scene = new Scene(fxmlBuscarLojasLogado2,900,600);
 
-        Parent fxmlBuscarLojasLogado3 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasLogado3.fxml"));
+        Parent fxmlBuscarLojasLogado3 = FXMLLoader.load(getClass().getResource("../view/BuscaLojasLogado3.fxml"));
         buscaLojasLogado3Scene = new Scene(fxmlBuscarLojasLogado3,900,600);
 
-        Parent fxmlBuscarLojasLogado4 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasLogado4.fxml"));
+        Parent fxmlBuscarLojasLogado4 = FXMLLoader.load(getClass().getResource("../view/BuscaLojasLogado4.fxml"));
         buscaLojasLogado4Scene = new Scene(fxmlBuscarLojasLogado4,900,600);
 
-        Parent fxmlBuscarLojasLogado5 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasLogado5.fxml"));
+        Parent fxmlBuscarLojasLogado5 = FXMLLoader.load(getClass().getResource("../view/BuscaLojasLogado5.fxml"));
         buscaLojasLogado5Scene = new Scene(fxmlBuscarLojasLogado5,900,600);
 
-        Parent fxmlBuscarLojasLogado6 = FXMLLoader.load(getClass().getResource("../view/BuscarLojasLogado6.fxml"));
+        Parent fxmlBuscarLojasLogado6 = FXMLLoader.load(getClass().getResource("../view/BuscaLojasLogado6.fxml"));
         buscaLojasLogado6Scene = new Scene(fxmlBuscarLojasLogado6,900,600);
 
 

@@ -1,8 +1,5 @@
 package br.ufrpe.geekMart.negocio;
 
-import br.ufrpe.geekMart.dados.IRepositorioAnuncio;
-import br.ufrpe.geekMart.dados.IRepositorioLoja;
-import br.ufrpe.geekMart.dados.IRepositorioUsuario;
 import br.ufrpe.geekMart.exceptions.*;
 import br.ufrpe.geekMart.negocio.classesBasicas.*;
 
@@ -151,9 +148,6 @@ public class Fachada {
         this.cadastroAnuncio.alterarAnuncio(nomeAntigo, anuncio);
     }
 
-    public ArrayList<String> listarCategorias(){
-        return cadastroAnuncio.listarCategorias();
-    }
 
     public Anuncio[] listarAnuncios(){
         return this.cadastroAnuncio.listarAnuncios();
@@ -178,7 +172,7 @@ public class Fachada {
         return this.cadastroLoja.procurarLoja(nome);
     }
 
-    public Loja buscarLojaPorCategoria (Categorias categoria)
+    public Loja buscarLojaPorCategoria (EnumEstados categoria)
             throws ParametroNullException, NaoExisteException {
         return this.cadastroLoja.procurarLojaPorCategoria(categoria);
     }

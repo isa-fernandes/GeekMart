@@ -1,14 +1,15 @@
 package br.ufrpe.geekMart.negocio.classesBasicas;
 
 public class Endereco {
-    private String logradouro, numero, bairro, cidade, estado, cep, complemento;
+    private String logradouro, numero, bairro, cidade, cep, complemento;
+    private EnumEstados estado;
 
     public Endereco(){
 
     }
 
 
-    public Endereco(String logradouro, String numero, String bairro, String cidade, String estado, String cep,
+    public Endereco(String logradouro, String numero, String bairro, String cidade, EnumEstados estado, String cep,
                     String complemento) {
         this.logradouro = logradouro;
         this.numero = numero;
@@ -19,9 +20,7 @@ public class Endereco {
         this.complemento = complemento;
     }
 
-    public Endereco(String estado){
-        this.estado=estado;
-    }
+
 
     public String getLogradouro(){
         return logradouro;
@@ -60,16 +59,13 @@ public class Endereco {
         this.cidade = cidade;
     }
 
-
-    public String getEstado() {
+    public EnumEstados getEstado() {
         return estado;
     }
 
-
-    public void setEstado(String estado) {
+    public void setEstado(EnumEstados estado) {
         this.estado = estado;
     }
-
 
     public String getCep() {
         return cep;

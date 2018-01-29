@@ -5,10 +5,9 @@ import br.ufrpe.geekMart.dados.RepositorioLoja;
 import br.ufrpe.geekMart.exceptions.JaExisteException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
-import br.ufrpe.geekMart.negocio.classesBasicas.Categorias;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
+import br.ufrpe.geekMart.negocio.classesBasicas.EnumEstados;
 import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
-import br.ufrpe.geekMart.negocio.classesBasicas.Usuario;
 
 import java.util.ArrayList;
 
@@ -37,10 +36,10 @@ public class ControladorLoja {
     }
 
     public ArrayList<Loja> procurarLojaPorCliente (Cliente cliente) throws ParametroNullException{
-        return this.procurarLojaPorCliente(cliente);
+        return this.repositorio.procurarLojaPorCliente(cliente);
     }
-    public Loja procurarLojaPorCategoria (Categorias categoria) throws ParametroNullException, NaoExisteException{
-        return this.procurarLojaPorCategoria(categoria);
+    public Loja procurarLojaPorCategoria (EnumEstados categoria) throws ParametroNullException, NaoExisteException{
+        return this.repositorio.procurarLojaPorCategoria(categoria);
     }
 
     public void removerLoja(String nomeDaLoja,String cpf) throws ParametroNullException, NaoExisteException{

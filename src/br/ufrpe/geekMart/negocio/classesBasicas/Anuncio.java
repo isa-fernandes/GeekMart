@@ -3,10 +3,7 @@ package br.ufrpe.geekMart.negocio.classesBasicas;
 import javafx.scene.image.Image;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 
 public class Anuncio {
@@ -14,8 +11,8 @@ public class Anuncio {
     private String preco, telefone;
     private String titulo;
     private String descricao;
-    private String categoria;
-    private Endereco endereco;
+    private EnumCategorias categoria;
+    private EnumEstados estado;
     private LocalDate data, dataFim;
     private boolean ativo;
     private int estrelas[] = {1,2,3,4,5};
@@ -30,14 +27,14 @@ public class Anuncio {
 
     }
 
-    public Anuncio (Cliente cliente, String preco, String titulo, String descricao, String categoria,
-                    Endereco endereco, int quantidadeProdutos, String telefone, Image prim, Image seg, Image ter) {
+    public Anuncio (Cliente cliente, String preco, String titulo, String descricao, EnumCategorias categoria,
+                    EnumEstados estado, int quantidadeProdutos, String telefone, Image prim, Image seg, Image ter) {
         this.cliente = cliente;
         this.preco = preco;
         this.titulo = titulo;
         this.descricao = descricao;
         this.categoria = categoria;
-        this.endereco = endereco;
+        this.estado = estado;
         this.data = LocalDate.now();
         this.dataFim = data.plusDays(45);
         this.quantidadeProdutos = quantidadeProdutos;
@@ -141,20 +138,20 @@ public class Anuncio {
         this.descricao = descricao;
     }
 
-    public String getCategoria() {
+    public EnumCategorias getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(EnumCategorias categoria) {
         this.categoria = categoria;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public EnumEstados getEstado() {
+        return estado;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public void setEstado(EnumEstados estado) {
+        this.estado = estado;
     }
 
     public Cliente getCliente() {
