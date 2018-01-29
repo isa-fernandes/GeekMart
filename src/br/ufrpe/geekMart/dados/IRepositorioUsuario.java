@@ -12,5 +12,5 @@ public interface IRepositorioUsuario {
     void alterarUsuario(Usuario usuario,Usuario usuarioNovo);
     Usuario[] listarUsuarios();
     int getProxima();
-
+    void salvarArquivo();
 }

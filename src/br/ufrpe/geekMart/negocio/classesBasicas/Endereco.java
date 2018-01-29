@@ -1,6 +1,8 @@
 package br.ufrpe.geekMart.negocio.classesBasicas;
 
-public class Endereco {
+import java.io.Serializable;
+
+public class Endereco implements Serializable {
     private String logradouro, numero, bairro, cidade, estado, cep, complemento;
 
     public Endereco(){

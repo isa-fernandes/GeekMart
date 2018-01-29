@@ -1,7 +1,13 @@
 package br.ufrpe.geekMart.negocio.classesBasicas;
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 
+import javax.imageio.ImageIO;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -9,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Anuncio {
+public class Anuncio implements Serializable {
     private Cliente cliente;
     private String preco, telefone;
     private String titulo;
@@ -24,7 +30,7 @@ public class Anuncio {
     private ArrayList<String> comentarios = new ArrayList<>();
     private int quantidadeProdutos;
     private ArrayList<Chat> chat;
-    private ArrayList<Image> imagens = new ArrayList<>();
+    private transient ArrayList<Image> imagens = new ArrayList<>();
 
     public Anuncio(){
 
@@ -49,6 +55,22 @@ public class Anuncio {
         this.imagens.add(prim);
         this.imagens.add(seg);
         this.imagens.add(ter);
+    }
+
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+        s.defaultReadObject();
+        int i;
+        for (i = 0; i < this.imagens.size(); i++) {
+            this.imagens.set(i, SwingFXUtils.toFXImage(ImageIO.read(s), null));
+        }
+    }
+
+    private void writeObject(ObjectOutputStream s) throws IOException {
+        s.defaultWriteObject();
+        int i;
+        for (i = 0; i < this.imagens.size(); i++) {
+            ImageIO.write(SwingFXUtils.fromFXImage(imagens.get(i), null), "png", s);
+        }
     }
 
     public String getTelefone() {

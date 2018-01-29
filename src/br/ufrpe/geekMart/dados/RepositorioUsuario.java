@@ -4,6 +4,8 @@ import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.classesBasicas.Usuario;
 
+import java.io.*;
+
 public class RepositorioUsuario implements IRepositorioUsuario {
     private Usuario[] usuarios;
     private Usuario user;
@@ -12,7 +14,7 @@ public class RepositorioUsuario implements IRepositorioUsuario {
 
     public static RepositorioUsuario getInstancia() {
         if (instancia == null) {
-            instancia = new RepositorioUsuario(100);
+            instancia = lerDoArquivo();
         }
         return instancia;
     }
@@ -22,7 +24,53 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         this.proxima = 0;
     }
 
+    private static RepositorioUsuario lerDoArquivo() {
+        RepositorioUsuario instanciaLocal = null;
 
+        File f = new File("lojas.dat");
+        FileInputStream fileInputStream = null;
+        ObjectInputStream objectInputStream = null;
+        try {
+            fileInputStream = new FileInputStream(f);
+            objectInputStream = new ObjectInputStream(fileInputStream);
+            Object object = objectInputStream.readObject();
+            instanciaLocal = (RepositorioUsuario) object;
+        } catch (Exception e) {
+            instanciaLocal = new RepositorioUsuario(100);
+        } finally {
+            if (objectInputStream != null) {
+                try {
+                    objectInputStream.close();
+                } catch (IOException e) {/* Silent exception */
+                }
+            }
+        }
+        return instanciaLocal;
+    }
+
+    public void salvarArquivo() {
+        if (instancia == null) {
+            return;
+        }
+        File f = new File("usuarios.dat");
+        FileOutputStream fileOutputStream = null;
+        ObjectOutputStream objectOutputStream = null;
+
+        try {
+            fileOutputStream = new FileOutputStream(f);
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(instancia);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (objectOutputStream != null) {
+                try {
+                    objectOutputStream.close();
+                } catch (IOException e) {
+                    /* Silent */}
+            }
+        }
+    }
 
     @Override
     public void cadastrarUsuario (Usuario c) {

@@ -1,8 +1,9 @@
 package br.ufrpe.geekMart.negocio.classesBasicas;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Usuario {
+public abstract class Usuario implements Serializable {
     protected boolean ativo,adm;
     protected String nome, email , cpf, senha;
 

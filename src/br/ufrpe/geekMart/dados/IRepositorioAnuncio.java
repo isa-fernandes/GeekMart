@@ -8,11 +8,12 @@ public interface IRepositorioAnuncio {
     void cadastrarAnuncio (Anuncio c);
     //Anuncio[] getAnunciosCategoria (String categoria);
     //Anuncio[] getAnunciosCategoria (int categoria);
-    Anuncio procurarAnuncio (String titulo) throws ParametroNullException, NaoExisteException;
-    void removerAnuncio (String titulo,String cpf) throws ParametroNullException, NaoExisteException;
+    Anuncio procurarAnuncio (String titulo);
+    void removerAnuncio (String titulo,String cpf);
     boolean existe (String titulo);
-    void alterarAnuncio (String nomeAntigo, Anuncio anuncio) throws ParametroNullException, NaoExisteException;
+    void alterarAnuncio (String nomeAntigo, Anuncio anuncio);
     Anuncio[] listarAnuncios();
     int getProxima();
+    void salvarArquivo();
 
 }

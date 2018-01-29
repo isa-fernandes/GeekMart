@@ -5,10 +5,7 @@ import br.ufrpe.geekMart.dados.RepositorioLoja;
 import br.ufrpe.geekMart.exceptions.JaExisteException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
-import br.ufrpe.geekMart.negocio.classesBasicas.Categorias;
-import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
-import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
-import br.ufrpe.geekMart.negocio.classesBasicas.Usuario;
+import br.ufrpe.geekMart.negocio.classesBasicas.*;
 
 import java.util.ArrayList;
 
@@ -29,11 +26,28 @@ public class ControladorLoja {
     }
 
     public void cadastrarLoja( Loja c) throws ParametroNullException, JaExisteException{
-        this.repositorio.cadastrarLoja(c);
+        if (c != null) {
+            if (!this.existeLoja(c.getNome())) {
+                this.repositorio.cadastrarLoja(c);
+                this.repositorio.salvarArquivo();
+            } else {
+                throw new JaExisteException("loja", "nome " + c.getNome());
+            }
+        } else {
+            throw new ParametroNullException("loja");
+        }
     }
 
     public Loja procurarLoja(String titulo) throws ParametroNullException, NaoExisteException{
-        return this.repositorio.procurarLoja(titulo);
+        if (titulo != null) {
+            if (this.existeLoja(titulo)) {
+                return this.repositorio.procurarLoja(titulo);
+            } else {
+                throw new NaoExisteException("loja", "título " + titulo);
+            }
+        } else {
+            throw new ParametroNullException("título");
+        }
     }
 
     public ArrayList<Loja> procurarLojaPorCliente (Cliente cliente) throws ParametroNullException{
@@ -43,16 +57,42 @@ public class ControladorLoja {
         return this.procurarLojaPorCategoria(categoria);
     }
 
+    public ArrayList<Loja> procurarLojasPorCategoria (CategoriasEnum categoriasEnum) {
+        return this.procurarLojasPorCategoria(categoriasEnum);
+    }
+
     public void removerLoja(String nomeDaLoja,String cpf) throws ParametroNullException, NaoExisteException{
-        this.repositorio.removerLoja(nomeDaLoja,cpf);
+        if(nomeDaLoja != null && cpf != null) {
+            if (this.existeLoja(nomeDaLoja)) {
+                this.repositorio.removerLoja(nomeDaLoja, cpf);
+                this.repositorio.salvarArquivo();
+            } else {
+                throw new NaoExisteException("loja", "nome " + nomeDaLoja);
+            }
+        } else {
+            throw new ParametroNullException("loja/CPF");
+        }
     }
 
     public  boolean existeLoja(String titulo) throws ParametroNullException{
-        return this.repositorio.existeLoja(titulo);
+        if (titulo != null) {
+            return this.repositorio.existeLoja(titulo);
+        } else {
+            throw new ParametroNullException("título");
+        }
     }
 
-    public void alterarLoja (String cpf, Loja loja) throws ParametroNullException, NaoExisteException{
-        this.repositorio.alterarLoja(cpf,loja);
+    public void alterarLoja (String nomeAntigo, Loja loja) throws ParametroNullException, NaoExisteException{
+        if (nomeAntigo != null && loja != null) {
+            if (this.existeLoja(nomeAntigo)) {
+                this.repositorio.alterarLoja(nomeAntigo, loja);
+                this.repositorio.salvarArquivo();
+            } else {
+                throw new NaoExisteException("loja", "nome " + nomeAntigo);
+            }
+        } else {
+            throw new ParametroNullException("antigo nome ou nova loja");
+        }
     }
 
     public Loja[] listarLojas(){

@@ -3,11 +3,8 @@ import br.ufrpe.geekMart.exceptions.JaExisteException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
+import br.ufrpe.geekMart.negocio.classesBasicas.*;
 import javafx.embed.swing.SwingFXUtils;
-import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
-import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
-import br.ufrpe.geekMart.negocio.classesBasicas.Endereco;
-import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -72,7 +69,8 @@ public class CadastrarNovaLojaController {
 
     private void updateComboBoxCategoria(){
         for(int i = 0; i < fachada.listarCategorias().size(); i++){
-            cbCategoria.getItems().add(i,fachada.listarCategorias().get(i));
+            //cbCategoria.getItems().add(i,fachada.listarCategorias().get(i));
+            cbCategoria.getItems().setAll(CategoriasEnum.values());
         }
     }
 
@@ -142,7 +140,7 @@ public class CadastrarNovaLojaController {
         private Button btDeletar;
 
         @FXML
-        private ComboBox cbCategoria;
+        private ComboBox<CategoriasEnum> cbCategoria;
 
         @FXML
         private TextField tfBuscar;
@@ -228,9 +226,11 @@ public class CadastrarNovaLojaController {
                         Loja g = new Loja(
                                 tfTitulo.getText(),
                                 tfTelefone.getText(),
-                                (String)cbCategoria.getSelectionModel().getSelectedItem(),
                                 taDescricao.getText(),
-                                user);
+                                //cbCategoria.getSelectionModel().getSelectedItem().name(),
+                                cbCategoria.getSelectionModel().getSelectedItem(),
+                                user,
+                                this.imageV.getImage());
 
 
                     try {

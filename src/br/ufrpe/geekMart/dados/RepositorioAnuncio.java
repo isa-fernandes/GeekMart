@@ -1,19 +1,17 @@
 package br.ufrpe.geekMart.dados;
 
-import br.ufrpe.geekMart.exceptions.NaoExisteException;
-import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
-import br.ufrpe.geekMart.negocio.classesBasicas.Categorias;
-import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 
-public class RepositorioAnuncio implements IRepositorioAnuncio {
+import java.io.*;
+
+public class RepositorioAnuncio implements IRepositorioAnuncio, Serializable {
     private Anuncio[] anuncios;
     private int proxima;
     private static RepositorioAnuncio instancia;
 
     public static RepositorioAnuncio getInstancia () {
         if (instancia == null) {
-            instancia = new RepositorioAnuncio(100);
+            instancia = lerDoArquivo();
         }
         return instancia;
     }
@@ -21,6 +19,54 @@ public class RepositorioAnuncio implements IRepositorioAnuncio {
     private RepositorioAnuncio (int tamanho) {
         this.anuncios = new Anuncio[tamanho];
         this.proxima = 0;
+    }
+
+    private static RepositorioAnuncio lerDoArquivo() {
+        RepositorioAnuncio instanciaLocal = null;
+
+        File f = new File("anuncios.dat");
+        FileInputStream fileInputStream = null;
+        ObjectInputStream objectInputStream = null;
+        try {
+            fileInputStream = new FileInputStream(f);
+            objectInputStream = new ObjectInputStream(fileInputStream);
+            Object object = objectInputStream.readObject();
+            instanciaLocal = (RepositorioAnuncio) object;
+        } catch (Exception e) {
+            instanciaLocal = new RepositorioAnuncio(100);
+        } finally {
+            if (objectInputStream != null) {
+                try {
+                    objectInputStream.close();
+                } catch (IOException e) {/* Silent exception */
+                }
+            }
+        }
+        return instanciaLocal;
+    }
+
+    public void salvarArquivo() {
+        if (instancia == null) {
+            return;
+        }
+        File f = new File("anuncios.dat");
+        FileOutputStream fileOutputStream = null;
+        ObjectOutputStream objectOutputStream = null;
+
+        try {
+            fileOutputStream = new FileOutputStream(f);
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(instancia);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (objectOutputStream != null) {
+                try {
+                    objectOutputStream.close();
+                } catch (IOException e) {
+                    /* Silent */}
+            }
+        }
     }
 
     public void cadastrarAnuncio (Anuncio c) {
@@ -82,34 +128,19 @@ public class RepositorioAnuncio implements IRepositorioAnuncio {
         return result;
     }*/
 
-    public Anuncio procurarAnuncio (String titulo) throws ParametroNullException, NaoExisteException {
-        if (titulo != null) {
-            int i = this.procurarIndice(titulo);
-            Anuncio resultado;
-            if (i < this.proxima) {
-                resultado = this.anuncios[i];
-                return resultado;
-            } else {
-                throw new NaoExisteException("anúncio", "título " + titulo);
-            }
-        } else {
-            throw new ParametroNullException("título");
-        }
+    public Anuncio procurarAnuncio (String titulo) {
+        int i = this.procurarIndice(titulo);
+        Anuncio resultado;
+        resultado = this.anuncios[i];
+        return resultado;
     }
 
-    public void removerAnuncio (String titulo, String cpf) throws ParametroNullException, NaoExisteException {
-        if (titulo != null) {
-            int i = this.procurarIndiceRemover(titulo,cpf);
-            if (i < this.proxima) {
-                this.anuncios[i] = this.anuncios[this.proxima - 1];
-                this.anuncios[this.proxima - 1] = null;
-                this.proxima = this.proxima - 1;
-
-            } else {
-                throw new NaoExisteException("anúncio ", "título " + titulo);
-            }
-        } else {
-            throw new ParametroNullException("título");
+    public void removerAnuncio (String titulo, String cpf) {
+        int i = this.procurarIndiceRemover(titulo,cpf);
+        if (i < this.proxima) {
+            this.anuncios[i] = this.anuncios[this.proxima - 1];
+            this.anuncios[this.proxima - 1] = null;
+            this.proxima = this.proxima - 1;
         }
     }
 
@@ -134,16 +165,10 @@ public class RepositorioAnuncio implements IRepositorioAnuncio {
     }
 
 
-    public void alterarAnuncio (String nomeAntigo, Anuncio anuncio) throws ParametroNullException, NaoExisteException {
-        if (nomeAntigo != null && anuncio != null) {
-            int i = this.procurarIndice(nomeAntigo);
-            if (i < this.proxima) {
-                this.anuncios[i] = anuncio;
-            } else {
-                throw new NaoExisteException("anúncio", "título " + nomeAntigo);
-            }
-        } else {
-            throw new ParametroNullException("anúncio");
+    public void alterarAnuncio (String nomeAntigo, Anuncio anuncio) {
+        int i = this.procurarIndice(nomeAntigo);
+        if (i < this.proxima) {
+            this.anuncios[i] = anuncio;
         }
     }
 

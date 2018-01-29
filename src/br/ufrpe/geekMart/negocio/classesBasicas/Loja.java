@@ -1,28 +1,53 @@
 package br.ufrpe.geekMart.negocio.classesBasicas;
 
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
+
+import javax.imageio.ImageIO;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Loja {
+public class Loja implements Serializable {
     private Cliente cliente;
     private String nome, descricao, telefone;
     private String categoria;
+    private CategoriasEnum categoriasEnum;
     private ArrayList<Anuncio> anuncios = new ArrayList<>();
-
+    private transient Image image;
 
 
     public Loja(){
 
     }
 
-    public Loja(String nome, String telefone, String descricao,String categoria,Cliente cliente){
+    public Loja(String nome, String telefone, String descricao,/*String categoria,*/ CategoriasEnum categoriasEnum,
+                Cliente cliente, Image image){
         this.nome = nome;
         this.descricao = descricao;
         this.categoria = categoria;
+        this.categoriasEnum = categoriasEnum;
         this.cliente = cliente;
         this.anuncios = anuncios;
         this.telefone = telefone;
+        this.image = image;
+    }
 
+    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
+        s.defaultReadObject();
+        image = SwingFXUtils.toFXImage(ImageIO.read(s), null);
+    }
+
+    private void writeObject(ObjectOutputStream s) throws IOException {
+        s.defaultWriteObject();
+        ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", s);
+    }
+
+    public CategoriasEnum getCategoriasEnum() {
+        return categoriasEnum;
     }
 
     public String getTelefone() {

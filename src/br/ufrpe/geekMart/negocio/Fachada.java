@@ -51,7 +51,8 @@ public class Fachada {
         return this.cadastroUsuario.existeUsuario(cpf);
     }
 
-    public  void alterarUsuario(Usuario usuario, Usuario usuarioNovo){
+    public  void alterarUsuario(Usuario usuario, Usuario usuarioNovo)
+            throws ParametroNullException, NaoExisteException {
         this.cadastroUsuario.alterarUsuario(usuario,usuarioNovo);
     }
 
@@ -110,20 +111,20 @@ public class Fachada {
     }
 
     public void desativarAnuncioSemEstoque(Anuncio c)
-            throws ParametroNullException, HaEstoqueException {
+            throws ParametroNullException, HaEstoqueException, NaoExisteException {
         this.cadastroAnuncio.desativarAnuncioSemEstoque(c);
     }
 
-    public void incluirComentario(Anuncio c , String s) throws ParametroNullException {
+    public void incluirComentario(Anuncio c , String s) throws ParametroNullException, NaoExisteException {
         this.cadastroAnuncio.incluirComentario(c,s);
     }
 
-    public void avaliarProduto(Anuncio c , int i) throws ParametroNullException {
+    public void avaliarProduto(Anuncio c , int i) throws ParametroNullException, NaoExisteException {
         this.cadastroAnuncio.avaliarProduto(c,i);
     }
 
     public void criarChat(Cliente comprador , Cliente vendedor, Anuncio anuncio)
-            throws ParametroNullException {
+            throws ParametroNullException, NaoExisteException {
         this.cadastroAnuncio.criarChat(comprador,vendedor,anuncio);
     }
 

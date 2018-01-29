@@ -4,6 +4,7 @@ import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
 import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
+import br.ufrpe.geekMart.negocio.classesBasicas.CategoriasEnum;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
 import javafx.embed.swing.SwingFXUtils;
@@ -62,7 +63,8 @@ public class AlterarLojaController {
 
         private void updateComboBoxCategorias(){
                 for(int i = 0; i < fachada.listarCategorias().size(); i++){
-                        cbCategorias.getItems().add(i,fachada.listarCategorias().get(i));
+                        //cbCategorias.getItems().add(i,fachada.listarCategorias().get(i));
+                    cbCategorias.getItems().setAll(CategoriasEnum.values());
                 }
         }
 
@@ -111,7 +113,7 @@ public class AlterarLojaController {
         private ImageView imageV2;
 
         @FXML
-        private ComboBox cbCategorias;
+        private ComboBox<CategoriasEnum> cbCategorias;
 
         @FXML
         private Button btSalvar;
@@ -239,9 +241,11 @@ public class AlterarLojaController {
             Loja g = new Loja(
                     tfTitulo.getText(),
                     tfTelefone.getText(),
-                    (String)cbEstado.getSelectionModel().getSelectedItem(),
                     taDescricao.getText(),
-                    user.getCliente());
+                    //(String)cbEstado.getSelectionModel().getSelectedItem(),
+                    cbCategorias.getSelectionModel().getSelectedItem(),
+                    user.getCliente(),
+                    imageV.getImage());
 
 
             try {

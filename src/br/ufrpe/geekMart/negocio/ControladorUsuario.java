@@ -28,6 +28,7 @@ public class ControladorUsuario {
             boolean existe = this.repositorio.existeUsuario(user.getCpf());
             if (!existe) {
                 this.repositorio.cadastrarUsuario(user);
+                this.repositorio.salvarArquivo();
             } else {
                 throw new JaExisteException("usuário", "CPF " + user.getCpf());
             }
@@ -40,6 +41,7 @@ public class ControladorUsuario {
         if(cpf != null){
             if(this.repositorio.existeUsuario(cpf)) {
                 this.repositorio.removerUsuario(cpf);
+                this.repositorio.salvarArquivo();
             } else {
                 throw new NaoExisteException("usuário", "CPF " + cpf);
             }
@@ -56,13 +58,24 @@ public class ControladorUsuario {
         return  this.repositorio.existeUsuario(cpf);
     }
 
-    public  void alterarUsuario(Usuario usuario, Usuario usuarioNovo){
-        this.repositorio.alterarUsuario(usuario,usuarioNovo);
+    public  void alterarUsuario(Usuario usuario, Usuario usuarioNovo)
+            throws ParametroNullException, NaoExisteException {
+        if (usuario != null && usuarioNovo != null) {
+            if (this.existeUsuario(usuario.getCpf())) {
+                this.repositorio.alterarUsuario(usuario, usuarioNovo);
+                this.repositorio.salvarArquivo();
+            } else {
+                throw new NaoExisteException("usuário", "CPF " + usuario.getCpf());
+            }
+        } else {
+            throw new ParametroNullException("usuário");
+        }
     }
 
 
 
-    public boolean autenticarLogin(String senha, String cpf) throws ParametroNullException, NaoExisteException ,LoginSemSucessoException {
+    public boolean autenticarLogin(String senha, String cpf)
+            throws ParametroNullException, NaoExisteException ,LoginSemSucessoException {
         boolean retorno = false;
         if (cpf != null && senha != null) {
             boolean existe = this.repositorio.existeUsuario(cpf);

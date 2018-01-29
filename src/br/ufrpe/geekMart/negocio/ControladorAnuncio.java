@@ -30,6 +30,7 @@ public class ControladorAnuncio {
             boolean existe = this.repositorio.existe(anuncio.getTitulo());
             if (!existe) {
                 this.repositorio.cadastrarAnuncio(anuncio);
+                this.repositorio.salvarArquivo();
             } else {
                 throw new JaExisteException("anúncio", "título " + anuncio.getTitulo());
             }
@@ -40,11 +41,28 @@ public class ControladorAnuncio {
 
 
     public Anuncio procurarAnuncio (String titulo) throws ParametroNullException, NaoExisteException{
-        return this.repositorio.procurarAnuncio(titulo);
+        if (titulo != null) {
+            if (this.repositorio.existe(titulo)) {
+                return this.repositorio.procurarAnuncio(titulo);
+            } else {
+                throw new NaoExisteException("anúncio", "título " + titulo);
+            }
+        } else {
+            throw new ParametroNullException("título");
+        }
     }
 
     public void removerAnuncio (String titulo,String cpf) throws ParametroNullException, NaoExisteException{
-        this.repositorio.removerAnuncio(titulo,cpf);
+        if (titulo != null && cpf != null) {
+            if (this.repositorio.existe(titulo)) {
+                this.repositorio.removerAnuncio(titulo, cpf);
+                this.repositorio.salvarArquivo();
+            } else {
+                throw new NaoExisteException("anúncio ", "título " + titulo);
+            }
+        } else {
+            throw new ParametroNullException("título/CPF");
+        }
     }
 
     public boolean existe (String titulo){
@@ -52,7 +70,16 @@ public class ControladorAnuncio {
     }
 
     public void alterarAnuncio (String nomeAntigo, Anuncio anuncio) throws ParametroNullException, NaoExisteException{
-         this.repositorio.alterarAnuncio(nomeAntigo, anuncio);
+        if (nomeAntigo != null && anuncio != null) {
+            if (this.repositorio.existe(nomeAntigo)) {
+                this.repositorio.alterarAnuncio(nomeAntigo, anuncio);
+                this.repositorio.salvarArquivo();
+            } else {
+                throw new NaoExisteException("anúncio", "título " + nomeAntigo);
+            }
+        } else {
+            throw new ParametroNullException("anúncio");
+        }
     }
 
     /*public Anuncio[] getAnunciosCategoria (String categoria) {
@@ -69,7 +96,8 @@ public class ControladorAnuncio {
         if( c != null) {
             LocalDate data = c.getDataFim();
             if (hoje == data || hoje.isAfter(data)) {
-                this.repositorio.removerAnuncio(c.getTitulo(),c.getCliente().getCpf());
+                this.removerAnuncio(c.getTitulo(),c.getCliente().getCpf());
+                this.repositorio.salvarArquivo();
             } else {
                 throw new DataExpirarNaoChegouException(data, c);
             }
@@ -78,10 +106,13 @@ public class ControladorAnuncio {
         }
     }
 
-    public void desativarAnuncioSemEstoque(Anuncio c) throws ParametroNullException, HaEstoqueException {
+    public void desativarAnuncioSemEstoque(Anuncio c) throws ParametroNullException,
+            HaEstoqueException, NaoExisteException {
         if( c!= null){
             if(c.getQuantidadeProdutos() == 0){
                 c.setAtivo(false);
+                this.alterarAnuncio(c.getTitulo(), c);
+                this.repositorio.salvarArquivo();
             } else {
                 throw new HaEstoqueException(c);
             }
@@ -90,27 +121,34 @@ public class ControladorAnuncio {
         }
     }
 
-    public void incluirComentario(Anuncio c , String s) throws ParametroNullException {
+    public void incluirComentario(Anuncio c , String s) throws ParametroNullException, NaoExisteException {
         if(c != null && s != null){
             c.getComentarios().add(s);
+            this.alterarAnuncio(c.getTitulo(), c);
+            this.repositorio.salvarArquivo();
         } else {
             throw new ParametroNullException("anúncio/comentário");
         }
     }
 
-    public void avaliarProduto(Anuncio c , int i) throws ParametroNullException {
+    public void avaliarProduto(Anuncio c , int i) throws ParametroNullException, NaoExisteException {
         if(c != null){
             c.setQuantidadeAvaliacoes(c.getQuantidadeProdutos() +1);
-            c.setEstrela((c.getEstrela() + i)/c.getQuantidadeAvaliacoes() );
+            c.setEstrela((c.getEstrela() + i)/c.getQuantidadeAvaliacoes());
+            this.alterarAnuncio(c.getTitulo(), c);
+            this.repositorio.salvarArquivo();
         } else {
             throw new ParametroNullException("anúncio");
         }
     }
 
-    public void criarChat(Cliente comprador , Cliente vendedor, Anuncio anuncio) throws ParametroNullException {
+    public void criarChat(Cliente comprador , Cliente vendedor, Anuncio anuncio)
+            throws ParametroNullException, NaoExisteException {
         if(comprador != null && vendedor != null && anuncio != null) {
             Chat chat = new Chat(comprador, vendedor, anuncio);
             anuncio.getChat().add(anuncio.getQuantidadeChats(), chat);
+            this.alterarAnuncio(anuncio.getTitulo(), anuncio);
+            this.repositorio.salvarArquivo();
         } else {
             throw new ParametroNullException("comprador/vendedor/anúncio");
         }
@@ -141,7 +179,6 @@ public class ControladorAnuncio {
         Chat uol = instancia.procurarChat(comprador,vendedor,anuncio);
         uol.getMsgCliente().add(uol.getQuantidadeMsgCliente(),msg);
         uol.setQuantidadeMsgCliente(uol.getQuantidadeMsgCliente() + 1);
-
     }
 
     public void enviarChatParaCliente(Cliente comprador , Cliente vendedor, Anuncio anuncio, String msg)
