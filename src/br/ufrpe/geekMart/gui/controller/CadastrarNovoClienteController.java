@@ -3,8 +3,7 @@ import br.ufrpe.geekMart.exceptions.JaExisteException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
-import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
-import br.ufrpe.geekMart.negocio.classesBasicas.Endereco;
+import br.ufrpe.geekMart.negocio.classesBasicas.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -22,6 +21,7 @@ public class CadastrarNovoClienteController {
                                 if(newScreen.equals("cadastrarNovoClienteScene")) {
                                         updateComboBoxCategorias();
                                         updateComboBoxLojas();
+                                        updateComboBoxEstado();
 
                                 } }
                 });
@@ -29,21 +29,22 @@ public class CadastrarNovoClienteController {
 
                 updateComboBoxCategorias();
                 updateComboBoxLojas();
+                updateComboBoxEstado();
 
         }
 
 
 
-        private void updateComboBoxCategorias(){
-                for(int i = 0; i < fachada.listarCategorias().size(); i++){
-                        cbCategorias.getItems().add(i,fachada.listarCategorias().get(i));
-                }
+        private  void  updateComboBoxCategorias(){
+                this.cbCategorias.getItems().setAll(EnumCategorias.values());
         }
 
         private void updateComboBoxLojas(){
-                for(int i = 0; i < fachada.listarCategorias().size(); i++){
-                        cbLojas.getItems().add(i,fachada.listarCategorias().get(i));
-                }
+                this.cbLojas.getItems().setAll(EnumCategorias.values());
+        }
+
+        private void updateComboBoxEstado(){
+                this.cbEstado.getItems().setAll(EnumEstados.values());
         }
 
         @FXML
@@ -51,6 +52,9 @@ public class CadastrarNovoClienteController {
 
         @FXML
         private ComboBox cbCategorias;
+
+        @FXML
+        private ComboBox cbEstado;
 
         @FXML
         private Button btSalvar;
@@ -137,7 +141,7 @@ public class CadastrarNovoClienteController {
                 tfNumero.setText("");
                 tfBairro.setText("");
                 tfCidade.setText("");
-                tfEstado.setText("");
+
                 tfCEP.setText("");
                 tfComplemento.setText("");
                 tfNome.setText("");
@@ -180,7 +184,7 @@ public class CadastrarNovoClienteController {
                                 tfNumero.getText(),
                                 tfBairro.getText(),
                                 tfCidade.getText(),
-                                tfEstado.getText(),
+                                (EnumEstados) cbEstado.getSelectionModel().getSelectedItem(),
                                 tfCEP.getText(),
                                 tfComplemento.getText());
 
@@ -191,7 +195,7 @@ public class CadastrarNovoClienteController {
                                 tfNome.getText(),
                                 tfEmail.getText(),
                                 tfCPF.getText(),
-                                tfTelefone.getText(),
+                                cbEstado.getSelectionModel().toString(),
                                  c,
                                 pqSenha.getText(),
                                 a, b);
@@ -237,7 +241,7 @@ public class CadastrarNovoClienteController {
                         tfNumero.setText("");
                         tfBairro.setText("");
                         tfCidade.setText("");
-                        tfEstado.setText("");
+
                         tfCEP.setText("");
                         tfComplemento.setText("");
                         tfNome.setText("");

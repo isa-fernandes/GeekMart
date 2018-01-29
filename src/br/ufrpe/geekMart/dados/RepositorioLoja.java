@@ -1,11 +1,10 @@
 package br.ufrpe.geekMart.dados;
 
-import br.ufrpe.geekMart.exceptions.JaExisteException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
-import br.ufrpe.geekMart.negocio.classesBasicas.Categorias;
-import br.ufrpe.geekMart.negocio.classesBasicas.CategoriasEnum;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
+import br.ufrpe.geekMart.negocio.classesBasicas.EnumCategorias;
+import br.ufrpe.geekMart.negocio.classesBasicas.EnumEstados;
 import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
 
 import java.io.*;
@@ -91,17 +90,20 @@ public class RepositorioLoja implements IRepositorioLoja, Serializable {
         return resultado;
     }
 
-    public ArrayList<Loja> procurarLojasPorCategoria (CategoriasEnum categoriasEnum) {
+
+    //SUGESTAO METODO RETORNA LOJAS DE UMA CATEGORIA
+    //TODO
+    public ArrayList<Loja> procurarLojasPorCategoria (EnumCategorias categoriasEnum) {
         ArrayList<Loja> resultados = null;
         for (int i = 0; i < this.proxima; i++) {
-            if (this.lojas[i].getCategoriasEnum().equals(categoriasEnum)) {
+            if (this.lojas[i].getCategoria().equals(categoriasEnum)) {
                 resultados.add(this.lojas[i]);
             }
         }
         return resultados;
     }
 
-    /*public Loja procurarLojaPorCategoria (Categorias categoria) throws ParametroNullException, NaoExisteException {
+    public Loja procurarLojaPorCategoria (EnumCategorias categoria) throws ParametroNullException, NaoExisteException {
         Loja resultado = null;
         if( categoria != null) {
             int i = this.procurarIndiceCategoria(categoria);
@@ -114,7 +116,7 @@ public class RepositorioLoja implements IRepositorioLoja, Serializable {
         } else {
             throw new ParametroNullException("categoria");
         }
-    }*/
+    }
 
     public ArrayList<Loja> procurarLojaPorCliente (Cliente cliente) throws ParametroNullException {
         if( cliente != null) {
@@ -159,7 +161,7 @@ public class RepositorioLoja implements IRepositorioLoja, Serializable {
         return i;
     }
 
-    private int procurarIndiceCategoria (Categorias categoria) {
+    private int procurarIndiceCategoria (EnumCategorias categoria) {
         int i = 0;
         boolean achou = false;
         while ((!achou) && (i < this.proxima)){

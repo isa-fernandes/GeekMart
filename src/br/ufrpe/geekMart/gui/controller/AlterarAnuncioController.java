@@ -1,12 +1,9 @@
 package br.ufrpe.geekMart.gui.controller;
 import br.ufrpe.geekMart.exceptions.HaEstoqueException;
-import br.ufrpe.geekMart.exceptions.JaExisteException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
-import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
-import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
-import br.ufrpe.geekMart.negocio.classesBasicas.Endereco;
+import br.ufrpe.geekMart.negocio.classesBasicas.*;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,14 +30,16 @@ public class AlterarAnuncioController {
                         public void onScreenChanged(String newScreen, Object userData) {
                                 if(newScreen.equals("alterarAnuncioScene")) {
                                         user=(Anuncio)userData;
+                                        updateComboBoxCategoria();
                                         updateComboBoxCategorias();
                                         updateComboBoxLojas();
+                                        updateComboBoxEstado();
                                         updateAnuncio();
 
                                 } }
                 });
-
-
+                updateComboBoxEstado();
+                updateComboBoxCategoria();
                 updateComboBoxCategorias();
                 updateComboBoxLojas();
 
@@ -52,22 +51,26 @@ public class AlterarAnuncioController {
                 tfPreco.setText(user.getPreco());
                 tfQuantidade.setText(Integer.toString(user.getQuantidadeProdutos()));
                 tfTelefone.setText(user.getTelefone());
-                tfEstado.setText(user.getEndereco().getEstado());
                 taDescricao.setText(user.getDescricao());
+                cbLojas.setValue(user.getEstado());
         }
 
 
-        private void updateComboBoxCategorias(){
-                for(int i = 0; i < fachada.listarCategorias().size(); i++){
-                        cbCategorias.getItems().add(i,fachada.listarCategorias().get(i));
-                }
-        }
+    private  void  updateComboBoxCategorias(){
+        this.cbCategorias.getItems().setAll(EnumCategorias.values());
+    }
 
-        private void updateComboBoxLojas(){
-                for(int i = 0; i < fachada.listarCategorias().size(); i++){
-                        cbLojas.getItems().add(i,fachada.listarCategorias().get(i));
-                }
-        }
+    private void updateComboBoxLojas(){
+        this.cbLojas.getItems().setAll(EnumCategorias.values());
+    }
+
+    private  void updateComboBoxCategoria(){
+        this.cbCategoria.getItems().setAll(EnumCategorias.values());
+    }
+
+    private  void updateComboBoxEstado(){
+        this.cbEstado.getItems().setAll(EnumEstados.values());
+    }
 
         @FXML
         protected  void cancelarAction(ActionEvent e){
@@ -75,10 +78,12 @@ public class AlterarAnuncioController {
                 tfTitulo.setText("");
                 taDescricao.setText("");
                 tfQuantidade.setText("");
-                tfEstado.setText("");
                 tfTelefone.setText("");
+
         }
 
+        @FXML
+        private ComboBox cbEstado;
 
 
         @FXML
@@ -147,8 +152,6 @@ public class AlterarAnuncioController {
         @FXML
         private Button btMeusAnuncios;
 
-        @FXML
-        private ComboBox cbEstado;
 
         @FXML
         private Button btSalvarAnuncio;
@@ -219,15 +222,15 @@ public class AlterarAnuncioController {
                                 throw new RuntimeException("O campo e-mail não pode ser vazio");
                         if (tfTelefone.getText().isEmpty())
                                 throw new RuntimeException("O campo telefone não pode ser vazio");
-                        if (tfEstado.getText().isEmpty())
-                                throw new RuntimeException("O campo estado não pode ser vazio");
+                        if (cbEstado.getSelectionModel().isEmpty())
+                        throw new RuntimeException("O campo estado não pode ser vazio");
                         if (cbCategoria.getSelectionModel().isEmpty())
                                 throw new RuntimeException("O campo categoria não pode ser vazio");
                         if (taDescricao.getText().isEmpty())
                                 throw new RuntimeException("O campo descrição não pode ser vazio");
 
 
-                        Endereco c = new Endereco(tfEstado.getText());
+
 
 
                         Anuncio g = new Anuncio(
@@ -235,8 +238,8 @@ public class AlterarAnuncioController {
                                 tfPreco.getText(),
                                 tfTitulo.getText(),
                                 taDescricao.getText(),
-                                (String) cbCategoria.getSelectionModel().getSelectedItem(),
-                                c,
+                                (EnumCategorias) cbCategoria.getSelectionModel().getSelectedItem(),
+                                (EnumEstados)cbEstado.getSelectionModel().getSelectedItem(),
                                 Integer.parseInt(tfQuantidade.getText()),
                                 tfTelefone.getText(),
                                 imageV1.getImage(),

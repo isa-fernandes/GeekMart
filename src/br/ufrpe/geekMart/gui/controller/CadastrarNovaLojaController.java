@@ -9,7 +9,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -59,26 +58,26 @@ public class CadastrarNovaLojaController {
 
         }
 
-
-
-        private void updateComboBoxCategorias(){
-                for(int i = 0; i < fachada.listarCategorias().size(); i++){
-                        cbCategorias.getItems().add(i,fachada.listarCategorias().get(i));
-                }
+        @FXML
+        private  void  updateComboBoxCategorias(){
+            this.cbCategorias.getItems().setAll(EnumCategorias.values());
         }
 
-    private void updateComboBoxCategoria(){
-        for(int i = 0; i < fachada.listarCategorias().size(); i++){
-            //cbCategoria.getItems().add(i,fachada.listarCategorias().get(i));
-            cbCategoria.getItems().setAll(CategoriasEnum.values());
-        }
-    }
-
+        @FXML
         private void updateComboBoxLojas(){
-                for(int i = 0; i < fachada.listarCategorias().size(); i++){
-                        cbLojas.getItems().add(i,fachada.listarCategorias().get(i));
-                }
+            this.cbLojas.getItems().setAll(EnumCategorias.values());
         }
+
+        @FXML
+        private void updateComboBoxCategoria(){
+            this.cbCategoria.getItems().setAll(EnumCategorias.values());
+        }
+
+        @FXML
+        private void updateComboBoxEstados(){
+            this.cbEstado.getItems().setAll(EnumEstados.values());
+        }
+
 
         private void updateList() throws NaoExisteException, ParametroNullException, JaExisteException{
                 lvMeusAnuncios.getItems().clear();
@@ -90,6 +89,8 @@ public class CadastrarNovaLojaController {
 
         }
 
+         @FXML
+         private ComboBox cbEstado;
 
         @FXML
         private Button btTrocarImagem;
@@ -140,7 +141,7 @@ public class CadastrarNovaLojaController {
         private Button btDeletar;
 
         @FXML
-        private ComboBox<CategoriasEnum> cbCategoria;
+        private ComboBox<EnumCategorias> cbCategoria;
 
         @FXML
         private TextField tfBuscar;
@@ -191,7 +192,7 @@ public class CadastrarNovaLojaController {
         }
 
         @FXML
-        protected  void btNovoAnuncioAction(ActionEvent e){
+        protected  void btNovoAnuncioAction(ActionEvent e) {
                 Main.trocarTela("cadastrarNovoAnuncioScene",user);
         }
 
@@ -227,10 +228,11 @@ public class CadastrarNovaLojaController {
                                 tfTitulo.getText(),
                                 tfTelefone.getText(),
                                 taDescricao.getText(),
-                                //cbCategoria.getSelectionModel().getSelectedItem().name(),
                                 cbCategoria.getSelectionModel().getSelectedItem(),
-                                user,
-                                this.imageV.getImage());
+                                user);
+                        if (this.imageV != null) {
+                            g.setImage(this.imageV.getImage());
+                        }
 
 
                     try {

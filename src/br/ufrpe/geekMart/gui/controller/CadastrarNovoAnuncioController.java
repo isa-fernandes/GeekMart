@@ -3,11 +3,7 @@ import br.ufrpe.geekMart.exceptions.JaExisteException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
-import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
-import br.ufrpe.geekMart.negocio.classesBasicas.Categorias;
-import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
-import br.ufrpe.geekMart.negocio.classesBasicas.Endereco;
-import javafx.collections.FXCollections;
+import br.ufrpe.geekMart.negocio.classesBasicas.*;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,6 +35,7 @@ public class CadastrarNovoAnuncioController {
                                         updateComboBoxCategoriaAnuncio();
                                         updateComboBoxCategorias();
                                         updateComboBoxLojas();
+                                        updateComboBoxEstado();
 
                                 } }
                 });
@@ -46,28 +43,26 @@ public class CadastrarNovoAnuncioController {
                 updateComboBoxCategoriaAnuncio();
                 updateComboBoxCategorias();
                 updateComboBoxLojas();
-
+                updateComboBoxEstado();
         }
 
 
 
-        private void updateComboBoxCategorias(){
-                for(int i = 0; i < fachada.listarCategorias().size(); i++){
-                        cbCategorias.getItems().add(i,fachada.listarCategorias().get(i));
-                }
-        }
+    private  void  updateComboBoxCategorias(){
+        this.cbCategorias.getItems().setAll(EnumCategorias.values());
+    }
 
-        private void updateComboBoxLojas(){
-                for(int i = 0; i < fachada.listarCategorias().size(); i++){
-                        cbLojas.getItems().add(i,fachada.listarCategorias().get(i));
-                }
-        }
+    private void updateComboBoxLojas(){
+        this.cbLojas.getItems().setAll(EnumCategorias.values());
+    }
 
     private void updateComboBoxCategoriaAnuncio(){
 
-        for(int i = 0; i < fachada.listarCategorias().size(); i++){
-            cbCategoria.getItems().add(i,fachada.listarCategorias().get(i));
-        }
+        this.cbCategoria.getItems().setAll(EnumCategorias.values());
+    }
+
+    private  void updateComboBoxEstado(){
+        this.cbEstado.getItems().setAll(EnumEstados.values());
     }
 
         Fachada fachada = Fachada.getInstancia();
@@ -81,6 +76,9 @@ public class CadastrarNovoAnuncioController {
 
         @FXML
         private ComboBox cbCategoria;
+
+        @FXML
+        private ComboBox cbEstado;
 
         @FXML
         private Button btTrocarImagem2;
@@ -214,11 +212,13 @@ public class CadastrarNovoAnuncioController {
                     throw new RuntimeException("O campo estado não pode ser vazio");
                 if (cbCategoria.getSelectionModel().isEmpty())
                     throw new RuntimeException("O campo categoria não pode ser vazio");
+                if (cbEstado.getSelectionModel().isEmpty())
+                    throw new RuntimeException("O campo categoria não pode ser vazio");
                 if (taDescricao.getText().isEmpty())
                     throw new RuntimeException("O campo descrição não pode ser vazio");
 
 
-                Endereco c = new Endereco(tfEstado.getText());
+
 
 
                 Anuncio g = new Anuncio(
@@ -226,8 +226,8 @@ public class CadastrarNovoAnuncioController {
                         tfPreco.getText(),
                         tfTitulo.getText(),
                         taDescricao.getText(),
-                        (String) cbCategoria.getSelectionModel().getSelectedItem(),
-                        c,
+                        (EnumCategorias) cbCategoria.getSelectionModel().getSelectedItem(),
+                        (EnumEstados) cbEstado.getSelectionModel().getSelectedItem(),
                         Integer.parseInt(tfQuantidade.getText()),
                         tfTelefone.getText(),
                         imageV1.getImage(),
@@ -253,7 +253,6 @@ public class CadastrarNovoAnuncioController {
                 tfTitulo.setText("");
                 taDescricao.setText("");
                 tfQuantidade.setText("");
-                tfEstado.setText("");
                 tfTelefone.setText("");
 
             } catch (RuntimeException ex) {
@@ -289,7 +288,6 @@ public class CadastrarNovoAnuncioController {
                 tfTitulo.setText("");
                 taDescricao.setText("");
                 tfQuantidade.setText("");
-                tfEstado.setText("");
                 tfTelefone.setText("");
         }
 

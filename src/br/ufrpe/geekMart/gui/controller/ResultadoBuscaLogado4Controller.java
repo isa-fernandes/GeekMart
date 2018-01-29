@@ -1,6 +1,7 @@
 package br.ufrpe.geekMart.gui.controller;
 
 import br.ufrpe.geekMart.negocio.Fachada;
+import br.ufrpe.geekMart.negocio.classesBasicas.EnumCategorias;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -30,16 +31,12 @@ public class ResultadoBuscaLogado4Controller {
 
 
 
-    private void updateComboBoxCategorias(){
-        for(int i = 0; i < fachada.listarCategorias().size(); i++){
-            cbCategorias.getItems().add(i,fachada.listarCategorias().get(i));
-        }
+    private  void  updateComboBoxCategorias(){
+        this.cbCategorias.getItems().setAll(EnumCategorias.values());
     }
 
     private void updateComboBoxLojas(){
-        for(int i = 0; i < fachada.listarCategorias().size(); i++){
-            cbLojas.getItems().add(i,fachada.listarCategorias().get(i));
-        }
+        this.cbLojas.getItems().setAll(EnumCategorias.values());
     }
 
     @FXML

@@ -6,6 +6,9 @@ import br.ufrpe.geekMart.exceptions.JaExisteException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.classesBasicas.*;
+import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
+import br.ufrpe.geekMart.negocio.classesBasicas.EnumEstados;
+import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
 
 import java.util.ArrayList;
 
@@ -51,13 +54,14 @@ public class ControladorLoja {
     }
 
     public ArrayList<Loja> procurarLojaPorCliente (Cliente cliente) throws ParametroNullException{
-        return this.procurarLojaPorCliente(cliente);
-    }
-    public Loja procurarLojaPorCategoria (Categorias categoria) throws ParametroNullException, NaoExisteException{
-        return this.procurarLojaPorCategoria(categoria);
+        return this.repositorio.procurarLojaPorCliente(cliente);
     }
 
-    public ArrayList<Loja> procurarLojasPorCategoria (CategoriasEnum categoriasEnum) {
+    public Loja procurarLojaPorCategoria (EnumCategorias categoria) throws ParametroNullException, NaoExisteException{
+        return this.repositorio.procurarLojaPorCategoria(categoria);
+    }
+
+    public ArrayList<Loja> procurarLojasPorCategoria (EnumCategorias categoriasEnum) {
         return this.procurarLojasPorCategoria(categoriasEnum);
     }
 

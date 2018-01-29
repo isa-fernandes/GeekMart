@@ -162,7 +162,7 @@
                                              </font>
                                           </Label>
                                           <ComboBox fx:id="cbCategoria" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                          <TextField fx:id="tfEstado" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                          <ComboBox fx:id="cbEstado" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                        </children>
                                     </GridPane>
                                     <GridPane prefHeight="131.0" prefWidth="567.0">

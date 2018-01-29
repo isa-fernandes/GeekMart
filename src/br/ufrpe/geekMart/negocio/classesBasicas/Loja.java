@@ -14,8 +14,7 @@ import java.util.Objects;
 public class Loja implements Serializable {
     private Cliente cliente;
     private String nome, descricao, telefone;
-    private String categoria;
-    private CategoriasEnum categoriasEnum;
+    private EnumCategorias categoria;
     private ArrayList<Anuncio> anuncios = new ArrayList<>();
     private transient Image image;
 
@@ -24,21 +23,13 @@ public class Loja implements Serializable {
 
     }
 
-    public Loja(String nome, String telefone, String descricao,/*String categoria,*/ CategoriasEnum categoriasEnum,
-                Cliente cliente, Image image){
+    public Loja(String nome, String telefone, String descricao, EnumCategorias categoria, Cliente cliente) {
         this.nome = nome;
         this.descricao = descricao;
         this.categoria = categoria;
-        this.categoriasEnum = categoriasEnum;
         this.cliente = cliente;
         this.anuncios = anuncios;
         this.telefone = telefone;
-        this.image = image;
-    }
-
-    private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-        s.defaultReadObject();
-        image = SwingFXUtils.toFXImage(ImageIO.read(s), null);
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException {
@@ -46,16 +37,12 @@ public class Loja implements Serializable {
         ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", s);
     }
 
-    public CategoriasEnum getCategoriasEnum() {
-        return categoriasEnum;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getTelefone() {
         return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
     }
 
     public String getNome() {
@@ -88,16 +75,20 @@ public class Loja implements Serializable {
     }
 
 
-    public String getCategoria() {
+    public EnumCategorias getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(EnumCategorias categoria) {
         this.categoria = categoria;
     }
 
     public ArrayList<Anuncio> getAnuncios() {
         return anuncios;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 
     @Override

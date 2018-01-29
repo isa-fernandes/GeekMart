@@ -1,11 +1,8 @@
 package br.ufrpe.geekMart.gui.controller;
-import br.ufrpe.geekMart.exceptions.JaExisteException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
-import br.ufrpe.geekMart.negocio.classesBasicas.CategoriasEnum;
-import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
-import br.ufrpe.geekMart.negocio.classesBasicas.Endereco;
+import br.ufrpe.geekMart.negocio.classesBasicas.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -22,16 +19,18 @@ public class AlterarClienteController {
                         public void onScreenChanged(String newScreen, Object userData) {
                                 if(newScreen.equals("alterarClienteScene")) {
                                         user=(Cliente)userData;
-                                        updateComboBoxCategorias2();
+                                        updateComboBoxCategorias();
                                         updateComboBoxLojas();
                                         updateCadastroTela();
+                                        updateComboBoxEstados();
 
                                 } }
                 });
 
 
-                updateComboBoxCategorias2();
+                updateComboBoxCategorias();
                 updateComboBoxLojas();
+                updateComboBoxEstados();
 
 
         }
@@ -47,7 +46,7 @@ public class AlterarClienteController {
                 tfBairro.setText(user.getEndereco().getBairro());
                 tfCidade.setText(user.getEndereco().getCidade());
                 tfCEP.setText(user.getEndereco().getCep());
-                tfEstado.setText(user.getEndereco().getEstado());
+                cbEstado.setValue(user.getEndereco().getEstado().toString());
                 tfComplemento.setText(user.getEndereco().getComplemento());
 
         }
@@ -74,15 +73,17 @@ public class AlterarClienteController {
                                 throw new RuntimeException("O campo complemento não pode ser vazio");
                         if(pqSenha.getText().isEmpty())
                                 throw new RuntimeException("O campo senha não pode ser vazio");
-                        if(tfEstado.getText().isEmpty())
+                        if (cbEstado.getSelectionModel().isEmpty())
                                 throw new RuntimeException("O campo estado não pode ser vazio");
+
+
 
                         Endereco c = new Endereco(
                                 tfLogradouro.getText(),
                                 tfNumero.getText(),
                                 tfBairro.getText(),
                                 tfCidade.getText(),
-                                tfEstado.getText(),
+                                (EnumEstados) cbEstado.getSelectionModel().getSelectedItem(),
                                 tfCEP.getText(),
                                 tfComplemento.getText());
 
@@ -116,6 +117,10 @@ public class AlterarClienteController {
                         alert.setHeaderText("Erro ao alterar o Usuário");
                         alert.setContentText(ex.getMessage());
                         alert.showAndWait();
+                } catch (ParametroNullException parException) {
+                        //TODO
+                } catch (NaoExisteException nExisExcep) {
+                        //TODO
                 }
 
 
@@ -128,7 +133,6 @@ public class AlterarClienteController {
                 tfNumero.setText("");
                 tfBairro.setText("");
                 tfCidade.setText("");
-                tfEstado.setText("");
                 tfCEP.setText("");
                 tfComplemento.setText("");
                 tfEmail.setText("");
@@ -137,20 +141,18 @@ public class AlterarClienteController {
         }
 
 
-        /*private void updateComboBoxCategorias(){
-                for(int i = 0; i < fachada.listarCategorias().size(); i++){
-                        cbCategorias.getItems().add(i,fachada.listarCategorias().get(i));
-                }
-        }*/
 
-        private  void  updateComboBoxCategorias2(){
-                this.cbCategorias.getItems().setAll(CategoriasEnum.values());
+
+        private  void  updateComboBoxCategorias(){
+                this.cbCategorias.getItems().setAll(EnumCategorias.values());
         }
 
         private void updateComboBoxLojas(){
-                for(int i = 0; i < fachada.listarCategorias().size(); i++){
-                        cbLojas.getItems().add(i,fachada.listarCategorias().get(i));
-                }
+                this.cbLojas.getItems().setAll(EnumCategorias.values());
+        }
+
+        private void updateComboBoxEstados(){
+                this.cbEstado.getItems().setAll(EnumEstados.values());
         }
 
 
@@ -159,6 +161,9 @@ public class AlterarClienteController {
 
         @FXML
         private ComboBox cbCategorias;
+
+        @FXML
+        private ComboBox cbEstado;
 
         @FXML
         private Button btBuscar;
@@ -200,8 +205,6 @@ public class AlterarClienteController {
         @FXML
         private Button btMeusAnuncios;
 
-        @FXML
-        private ComboBox cbEstado;
 
         @FXML
         private Button btAlterarCliente;
