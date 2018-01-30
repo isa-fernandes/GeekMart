@@ -51,16 +51,6 @@ public class ControladorUsuario {
         if (usuario != null && usuarioNovo != null) {
             if (this.existeUsuario(usuario.getCpf())) {
                 this.repositorio.alterarUsuario(usuario, usuarioNovo);
-                Cliente cliente = (Cliente) usuario;
-                for (int i = 0; i < cliente.getAnuncios().size(); i++) {
-                    cliente.getAnuncios().get(i).setCliente((Cliente) usuarioNovo);
-                    Fachada.getInstancia().alterarAnuncio(cliente.getAnuncios().get(i).getTitulo(),
-                            cliente.getAnuncios().get(i));
-                }
-                for (int i = 0; i < cliente.getLojas().size(); i++) {
-                    cliente.getLojas().get(i).setCliente((Cliente) usuarioNovo);
-                    Fachada.getInstancia().alterarLoja(cliente.getLojas().get(i).getNome(), cliente.getLojas().get(i));
-                }
                 Fachada.getInstancia().salvarArquivo();
             } else {
                 throw new NaoExisteException("usuário", "CPF " + usuario.getCpf());

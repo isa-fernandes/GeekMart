@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Loja implements Serializable {
-    private Cliente cliente;
+    private String cpfCliente;
     private String nome, descricao, telefone;
     private EnumCategorias categoria;
     private ArrayList<Anuncio> anuncios = new ArrayList<>();
@@ -22,11 +22,11 @@ public class Loja implements Serializable {
 
     }
 
-    public Loja(String nome, String telefone, String descricao, EnumCategorias categoria, Cliente cliente) {
+    public Loja(String nome, String telefone, String descricao, EnumCategorias categoria, String cpfCliente) {
         this.nome = nome;
         this.descricao = descricao;
         this.categoria = categoria;
-        this.cliente = cliente;
+        this.cpfCliente = cpfCliente;
         this.telefone = telefone;
     }
 
@@ -66,12 +66,12 @@ public class Loja implements Serializable {
     }
 
 
-    public void setCliente(Cliente cliente){
-        this.cliente = cliente;
+    public void setCpfCliente(String cliente){
+        this.cpfCliente = cliente;
     }
 
-    public Cliente getCliente() {
-        return this.cliente;
+    public String getCpfCliente() {
+        return this.cpfCliente;
     }
 
 
@@ -105,7 +105,7 @@ public class Loja implements Serializable {
         if (this == o) return true;
         if (!(o instanceof Loja)) return false;
         Loja loja = (Loja) o;
-        return Objects.equals(getCliente(), loja.getCliente()) &&
+        return Objects.equals(getCpfCliente(), loja.getCpfCliente()) &&
                 Objects.equals(getNome(), loja.getNome());
     }
 
@@ -113,6 +113,6 @@ public class Loja implements Serializable {
     @Override
     public int hashCode() {
 
-        return Objects.hash(getCliente(), getNome());
+        return Objects.hash(getCpfCliente(), getNome());
     }
 }

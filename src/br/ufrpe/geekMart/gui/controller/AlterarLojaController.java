@@ -76,7 +76,7 @@ public class AlterarLojaController {
 
     private void updateList() throws NaoExisteException, ParametroNullException, JaExisteException {
         lvMeusAnuncios.getItems().clear();
-        Cliente cll = (Cliente)fachada.buscaUsuario(user.getCliente().getCpf());
+        Cliente cll = (Cliente)fachada.buscaUsuario(user.getCpfCliente());
 
         for (int i = 0; i < cll.listarAnuncios().size(); i++) {
             lvMeusAnuncios.getItems().add(i, cll.listarAnuncios().get(i));
@@ -273,7 +273,7 @@ public class AlterarLojaController {
                     tfTelefone.getText(),
                     taDescricao.getText(),
                     cbCategorias.getSelectionModel().getSelectedItem(),
-                    user.getCliente()); //olhar
+                    user.getCpfCliente());
 
 
             try {

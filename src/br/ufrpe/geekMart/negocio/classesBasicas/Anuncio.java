@@ -55,7 +55,7 @@ public class Anuncio implements Serializable {
         /*this.imagens.clear();
         this.imagens.add(prim);
         this.imagens.add(seg);
-        this.imagens.add(ter);*/
+        this.imagens.add(ter);
     }
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
@@ -193,30 +193,6 @@ public class Anuncio implements Serializable {
         if (this.data == null) {
             this.data = LocalDate.now();
         }
-    }
-
-    public Image getImagem1() {
-        return imagem1;
-    }
-
-    public void setImagem1(Image imagem1) {
-        this.imagem1 = imagem1;
-    }
-
-    public Image getImagem2() {
-        return imagem2;
-    }
-
-    public void setImagem2(Image imagem2) {
-        this.imagem2 = imagem2;
-    }
-
-    public Image getImagem3() {
-        return imagem3;
-    }
-
-    public void setImagem3(Image imagem3) {
-        this.imagem3 = imagem3;
     }
 
     public ArrayList<Image> getImagens() {

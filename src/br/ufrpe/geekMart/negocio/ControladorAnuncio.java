@@ -54,7 +54,7 @@ public class ControladorAnuncio {
             if (this.repositorio.existe(anuncio.getTitulo())) {
                 this.repositorio.removerAnuncio(anuncio.getTitulo(), cpf);
                 Fachada.getInstancia().removerAnuncioDaLoja(anuncio.getTitulo());
-                Cliente cliente = anuncio.getCliente();
+                Cliente cliente = (Cliente) Fachada.getInstancia().buscaUsuario(cpf);
                 cliente.getAnuncios().remove(anuncio);
                 Fachada.getInstancia().alterarUsuario(cliente, cliente);
                 Fachada.getInstancia().salvarArquivo();
@@ -75,7 +75,7 @@ public class ControladorAnuncio {
             if (this.repositorio.existe(nomeAntigo)) {
                 this.repositorio.alterarAnuncio(nomeAntigo, anuncio);
                 Fachada.getInstancia().alterarAnuncioNaLoja(nomeAntigo, anuncio);
-                Cliente cliente = anuncio.getCliente();
+                Cliente cliente = (Cliente) Fachada.getInstancia().buscaUsuario(anuncio.getCliente());
                 int i = cliente.getAnuncioPorTitulo(nomeAntigo);
                 cliente.getAnuncios().set(i, anuncio);
                 Fachada.getInstancia().alterarUsuario(cliente, cliente);
@@ -102,7 +102,7 @@ public class ControladorAnuncio {
         if( c != null) {
             LocalDate data = c.getDataFim();
             if (hoje == data || hoje.isAfter(data)) {
-                this.removerAnuncio(c,c.getCliente().getCpf());
+                this.removerAnuncio(c,c.getCliente());
                 Fachada.getInstancia().salvarArquivo();
             } else {
                 throw new DataExpirarNaoChegouException(data, c);

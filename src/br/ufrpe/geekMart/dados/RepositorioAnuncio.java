@@ -97,7 +97,7 @@ public class RepositorioAnuncio implements IRepositorioAnuncio, Serializable {
         int i = 0;
         boolean achou = false;
         while ((!achou) && (i < this.proxima)) {
-            if (titulo.equals(this.anuncios[i].getTitulo()) && cpf.equals(this.anuncios[i].getCliente().getCpf())) {
+            if (titulo.equals(this.anuncios[i].getTitulo()) && cpf.equals(this.anuncios[i].getCliente())) {
                 achou = true;
             } else {
                 i = i + 1;

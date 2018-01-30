@@ -242,8 +242,6 @@ public class CadastrarNovoAnuncioController {
                     throw new RuntimeException("O campo e-mail não pode ser vazio");
                 if (tfTelefone.getText().isEmpty())
                     throw new RuntimeException("O campo telefone não pode ser vazio");
-                if (tfEstado.getText().isEmpty())
-                    throw new RuntimeException("O campo estado não pode ser vazio");
                 if (cbCategoria.getSelectionModel().isEmpty())
                     throw new RuntimeException("O campo categoria não pode ser vazio");
                 if (cbEstado.getSelectionModel().isEmpty())
@@ -256,7 +254,7 @@ public class CadastrarNovoAnuncioController {
 
 
                 Anuncio g = new Anuncio(
-                        user,
+                        user.getCpf(),
                         tfPreco.getText(),
                         tfTitulo.getText(),
                         taDescricao.getText(),

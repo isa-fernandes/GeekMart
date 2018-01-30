@@ -76,8 +76,8 @@ public class TelaInicialDeslogadoController {
 
                         Cliente huan = new Cliente(
                                 "Huan Christopher",
-                                "huan@gm",
                                 "071",
+                                "huan@gm",
                                 "(81)996074398",
                                 end,
                                 "071",
@@ -88,7 +88,7 @@ public class TelaInicialDeslogadoController {
                         Image image2 = new Image("/imagens/estrela.png");
                         Image image3 = new Image("/imagens/estrela.png");
                         Anuncio an = new Anuncio(
-                                huan,
+                                huan.getCpf(),
                                 "69",
                                 "teste",
                                 "Teste",
@@ -126,13 +126,12 @@ public class TelaInicialDeslogadoController {
                                 image2,
                                 image3);
 
-
                         Loja lj = new Loja(
                                 "Loja Teste",
                                 "123456",
                                 "Loja Teste da GeekMart",
                                 EnumCategorias.CAMISAS,
-                                huan);
+                                huan.getCpf());
 
                         lj.getAnuncios().add(an); lj.getAnuncios().add(an2); lj.getAnuncios().add(an3);
                         huan.getLojas().add(lj);
@@ -144,10 +143,16 @@ public class TelaInicialDeslogadoController {
                         fachada.cadastrarUsuario(huan);
                 } catch (NaoExisteException ee){
 
+                    System.out.println("1");
+                    ee.printStackTrace();
                 }  catch (ParametroNullException ee){
 
+                    System.out.println("2");
+                    ee.printStackTrace();
                 } catch (JaExisteException ee){
 
+                    System.out.println("3");
+                    ee.printStackTrace();
                 }
         }
 
