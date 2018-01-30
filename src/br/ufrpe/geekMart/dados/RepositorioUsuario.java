@@ -7,7 +7,7 @@ import br.ufrpe.geekMart.negocio.classesBasicas.Usuario;
 
 import java.io.*;
 
-public class RepositorioUsuario implements IRepositorioUsuario {
+public class RepositorioUsuario implements IRepositorioUsuario, Serializable {
     private Usuario[] usuarios;
     private Usuario user;
     private int proxima;

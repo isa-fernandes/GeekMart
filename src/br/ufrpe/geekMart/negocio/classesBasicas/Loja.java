@@ -32,7 +32,9 @@ public class Loja implements Serializable {
 
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
-        ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", s);
+        if (image != null) {
+            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", s);
+        }
     }
 
     public void setTelefone(String telefone) {

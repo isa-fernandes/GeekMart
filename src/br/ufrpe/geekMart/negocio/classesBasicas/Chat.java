@@ -1,16 +1,15 @@
 package br.ufrpe.geekMart.negocio.classesBasicas;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Chat {
+public class Chat implements Serializable {
 
     private Cliente usuarioCliente;
     private Cliente usuarioVendedor;
-    private ArrayList<String> msgCliente = new ArrayList<>();
-    private ArrayList<String> msgVendedor = new ArrayList<>();
-    private int quantidadeMsgCliente = 0;
-    private int quantidadeMsgVendedor = 0;
+    private ArrayList<String> msgCliente;
+    private ArrayList<String> msgVendedor;
     private Anuncio anuncio;
 
     public Chat(){
@@ -26,19 +25,11 @@ public class Chat {
     }
 
     public int getQuantidadeMsgCliente() {
-        return quantidadeMsgCliente;
-    }
-
-    public void setQuantidadeMsgCliente(int quantidadeMsgCliente) {
-        this.quantidadeMsgCliente = quantidadeMsgCliente;
+        return this.msgCliente.size();
     }
 
     public int getQuantidadeMsgVendedor() {
-        return quantidadeMsgVendedor;
-    }
-
-    public void setQuantidadeMsgVendedor(int quantidadeMsgVendedor) {
-        this.quantidadeMsgVendedor = quantidadeMsgVendedor;
+        return this.msgVendedor.size();
     }
 
     public Cliente getUsuarioCliente() {

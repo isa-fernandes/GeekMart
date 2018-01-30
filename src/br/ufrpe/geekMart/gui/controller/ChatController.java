@@ -4,10 +4,8 @@ import br.ufrpe.geekMart.negocio.classesBasicas.EnumCategorias;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 
 public class ChatController {
 
@@ -44,6 +42,19 @@ public class ChatController {
         }
 
 
+        @FXML
+        public void btnEnviar (ActionEvent e) {
+
+        }
+
+        @FXML
+        private TextArea txtAreaComentario;
+
+        @FXML
+        private Button btnEnviar;
+
+        @FXML
+        private VBox vbComentarios;
 
         @FXML
         private Button btHome;

@@ -184,14 +184,12 @@ public class ControladorAnuncio {
             throws ParametroNullException, NaoEncontradoException {
         Chat uol = instancia.procurarChat(comprador,vendedor,anuncio);
         uol.getMsgCliente().add(uol.getQuantidadeMsgCliente(),msg);
-        uol.setQuantidadeMsgCliente(uol.getQuantidadeMsgCliente() + 1);
     }
 
     public void enviarChatParaCliente(Cliente comprador , Cliente vendedor, Anuncio anuncio, String msg)
             throws ParametroNullException, NaoEncontradoException {
         Chat uol = instancia.procurarChat(comprador,vendedor,anuncio);
         uol.getMsgVendedor().add(uol.getQuantidadeMsgVendedor(),msg);
-        uol.setQuantidadeMsgVendedor(uol.getQuantidadeMsgVendedor() + 1);
     }
 
 
