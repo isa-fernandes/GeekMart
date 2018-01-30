@@ -88,23 +88,27 @@ public class TelaInicialDeslogadoController {
                         Image image3 = new Image("/imagens/estrela.png");
                         ArrayList<Image> img = new ArrayList<>();
                         img.add(image1); img.add(image2); img.add(image3);
-                        Anuncio an = new Anuncio();
-                        an.setAtivo(true);
-                        an.setEstrela(4);
-                        an.setCliente(huan);
-                        an.setPreco("599");
-                        an.setTitulo("Cloth Myth Dohko de Libra");
-                        an.setCategoria(EnumCategorias.FIGURAS_ESTÁTUAS_E_BONECOS);
-                        an.setEstado(EnumEstados.PE);
-                        an.setTelefone("996074398");
-                        an.setImagens(img);
+                        Anuncio an = new Anuncio(
+                                huan,
+                                "69",
+                                "teste",
+                                "Teste",
+                                EnumCategorias.FIGURAS_ESTÁTUAS_E_BONECOS,
+                                EnumEstados.PE,
+                                3,
+                                "996074398",
+                                img.get(0),
+                                img.get(1),
+                                img.get(2));
 
-                        Loja lj = new Loja();
-                        lj.setCliente(huan);
-                        lj.setNome("Cloth Myth Pernambuco");
-                        lj.setCategoria(EnumCategorias.FIGURAS_ESTÁTUAS_E_BONECOS);
-                        lj.setDescricao("Maior loja de Actions do Nordeste");
-                        lj.getAnuncios().add(an);
+
+                        Loja lj = new Loja(
+                                "Loja Teste",
+                                "123456",
+                                "Loja Teste da GeekMart",
+                                EnumCategorias.CAMISAS,
+                                huan);
+
 
                         huan.getLojas().add(lj);
                         huan.getAnuncios().add(an);

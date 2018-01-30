@@ -73,6 +73,7 @@ public class RepositorioAnuncio implements IRepositorioAnuncio, Serializable {
 
     public void cadastrarAnuncio(Anuncio c) {
         this.anuncios[this.proxima] = c;
+        System.out.println("Anuncio Cadastrado");
         this.proxima = this.proxima + 1;
         if (this.proxima == this.anuncios.length) {
             this.duplicaArrayAnuncios();
@@ -120,6 +121,7 @@ public class RepositorioAnuncio implements IRepositorioAnuncio, Serializable {
         while (i < this.proxima) {
             if (this.anuncios[i].getTitulo().contains(palavra)) {
                 resultadoBuscaTitulo.add(j,anuncios[i]);
+                System.out.println("Anuncio encontrado: "+anuncios[i].getTitulo());
                 j = j+1;
                 i++;
             } else {
@@ -129,10 +131,7 @@ public class RepositorioAnuncio implements IRepositorioAnuncio, Serializable {
 
         instancia.ordenaPorPreco(resultadoBuscaTitulo);
 
-        if (i == proxima) {
-            System.out.println("Não foi encontrado nenhum anúncio que contenha a palavra: " + palavra);
 
-        }
 
 
 
@@ -180,6 +179,7 @@ public class RepositorioAnuncio implements IRepositorioAnuncio, Serializable {
                 }
             }
         }
+        System.out.println("Anuncio ordenado");
     }
 
 

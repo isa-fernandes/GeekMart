@@ -1,24 +1,32 @@
 package br.ufrpe.geekMart.gui.controller;
 
 import br.ufrpe.geekMart.negocio.Fachada;
+import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
+import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import br.ufrpe.geekMart.negocio.classesBasicas.EnumCategorias;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
+import java.util.ArrayList;
+
 public class ResultadoBuscaLogado1Contoller {
 
     Fachada fachada = Fachada.getInstancia();
+    ArrayList<Anuncio> user1, user2;
 
     @FXML
     protected  void  initialize(){
-        Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
+        Main.addOnChangesScreenListener(new Main.OnChangeScreen2(){
             @Override
-            public void onScreenChanged(String newScreen, Object userData, Object userData2) {
+            public void onScreenChanged2(String newScreen, ArrayList<Anuncio> userData, Cliente userData2) {
                 if(newScreen.equals("resultadoBuscaLogado1Scene")) {
+                    user1 = userData;
+                    System.out.println(user1.get(0).getTitulo()+"  Ola!");
                     updateComboBoxCategorias();
                     updateComboBoxLojas();
+                    updateTela();
 
                 } }
         });
@@ -26,6 +34,16 @@ public class ResultadoBuscaLogado1Contoller {
 
         updateComboBoxCategorias();
         updateComboBoxLojas();
+
+
+    }
+
+    private  void  updateTela() {
+
+        imBusca1.setImage(user1.get(0).getImagens().get(0));
+        lbTituroII1.setText(user1.get(0).getTitulo());
+        lbPrecoII1.setText(user1.get(0).getPreco());
+        System.out.println("UploadTela Completo");
 
     }
 

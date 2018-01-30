@@ -64,23 +64,23 @@ public class TelaInicialLogadoController {
 
             switch (anuncios.size()) {
                 case 1:
-                    Main.trocarTela("buscasLojasLogado1Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado1Scene", anuncios);
                     break;
                 case 2:
-                    Main.trocarTela("buscasLojasLogado2Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado2Scene", anuncios);
                     break;
                 case 3:
-                    Main.trocarTela("buscasLojasLogado3Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado3Scene", anuncios);
                     break;
                 case 4:
-                    Main.trocarTela("buscasLojasLogado4Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado4Scene", anuncios);
                     break;
                 case 5:
-                    Main.trocarTela("buscasLojasLogado5Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado5Scene", anuncios);
                     break;
 
                 case 0:
-                    Main.trocarTela("buscasLojasLogado0Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado0Scene", anuncios);
                     break;
             }
         } else if(anuncios.size() >= 6) {
@@ -124,7 +124,7 @@ public class TelaInicialLogadoController {
                     break;
             }
         } else if(anuncios.size() >= 6) {
-            Main.trocarTela("resultadoBuscaLogado6Scene", anuncios);
+            Main.trocarTela("buscasLojasLogado6Scene", anuncios);
         }
 
 
@@ -222,33 +222,31 @@ public class TelaInicialLogadoController {
         ArrayList<Anuncio> resultado = fachada.buscarAnuncioPorTituloOrdenadoPeloPreco(palavra);
 
 
-        Anuncio[] anuncios = fachada.listarAnuncios();
-
-        if(resultado.size()<6 && resultado.size()>=0) {
+        if(resultado.size()<6 && resultado.size()>= 0) {
 
             switch (resultado.size()) {
                 case 1:
-                    Main.trocarTela("resultadoBuscaLogado1Scene", anuncios);
+                    Main.trocarTela2("resultadoBuscaLogado1Scene", resultado);
                     break;
                 case 2:
-                    Main.trocarTela("resultadoBuscaLogado2Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado2Scene", resultado);
                     break;
                 case 3:
-                    Main.trocarTela("resultadoBuscaLogado3Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado3Scene", resultado);
                     break;
                 case 4:
-                    Main.trocarTela("resultadoBuscaLogado4Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado4Scene", resultado);
                     break;
                 case 5:
-                    Main.trocarTela("resultadoBuscaLogado5Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado5Scene", resultado);
                     break;
 
                     case 0:
-                        Main.trocarTela("resultadoBuscaLogado0Scene", anuncios);
+                        Main.trocarTela("resultadoBuscaLogado0Scene", resultado);
                         break;
             }
         } else if(resultado.size() >= 6) {
-                    Main.trocarTela("resultadoBuscaLogado6Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado6Scene", resultado);
             }
 
 
