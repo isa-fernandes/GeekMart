@@ -191,6 +191,14 @@ public class Anuncio implements Serializable {
         }
     }
 
+    public ArrayList<Image> getImagens() {
+        return imagens;
+    }
+
+    public void setImagens(ArrayList<Image> imagens) {
+        this.imagens = imagens;
+    }
+
     public int getQuantidadeAvaliacoes() {
         return quantidadeAvaliacoes;
     }
@@ -213,6 +221,8 @@ public class Anuncio implements Serializable {
                 Objects.equals(getTitulo(), anuncio.getTitulo()) &&
                 Objects.equals(getComentarios(), anuncio.getComentarios());
     }
+
+
 
     @Override
     public int hashCode() {

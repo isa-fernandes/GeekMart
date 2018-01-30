@@ -16,7 +16,7 @@ public class AlterarClienteController {
         protected  void  initialize(){
                 Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
                         @Override
-                        public void onScreenChanged(String newScreen, Object userData) {
+                        public void onScreenChanged(String newScreen, Object userData, Object userData2) {
                                 if(newScreen.equals("alterarClienteScene")) {
                                         user=(Cliente)userData;
                                         updateComboBoxCategorias();

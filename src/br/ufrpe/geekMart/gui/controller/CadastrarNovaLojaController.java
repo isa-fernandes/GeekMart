@@ -31,7 +31,7 @@ public class CadastrarNovaLojaController {
         protected  void  initialize()  {
                 Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
                         @Override
-                        public void onScreenChanged(String newScreen, Object userData)  {
+                        public void onScreenChanged(String newScreen, Object userData, Object userData2, String n)  {
                             try{
                                 if(newScreen.equals("cadastrarNovaLojaScene")) {
                                         user = (Cliente)userData;

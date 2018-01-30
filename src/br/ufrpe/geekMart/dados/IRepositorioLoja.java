@@ -21,4 +21,6 @@ public interface IRepositorioLoja {
     Loja[] listarLoja();
     int getProxima();
     void salvarArquivo();
+    ArrayList<Loja> buscarLojaPorTitulo(String palavra);
+    ArrayList<Loja> buscarLojaPorCategoria(String categoria);
 }

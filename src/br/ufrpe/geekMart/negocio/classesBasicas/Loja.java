@@ -105,6 +105,7 @@ public class Loja implements Serializable {
                 Objects.equals(getNome(), loja.getNome());
     }
 
+
     @Override
     public int hashCode() {
 

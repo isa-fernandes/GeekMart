@@ -1,6 +1,7 @@
 package br.ufrpe.geekMart.gui.controller;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import br.ufrpe.geekMart.negocio.Fachada;
@@ -24,7 +25,7 @@ public class TelaInicialLogadoController {
     protected  void  initialize(){
         Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
             @Override
-            public void onScreenChanged(String newScreen, Object userData) {
+            public void onScreenChanged(String newScreen, Object userData,Object userData2) {
                 if(newScreen.equals("telaInicialLogadoScene")) {
                     user = (Cliente)userData;
                     updateComboBoxCategorias();
@@ -133,15 +134,17 @@ public class TelaInicialLogadoController {
     }
 
     @FXML
-    protected  void buscaAnuncios(ActionEvent e){
+    protected  void buscaAnunciosPorTituloOrdenadoPorPreço(ActionEvent e){
 
+        String palavra = tfBuscar.getText();
+        ArrayList<Anuncio> resultado = fachada.buscarAnuncioPorTituloOrdenadoPeloPreco(palavra);
 
 
         Anuncio[] anuncios = fachada.listarAnuncios();
 
-        if(anuncios.length<6 && anuncios.length>=0) {
+        if(resultado.size()<6 && resultado.size()>=0) {
 
-            switch (anuncios.length) {
+            switch (resultado.size()) {
                 case 1:
                     Main.trocarTela("resultadoBuscaLogado1Scene", anuncios);
                     break;
@@ -158,36 +161,20 @@ public class TelaInicialLogadoController {
                     Main.trocarTela("resultadoBuscaLogado5Scene", anuncios);
                     break;
 
-                    default:
-                    Main.trocarTela("resultadoBuscaLogado0Scene", anuncios);
+                    case 0:
+                        Main.trocarTela("resultadoBuscaLogado0Scene", anuncios);
+                        break;
             }
-        } else {
-
-            switch (anuncios.length % 6) {
-                case 1:
-                    Main.trocarTela("resultadoBuscaLogado1Scene", anuncios);
-                    break;
-                case 2:
-                    Main.trocarTela("resultadoBuscaLogado2Scene", anuncios);
-                    break;
-                case 3:
-                    Main.trocarTela("resultadoBuscaLogado3Scene", anuncios);
-                    break;
-                case 4:
-                    Main.trocarTela("resultadoBuscaLogado4Scene", anuncios);
-                    break;
-                case 5:
-                    Main.trocarTela("resultadoBuscaLogado5Scene", anuncios);
-                    break;
-                case 0:
+        } else if(resultado.size() >= 6) {
                     Main.trocarTela("resultadoBuscaLogado6Scene", anuncios);
-                    break;
-
             }
 
 
         }
-    }
+
+
+
+
 
 
 

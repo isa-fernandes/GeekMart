@@ -3,6 +3,9 @@ package br.ufrpe.geekMart.dados;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
+import br.ufrpe.geekMart.negocio.classesBasicas.EnumCategorias;
+
+import java.util.ArrayList;
 
 public interface IRepositorioAnuncio {
     void cadastrarAnuncio (Anuncio c);
@@ -15,5 +18,7 @@ public interface IRepositorioAnuncio {
     Anuncio[] listarAnuncios();
     int getProxima();
     void salvarArquivo();
+    ArrayList<Anuncio> buscarAnuncioPorTituloOrdenadoPeloPreco(String palavra);
+    ArrayList<Anuncio> buscarAnuncioPorCategoriaOrdenadoPeloPreco(String categoria);
 
 }

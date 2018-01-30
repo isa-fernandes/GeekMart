@@ -2,10 +2,7 @@ package br.ufrpe.geekMart.dados;
 
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
-import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
-import br.ufrpe.geekMart.negocio.classesBasicas.EnumCategorias;
-import br.ufrpe.geekMart.negocio.classesBasicas.EnumEstados;
-import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
+import br.ufrpe.geekMart.negocio.classesBasicas.*;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -22,7 +19,7 @@ public class RepositorioLoja implements IRepositorioLoja, Serializable {
         return instancia;
     }
 
-    private RepositorioLoja (int tamanho){
+    private RepositorioLoja(int tamanho) {
         this.lojas = new Loja[tamanho];
         this.proxima = 0;
     }
@@ -70,12 +67,13 @@ public class RepositorioLoja implements IRepositorioLoja, Serializable {
                 try {
                     objectOutputStream.close();
                 } catch (IOException e) {
-                    /* Silent */}
+                    /* Silent */
+                }
             }
         }
     }
 
-    public void cadastrarLoja (Loja c) {
+    public void cadastrarLoja(Loja c) {
         this.lojas[this.proxima] = c;
         this.proxima = this.proxima + 1;
         if (this.proxima == lojas.length) {
@@ -83,7 +81,7 @@ public class RepositorioLoja implements IRepositorioLoja, Serializable {
         }
     }
 
-    public Loja procurarLoja (String titulo) {
+    public Loja procurarLoja(String titulo) {
         Loja resultado = null;
         int i = this.procurarIndice(titulo);
         resultado = this.lojas[i];
@@ -93,7 +91,7 @@ public class RepositorioLoja implements IRepositorioLoja, Serializable {
 
     //SUGESTAO METODO RETORNA LOJAS DE UMA CATEGORIA
     //TODO
-    public ArrayList<Loja> procurarLojasPorCategoria (EnumCategorias categoriasEnum) {
+    public ArrayList<Loja> procurarLojasPorCategoria(EnumCategorias categoriasEnum) {
         ArrayList<Loja> resultados = null;
         for (int i = 0; i < this.proxima; i++) {
             if (this.lojas[i].getCategoria().equals(categoriasEnum)) {
@@ -103,31 +101,31 @@ public class RepositorioLoja implements IRepositorioLoja, Serializable {
         return resultados;
     }
 
-    public Loja procurarLojaPorCategoria (EnumCategorias categoria) throws ParametroNullException, NaoExisteException {
+    public Loja procurarLojaPorCategoria(EnumCategorias categoria) throws ParametroNullException, NaoExisteException {
         Loja resultado = null;
-        if( categoria != null) {
+        if (categoria != null) {
             int i = this.procurarIndiceCategoria(categoria);
             if (i < this.proxima) {
                 resultado = this.lojas[i];
                 return resultado;
             } else {
-                throw new NaoExisteException("loja", "categoria" ); //lembrar de alterar quando categoria for enum
+                throw new NaoExisteException("loja", "categoria"); //lembrar de alterar quando categoria for enum
             }
         } else {
             throw new ParametroNullException("categoria");
         }
     }
 
-    public ArrayList<Loja> procurarLojaPorCliente (Cliente cliente) throws ParametroNullException {
-        if( cliente != null) {
+    public ArrayList<Loja> procurarLojaPorCliente(Cliente cliente) throws ParametroNullException {
+        if (cliente != null) {
             return cliente.getLojas();
         } else {
             throw new ParametroNullException("cliente");
         }
     }
 
-    public void removerLoja (String nomeDaLoja,String cpf) {
-        int i = this.procurarIndiceRemover(nomeDaLoja,cpf);
+    public void removerLoja(String nomeDaLoja, String cpf) {
+        int i = this.procurarIndiceRemover(nomeDaLoja, cpf);
         if (i < this.proxima) {
             this.lojas[i] = this.lojas[this.proxima - 1];
             this.lojas[this.proxima - 1] = null;
@@ -135,11 +133,11 @@ public class RepositorioLoja implements IRepositorioLoja, Serializable {
         }
     }
 
-    public int procurarIndiceRemover (String titulo, String cpf){
+    public int procurarIndiceRemover(String titulo, String cpf) {
         int i = 0;
         boolean achou = false;
-        while ((!achou) && (i < this.proxima)){
-            if (titulo.equals(this.lojas[i].getNome()) && cpf.equals(this.lojas[i].getCliente().getCpf())){
+        while ((!achou) && (i < this.proxima)) {
+            if (titulo.equals(this.lojas[i].getNome()) && cpf.equals(this.lojas[i].getCliente().getCpf())) {
                 achou = true;
             } else {
                 i = i + 1;
@@ -148,33 +146,33 @@ public class RepositorioLoja implements IRepositorioLoja, Serializable {
         return i;
     }
 
-    private int procurarIndice (String titulo) {
+    private int procurarIndice(String titulo) {
         int i = 0;
         boolean achou = false;
-        while ((!achou) && (i < this.proxima)){
+        while ((!achou) && (i < this.proxima)) {
             if (titulo.equals(this.lojas[i].getNome())) {
                 achou = true;
             } else {
-                i = i+1;
+                i = i + 1;
             }
         }
         return i;
     }
 
-    private int procurarIndiceCategoria (EnumCategorias categoria) {
+    private int procurarIndiceCategoria(EnumCategorias categoria) {
         int i = 0;
         boolean achou = false;
-        while ((!achou) && (i < this.proxima)){
+        while ((!achou) && (i < this.proxima)) {
             if (categoria.equals(this.lojas[i].getCategoria())) {
                 achou = true;
             } else {
-                i = i+1;
+                i = i + 1;
             }
         }
         return i;
     }
 
-    public boolean existeLoja (String titulo) {
+    public boolean existeLoja(String titulo) {
         boolean existe = false;
         int indice = this.procurarIndice(titulo);
         if (indice != this.proxima) {
@@ -183,24 +181,25 @@ public class RepositorioLoja implements IRepositorioLoja, Serializable {
         return existe;
     }
 
-    public void duplicaArrayLojas(){
-        if (this.lojas != null && this.lojas.length>0) {
-            Loja[] arrayDuplicado = new Loja[this.lojas.length*2];
-            for(int i=0; i< this.lojas.length; i++) {
+    public void duplicaArrayLojas() {
+        if (this.lojas != null && this.lojas.length > 0) {
+            Loja[] arrayDuplicado = new Loja[this.lojas.length * 2];
+            for (int i = 0; i < this.lojas.length; i++) {
                 arrayDuplicado[i] = this.lojas[i];
             }
             this.lojas = arrayDuplicado;
         }
     }
+
     @Override
-    public void alterarLoja (String nomeAntigo, Loja loja) {
+    public void alterarLoja(String nomeAntigo, Loja loja) {
         int indice = this.procurarIndice(nomeAntigo);
         if (indice < this.proxima) {
             lojas[indice] = loja;
         }
     }
 
-    public Loja[] listarLoja(){
+    public Loja[] listarLoja() {
         return lojas;
     }
 
@@ -208,5 +207,66 @@ public class RepositorioLoja implements IRepositorioLoja, Serializable {
         return proxima;
     }
 
+    public ArrayList<Loja> buscarLojaPorTitulo(String palavra) {
+        int i = 0;
+        ArrayList<Loja> resultadoBuscaTitulo = new ArrayList<>();
+        while (i < this.proxima) {
+            if (this.lojas[i].getNome().contains(palavra)) {
+                resultadoBuscaTitulo.add(lojas[i]);
+            } else {
+                i = i + 1;
+            }
+        }
 
+
+        if (i == proxima) {
+            System.out.println("Não foi encontrado nenhuma loja que contenha a palavra: " + palavra);
+
+        }
+
+
+        return resultadoBuscaTitulo;
+    }
+
+    public ArrayList<Loja> buscarLojaPorCategoria(String categoria) {
+        int i = 0;
+        ArrayList<Loja> resultadoBuscaCategoria = new ArrayList<>();
+        while (i < this.proxima) {
+            if (this.lojas[i].getCategoria().toString() == categoria) {
+                resultadoBuscaCategoria.add(lojas[i]);
+            } else {
+                i = i + 1;
+            }
+        }
+
+
+        if (i == proxima) {
+            System.out.println("Não foi encontrado nenhuma loa da categoria: " + categoria);
+
+        }
+
+
+        return resultadoBuscaCategoria;
+    }
 }
+
+
+    /*public  void ordenaPorPreco(ArrayList<Loja> an){
+        Anuncio aux;
+        int cont1, cont2;
+        for(cont1 =0; cont1<an.size(); cont1++){
+            for(cont2 =0; cont2 <an.size()-1; cont2++){
+                if(Integer.parseInt(an.get(cont2).getPreco())> Integer.parseInt(an.get(cont2+1).getPreco())){
+                    aux = an.get(cont2);
+                    an.remove(cont2);
+                    an.add(cont2,an.get(cont2+1));
+                    an.remove(cont2+1);
+                    an.add(cont2+1,aux);
+
+                }
+            }
+        }
+    }
+
+
+}*/

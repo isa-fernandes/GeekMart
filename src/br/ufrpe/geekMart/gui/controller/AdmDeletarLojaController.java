@@ -18,7 +18,7 @@ public class AdmDeletarLojaController {
         protected  void  initialize(){
                 Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
                         @Override
-                        public void onScreenChanged(String newScreen, Object userData) {
+                        public void onScreenChanged(String newScreen, Object userData, Object userData2) {
                                 if(newScreen.equals("admDeletarLojaScene")) {
                                         user=(Administrador)userData;
 

@@ -1,22 +1,27 @@
 package br.ufrpe.geekMart.dados;
 
+import br.ufrpe.geekMart.gui.controller.Main;
 import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
+import br.ufrpe.geekMart.negocio.classesBasicas.EnumCategorias;
+import com.sun.xml.internal.bind.v2.TODO;
+import javafx.event.ActionEvent;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class RepositorioAnuncio implements IRepositorioAnuncio, Serializable {
     private Anuncio[] anuncios;
     private int proxima;
     private static RepositorioAnuncio instancia;
 
-    public static RepositorioAnuncio getInstancia () {
+    public static RepositorioAnuncio getInstancia() {
         if (instancia == null) {
             instancia = lerDoArquivo();
         }
         return instancia;
     }
 
-    private RepositorioAnuncio (int tamanho) {
+    private RepositorioAnuncio(int tamanho) {
         this.anuncios = new Anuncio[tamanho];
         this.proxima = 0;
     }
@@ -64,12 +69,13 @@ public class RepositorioAnuncio implements IRepositorioAnuncio, Serializable {
                 try {
                     objectOutputStream.close();
                 } catch (IOException e) {
-                    /* Silent */}
+                    /* Silent */
+                }
             }
         }
     }
 
-    public void cadastrarAnuncio (Anuncio c) {
+    public void cadastrarAnuncio(Anuncio c) {
         this.anuncios[this.proxima] = c;
         this.proxima = this.proxima + 1;
         if (this.proxima == this.anuncios.length) {
@@ -77,11 +83,11 @@ public class RepositorioAnuncio implements IRepositorioAnuncio, Serializable {
         }
     }
 
-    public int procurarIndice (String num){
+    public int procurarIndice(String num) {
         int i = 0;
         boolean achou = false;
-        while ((!achou) && (i < this.proxima)){
-            if (num.equals(this.anuncios[i].getTitulo())){
+        while ((!achou) && (i < this.proxima)) {
+            if (num.equals(this.anuncios[i].getTitulo())) {
                 achou = true;
             } else {
                 i = i + 1;
@@ -90,11 +96,11 @@ public class RepositorioAnuncio implements IRepositorioAnuncio, Serializable {
         return i;
     }
 
-    public int procurarIndiceRemover (String titulo, String cpf){
+    public int procurarIndiceRemover(String titulo, String cpf) {
         int i = 0;
         boolean achou = false;
-        while ((!achou) && (i < this.proxima)){
-            if (titulo.equals(this.anuncios[i].getTitulo()) && cpf.equals(this.anuncios[i].getCliente().getCpf())){
+        while ((!achou) && (i < this.proxima)) {
+            if (titulo.equals(this.anuncios[i].getTitulo()) && cpf.equals(this.anuncios[i].getCliente().getCpf())) {
                 achou = true;
             } else {
                 i = i + 1;
@@ -103,37 +109,83 @@ public class RepositorioAnuncio implements IRepositorioAnuncio, Serializable {
         return i;
     }
 
-    /*public Anuncio[] getAnunciosCategoria (String categoria) {
-        int i, qt = 0;
-        Anuncio[] result = new Anuncio[this.proxima];
-        int indice = Categorias.encontrarCategoria(categoria);
-        for (i = 0; i < this.proxima; i++) {
-            if (this.anuncios[i].getCategoria().equals(Categorias.getCategoria(indice))) {
-                result[qt] = this.anuncios[i];
-                qt++;
-            }
-        }
-        return result;
-    }
 
-    public Anuncio[] getAnunciosCategoria (int categoria) {
-        int i, qt = 0;
-        Anuncio[] result = new Anuncio[this.proxima];
-        for (i = 0; i < this.proxima; i++) {
-            if (this.anuncios[i].getCategoria().equals(Categorias.getCategoria(categoria))) {
-                result[qt] = this.anuncios[i];
-                qt++;
-            }
-        }
-        return result;
-    }*/
-
-    public Anuncio procurarAnuncio (String titulo) {
+    public Anuncio procurarAnuncio(String titulo) {
         int i = this.procurarIndice(titulo);
         Anuncio resultado;
         resultado = this.anuncios[i];
         return resultado;
     }
+
+    public ArrayList<Anuncio> buscarAnuncioPorTituloOrdenadoPeloPreco(String palavra) {
+        int i = 0;
+        ArrayList<Anuncio> resultadoBuscaTitulo = new ArrayList<>();
+        while (i < this.proxima) {
+            if (this.anuncios[i].getTitulo().contains(palavra)) {
+                resultadoBuscaTitulo.add(anuncios[i]);
+            } else {
+                i = i + 1;
+            }
+        }
+
+        instancia.ordenaPorPreco(resultadoBuscaTitulo);
+
+        if (i == proxima) {
+            System.out.println("Não foi encontrado nenhum anúncio que contenha a palavra: " + palavra);
+
+        }
+
+
+
+
+        return resultadoBuscaTitulo;
+    }
+
+    public ArrayList<Anuncio> buscarAnuncioPorCategoriaOrdenadoPeloPreco(String categoria) {
+        int i = 0;
+        ArrayList<Anuncio> resultadoBuscaCategoria = new ArrayList<>();
+        while (i < this.proxima) {
+            if (this.anuncios[i].getCategoria().toString() == categoria) {
+                resultadoBuscaCategoria.add(anuncios[i]);
+            } else {
+                i = i + 1;
+            }
+        }
+
+        instancia.ordenaPorPreco(resultadoBuscaCategoria);
+
+        if (i == proxima) {
+            System.out.println("Não foi encontrado nenhum anúncio da categoria: " + categoria);
+
+        }
+
+
+
+
+        return resultadoBuscaCategoria;
+    }
+
+
+    public  void ordenaPorPreco(ArrayList<Anuncio> an){
+        Anuncio aux;
+        int cont1, cont2;
+        for(cont1 =0; cont1<an.size(); cont1++){
+            for(cont2 =0; cont2 <an.size()-1; cont2++){
+                if(Integer.parseInt(an.get(cont2).getPreco())> Integer.parseInt(an.get(cont2+1).getPreco())){
+                    aux = an.get(cont2);
+                    an.remove(cont2);
+                    an.add(cont2,an.get(cont2+1));
+                    an.remove(cont2+1);
+                    an.add(cont2+1,aux);
+
+                }
+            }
+        }
+    }
+
+
+
+
 
     public void removerAnuncio (String titulo, String cpf) {
         int i = this.procurarIndiceRemover(titulo,cpf);

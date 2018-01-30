@@ -28,6 +28,8 @@ public class Main extends Application {
     }
 
     private static Stage stage;
+    private static  Scene lojaScene;
+    private static  Scene anuncioScene;
     private static  Scene telaInicialDeslogadoScene;
     private static  Scene telaInicialLogadoScene;
     private static  Scene telaLoginScene;
@@ -109,6 +111,12 @@ public class Main extends Application {
         stage = primaryStage;
 
         primaryStage.setTitle("GeekMart");
+
+        Parent fxmlAnuncio = FXMLLoader.load(getClass().getResource("../view/Anuncio.fxml"));
+        anuncioScene = new Scene(fxmlAnuncio,900,600);
+
+        Parent fxmlLoja = FXMLLoader.load(getClass().getResource("../view/Loja.fxml"));
+        lojaScene = new Scene(fxmlLoja,900,600);
 
         Parent fxmlTelaInicialDeslogado = FXMLLoader.load(getClass().getResource("../view/TelaInicialDeslogado.fxml"));
         telaInicialDeslogadoScene = new Scene(fxmlTelaInicialDeslogado,900,600);
@@ -314,253 +322,261 @@ public class Main extends Application {
 
 
 
-    public static void trocarTela(String trc, Object userData){
+    public static void trocarTela(String trc, Object userData, Object userData2){
         switch (trc){
+            case "anuncioScene":
+                stage.setScene(anuncioScene);
+                notificarAllListeners("anuncioScene", userData,userData2);
+                break;
+            case "lojaScene":
+                stage.setScene(lojaScene);
+                notificarAllListeners("lojaScene", userData,userData2);
+                break;
             case "telaInicialDeslogadoScene":
                 stage.setScene(telaInicialDeslogadoScene);
-                notificarAllListeners("telaInicialDeslogadoScene", userData);
+                notificarAllListeners("telaInicialDeslogadoScene", userData,userData2);
                 break;
             case "telaInicialLogadoScene":
                 stage.setScene(telaInicialLogadoScene);
-                notificarAllListeners("telaInicialLogadoScene", userData);
+                notificarAllListeners("telaInicialLogadoScene", userData,userData2);
                 break;
             case "telaLoginScene":
                 stage.setScene(telaLoginScene);
-                notificarAllListeners("telaLoginScene", userData);
+                notificarAllListeners("telaLoginScene", userData,userData2);
                 break;
             case "resultadoBuscaLogado6Scene":
                 stage.setScene(resultadoBuscaLogado6Scene);
-                notificarAllListeners("resultadoBuscaLogado6Scene", userData);
+                notificarAllListeners("resultadoBuscaLogado6Scene", userData,userData2);
                 break;
             case "resultadoBuscaLogado5Scene":
                 stage.setScene(resultadoBuscaLogado5Scene);
-                notificarAllListeners("resultadoBuscaLogado5Scene", userData);
+                notificarAllListeners("resultadoBuscaLogado5Scene", userData,userData2);
                 break;
             case "resultadoBuscaLogado4Scene":
                 stage.setScene(resultadoBuscaLogado4Scene);
-                notificarAllListeners("resultadoBuscaLogado4Scene", userData);
+                notificarAllListeners("resultadoBuscaLogado4Scene", userData,userData2);
                 break;
             case "resultadoBuscaLogado3Scene":
                 stage.setScene(resultadoBuscaLogado3Scene);
-                notificarAllListeners("resultadoBuscaLogado2Scene", userData);
+                notificarAllListeners("resultadoBuscaLogado2Scene", userData,userData2);
                 break;
             case "resultadoBuscaLogado2Scene":
                 stage.setScene(resultadoBuscaLogado2Scene);
-                notificarAllListeners("resultadoBuscaLogado6Scene", userData);
+                notificarAllListeners("resultadoBuscaLogado6Scene", userData,userData2);
                 break;
             case "resultadoBuscaLogado1Scene":
                 stage.setScene(resultadoBuscaLogado1Scene);
-                notificarAllListeners("resultadoBuscaLogado1Scene", userData);
+                notificarAllListeners("resultadoBuscaLogado1Scene", userData,userData2);
                 break;
             case "resultadoBuscaDeslogadoScene":
                 stage.setScene(resultadoBuscaDeslogadoScene);
-                notificarAllListeners("resultadoBuscaDeslogadoScene", userData);
+                notificarAllListeners("resultadoBuscaDeslogadoScene", userData,userData2);
                 break;
             case "chatScene":
                 stage.setScene(chatScene);
-                notificarAllListeners("chatScene", userData);
+                notificarAllListeners("chatScene", userData,userData2);
                 break;
             case "cadastrarNovoClienteScene":
                 stage.setScene(cadastrarNovoClienteScene);
-                notificarAllListeners("cadastrarNovoClienteScene", userData);
+                notificarAllListeners("cadastrarNovoClienteScene", userData,userData2);
                 break;
             case "cadastroClienteScene":
                 stage.setScene(cadastroClienteScene);
-                notificarAllListeners("cadastroClienteScene", userData);
+                notificarAllListeners("cadastroClienteScene", userData,userData2);
                 break;
             case "cadastrarNovaLojaScene":
                 stage.setScene(cadastrarNovaLojaScene);
-                notificarAllListeners("cadastrarNovaLojaScene", userData);
+                notificarAllListeners("cadastrarNovaLojaScene", userData,userData2);
                 break;
             case "cadastrarNovoAnuncioScene":
                 stage.setScene(cadastrarNovoAnuncioScene);
-                notificarAllListeners("cadastrarNovoAnuncioScene", userData);
+                notificarAllListeners("cadastrarNovoAnuncioScene", userData,userData2);
                 break;
             case "alterarLojaScene":
                 stage.setScene(alterarLojaScene);
-                notificarAllListeners("alterarLojaScene", userData);
+                notificarAllListeners("alterarLojaScene", userData,userData2);
                 break;
             case "alterarClienteScene":
                 stage.setScene(alterarClienteScene);
-                notificarAllListeners("alterarClienteScene", userData);
+                notificarAllListeners("alterarClienteScene", userData,userData2);
                 break;
             case "alterarAnuncioScene":
                 stage.setScene(alterarAnuncioScene);
-                notificarAllListeners("alterarAnuncioScene", userData);
+                notificarAllListeners("alterarAnuncioScene", userData,userData2);
                 break;
             case "admDeletarLojaScene":
                 stage.setScene(admDeletarLojaScene);
-                notificarAllListeners("admDeletarLojaScene", userData);
+                notificarAllListeners("admDeletarLojaScene", userData,userData2);
                 break;
             case "admDeletarAnuncioScene":
                 stage.setScene(admDeletarAnuncioScene);
-                notificarAllListeners("admDeletarAnuncioScene", userData);
+                notificarAllListeners("admDeletarAnuncioScene", userData,userData2);
                 break;
 
             case "admCadastroScene":
                 stage.setScene(admCadastroScene);
-                notificarAllListeners("admCadastroScene", userData);
+                notificarAllListeners("admCadastroScene", userData,userData2);
                 break;
             case "admCadastrarNovoAdmScene":
                 stage.setScene(admCadastrarNovoAdmScene);
-                notificarAllListeners("admCadastrarNovoAdmScene", userData);
+                notificarAllListeners("admCadastrarNovoAdmScene", userData,userData2);
                 break;
             case "admBloqueioDesbloqueioScene":
                 stage.setScene(admBloqueioDesbloqueioScene);
-                notificarAllListeners("admBloqueioDesbloqueioScene", userData);
+                notificarAllListeners("admBloqueioDesbloqueioScene", userData,userData2);
                 break;
             case "admAlterarCadastroScene":
                 stage.setScene(admAlterarCadastroScene);
-                notificarAllListeners("admAlterarCadastroScene", userData);
+                notificarAllListeners("admAlterarCadastroScene", userData,userData2);
                 break;
 
             case "meusAnunciosScene":
                 stage.setScene(meusAnunciosScene);
-                notificarAllListeners("meusAnunciosScene", userData);
+                notificarAllListeners("meusAnunciosScene", userData,userData2);
                 break;
             case "minhasLojasScene":
                 stage.setScene(minhasLojasScene);
-                notificarAllListeners("minhasLojasScene", userData);
+                notificarAllListeners("minhasLojasScene", userData,userData2);
                 break;
             case "resultadoBuscaDeslogado0Scene":
                 stage.setScene(resultadoBuscaDeslogado0Scene);
-                notificarAllListeners("resultadoBuscaDeslogado0Scene", userData);
+                notificarAllListeners("resultadoBuscaDeslogado0Scene", userData,userData2);
                 break;
             case "resultadoBuscaDeslogado1Scene":
                 stage.setScene(resultadoBuscaDeslogado1Scene);
-                notificarAllListeners("resultadoBuscaDeslogado1Scene", userData);
+                notificarAllListeners("resultadoBuscaDeslogado1Scene", userData,userData2);
                 break;
             case "resultadoBuscaDeslogado2Scene":
                 stage.setScene(resultadoBuscaDeslogado2Scene);
-                notificarAllListeners("resultadoBuscaDeslogado2Scene", userData);
+                notificarAllListeners("resultadoBuscaDeslogado2Scene", userData,userData2);
                 break;
             case "resultadoBuscaDeslogado3Scene":
                 stage.setScene(resultadoBuscaDeslogado3Scene);
-                notificarAllListeners("resultadoBuscaDeslogado3Scene", userData);
+                notificarAllListeners("resultadoBuscaDeslogado3Scene", userData,userData2);
                 break;
             case "resultadoBuscaDeslogado4Scene":
                 stage.setScene(resultadoBuscaDeslogado4Scene);
-                notificarAllListeners("resultadoBuscaDeslogado4Scene", userData);
+                notificarAllListeners("resultadoBuscaDeslogado4Scene", userData,userData2);
                 break;
             case "resultadoBuscaDeslogado5Scene":
                 stage.setScene(resultadoBuscaDeslogado5Scene);
-                notificarAllListeners("resultadoBuscaDeslogado5Scene", userData);
+                notificarAllListeners("resultadoBuscaDeslogado5Scene", userData,userData2);
                 break;
             case "resultadoBuscaDeslogado6Scene":
                 stage.setScene(resultadoBuscaDeslogado6Scene);
-                notificarAllListeners("resultadoBuscaDeslogado6Scene", userData);
+                notificarAllListeners("resultadoBuscaDeslogado6Scene", userData,userData2);
                 break;
             case "minhasLojas0Scene":
                 stage.setScene(minhasLojas0Scene);
-                notificarAllListeners("minhasLojas0Scene", userData);
+                notificarAllListeners("minhasLojas0Scene", userData,userData2);
                 break;
             case "minhasLojas1Scene":
                 stage.setScene(minhasLojas1Scene);
-                notificarAllListeners("minhasLojas1Scene", userData);
+                notificarAllListeners("minhasLojas1Scene", userData,userData2);
                 break;
             case "minhasLojas2Scene":
                 stage.setScene(minhasLojas2Scene);
-                notificarAllListeners("minhasLojas2Scene", userData);
+                notificarAllListeners("minhasLojas2Scene", userData,userData2);
                 break;
             case "minhasLojas3Scene":
                 stage.setScene(minhasLojas3Scene);
-                notificarAllListeners("minhasLojas3Scene", userData);
+                notificarAllListeners("minhasLojas3Scene", userData,userData2);
                 break;
             case "minhasLojas4Scene":
                 stage.setScene(minhasLojas4Scene);
-                notificarAllListeners("minhasLojas4Scene", userData);
+                notificarAllListeners("minhasLojas4Scene", userData,userData2);
                 break;
             case "minhasLojas5Scene":
                 stage.setScene(minhasLojas5Scene);
-                notificarAllListeners("minhasLojas5Scene", userData);
+                notificarAllListeners("minhasLojas5Scene", userData,userData2);
                 break;
             case "minhasLojas6Scene":
                 stage.setScene(minhasLojas6Scene);
-                notificarAllListeners("minhasLojas6Scene", userData);
+                notificarAllListeners("minhasLojas6Scene", userData,userData2);
                 break;
             case "meusAnuncios0Scene":
                 stage.setScene(meusAnuncios0Scene);
-                notificarAllListeners("meusAnuncios0Scene", userData);
+                notificarAllListeners("meusAnuncios0Scene", userData,userData2);
                 break;
             case "meusAnuncios1Scene":
                 stage.setScene(meusAnuncios1Scene);
-                notificarAllListeners("meusAnuncios1Scene", userData);
+                notificarAllListeners("meusAnuncios1Scene", userData,userData2);
                 break;
             case "meusAnuncios2Scene":
                 stage.setScene(meusAnuncios2Scene);
-                notificarAllListeners("meusAnuncios2Scene", userData);
+                notificarAllListeners("meusAnuncios2Scene", userData,userData2);
                 break;
             case "meusAnuncios3Scene":
                 stage.setScene(meusAnuncios3Scene);
-                notificarAllListeners("meusAnuncios3Scene", userData);
+                notificarAllListeners("meusAnuncios3Scene", userData,userData2);
                 break;
             case "meusAnuncios4Scene":
                 stage.setScene(meusAnuncios4Scene);
-                notificarAllListeners("meusAnuncios4Scene", userData);
+                notificarAllListeners("meusAnuncios4Scene", userData,userData2);
                 break;
             case "meusAnuncios5Scene":
                 stage.setScene(meusAnuncios5Scene);
-                notificarAllListeners("meusAnuncios5Scene", userData);
+                notificarAllListeners("meusAnuncios5Scene", userData,userData2);
                 break;
             case "meusAnuncios6Scene":
                 stage.setScene(meusAnuncios6Scene);
-                notificarAllListeners("meusAnuncios6Scene", userData);
+                notificarAllListeners("meusAnuncios6Scene", userData,userData2);
                 break;
             case "buscaLojasLogado0Scene":
                 stage.setScene(buscaLojasLogado0Scene);
-                notificarAllListeners("buscaLojasLogado0Scene", userData);
+                notificarAllListeners("buscaLojasLogado0Scene", userData,userData2);
                 break;
             case "buscaLojasLogado1Scene":
                 stage.setScene(buscaLojasLogado1Scene);
-                notificarAllListeners("buscaLojasLogado1Scene", userData);
+                notificarAllListeners("buscaLojasLogado1Scene", userData,userData2);
                 break;
             case "buscaLojasLogado2Scene":
                 stage.setScene(buscaLojasLogado2Scene);
-                notificarAllListeners("buscaLojasLogado2Scene", userData);
+                notificarAllListeners("buscaLojasLogado2Scene", userData,userData2);
                 break;
             case "buscaLojasLogado3Scene":
                 stage.setScene(buscaLojasLogado3Scene);
-                notificarAllListeners("buscaLojasLogado3Scene", userData);
+                notificarAllListeners("buscaLojasLogado3Scene", userData,userData2);
                 break;
             case "buscaLojasLogado4Scene":
                 stage.setScene(buscaLojasLogado4Scene);
-                notificarAllListeners("buscaLojasLogado4Scene", userData);
+                notificarAllListeners("buscaLojasLogado4Scene", userData,userData2);
                 break;
             case "buscaLojasLogado5Scene":
                 stage.setScene(buscaLojasLogado5Scene);
-                notificarAllListeners("buscaLojasLogado5Scene", userData);
+                notificarAllListeners("buscaLojasLogado5Scene", userData,userData2);
                 break;
             case "buscaLojasLogado6Scene":
                 stage.setScene(buscaLojasLogado6Scene);
-                notificarAllListeners("buscaLojasLogado6Scene", userData);
+                notificarAllListeners("buscaLojasLogado6Scene", userData,userData2);
                 break;
             case "buscaLojasDeslogado0Scene":
                 stage.setScene(buscaLojasDeslogado0Scene);
-                notificarAllListeners("buscaLojasDeslogado0Scene", userData);
+                notificarAllListeners("buscaLojasDeslogado0Scene", userData,userData2);
                 break;
             case "buscaLojasDeslogado1Scene":
                 stage.setScene(buscaLojasDeslogado1Scene);
-                notificarAllListeners("buscaLojasDeslogado1Scene", userData);
+                notificarAllListeners("buscaLojasDeslogado1Scene", userData,userData2);
                 break;
             case "buscaLojasDeslogado2Scene":
                 stage.setScene(buscaLojasDeslogado2Scene);
-                notificarAllListeners("buscaLojasDeslogado2Scene", userData);
+                notificarAllListeners("buscaLojasDeslogado2Scene", userData,userData2);
                 break;
             case "buscaLojasDeslogado4Scene":
                 stage.setScene(buscaLojasDeslogado4Scene);
-                notificarAllListeners("buscaLojasDeslogado4Scene", userData);
+                notificarAllListeners("buscaLojasDeslogado4Scene", userData,userData2);
                 break;
             case "buscaLojasDeslogado3Scene":
                 stage.setScene(buscaLojasDeslogado3Scene);
-                notificarAllListeners("buscaLojasDeslogado3Scene", userData);
+                notificarAllListeners("buscaLojasDeslogado3Scene", userData,userData2);
                 break;
             case "buscaLojasDeslogado5Scene":
                 stage.setScene(buscaLojasDeslogado5Scene);
-                notificarAllListeners("buscaLojasDeslogado5Scene", userData);
+                notificarAllListeners("buscaLojasDeslogado5Scene", userData,userData2);
                 break;
             case "buscaLojasDeslogado6Scene":
                 stage.setScene(buscaLojasDeslogado6Scene);
-                notificarAllListeners("buscaLojasDeslogado6Scene", userData);
+                notificarAllListeners("buscaLojasDeslogado6Scene", userData,userData2);
                 break;
 
 
@@ -570,22 +586,27 @@ public class Main extends Application {
     }
 
     public static void trocarTela(String trc) {
-        trocarTela(trc,null);
+        trocarTela(trc,null,null);
     }
+    public static void trocarTela(String trc, Object userData) {
+        trocarTela(trc,userData,null);
+    }
+
+
 
     private static ArrayList<OnChangeScreen> listerners = new ArrayList<>();
 
     public static interface OnChangeScreen{
-        void onScreenChanged(String newScreen, Object userData) ;
+        void onScreenChanged(String newScreen, Object userData, Object userData2) ;
     }
 
     public static  void addOnChangesScreenListener(OnChangeScreen newListener){
         listerners.add(newListener);
     }
 
-    private static void notificarAllListeners(String newScreen, Object userData){
+    private static void notificarAllListeners(String newScreen, Object userData, Object userData2){
         for(OnChangeScreen l: listerners)
-            l.onScreenChanged(newScreen,userData);
+            l.onScreenChanged(newScreen,userData, userData2);
     }
 
 

@@ -20,8 +20,8 @@ public class MeusAnuncios0Controller {
     protected  void  initialize(){
         Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
             @Override
-            public void onScreenChanged(String newScreen, Object userData) {
-                if(newScreen.equals("meusAnunciosScene")) {
+            public void onScreenChanged(String newScreen, Object userData, Object userData2, String n) {
+                if(newScreen.equals("meusAnuncios0Scene")) {
                     user=(Cliente)userData;
                     updateComboBoxCategorias();
                     updateComboBoxLojas();

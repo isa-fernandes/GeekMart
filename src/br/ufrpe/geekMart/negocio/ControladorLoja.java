@@ -105,4 +105,11 @@ public class ControladorLoja {
     public int getProxima(){
         return this.repositorio.getProxima();
     }
+
+    public ArrayList<Loja> buscarLojaPorTitulo(String palavra) {
+        return this.repositorio.buscarLojaPorTitulo(palavra);
+    }
+    public ArrayList<Loja> buscarLojaPorCategoria(String categoria) {
+        return this.repositorio.buscarLojaPorCategoria(categoria);
+    }
 }

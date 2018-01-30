@@ -1,4 +1,6 @@
 package br.ufrpe.geekMart.gui.controller;
+import br.ufrpe.geekMart.exceptions.NaoExisteException;
+import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
 import br.ufrpe.geekMart.negocio.classesBasicas.Administrador;
 import javafx.event.ActionEvent;
@@ -15,7 +17,7 @@ public class AdmAlterarCadastroController {
         protected  void  initialize(){
                 Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
                         @Override
-                        public void onScreenChanged(String newScreen, Object userData) {
+                        public void onScreenChanged(String newScreen, Object userData, Object userData2) {
                                 if(newScreen.equals("admAlterarCadastroScene")) {
                                         user=(Administrador)userData;
                                         updateCadastroTela();
@@ -76,6 +78,10 @@ public class AdmAlterarCadastroController {
                         alert.setHeaderText("Erro ao alterar o Adm!!");
                         alert.setContentText(ex.getMessage());
                         alert.showAndWait();
+                } catch (ParametroNullException es){
+
+                } catch (NaoExisteException rr){
+
                 }
 
         }

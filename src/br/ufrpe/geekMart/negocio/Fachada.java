@@ -85,17 +85,17 @@ public class Fachada {
 
     // ANUNCIO
 
+    public ArrayList<Anuncio> buscarAnuncioPorCategoriaOrdenadoPeloPreco(String categoria) {
+        return  this.cadastroAnuncio.buscarAnuncioPorCategoriaOrdenadoPeloPreco(categoria);
+    }
+
+    public ArrayList<Anuncio> buscarAnuncioPorTituloOrdenadoPeloPreco(String palavra) {
+        return  this.cadastroAnuncio.buscarAnuncioPorTituloOrdenadoPeloPreco(palavra);
+    }
+
     public void cadastrarAnuncio (Anuncio anuncio) throws ParametroNullException, JaExisteException {
         this.cadastroAnuncio.cadastrarAnuncio(anuncio);
     }
-
-    /*public Anuncio[] getAnunciosCategoria (String categoria) {
-        return this.cadastroAnuncio.getAnunciosCategoria(categoria);
-    }
-
-    public Anuncio[] getAnunciosCategoria (int categoria){
-        return cadastroAnuncio.getAnunciosCategoria(categoria);
-    }*/
 
     public void adicionarAnuncio (Anuncio anuncio)
             throws ParametroNullException, JaExisteException {
@@ -192,6 +192,13 @@ public class Fachada {
     }
     public  boolean existeLoja(String titulo) throws ParametroNullException{
         return this.cadastroLoja.existeLoja(titulo);
+    }
+
+    public ArrayList<Loja> buscarLojaPorTitulo(String palavra) {
+        return this.cadastroLoja.buscarLojaPorTitulo(palavra);
+    }
+    public ArrayList<Loja> buscarLojaPorCategoria(String categoria) {
+        return this.cadastroLoja.buscarLojaPorCategoria(categoria);
     }
 
 }

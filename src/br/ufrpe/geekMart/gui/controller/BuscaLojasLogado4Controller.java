@@ -16,8 +16,8 @@ public class BuscaLojasLogado4Controller {
     protected  void  initialize(){
         Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
             @Override
-            public void onScreenChanged(String newScreen, Object userData) {
-                if(newScreen.equals("resultadoBuscaLogadoScene")) {
+            public void onScreenChanged(String newScreen, Object userData, Object userData2) {
+                if(newScreen.equals("resultadoBuscaLogado4Scene")) {
                     updateComboBoxCategorias();
                     updateComboBoxLojas();
 

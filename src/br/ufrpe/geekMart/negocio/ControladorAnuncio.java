@@ -6,8 +6,10 @@ import br.ufrpe.geekMart.exceptions.*;
 import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
 import br.ufrpe.geekMart.negocio.classesBasicas.Chat;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
+import br.ufrpe.geekMart.negocio.classesBasicas.EnumCategorias;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class ControladorAnuncio {
     private static ControladorAnuncio instancia;
@@ -194,6 +196,14 @@ public class ControladorAnuncio {
 
     public int getProxima(){
         return this.repositorio.getProxima();
+    }
+
+    public ArrayList<Anuncio> buscarAnuncioPorTituloOrdenadoPeloPreco(String palavra) {
+        return  this.repositorio.buscarAnuncioPorTituloOrdenadoPeloPreco(palavra);
+    }
+
+    public ArrayList<Anuncio> buscarAnuncioPorCategoriaOrdenadoPeloPreco(String categoria) {
+        return  this.repositorio.buscarAnuncioPorCategoriaOrdenadoPeloPreco(categoria);
     }
 
 

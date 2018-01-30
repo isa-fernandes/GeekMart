@@ -15,8 +15,8 @@ public class ResultadoBuscaDeslogado6Controller {
     protected  void  initialize(){
         Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
             @Override
-            public void onScreenChanged(String newScreen, Object userData) {
-                if(newScreen.equals("resultadoBuscaLogadoScene")) {
+            public void onScreenChanged(String newScreen, Object userData, Object userData2) {
+                if(newScreen.equals("resultadoBuscaDeslogado6Scene")) {
                     updateComboBoxCategorias();
                     updateComboBoxLojas();
 
