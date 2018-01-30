@@ -3,9 +3,13 @@ import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
 import br.ufrpe.geekMart.negocio.classesBasicas.Administrador;
+import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
+import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
+import java.util.ArrayList;
 
 
 public class AdmAlterarCadastroController {
@@ -17,7 +21,8 @@ public class AdmAlterarCadastroController {
         protected  void  initialize(){
                 Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
                         @Override
-                        public void onScreenChanged(String newScreen, Object userData, Object userData2) {
+                        public void onScreenChanged(String newScreen, Object userData, ArrayList<Anuncio> userData2,
+                                                    ArrayList<Anuncio> userData3, ArrayList<Loja> userData4) {
                                 if(newScreen.equals("admAlterarCadastroScene")) {
                                         user=(Administrador)userData;
                                         updateCadastroTela();

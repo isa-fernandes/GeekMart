@@ -115,12 +115,12 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <ImageView fx:id="imBusca01" fitHeight="83.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" />
-                                          <ImageView fitHeight="83.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
-                                          <ImageView fitHeight="83.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
-                                          <ImageView fitHeight="83.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
-                                          <ImageView fitHeight="83.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4" />
-                                          <ImageView fitHeight="83.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="5" />
+                                          <ImageView fx:id="imBusca1" fitHeight="83.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" />
+                                          <ImageView fx:id="imBusca2" fitHeight="83.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+                                          <ImageView fx:id="imBusca3" fitHeight="83.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
+                                          <ImageView fx:id="imBusca4" fitHeight="83.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />
+                                          <ImageView fx:id="imBusca5" fitHeight="83.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4" />
+                                          <ImageView fx:id="imBusca6" fitHeight="83.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="5" />
                                           <GridPane prefHeight="91.0" prefWidth="400.0" GridPane.columnIndex="1">
                                             <columnConstraints>
                                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="205.0" minWidth="10.0" prefWidth="58.0" />

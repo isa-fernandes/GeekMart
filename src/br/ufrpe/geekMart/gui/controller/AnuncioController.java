@@ -28,7 +28,8 @@ public class AnuncioController {
     protected  void  initialize(){
         Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
             @Override
-            public void onScreenChanged(String newScreen, Object userData,Object userData2) {
+            public void onScreenChanged(String newScreen, Object userData, ArrayList<Anuncio> userData2,
+                                        ArrayList<Anuncio> userData3, ArrayList<Loja> userData4) {
                 if(newScreen.equals("AnuncioScene")) {
                     user = (Anuncio)userData;
                     updateComboBoxCategorias();
@@ -106,33 +107,32 @@ public class AnuncioController {
         ArrayList<Anuncio> resultado = fachada.buscarAnuncioPorTituloOrdenadoPeloPreco(palavra);
 
 
-        Anuncio[] anuncios = fachada.listarAnuncios();
 
         if(resultado.size()<6 && resultado.size()>=0) {
 
             switch (resultado.size()) {
                 case 1:
-                    Main.trocarTela("resultadoBuscaLogado1Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado1Scene", resultado);
                     break;
                 case 2:
-                    Main.trocarTela("resultadoBuscaLogado2Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado2Scene", resultado);
                     break;
                 case 3:
-                    Main.trocarTela("resultadoBuscaLogado3Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado3Scene", resultado);
                     break;
                 case 4:
-                    Main.trocarTela("resultadoBuscaLogado4Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado4Scene", resultado);
                     break;
                 case 5:
-                    Main.trocarTela("resultadoBuscaLogado5Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado5Scene", resultado);
                     break;
 
                 case 0:
-                    Main.trocarTela("resultadoBuscaLogado0Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado0Scene", resultado);
                     break;
             }
         } else if(resultado.size() >= 6) {
-            Main.trocarTela("resultadoBuscaLogado6Scene", anuncios);
+            Main.trocarTela("resultadoBuscaLogado6Scene", resultado);
         }
 
 
@@ -141,35 +141,67 @@ public class AnuncioController {
 
     @FXML
     protected  void btHomeAction(ActionEvent e){
-        Main.trocarTela("telaInicialLogadoScene");
+        Main.trocarTela("telaInicialLogadoScene",user.getCliente());
     }
 
     @FXML
     protected  void btMeuCadastroAction(ActionEvent e){
-        Main.trocarTela("cadastroClienteScene");
+        Main.trocarTela("cadastroClienteScene",user.getCliente());
     }
 
     @FXML
-    protected  void btMeusAnunciosAction(ActionEvent e){ Main.trocarTela("meusAnunciosScene"); }
+    protected  void btMeusAnunciosAction(ActionEvent e){
+
+        ArrayList<Anuncio> anuncios = user.getCliente().getAnuncios();
+
+        if(anuncios.size()<6 && anuncios.size()>=0) {
+
+            switch (anuncios.size()) {
+                case 1:
+                    Main.trocarTela("meusAnuncios1Scene", user.getCliente(),anuncios);
+                    break;
+                case 2:
+                    Main.trocarTela("meusAnuncios2Scene",user.getCliente(), anuncios);
+                    break;
+                case 3:
+                    Main.trocarTela("meusAnuncios3Scene",user.getCliente(), anuncios);
+                    break;
+                case 4:
+                    Main.trocarTela("meusAnuncios4Scene",user.getCliente(), anuncios);
+                    break;
+                case 5:
+                    Main.trocarTela("meusAnuncios5Scene", user.getCliente(),anuncios);
+                    break;
+
+                case 0:
+                    Main.trocarTela("meusAnuncios0Scene",user.getCliente(), anuncios);
+                    break;
+            }
+        } else if(anuncios.size() >= 6) {
+            Main.trocarTela("meusAnuncios6Scene",user.getCliente(), anuncios);
+        }
+
+
+        Main.trocarTela("meusAnunciosScene",user.getCliente(),anuncios); }
 
     @FXML
     protected  void btMinhasLojasAction(ActionEvent e){
-        Main.trocarTela("minhasLojasScene");
+        Main.trocarTela("minhasLojasScene",user.getCliente());
     }
 
     @FXML
     protected  void btNovoAnuncioAction(ActionEvent e){
-        Main.trocarTela("cadastrarNovoAnuncioScene");
+        Main.trocarTela("cadastrarNovoAnuncioScene",user.getCliente());
     }
 
     @FXML
     protected  void btNovaLojaAction(ActionEvent e){
-        Main.trocarTela("cadastrarNovaLojaScene");
+        Main.trocarTela("cadastrarNovaLojaScene",user.getCliente());
     }
 
     @FXML
     protected  void btChatAction(ActionEvent e){
-        Main.trocarTela("chatScene");
+        Main.trocarTela("chatScene",user.getCliente());
     }
 
     @FXML

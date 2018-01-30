@@ -23,7 +23,8 @@ public class TelaInicialDeslogadoController {
         protected  void  initialize(){
                 Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
                         @Override
-                        public void onScreenChanged(String newScreen, Object userData, Object userData2) {
+                        public void onScreenChanged(String newScreen, Object userData, ArrayList<Anuncio> userData2,
+                                                    ArrayList<Anuncio> userData3, ArrayList<Loja> userData4) {
                                 if(newScreen.equals("telaInicialDeslogadoScene")) {
                                         updateComboBoxCategorias();
                                         updateComboBoxLojas();
@@ -86,8 +87,6 @@ public class TelaInicialDeslogadoController {
                         Image image1 = new Image("/imagens/estrela.png");
                         Image image2 = new Image("/imagens/estrela.png");
                         Image image3 = new Image("/imagens/estrela.png");
-                        ArrayList<Image> img = new ArrayList<>();
-                        img.add(image1); img.add(image2); img.add(image3);
                         Anuncio an = new Anuncio(
                                 huan,
                                 "69",
@@ -97,9 +96,35 @@ public class TelaInicialDeslogadoController {
                                 EnumEstados.PE,
                                 3,
                                 "996074398",
-                                img.get(0),
-                                img.get(1),
-                                img.get(2));
+                                image1,
+                                image2,
+                                image3);
+
+                        Anuncio an2 = new Anuncio(
+                                huan,
+                                "89",
+                                "Teste2",
+                                "Teste2",
+                                EnumCategorias.FIGURAS_ESTÁTUAS_E_BONECOS,
+                                EnumEstados.PE,
+                                3,
+                                "996074398",
+                                image1,
+                                image2,
+                                image3);
+
+                        Anuncio an3 = new Anuncio(
+                                huan,
+                                "100",
+                                "Teste3",
+                                "Teste3",
+                                EnumCategorias.FIGURAS_ESTÁTUAS_E_BONECOS,
+                                EnumEstados.PE,
+                                3,
+                                "996074398",
+                                image1,
+                                image2,
+                                image3);
 
 
                         Loja lj = new Loja(
@@ -109,11 +134,13 @@ public class TelaInicialDeslogadoController {
                                 EnumCategorias.CAMISAS,
                                 huan);
 
-
+                        lj.getAnuncios().add(an); lj.getAnuncios().add(an2); lj.getAnuncios().add(an3);
                         huan.getLojas().add(lj);
                         huan.getAnuncios().add(an);
+                        huan.getAnuncios().add(an2);
+                        huan.getAnuncios().add(an3);
                         fachada.cadastrarLoja(lj);
-                        fachada.cadastrarAnuncio(an);
+                        fachada.cadastrarAnuncio(an); fachada.cadastrarAnuncio(an2);fachada.cadastrarAnuncio(an3);
                         fachada.cadastrarUsuario(huan);
                 } catch (NaoExisteException ee){
 
@@ -124,6 +151,66 @@ public class TelaInicialDeslogadoController {
                 }
         }
 
+        private void clientePadrao2(){
+                try {
+
+                        Endereco end2 = new Endereco(
+                                "Av.Conde da Boa Vista",
+                                "665",
+                                "Boa Vista",
+                                "Recife",
+                                EnumEstados.PE,
+                                "52211500",
+                                "Ap");
+
+                        Cliente isa = new Cliente(
+                                "Isabella",
+                                "is@bella",
+                                "123",
+                                "(81)996074398",
+                                end2,
+                                "123",
+                                false,
+                                true);
+
+                        Image image1 = new Image("/imagens/estrela.png");
+                        Image image2 = new Image("/imagens/estrela.png");
+                        Image image3 = new Image("/imagens/estrela.png");
+                        Anuncio an2 = new Anuncio(
+                                isa,
+                                "89",
+                                "teste2",
+                                "Teste2",
+                                EnumCategorias.FIGURAS_ESTÁTUAS_E_BONECOS,
+                                EnumEstados.PE,
+                                3,
+                                "996074398",
+                                image1,
+                                image2,
+                                image3);
+
+
+                        Loja lj2 = new Loja(
+                                "Loja Teste2",
+                                "1234526",
+                                "Loja Teste da GeekMart2",
+                                EnumCategorias.CAMISAS,
+                                isa);
+
+
+                        isa.getLojas().add(lj2);
+                        isa.getAnuncios().add(an2);
+                        fachada.cadastrarLoja(lj2);
+                        fachada.cadastrarAnuncio(an2);
+                        fachada.cadastrarUsuario(isa);
+                } catch (NaoExisteException ee){
+
+                }  catch (ParametroNullException ee){
+
+                } catch (JaExisteException ee){
+
+                }
+        }
 
 
 

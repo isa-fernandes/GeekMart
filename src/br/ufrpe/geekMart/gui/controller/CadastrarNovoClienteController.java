@@ -8,6 +8,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.util.ArrayList;
+
 
 public class CadastrarNovoClienteController {
 
@@ -17,7 +19,8 @@ public class CadastrarNovoClienteController {
         protected  void  initialize(){
                 Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
                         @Override
-                        public void onScreenChanged(String newScreen, Object userData, Object userData2) {
+                        public void onScreenChanged(String newScreen, Object userData, ArrayList<Anuncio> userData2,
+                                                    ArrayList<Anuncio> userData3, ArrayList<Loja> userData4) {
                                 if(newScreen.equals("cadastrarNovoClienteScene")) {
                                         updateComboBoxCategorias();
                                         updateComboBoxLojas();

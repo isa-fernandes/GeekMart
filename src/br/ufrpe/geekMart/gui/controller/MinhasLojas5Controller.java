@@ -1,31 +1,183 @@
 package br.ufrpe.geekMart.gui.controller;
 
 import br.ufrpe.geekMart.negocio.Fachada;
+import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
 import br.ufrpe.geekMart.negocio.classesBasicas.EnumCategorias;
+import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
+import java.util.ArrayList;
+
 public class MinhasLojas5Controller {
 
+    ArrayList<Anuncio> user1, user2;
     Fachada fachada = Fachada.getInstancia();
+    ArrayList<Anuncio> proxima;
+    ArrayList<Anuncio> voltar;
+
 
     @FXML
     protected  void  initialize(){
         Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
             @Override
-            public void onScreenChanged(String newScreen, Object userData, Object userData2) {
+            public void onScreenChanged(String newScreen, Object userData, ArrayList<Anuncio> userData2,
+                                        ArrayList<Anuncio> userData3, ArrayList<Loja> userData4) {
                 if(newScreen.equals("minhasLojas5Scene")) {
                     updateComboBoxCategorias();
                     updateComboBoxLojas();
-
+                    updateTela();
                 } }
         });
 
 
         updateComboBoxCategorias();
         updateComboBoxLojas();
+
+    }
+
+    private  void  updateTela() {
+
+        imBusca1.setImage(user1.get(0).getImagens().get(0));
+        imBusca2.setImage(user1.get(1).getImagens().get(0));
+        imBusca3.setImage(user1.get(2).getImagens().get(0));
+        imBusca4.setImage(user1.get(3).getImagens().get(0));
+        imBusca5.setImage(user1.get(4).getImagens().get(0));
+        imBusca6.setImage(user1.get(5).getImagens().get(0));
+        lbTituroII1.setText(user1.get(0).getTitulo());
+        lbTituroII2.setText(user1.get(1).getTitulo());
+        lbTituroII3.setText(user1.get(2).getTitulo());
+        lbTituroII4.setText(user1.get(3).getTitulo());
+        lbTituroII5.setText(user1.get(4).getTitulo());
+        lbTituroII6.setText(user1.get(5).getTitulo());
+        lbPrecoII1.setText(user1.get(0).getPreco());
+        lbPrecoII2.setText(user1.get(1).getPreco());
+        lbPrecoII3.setText(user1.get(2).getPreco());
+        lbPrecoII4.setText(user1.get(3).getPreco());
+        lbPrecoII5.setText(user1.get(4).getPreco());
+        lbPrecoII6.setText(user1.get(5).getPreco());
+
+    }
+
+
+
+    @FXML
+    protected  void irParaAnuncioAction1(ActionEvent e){
+        Main.trocarTela("anuncioScene",user1.get(0));
+
+    }
+
+    @FXML
+    protected  void irParaAnuncioAction2(ActionEvent e){
+        Main.trocarTela("anuncioScene",user1.get(1));
+
+    }
+
+    @FXML
+    protected  void irParaAnuncioAction3(ActionEvent e){
+        Main.trocarTela("anuncioScene",user1.get(2));
+
+    }
+
+    @FXML
+    protected  void irParaAnuncioAction4(ActionEvent e){
+        Main.trocarTela("anuncioScene",user1.get(3));
+
+    }
+
+    @FXML
+    protected  void irParaAnuncioAction5(ActionEvent e){
+        Main.trocarTela("anuncioScene",user1.get(4));
+
+    }
+
+    @FXML
+    protected  void irParaAnuncioAction6(ActionEvent e){
+        Main.trocarTela("anuncioScene",user1.get(5));
+
+    }
+
+    @FXML
+    protected  void proximaAction(ActionEvent e){
+        voltar.add(user1.get(0));
+        voltar.add(user1.get(1));
+        voltar.add(user1.get(2));
+        voltar.add(user1.get(3));
+        voltar.add(user1.get(4));
+        voltar.add(user1.get(6));
+
+        user1.remove(0);
+        user1.remove(0);
+        user1.remove(0);
+        user1.remove(0);
+        user1.remove(0);
+        user1.remove(0);
+
+        user2.clear();
+        user2.add(voltar.get(0));
+        user2.add(voltar.get(1));
+        user2.add(voltar.get(2));
+        user2.add(voltar.get(3));
+        user2.add(voltar.get(4));
+        user2.add(voltar.get(5));
+
+
+
+        if(user1.size() - 6 >= 6){
+            Main.trocarTela("resultadoBuscaLogado6Scene",user1, user2);
+        }
+
+        if(user1.size() - 6 <6){
+            switch (user1.size() - 6) {
+                case 1:
+                    Main.trocarTela("resultadoBuscaLogado1Scene",user1,user2);
+                    break;
+                case 2:
+                    Main.trocarTela("resultadoBuscaLogado2Scene",user1,user2);
+                    break;
+                case 3:
+                    Main.trocarTela("resultadoBuscaLogado3Scene",user1,user2);
+                    break;
+                case 4:
+                    Main.trocarTela("resultadoBuscaLogado4Scene",user1,user2);
+                    break;
+                case 5:
+                    Main.trocarTela("resultadoBuscaLogado5Scene",user1,user2);
+                    break;
+                case 0:
+                    Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                    alert2.setTitle("Informação");
+                    alert2.setHeaderText("Anúncios");
+                    alert2.setContentText("Não há mais Anúncios");
+                    alert2.showAndWait();
+                    break;
+            }
+        }
+
+    }
+
+    @FXML
+    protected  void voltarAction(ActionEvent e){
+        if(user2 != null) {
+            user1.add(0, user2.get(0));
+            user1.add(1, user2.get(1));
+            user1.add(2, user2.get(2));
+            user1.add(3, user2.get(3));
+            user1.add(4, user2.get(4));
+            user1.add(5, user2.get(5));
+
+            Main.trocarTela("resultadoBuscaLogado6Scene", user1);
+        }else{
+            Alert alertw = new Alert(Alert.AlertType.ERROR);
+            alertw.setTitle("Erro");
+            alertw.setHeaderText("Erro");
+            alertw.setContentText("Não há mais anuncios para essa busca");
+            alertw.showAndWait();
+
+        }
+
 
     }
 
@@ -216,5 +368,120 @@ public class MinhasLojas5Controller {
         Main.trocarTela("chatScene");
     }
 
+    @FXML
+    protected  void buscaAnunciosPorTituloOrdenadoPorPreço(ActionEvent e){
+
+        String palavra = tfBuscar.getText();
+        ArrayList<Anuncio> resultado = fachada.buscarAnuncioPorTituloOrdenadoPeloPreco(palavra);
+
+
+
+        if(resultado.size()<6 && resultado.size()>=0) {
+
+            switch (resultado.size()) {
+                case 1:
+                    Main.trocarTela("resultadoBuscaLogado1Scene", resultado);
+                    break;
+                case 2:
+                    Main.trocarTela("resultadoBuscaLogado2Scene", resultado);
+                    break;
+                case 3:
+                    Main.trocarTela("resultadoBuscaLogado3Scene", resultado);
+                    break;
+                case 4:
+                    Main.trocarTela("resultadoBuscaLogado4Scene", resultado);
+                    break;
+                case 5:
+                    Main.trocarTela("resultadoBuscaLogado5Scene", resultado);
+                    break;
+
+                case 0:
+                    Main.trocarTela("resultadoBuscaLogado0Scene", resultado);
+                    break;
+            }
+        } else if(resultado.size() >= 6) {
+            Main.trocarTela("resultadoBuscaLogado6Scene", resultado);
+        }
+
+
+    }
+
+    @FXML
+    protected  void buscaAnunciosPorCategoria(ActionEvent e){
+
+        String palavra = cbCategorias.getSelectionModel().toString();
+        ArrayList<Loja> anuncios = fachada.buscarLojaPorCategoria(palavra);
+
+
+        if(anuncios.size()<6 && anuncios.size()>=0) {
+
+            switch (anuncios.size()) {
+                case 1:
+                    Main.trocarTela("resultadoBuscaLogado1Scene", anuncios);
+                    break;
+                case 2:
+                    Main.trocarTela("resultadoBuscaLogado2Scene", anuncios);
+                    break;
+                case 3:
+                    Main.trocarTela("resultadoBuscaLogado3Scene", anuncios);
+                    break;
+                case 4:
+                    Main.trocarTela("resultadoBuscaLogado4Scene", anuncios);
+                    break;
+                case 5:
+                    Main.trocarTela("resultadoBuscaLogado5Scene", anuncios);
+                    break;
+
+                case 0:
+                    Main.trocarTela("resultadoBuscaLogado0Scene", anuncios);
+                    break;
+            }
+        } else if(anuncios.size() >= 6) {
+            Main.trocarTela("resultadoBuscaLogado6Scene", anuncios);
+        }
+
+
+    }
+
+
+
+
+    @FXML
+    protected  void buscaLojasPorCategoria(ActionEvent e){
+
+        String palavra = cbCategorias.getSelectionModel().toString();
+        ArrayList<Loja> anuncios = fachada.buscarLojaPorTitulo(palavra);
+
+
+        if(anuncios.size()<6 && anuncios.size()>=0) {
+
+            switch (anuncios.size()) {
+                case 1:
+                    Main.trocarTela("buscasLojasLogado1Scene", anuncios);
+                    break;
+                case 2:
+                    Main.trocarTela("buscasLojasLogado2Scene", anuncios);
+                    break;
+                case 3:
+                    Main.trocarTela("buscasLojasLogado3Scene", anuncios);
+                    break;
+                case 4:
+                    Main.trocarTela("buscasLojasLogado4Scene", anuncios);
+                    break;
+                case 5:
+                    Main.trocarTela("buscasLojasLogado5Scene", anuncios);
+                    break;
+
+                case 0:
+                    Main.trocarTela("buscasLojasLogado0Scene", anuncios);
+                    break;
+            }
+        } else if(anuncios.size() >= 6) {
+            Main.trocarTela("resultadoBuscaLogado6Scene", anuncios);
+        }
+
+
+
+    }
 
 }

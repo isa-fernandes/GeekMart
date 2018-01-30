@@ -67,8 +67,8 @@
                                     <children>
                                         <VBox prefHeight="433.0" prefWidth="129.0">
                                             <children>
-                                                <ComboBox fx:id="cbCategorias" prefWidth="150.0" promptText="Categorias" />
-                                                <ComboBox fx:id="cbLojas" prefWidth="150.0" promptText="Lojas " />
+                                                <ComboBox fx:id="cbCategorias" onAction="#buscaAnunciosPorCategoria" prefWidth="150.0" promptText="Categorias" />
+                                                <ComboBox fx:id="cbLojas" onAction="#buscaLojasPorCategoria" prefWidth="150.0" promptText="Lojas " />
                                                 <Button fx:id="btHome" mnemonicParsing="false" onAction="#btHomeAction" prefHeight="25.0" prefWidth="128.0" text="Home" />
                                     <Button fx:id="btVoltar" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="Voltar" />
                                             </children>
@@ -89,7 +89,7 @@
                                 <HBox alignment="CENTER" prefHeight="142.0" prefWidth="574.0" spacing="5.0">
                                     <children>
                                         <TextField fx:id="tfBuscar" prefHeight="25.0" prefWidth="499.0" promptText="Buscar Produto/Loja" />
-                                        <Button fx:id="btBuscar" mnemonicParsing="false" prefHeight="25.0" prefWidth="63.0" text="Buscar">
+                                        <Button fx:id="btBuscar" mnemonicParsing="false" onAction="#buscaAnunciosPorTituloOrdenadoPorPreço" prefHeight="25.0" prefWidth="63.0" text="Buscar">
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
@@ -114,7 +114,7 @@
                                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                     </rowConstraints>
                                                     <children>
-                                                        <ImageView fx:id="imBusca01" fitHeight="83.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" />
+                                                        <ImageView fx:id="imBusca1" fitHeight="83.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" />
                                                         <ImageView fitHeight="83.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
                                                         <ImageView fitHeight="83.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
                                                         <ImageView fitHeight="83.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3" />

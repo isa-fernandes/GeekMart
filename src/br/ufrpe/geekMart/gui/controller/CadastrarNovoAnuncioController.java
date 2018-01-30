@@ -17,6 +17,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class CadastrarNovoAnuncioController {
@@ -27,7 +28,8 @@ public class CadastrarNovoAnuncioController {
         protected  void  initialize(){
                 Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
                         @Override
-                        public void onScreenChanged(String newScreen, Object userData, Object userData2) {
+                        public void onScreenChanged(String newScreen, Object userData, ArrayList<Anuncio> userData2,
+                                                    ArrayList<Anuncio> userData3, ArrayList<Loja> userData4) {
                                 if(newScreen.equals("cadastrarNovoAnuncioScene")) {
                                         user = (Cliente)userData;
                                         System.out.println("");
@@ -173,8 +175,40 @@ public class CadastrarNovoAnuncioController {
                 Main.trocarTela("cadastroClienteScene",user);
         }
 
-        @FXML
-        protected  void btMeusAnunciosAction(ActionEvent e){ Main.trocarTela("meusAnunciosScene",user); }
+    @FXML
+    protected  void btMeusAnunciosAction(ActionEvent e){
+
+        ArrayList<Anuncio> anuncios = user.getAnuncios();
+
+        if(anuncios.size()<6 && anuncios.size()>=0) {
+
+            switch (anuncios.size()) {
+                case 1:
+                    Main.trocarTela("meusAnuncios1Scene", user,anuncios);
+                    break;
+                case 2:
+                    Main.trocarTela("meusAnuncios2Scene",user, anuncios);
+                    break;
+                case 3:
+                    Main.trocarTela("meusAnuncios3Scene",user, anuncios);
+                    break;
+                case 4:
+                    Main.trocarTela("meusAnuncios4Scene",user, anuncios);
+                    break;
+                case 5:
+                    Main.trocarTela("meusAnuncios5Scene", user,anuncios);
+                    break;
+
+                case 0:
+                    Main.trocarTela("meusAnuncios0Scene",user, anuncios);
+                    break;
+            }
+        } else if(anuncios.size() >= 6) {
+            Main.trocarTela("meusAnuncios6Scene",user, anuncios);
+        }
+
+
+        Main.trocarTela("meusAnunciosScene",user,anuncios); }
 
         @FXML
         protected  void btMinhasLojasAction(ActionEvent e){

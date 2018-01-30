@@ -3,12 +3,12 @@ import br.ufrpe.geekMart.exceptions.JaExisteException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
-import br.ufrpe.geekMart.negocio.classesBasicas.Administrador;
-import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
-import br.ufrpe.geekMart.negocio.classesBasicas.Usuario;
+import br.ufrpe.geekMart.negocio.classesBasicas.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
+import java.util.ArrayList;
 
 public class AdmBloqueioDesbloqueioController {
 
@@ -19,7 +19,8 @@ public class AdmBloqueioDesbloqueioController {
         protected void initialize() {
                 Main.addOnChangesScreenListener(new Main.OnChangeScreen() {
                         @Override
-                        public void onScreenChanged(String newScreen, Object userData, Object userData2) {
+                        public void onScreenChanged(String newScreen, Object userData, ArrayList<Anuncio> userData2,
+                                                    ArrayList<Anuncio> userData3, ArrayList<Loja> userData4) {
                                 if (newScreen.equals("admBloqueioDesbloqueioScene")) {
                                         user = (Administrador) userData;
 

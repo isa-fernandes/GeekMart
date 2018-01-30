@@ -1,8 +1,10 @@
 package br.ufrpe.geekMart.gui.controller;
 
 import br.ufrpe.geekMart.negocio.Fachada;
+import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
 import br.ufrpe.geekMart.negocio.classesBasicas.EnumCategorias;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
+import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,6 +12,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+
+import java.util.ArrayList;
 
 public class CadastroClienteController {
 
@@ -20,7 +24,8 @@ public class CadastroClienteController {
         protected  void  initialize(){
                 Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
                         @Override
-                        public void onScreenChanged(String newScreen, Object userData, Object userData2) {
+                        public void onScreenChanged(String newScreen, Object userData, ArrayList<Anuncio> userData2,
+                                                    ArrayList<Anuncio> userData3, ArrayList<Loja> userData4) {
                                 if(newScreen.equals("cadastroClienteScene")) {
                                         user = (Cliente)userData;
                                         System.out.println(user);
@@ -159,9 +164,6 @@ public class CadastroClienteController {
         }
 
         @FXML
-        protected  void btMeusAnunciosAction(ActionEvent e){ Main.trocarTela("meusAnunciosScene",user); }
-
-        @FXML
         protected  void btMinhasLojasAction(ActionEvent e){
                 Main.trocarTela("minhasLojasScene",user);
         }
@@ -185,6 +187,42 @@ public class CadastroClienteController {
         protected  void btAlterarAction(ActionEvent e){
                 Main.trocarTela("alterarClienteScene",user);
         }
+
+
+        @FXML
+        protected  void btMeusAnunciosAction(ActionEvent e){
+
+                ArrayList<Anuncio> anuncios = user.getAnuncios();
+
+                if(anuncios.size()<6 && anuncios.size()>=0) {
+
+                        switch (anuncios.size()) {
+                                case 1:
+                                        Main.trocarTela("meusAnuncios1Scene", user,anuncios);
+                                        break;
+                                case 2:
+                                        Main.trocarTela("meusAnuncios2Scene",user, anuncios);
+                                        break;
+                                case 3:
+                                        Main.trocarTela("meusAnuncios3Scene",user, anuncios);
+                                        break;
+                                case 4:
+                                        Main.trocarTela("meusAnuncios4Scene",user, anuncios);
+                                        break;
+                                case 5:
+                                        Main.trocarTela("meusAnuncios5Scene", user,anuncios);
+                                        break;
+
+                                case 0:
+                                        Main.trocarTela("meusAnuncios0Scene",user, anuncios);
+                                        break;
+                        }
+                } else if(anuncios.size() >= 6) {
+                        Main.trocarTela("meusAnuncios6Scene",user, anuncios);
+                }
+
+
+                Main.trocarTela("meusAnunciosScene",user,anuncios); }
 
 
 

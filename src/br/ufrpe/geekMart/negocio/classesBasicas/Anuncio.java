@@ -28,13 +28,14 @@ public class Anuncio implements Serializable {
     private int quantidadeProdutos;
     private ArrayList<Chat> chat;
     private transient ArrayList<Image> imagens = new ArrayList<>();
+    private transient Image imagem1, imagem2, imagem3;
 
     public Anuncio(){
 
     }
 
     public Anuncio (Cliente cliente, String preco, String titulo, String descricao, EnumCategorias categoria,
-                    EnumEstados estado, int quantidadeProdutos, String telefone, Image prim, Image seg, Image ter) {
+                    EnumEstados estado, int quantidadeProdutos, String telefone, Image imagem1, Image imagem2, Image imagem3) {
         this.cliente = cliente;
         this.preco = preco;
         this.titulo = titulo;
@@ -48,10 +49,13 @@ public class Anuncio implements Serializable {
         this.comentarios = new ArrayList<>();
         this.chat = new ArrayList<>();
         this.telefone=telefone;
-        this.imagens.clear();
+        this.imagem1=imagem1;
+        this.imagem2=imagem2;
+        this.imagem3=imagem3;
+        /*this.imagens.clear();
         this.imagens.add(prim);
         this.imagens.add(seg);
-        this.imagens.add(ter);
+        this.imagens.add(ter);*/
     }
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
@@ -189,6 +193,30 @@ public class Anuncio implements Serializable {
         if (this.data == null) {
             this.data = LocalDate.now();
         }
+    }
+
+    public Image getImagem1() {
+        return imagem1;
+    }
+
+    public void setImagem1(Image imagem1) {
+        this.imagem1 = imagem1;
+    }
+
+    public Image getImagem2() {
+        return imagem2;
+    }
+
+    public void setImagem2(Image imagem2) {
+        this.imagem2 = imagem2;
+    }
+
+    public Image getImagem3() {
+        return imagem3;
+    }
+
+    public void setImagem3(Image imagem3) {
+        this.imagem3 = imagem3;
     }
 
     public ArrayList<Image> getImagens() {
