@@ -121,6 +121,7 @@ public class RepositorioAnuncio implements IRepositorioAnuncio, Serializable {
             if (this.anuncios[i].getTitulo().contains(palavra)) {
                 resultadoBuscaTitulo.add(j,anuncios[i]);
                 j = j+1;
+                i++;
             } else {
                 i = i + 1;
             }
