@@ -7,6 +7,7 @@ import br.ufrpe.geekMart.negocio.classesBasicas.EnumCategorias;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
@@ -15,6 +16,9 @@ public class ResultadoBuscaLogado1Contoller {
 
     Fachada fachada = Fachada.getInstancia();
     ArrayList<Anuncio> user1, user2;
+
+    @FXML
+    private ImageView imBusca1;
 
     @FXML
     protected  void  initialize(){
@@ -40,7 +44,10 @@ public class ResultadoBuscaLogado1Contoller {
 
     private  void  updateTela() {
 
-        imBusca1.setImage(user1.get(0).getImagens().get(0));
+        Image image = user1.get(0).getImagens().get(0);
+        if (!image.isError()) {
+            imBusca1.setImage(image);
+        }
         lbTituroII1.setText(user1.get(0).getTitulo());
         lbPrecoII1.setText(user1.get(0).getPreco());
         System.out.println("UploadTela Completo");
@@ -80,9 +87,6 @@ public class ResultadoBuscaLogado1Contoller {
 
     @FXML
     private Button btVerAnuncio6;
-
-    @FXML
-    private ImageView imBusca1;
 
     @FXML
     private ImageView imBusca2;
