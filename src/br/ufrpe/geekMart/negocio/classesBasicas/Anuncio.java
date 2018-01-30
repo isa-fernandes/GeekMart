@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Anuncio implements Serializable {
-    private Cliente cliente;
+    private String cpfCliente;
     private String preco, telefone;
     private String titulo;
     private String descricao;
@@ -33,9 +33,9 @@ public class Anuncio implements Serializable {
 
     }
 
-    public Anuncio (Cliente cliente, String preco, String titulo, String descricao, EnumCategorias categoria,
+    public Anuncio (String cpfCliente, String preco, String titulo, String descricao, EnumCategorias categoria,
                     EnumEstados estado, int quantidadeProdutos, String telefone, Image prim, Image seg, Image ter) {
-        this.cliente = cliente;
+        this.cpfCliente = cpfCliente;
         this.preco = preco;
         this.titulo = titulo;
         this.descricao = descricao;
@@ -176,14 +176,14 @@ public class Anuncio implements Serializable {
         this.estado = estado;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public String getCliente() {
+        return cpfCliente;
     }
     public LocalDate getData() {
         return data;
     }
-    public void setCliente(Cliente cliente){
-        this.cliente = cliente;
+    public void setCliente(String cliente){
+        this.cpfCliente = cliente;
     }
     public void setData () {
         if (this.data == null) {

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class RepositorioLoja implements IRepositorioLoja, Serializable {
     private Loja[] lojas;
-    private int proxima;
+    private int proxima = 0;
     private static RepositorioLoja instancia;
 
     public static RepositorioLoja getInstancia() {
@@ -137,7 +137,7 @@ public class RepositorioLoja implements IRepositorioLoja, Serializable {
         int i = 0;
         boolean achou = false;
         while ((!achou) && (i < this.proxima)) {
-            if (titulo.equals(this.lojas[i].getNome()) && cpf.equals(this.lojas[i].getCliente().getCpf())) {
+            if (titulo.equals(this.lojas[i].getNome()) && cpf.equals(this.lojas[i].getCpfCliente())) {
                 achou = true;
             } else {
                 i = i + 1;
@@ -212,9 +212,11 @@ public class RepositorioLoja implements IRepositorioLoja, Serializable {
     }
 
     public void alterarAnuncioNaLoja (String nomeAntigo, Anuncio anuncio) {
-        int i = this.procurarIndiceAnuncioNaLoja(nomeAntigo);
-        if (i != -1) {
-            this.lojas[i].getAnuncios().set(i, anuncio);
+        if (this.proxima > 0) {
+            int i = this.procurarIndiceAnuncioNaLoja(nomeAntigo);
+            if (i != -1) {
+                this.lojas[i].getAnuncios().set(i, anuncio);
+            }
         }
     }
 

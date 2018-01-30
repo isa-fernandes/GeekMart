@@ -75,8 +75,8 @@ public class TelaInicialDeslogadoController {
 
                         Cliente huan = new Cliente(
                                 "Huan Christopher",
-                                "huan@gm",
                                 "071",
+                                "huan@gm",
                                 "(81)996074398",
                                 end,
                                 "071",
@@ -89,7 +89,7 @@ public class TelaInicialDeslogadoController {
                         ArrayList<Image> img = new ArrayList<>();
                         img.add(image1); img.add(image2); img.add(image3);
                         Anuncio an = new Anuncio(
-                                huan,
+                                huan.getCpf(),
                                 "69",
                                 "teste",
                                 "Teste",
@@ -101,13 +101,12 @@ public class TelaInicialDeslogadoController {
                                 img.get(1),
                                 img.get(2));
 
-
                         Loja lj = new Loja(
                                 "Loja Teste",
                                 "123456",
                                 "Loja Teste da GeekMart",
                                 EnumCategorias.CAMISAS,
-                                huan);
+                                huan.getCpf());
 
 
                         huan.getLojas().add(lj);
@@ -117,10 +116,16 @@ public class TelaInicialDeslogadoController {
                         fachada.cadastrarUsuario(huan);
                 } catch (NaoExisteException ee){
 
+                    System.out.println("1");
+                    ee.printStackTrace();
                 }  catch (ParametroNullException ee){
 
+                    System.out.println("2");
+                    ee.printStackTrace();
                 } catch (JaExisteException ee){
 
+                    System.out.println("3");
+                    ee.printStackTrace();
                 }
         }
 

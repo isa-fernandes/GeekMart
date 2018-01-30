@@ -44,8 +44,6 @@ public class CadastrarNovaLojaController {
 
                             } catch (ParametroNullException ee ){
 
-                            }   catch (JaExisteException ee){
-
                             }
                         }
                 });
@@ -79,12 +77,11 @@ public class CadastrarNovaLojaController {
         }
 
 
-        private void updateList() throws NaoExisteException, ParametroNullException, JaExisteException{
+        private void updateList() throws NaoExisteException, ParametroNullException {
                 lvMeusAnuncios.getItems().clear();
-                Cliente cll = (Cliente)fachada.buscaUsuario(user.getCpf());
 
-                for (int i = 0; i < cll.getAnuncios().size(); i++) {
-                        lvMeusAnuncios.getItems().add(i, cll.getAnuncios().get(i));
+                for (int i = 0; i < user.getAnuncios().size(); i++) {
+                        lvMeusAnuncios.getItems().add(i, user.getAnuncios().get(i));
                 }
 
         }
@@ -229,7 +226,7 @@ public class CadastrarNovaLojaController {
                                 tfTelefone.getText(),
                                 taDescricao.getText(),
                                 cbCategoria.getSelectionModel().getSelectedItem(),
-                                user);
+                                user.getCpf());
                         if (this.imageV != null) {
                             g.setImage(this.imageV.getImage());
                         }

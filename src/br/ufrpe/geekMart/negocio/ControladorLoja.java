@@ -69,7 +69,7 @@ public class ControladorLoja {
         if(loja != null && cpf != null) {
             if (this.existeLoja(loja.getNome())) {
                 this.repositorio.removerLoja(loja.getNome(), cpf);
-                Cliente cliente = loja.getCliente();
+                Cliente cliente = (Cliente) Fachada.getInstancia().buscaUsuario(loja.getCpfCliente());
                 cliente.getLojas().remove(loja);
                 Fachada.getInstancia().alterarUsuario(cliente, cliente);
                 Fachada.getInstancia().salvarArquivo();
@@ -93,7 +93,7 @@ public class ControladorLoja {
         if (nomeAntigo != null && loja != null) {
             if (this.existeLoja(nomeAntigo)) {
                 this.repositorio.alterarLoja(nomeAntigo, loja);
-                Cliente cliente = loja.getCliente();
+                Cliente cliente = (Cliente) Fachada.getInstancia().buscaUsuario(loja.getCpfCliente());
                 int i = cliente.getLojaPorTitulo(nomeAntigo);
                 cliente.getLojas().set(i, loja);
                 Fachada.getInstancia().alterarUsuario(cliente, cliente);
