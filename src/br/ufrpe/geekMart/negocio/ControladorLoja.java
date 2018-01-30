@@ -65,13 +65,16 @@ public class ControladorLoja {
         return this.procurarLojasPorCategoria(categoriasEnum);
     }
 
-    public void removerLoja(String nomeDaLoja,String cpf) throws ParametroNullException, NaoExisteException{
-        if(nomeDaLoja != null && cpf != null) {
-            if (this.existeLoja(nomeDaLoja)) {
-                this.repositorio.removerLoja(nomeDaLoja, cpf);
-                this.repositorio.salvarArquivo();
+    public void removerLoja(Loja loja,String cpf) throws ParametroNullException, NaoExisteException{
+        if(loja != null && cpf != null) {
+            if (this.existeLoja(loja.getNome())) {
+                this.repositorio.removerLoja(loja.getNome(), cpf);
+                Cliente cliente = loja.getCliente();
+                cliente.getLojas().remove(loja);
+                Fachada.getInstancia().alterarUsuario(cliente, cliente);
+                Fachada.getInstancia().salvarArquivo();
             } else {
-                throw new NaoExisteException("loja", "nome " + nomeDaLoja);
+                throw new NaoExisteException("loja", "nome " + loja.getNome());
             }
         } else {
             throw new ParametroNullException("loja/CPF");
@@ -90,12 +93,32 @@ public class ControladorLoja {
         if (nomeAntigo != null && loja != null) {
             if (this.existeLoja(nomeAntigo)) {
                 this.repositorio.alterarLoja(nomeAntigo, loja);
-                this.repositorio.salvarArquivo();
+                Cliente cliente = loja.getCliente();
+                int i = cliente.getLojaPorTitulo(nomeAntigo);
+                cliente.getLojas().set(i, loja);
+                Fachada.getInstancia().alterarUsuario(cliente, cliente);
+                Fachada.getInstancia().salvarArquivo();
             } else {
                 throw new NaoExisteException("loja", "nome " + nomeAntigo);
             }
         } else {
             throw new ParametroNullException("antigo nome ou nova loja");
+        }
+    }
+
+    public void alterarAnuncioNaLoja (String nomeAntigo, Anuncio anuncio) throws ParametroNullException {
+        if (nomeAntigo != null && anuncio != null) {
+            this.repositorio.alterarAnuncioNaLoja(nomeAntigo, anuncio);
+        } else {
+            throw new ParametroNullException("nome/anúncio");
+        }
+    }
+
+    public void removerAnuncioDaLoja (String anuncio) throws ParametroNullException {
+        if (anuncio != null) {
+            this.repositorio.removerAnuncioDaLoja(anuncio);
+        } else {
+            throw new ParametroNullException("anúncio");
         }
     }
 
@@ -111,5 +134,9 @@ public class ControladorLoja {
     }
     public ArrayList<Loja> buscarLojaPorCategoria(String categoria) {
         return this.repositorio.buscarLojaPorCategoria(categoria);
+    }
+
+    public void salvarArquivo () {
+        this.repositorio.salvarArquivo();
     }
 }

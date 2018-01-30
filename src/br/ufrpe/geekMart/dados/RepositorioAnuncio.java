@@ -1,10 +1,6 @@
 package br.ufrpe.geekMart.dados;
 
-import br.ufrpe.geekMart.gui.controller.Main;
 import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
-import br.ufrpe.geekMart.negocio.classesBasicas.EnumCategorias;
-import com.sun.xml.internal.bind.v2.TODO;
-import javafx.event.ActionEvent;
 
 import java.io.*;
 import java.util.ArrayList;

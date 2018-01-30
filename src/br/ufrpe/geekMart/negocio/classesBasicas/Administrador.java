@@ -1,6 +1,8 @@
 package br.ufrpe.geekMart.negocio.classesBasicas;
 
-public class Administrador extends Usuario {
+import java.io.Serializable;
+
+public class Administrador extends Usuario implements Serializable {
     String telefone;
 
     public Administrador(){

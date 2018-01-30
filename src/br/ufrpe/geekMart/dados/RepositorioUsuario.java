@@ -2,6 +2,7 @@ package br.ufrpe.geekMart.dados;
 
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
+import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
 import br.ufrpe.geekMart.negocio.classesBasicas.Usuario;
 
 import java.io.*;
@@ -83,8 +84,6 @@ public class RepositorioUsuario implements IRepositorioUsuario {
 
     }
 
-
-
     public Usuario buscarUsuario(String cpf) throws ParametroNullException, NaoExisteException {
         Usuario retorno = null;
         if(cpf != null){
@@ -103,19 +102,6 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         }
     }
 
-
-    @Override
-    public void removerUsuario (String num) {
-        int i = this.procurarIndice(num);
-        if (i != this.proxima){
-            this.usuarios[i] = this.usuarios[this.proxima -1];
-            this.usuarios[this.proxima -1]= null;
-            this.proxima = this.proxima -1 ;
-        } else {
-
-        }
-    }
-
     @Override
     public boolean existeUsuario (String cpf) {
         boolean existe = false;
@@ -125,9 +111,6 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         }
         return existe;
     }
-
-
-
 
     public void alterarUsuario (Usuario usuarioAntigo, Usuario usuarioNovo) {
         int indice = this.procurarIndice(usuarioAntigo.getCpf());
@@ -148,9 +131,6 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         }
         return i;
     }
-
-
-
 
     public void duplicaArrayUsuarios () {
         if(this.usuarios != null && this.usuarios.length>0){

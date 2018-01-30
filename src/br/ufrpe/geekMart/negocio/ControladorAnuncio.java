@@ -3,10 +3,7 @@ package br.ufrpe.geekMart.negocio;
 import br.ufrpe.geekMart.dados.IRepositorioAnuncio;
 import br.ufrpe.geekMart.dados.RepositorioAnuncio;
 import br.ufrpe.geekMart.exceptions.*;
-import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
-import br.ufrpe.geekMart.negocio.classesBasicas.Chat;
-import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
-import br.ufrpe.geekMart.negocio.classesBasicas.EnumCategorias;
+import br.ufrpe.geekMart.negocio.classesBasicas.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -52,13 +49,17 @@ public class ControladorAnuncio {
         }
     }
 
-    public void removerAnuncio (String titulo,String cpf) throws ParametroNullException, NaoExisteException{
-        if (titulo != null && cpf != null) {
-            if (this.repositorio.existe(titulo)) {
-                this.repositorio.removerAnuncio(titulo, cpf);
-                this.repositorio.salvarArquivo();
+    public void removerAnuncio (Anuncio anuncio,String cpf) throws ParametroNullException, NaoExisteException{
+        if (anuncio != null && cpf != null) {
+            if (this.repositorio.existe(anuncio.getTitulo())) {
+                this.repositorio.removerAnuncio(anuncio.getTitulo(), cpf);
+                Fachada.getInstancia().removerAnuncioDaLoja(anuncio.getTitulo());
+                Cliente cliente = anuncio.getCliente();
+                cliente.getAnuncios().remove(anuncio);
+                Fachada.getInstancia().alterarUsuario(cliente, cliente);
+                Fachada.getInstancia().salvarArquivo();
             } else {
-                throw new NaoExisteException("anúncio ", "título " + titulo);
+                throw new NaoExisteException("anúncio ", "título " + anuncio.getTitulo());
             }
         } else {
             throw new ParametroNullException("título/CPF");
@@ -73,7 +74,12 @@ public class ControladorAnuncio {
         if (nomeAntigo != null && anuncio != null) {
             if (this.repositorio.existe(nomeAntigo)) {
                 this.repositorio.alterarAnuncio(nomeAntigo, anuncio);
-                this.repositorio.salvarArquivo();
+                Fachada.getInstancia().alterarAnuncioNaLoja(nomeAntigo, anuncio);
+                Cliente cliente = anuncio.getCliente();
+                int i = cliente.getAnuncioPorTitulo(nomeAntigo);
+                cliente.getAnuncios().set(i, anuncio);
+                Fachada.getInstancia().alterarUsuario(cliente, cliente);
+                Fachada.getInstancia().salvarArquivo();
             } else {
                 throw new NaoExisteException("anúncio", "título " + nomeAntigo);
             }
@@ -96,8 +102,8 @@ public class ControladorAnuncio {
         if( c != null) {
             LocalDate data = c.getDataFim();
             if (hoje == data || hoje.isAfter(data)) {
-                this.removerAnuncio(c.getTitulo(),c.getCliente().getCpf());
-                this.repositorio.salvarArquivo();
+                this.removerAnuncio(c,c.getCliente().getCpf());
+                Fachada.getInstancia().salvarArquivo();
             } else {
                 throw new DataExpirarNaoChegouException(data, c);
             }
@@ -112,7 +118,7 @@ public class ControladorAnuncio {
             if(c.getQuantidadeProdutos() == 0){
                 c.setAtivo(false);
                 this.alterarAnuncio(c.getTitulo(), c);
-                this.repositorio.salvarArquivo();
+                Fachada.getInstancia().salvarArquivo();
             } else {
                 throw new HaEstoqueException(c);
             }
@@ -125,7 +131,7 @@ public class ControladorAnuncio {
         if(c != null && s != null){
             c.getComentarios().add(s);
             this.alterarAnuncio(c.getTitulo(), c);
-            this.repositorio.salvarArquivo();
+            Fachada.getInstancia().salvarArquivo();
         } else {
             throw new ParametroNullException("anúncio/comentário");
         }
@@ -136,7 +142,7 @@ public class ControladorAnuncio {
             c.setQuantidadeAvaliacoes(c.getQuantidadeProdutos() +1);
             c.setEstrela((c.getEstrela() + i)/c.getQuantidadeAvaliacoes());
             this.alterarAnuncio(c.getTitulo(), c);
-            this.repositorio.salvarArquivo();
+            Fachada.getInstancia().salvarArquivo();
         } else {
             throw new ParametroNullException("anúncio");
         }
@@ -148,7 +154,7 @@ public class ControladorAnuncio {
             Chat chat = new Chat(comprador, vendedor, anuncio);
             anuncio.getChat().add(anuncio.getQuantidadeChats(), chat);
             this.alterarAnuncio(anuncio.getTitulo(), anuncio);
-            this.repositorio.salvarArquivo();
+            Fachada.getInstancia().salvarArquivo();
         } else {
             throw new ParametroNullException("comprador/vendedor/anúncio");
         }
@@ -206,5 +212,7 @@ public class ControladorAnuncio {
         return  this.repositorio.buscarAnuncioPorCategoriaOrdenadoPeloPreco(categoria);
     }
 
-
+    public void salvarArquivo () {
+        this.repositorio.salvarArquivo();
+    }
 }

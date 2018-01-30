@@ -3,6 +3,7 @@ import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
 import br.ufrpe.geekMart.negocio.classesBasicas.Administrador;
+import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -40,7 +41,8 @@ public class AdmDeletarLojaController {
                         if(tfTituloDaLoja.getText().isEmpty())
                                 throw new RuntimeException("O campo Título não pode ser vazio");
 
-                        fachada.removerLoja(tfTituloDaLoja.getText(), tfCpfCliente.getText());
+                        Loja loja = Fachada.getInstancia().buscarLoja(tfTituloDaLoja.getText());
+                        fachada.removerLoja(loja, tfCpfCliente.getText());
                 } catch (ParametroNullException ss){
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Erro");
