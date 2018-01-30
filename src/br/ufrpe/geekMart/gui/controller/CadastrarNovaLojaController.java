@@ -83,8 +83,8 @@ public class CadastrarNovaLojaController {
                 lvMeusAnuncios.getItems().clear();
                 Cliente cll = (Cliente)fachada.buscaUsuario(user.getCpf());
 
-                for (int i = 0; i < cll.listarAnuncios().size(); i++) {
-                        lvMeusAnuncios.getItems().add(i, cll.listarAnuncios().get(i));
+                for (int i = 0; i < cll.getAnuncios().size(); i++) {
+                        lvMeusAnuncios.getItems().add(i, cll.getAnuncios().get(i));
                 }
 
         }

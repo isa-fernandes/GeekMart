@@ -236,11 +236,11 @@ public class CadastrarNovoAnuncioController {
 
 
                 fachada.cadastrarAnuncio(g);
-                user.listarAnuncios().add(g);
+                user.getAnuncios().add(g);
                 fachada.alterarUsuario(fachada.buscaUsuario(user.getCpf()),user);
-                System.out.println(user.listarAnuncios());
+                System.out.println(user.getAnuncios());
                 Cliente cll = (Cliente)fachada.buscaUsuario(user.getCpf());
-                System.out.println(cll.listarAnuncios());
+                System.out.println(cll.getAnuncios());
 
 
                 Alert alert2 = new Alert(Alert.AlertType.INFORMATION);

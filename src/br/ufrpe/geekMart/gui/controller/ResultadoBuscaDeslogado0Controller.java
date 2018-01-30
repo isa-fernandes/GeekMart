@@ -122,7 +122,7 @@ public class ResultadoBuscaDeslogado0Controller {
 
         @FXML
         protected  void btHomeAction(ActionEvent e){
-                Main.trocarTela("telaInicialLogadoScene");
+                Main.trocarTela("telaInicialDeslogadoScene");
         }
 
         @FXML

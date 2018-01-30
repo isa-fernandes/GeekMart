@@ -115,10 +115,12 @@ public class RepositorioAnuncio implements IRepositorioAnuncio, Serializable {
 
     public ArrayList<Anuncio> buscarAnuncioPorTituloOrdenadoPeloPreco(String palavra) {
         int i = 0;
+        int j = 0;
         ArrayList<Anuncio> resultadoBuscaTitulo = new ArrayList<>();
         while (i < this.proxima) {
             if (this.anuncios[i].getTitulo().contains(palavra)) {
-                resultadoBuscaTitulo.add(anuncios[i]);
+                resultadoBuscaTitulo.add(j,anuncios[i]);
+                j = j+1;
             } else {
                 i = i + 1;
             }

@@ -16,18 +16,17 @@ public class AdmBloqueioDesbloqueioController {
         Fachada fachada = Fachada.getInstancia();
 
         @FXML
-        protected  void  initialize(){
-                Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
+        protected void initialize() {
+                Main.addOnChangesScreenListener(new Main.OnChangeScreen() {
                         @Override
                         public void onScreenChanged(String newScreen, Object userData, Object userData2) {
-                                if(newScreen.equals("admBloqueioDesbloqueioScene")) {
-                                        user=(Administrador)userData;
+                                if (newScreen.equals("admBloqueioDesbloqueioScene")) {
+                                        user = (Administrador) userData;
 
 
-                                } }
+                                }
+                        }
                 });
-
-
 
 
         }
@@ -95,35 +94,37 @@ public class AdmBloqueioDesbloqueioController {
 
 
         @FXML
-        protected  void btMeuCadastroADMAction(ActionEvent e){
-                Main.trocarTela("admCadastroScene",user);
+        protected void btMeuCadastroADMAction(ActionEvent e) {
+                Main.trocarTela("admCadastroScene", user);
         }
 
         @FXML
-        protected  void btDesbloquearBloquearAction(ActionEvent e){ Main.trocarTela("admBloqueioDesbloqueioScene",user); }
-
-        @FXML
-        protected  void btDeletarAnuncioAction(ActionEvent e){
-                Main.trocarTela("admDeletarAnuncioScene",user);
+        protected void btDesbloquearBloquearAction(ActionEvent e) {
+                Main.trocarTela("admBloqueioDesbloqueioScene", user);
         }
 
         @FXML
-        protected  void btDeletarLojaAction(ActionEvent e){
-                Main.trocarTela("admDeletarLojaScene",user);
+        protected void btDeletarAnuncioAction(ActionEvent e) {
+                Main.trocarTela("admDeletarAnuncioScene", user);
         }
 
         @FXML
-        protected  void btNovoAdmAction(ActionEvent e){
-                Main.trocarTela("admCadastrarNovoAdmScene",user);
+        protected void btDeletarLojaAction(ActionEvent e) {
+                Main.trocarTela("admDeletarLojaScene", user);
         }
 
         @FXML
-        protected void buscarClienteAction(ActionEvent e){
+        protected void btNovoAdmAction(ActionEvent e) {
+                Main.trocarTela("admCadastrarNovoAdmScene", user);
+        }
+
+        @FXML
+        protected void buscarClienteAction(ActionEvent e) {
                 try {
-                        Cliente usuario = (Cliente)fachada.buscaUsuario(tfBuscar.getText());
+                        Cliente usuario = (Cliente) fachada.buscaUsuario(tfBuscar.getText());
                         lbNome.setText(usuario.getNome());
                         String ativo;
-                        if(usuario.isAtivo()){
+                        if (usuario.isAtivo()) {
                                 ativo = "Ativo";
                         } else {
                                 ativo = "Bloqueado";
@@ -131,55 +132,55 @@ public class AdmBloqueioDesbloqueioController {
                         lbStatus.setText(usuario.getCpf());
 
 
-                } catch (NaoExisteException ee){
+                } catch (NaoExisteException ee) {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Erro");
                         alert.setHeaderText("Erro buscar usuário");
                         alert.setContentText("Cliente não existe");
                         alert.showAndWait();
 
-                } catch (ParametroNullException eee){
+                } catch (ParametroNullException eee) {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Erro");
                         alert.setHeaderText("Erro buscar usuário");
                         alert.setContentText("Campo 'CPF do Cliente' vazio!");
                         alert.showAndWait();
 
-                } catch (JaExisteException a){
 
                 }
         }
 
 
-        @FXML
-        protected void bloquearDesbloquearClienteAction(ActionEvent e){
+                @FXML
+                protected void bloquearDesbloquearClienteAction (ActionEvent e){
 
-                try {
-                        fachada.admBloquearDesbloquearUsuario(lbCPF.getText());
+                        try {
+                                fachada.admBloquearDesbloquearUsuario(lbCPF.getText());
 
-                        Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
-                        alert2.setTitle("Informação");
-                        alert2.setHeaderText("Bloqueio de Cliente");
-                        alert2.setContentText("Status do cliente "+lbNome.getText()+" alterado com sucesso!");
-                        alert2.showAndWait();
+                                Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                                alert2.setTitle("Informação");
+                                alert2.setHeaderText("Bloqueio de Cliente");
+                                alert2.setContentText("Status do cliente " + lbNome.getText() + " alterado com sucesso!");
+                                alert2.showAndWait();
 
-                } catch (NaoExisteException ee){
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setTitle("Erro");
-                        alert.setHeaderText("Erro  buscar usuário");
-                        alert.setContentText("Cliente não existe");
-                        alert.showAndWait();
+                        } catch (NaoExisteException ee) {
+                                Alert alert = new Alert(Alert.AlertType.ERROR);
+                                alert.setTitle("Erro");
+                                alert.setHeaderText("Erro  buscar usuário");
+                                alert.setContentText("Cliente não existe");
+                                alert.showAndWait();
 
-                } catch (ParametroNullException eee){
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setTitle("Erro");
-                        alert.setHeaderText("Erro  buscar usuário");
-                        alert.setContentText("Campo 'CPF do Cliente' vazio!");
-                        alert.showAndWait();
+                        } catch (ParametroNullException eee) {
+                                Alert alert = new Alert(Alert.AlertType.ERROR);
+                                alert.setTitle("Erro");
+                                alert.setHeaderText("Erro  buscar usuário");
+                                alert.setContentText("Campo 'CPF do Cliente' vazio!");
+                                alert.showAndWait();
 
+                        }
                 }
+
+
         }
 
 
-
-}

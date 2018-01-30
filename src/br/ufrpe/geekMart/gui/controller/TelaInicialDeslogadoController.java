@@ -107,7 +107,7 @@ public class TelaInicialDeslogadoController {
                         lj.getAnuncios().add(an);
 
                         huan.getLojas().add(lj);
-                        huan.listarAnuncios().add(an);
+                        huan.getAnuncios().add(an);
                         fachada.cadastrarLoja(lj);
                         fachada.cadastrarAnuncio(an);
                         fachada.cadastrarUsuario(huan);
@@ -285,7 +285,8 @@ public class TelaInicialDeslogadoController {
         private Button btCadastrar;
 
         @FXML
-         protected  void btCadastrarAction(ActionEvent e){ Main.trocarTela("cadastrarNovoClienteScene"); }
+         protected  void btCadastrarAction(ActionEvent e){
+                Main.trocarTela("cadastrarNovoClienteScene"); }
 
         @FXML
          protected  void btEntrarAction(ActionEvent e){

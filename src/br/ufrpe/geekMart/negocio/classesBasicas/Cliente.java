@@ -78,6 +78,10 @@ public class Cliente extends Usuario implements Serializable {
         return m;
     }
 
+    public ArrayList<Anuncio> listarAnuncios(){
+        return anuncios;
+    }
+
     public void setAnuncios (Anuncio anuncios) {
         this.anuncios.add(anuncios);
     }
