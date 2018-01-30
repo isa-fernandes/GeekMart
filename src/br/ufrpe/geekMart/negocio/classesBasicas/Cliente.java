@@ -1,8 +1,9 @@
 package br.ufrpe.geekMart.negocio.classesBasicas;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Cliente extends Usuario {
+public class Cliente extends Usuario implements Serializable {
     private String telefone;
     private Endereco endereco = new Endereco();
     private ArrayList<Anuncio> anuncios = new ArrayList<>();
@@ -53,8 +54,28 @@ public class Cliente extends Usuario {
         this.endereco = endereco;
     }
 
-    public ArrayList<Anuncio> listarAnuncios() {
+    public ArrayList<Anuncio> getAnuncios() {
         return this.anuncios;
+    }
+
+    public int getAnuncioPorTitulo (String nome) {
+        int m = -1;
+        for (int i = 0; i < this.anuncios.size(); i++) {
+            if (this.anuncios.get(i).getTitulo().equals(nome)) {
+                m = i;
+            }
+        }
+        return m;
+    }
+
+    public int getLojaPorTitulo (String nome) {
+        int m = -1;
+        for (int i = 0; i < this.lojas.size(); i++) {
+            if (this.lojas.get(i).getNome().equals(nome)) {
+                m = i;
+            }
+        }
+        return m;
     }
 
     public void setAnuncios (Anuncio anuncios) {

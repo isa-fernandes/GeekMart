@@ -199,6 +199,32 @@ public class RepositorioLoja implements IRepositorioLoja, Serializable {
         }
     }
 
+    private int procurarIndiceAnuncioNaLoja (String nome) {
+        int result = -1;
+        for (int i = 0; i < this.proxima; i++) {
+            for (int j = 0; j < this.lojas[i].getAnuncios().size(); j++) {
+                if (this.lojas[i].getAnuncios().get(j).getTitulo().equals(nome)) {
+                    result = j;
+                }
+            }
+        }
+        return result;
+    }
+
+    public void alterarAnuncioNaLoja (String nomeAntigo, Anuncio anuncio) {
+        int i = this.procurarIndiceAnuncioNaLoja(nomeAntigo);
+        if (i != -1) {
+            this.lojas[i].getAnuncios().set(i, anuncio);
+        }
+    }
+
+    public void removerAnuncioDaLoja (String  anuncio) {
+        int i = this.procurarIndiceAnuncioNaLoja(anuncio);
+        if (i != -1) {
+            this.lojas[i].getAnuncios().remove(i);
+        }
+    }
+
     public Loja[] listarLoja() {
         return lojas;
     }

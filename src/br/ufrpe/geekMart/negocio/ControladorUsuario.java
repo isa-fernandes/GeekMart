@@ -6,6 +6,7 @@ import br.ufrpe.geekMart.exceptions.JaExisteException;
 import br.ufrpe.geekMart.exceptions.LoginSemSucessoException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
+import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import br.ufrpe.geekMart.negocio.classesBasicas.Usuario;
 
 public class ControladorUsuario {
@@ -37,19 +38,6 @@ public class ControladorUsuario {
         }
     }
 
-    public void removerUsuario(String cpf) throws ParametroNullException, NaoExisteException {
-        if(cpf != null){
-            if(this.repositorio.existeUsuario(cpf)) {
-                this.repositorio.removerUsuario(cpf);
-                this.repositorio.salvarArquivo();
-            } else {
-                throw new NaoExisteException("usuário", "CPF " + cpf);
-            }
-        } else {
-            throw new ParametroNullException("CPF");
-        }
-    }
-
     public Usuario buscarUsuario(String cpf) throws ParametroNullException, NaoExisteException{
         return this.repositorio.buscarUsuario(cpf);
     }
@@ -63,7 +51,17 @@ public class ControladorUsuario {
         if (usuario != null && usuarioNovo != null) {
             if (this.existeUsuario(usuario.getCpf())) {
                 this.repositorio.alterarUsuario(usuario, usuarioNovo);
-                this.repositorio.salvarArquivo();
+                Cliente cliente = (Cliente) usuario;
+                for (int i = 0; i < cliente.getAnuncios().size(); i++) {
+                    cliente.getAnuncios().get(i).setCliente((Cliente) usuarioNovo);
+                    Fachada.getInstancia().alterarAnuncio(cliente.getAnuncios().get(i).getTitulo(),
+                            cliente.getAnuncios().get(i));
+                }
+                for (int i = 0; i < cliente.getLojas().size(); i++) {
+                    cliente.getLojas().get(i).setCliente((Cliente) usuarioNovo);
+                    Fachada.getInstancia().alterarLoja(cliente.getLojas().get(i).getNome(), cliente.getLojas().get(i));
+                }
+                Fachada.getInstancia().salvarArquivo();
             } else {
                 throw new NaoExisteException("usuário", "CPF " + usuario.getCpf());
             }
@@ -95,13 +93,20 @@ public class ControladorUsuario {
 
     }
 
-
     public void admBloquearDesbloquearUsuario (String cpf) throws ParametroNullException, NaoExisteException {
         if (cpf != null) {
             if(repositorio.buscarUsuario(cpf).isAtivo()){
                 repositorio.buscarUsuario(cpf).setAtivo(false);
+                Cliente cliente = (Cliente) Fachada.getInstancia().buscaUsuario(cpf);
+                for (int i = 0; i < cliente.getAnuncios().size(); i++) {
+                    cliente.getAnuncios().get(i).setAtivo(false);
+                    Fachada.getInstancia().alterarAnuncio(cliente.getAnuncios().get(i).getTitulo(),
+                            cliente.getAnuncios().get(i));
+                }
+                Fachada.getInstancia().salvarArquivo();
             } else {
                 repositorio.buscarUsuario(cpf).setAtivo(true);
+                Fachada.getInstancia().salvarArquivo();
             }
         }
     }
@@ -114,4 +119,7 @@ public class ControladorUsuario {
         return this.repositorio.getProxima();
     }
 
+    public void salvarArquivo () {
+        this.repositorio.salvarArquivo();
+    }
 }

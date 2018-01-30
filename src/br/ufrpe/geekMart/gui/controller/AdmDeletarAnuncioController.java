@@ -4,6 +4,7 @@ import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
 import br.ufrpe.geekMart.negocio.classesBasicas.Administrador;
+import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -39,7 +40,8 @@ public class AdmDeletarAnuncioController {
                         if(tfTituloDoAnuncio.getText().isEmpty())
                                 throw new RuntimeException("O campo Título não pode ser vazio");
 
-                        fachada.removerAnuncio(tfTituloDoAnuncio.getText(), tfCpfDoCliente.getText());
+                        Anuncio anuncio = fachada.procurarAnuncio(tfTituloDoAnuncio.getText());
+                        fachada.removerAnuncio(anuncio, tfCpfDoCliente.getText());
                 } catch (ParametroNullException ss){
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Erro");

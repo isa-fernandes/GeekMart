@@ -5,7 +5,6 @@ import javafx.scene.image.Image;
 
 import javax.imageio.ImageIO;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -28,7 +27,6 @@ public class Loja implements Serializable {
         this.descricao = descricao;
         this.categoria = categoria;
         this.cliente = cliente;
-        this.anuncios = anuncios;
         this.telefone = telefone;
     }
 

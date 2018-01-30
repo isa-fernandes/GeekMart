@@ -15,18 +15,18 @@ public enum EnumCategorias {
 
 
 
-    private final String estados;
-    private EnumCategorias(String estados) {
-        this.estados = estados;
+    private final String nome;
+    private EnumCategorias(String nome) {
+        this.nome = nome;
     }
 
-    public String getEstados(){
-        return this.estados;
+    public String getNome(){
+        return this.nome;
     }
 
     @Override
     public String toString() {
-        return this.estados;
+        return this.nome;
     }
 
 
