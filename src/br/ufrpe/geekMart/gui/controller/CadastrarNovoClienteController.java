@@ -48,9 +48,6 @@ public class CadastrarNovoClienteController {
         }
 
         @FXML
-        private TextField tfEstado;
-
-        @FXML
         private ComboBox cbCategorias;
 
         @FXML
@@ -176,7 +173,7 @@ public class CadastrarNovoClienteController {
                                 throw new RuntimeException("O campo complemento não pode ser vazio");
                         if(pqSenha.getText().isEmpty())
                                 throw new RuntimeException("O campo senha não pode ser vazio");
-                        if(tfEstado.getText().isEmpty())
+                        if(cbEstado.getSelectionModel().isEmpty())
                                 throw new RuntimeException("O campo estado não pode ser vazio");
 
                         Endereco c = new Endereco(
