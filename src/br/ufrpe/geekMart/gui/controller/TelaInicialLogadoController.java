@@ -8,6 +8,7 @@ import br.ufrpe.geekMart.negocio.Fachada;
 import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
 import br.ufrpe.geekMart.negocio.classesBasicas.EnumCategorias;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
+import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -52,7 +53,88 @@ public class TelaInicialLogadoController {
 
 
 
-        @FXML
+    @FXML
+    protected  void buscaAnunciosPorCategoria(ActionEvent e){
+
+        String palavra = cbCategorias.getSelectionModel().toString();
+        ArrayList<Loja> anuncios = fachada.buscarLojaPorCategoria(palavra);
+
+
+        if(anuncios.size()<6 && anuncios.size()>=0) {
+
+            switch (anuncios.size()) {
+                case 1:
+                    Main.trocarTela("buscasLojasLogado1Scene", anuncios);
+                    break;
+                case 2:
+                    Main.trocarTela("buscasLojasLogado2Scene", anuncios);
+                    break;
+                case 3:
+                    Main.trocarTela("buscasLojasLogado3Scene", anuncios);
+                    break;
+                case 4:
+                    Main.trocarTela("buscasLojasLogado4Scene", anuncios);
+                    break;
+                case 5:
+                    Main.trocarTela("buscasLojasLogado5Scene", anuncios);
+                    break;
+
+                case 0:
+                    Main.trocarTela("buscasLojasLogado0Scene", anuncios);
+                    break;
+            }
+        } else if(anuncios.size() >= 6) {
+            Main.trocarTela("resultadoBuscaLogado6Scene", anuncios);
+        }
+
+
+    }
+
+
+
+
+    @FXML
+    protected  void buscaLojasPorCategoria(ActionEvent e){
+
+        String palavra = cbCategorias.getSelectionModel().toString();
+        ArrayList<Loja> anuncios = fachada.buscarLojaPorTitulo(palavra);
+
+
+        if(anuncios.size()<6 && anuncios.size()>=0) {
+
+            switch (anuncios.size()) {
+                case 1:
+                    Main.trocarTela("buscasLojasLogado1Scene", anuncios);
+                    break;
+                case 2:
+                    Main.trocarTela("buscasLojasLogado2Scene", anuncios);
+                    break;
+                case 3:
+                    Main.trocarTela("buscasLojasLogado3Scene", anuncios);
+                    break;
+                case 4:
+                    Main.trocarTela("buscasLojasLogado4Scene", anuncios);
+                    break;
+                case 5:
+                    Main.trocarTela("buscasLojasLogado5Scene", anuncios);
+                    break;
+
+                case 0:
+                    Main.trocarTela("buscasLojasLogado0Scene", anuncios);
+                    break;
+            }
+        } else if(anuncios.size() >= 6) {
+            Main.trocarTela("resultadoBuscaLogado6Scene", anuncios);
+        }
+
+
+
+    }
+
+
+
+
+    @FXML
         private ResourceBundle resources;
 
         @FXML

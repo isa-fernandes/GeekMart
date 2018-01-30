@@ -91,6 +91,10 @@ public class Loja implements Serializable {
         this.image = image;
     }
 
+    public Image getImage() {
+        return image;
+    }
+
     @Override
     public String toString() {
         return nome;

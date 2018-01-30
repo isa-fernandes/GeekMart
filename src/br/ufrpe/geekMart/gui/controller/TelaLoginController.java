@@ -5,12 +5,12 @@ import br.ufrpe.geekMart.exceptions.LoginSemSucessoException;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
-import br.ufrpe.geekMart.negocio.classesBasicas.Administrador;
-import br.ufrpe.geekMart.negocio.classesBasicas.EnumCategorias;
-import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
+import br.ufrpe.geekMart.negocio.classesBasicas.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
+import java.util.ArrayList;
 
 public class TelaLoginController {
 
@@ -20,7 +20,7 @@ public class TelaLoginController {
         protected  void  initialize(){
                 Main.addOnChangesScreenListener(new Main.OnChangeScreen(){
                         @Override
-                        public void onScreenChanged(String newScreen, Object userData, Object userData2, String n) {
+                        public void onScreenChanged(String newScreen, Object userData, Object userData2) {
                                 if(newScreen.equals("telaLoginScene")) {
                                         updateComboBoxCategorias();
                                         updateComboBoxLojas();
@@ -43,6 +43,124 @@ public class TelaLoginController {
         private void updateComboBoxLojas(){
                 this.cbLojas.getItems().setAll(EnumCategorias.values());
         }
+
+        @FXML
+        protected  void buscaAnunciosPorTituloOrdenadoPorPreço(ActionEvent e){
+
+                String palavra = tfBuscar.getText();
+                ArrayList<Anuncio> resultado = fachada.buscarAnuncioPorTituloOrdenadoPeloPreco(palavra);
+
+
+                Anuncio[] anuncios = fachada.listarAnuncios();
+
+                if(resultado.size()<6 && resultado.size()>=0) {
+
+                        switch (resultado.size()) {
+                                case 1:
+                                        Main.trocarTela("resultadoBuscaDeslogado1Scene", anuncios);
+                                        break;
+                                case 2:
+                                        Main.trocarTela("resultadoBuscaDeslogado2Scene", anuncios);
+                                        break;
+                                case 3:
+                                        Main.trocarTela("resultadoBuscaDeslogado3Scene", anuncios);
+                                        break;
+                                case 4:
+                                        Main.trocarTela("resultadoBuscaDeslogado4Scene", anuncios);
+                                        break;
+                                case 5:
+                                        Main.trocarTela("resultadoBuscaDeslogado5Scene", anuncios);
+                                        break;
+
+                                case 0:
+                                        Main.trocarTela("resultadoBuscaDeslogado0Scene", anuncios);
+                                        break;
+                        }
+                } else if(resultado.size() >= 6) {
+                        Main.trocarTela("resultadoBuscaDeslogado6Scene", anuncios);
+                }
+
+
+        }
+
+        @FXML
+        protected  void buscaAnunciosPorCategoria(ActionEvent e){
+
+                String palavra = cbCategorias.getSelectionModel().toString();
+                ArrayList<Loja> anuncios = fachada.buscarLojaPorCategoria(palavra);
+
+
+                if(anuncios.size()<6 && anuncios.size()>=0) {
+
+                        switch (anuncios.size()) {
+                                case 1:
+                                        Main.trocarTela("resultadoBuscaDeslogado1Scene", anuncios);
+                                        break;
+                                case 2:
+                                        Main.trocarTela("resultadoBuscaDeslogado2Scene", anuncios);
+                                        break;
+                                case 3:
+                                        Main.trocarTela("resultadoBuscaDeslogado3Scene", anuncios);
+                                        break;
+                                case 4:
+                                        Main.trocarTela("resultadoBuscaDeslogado4Scene", anuncios);
+                                        break;
+                                case 5:
+                                        Main.trocarTela("resultadoBuscaDeslogado5Scene", anuncios);
+                                        break;
+
+                                case 0:
+                                        Main.trocarTela("resultadoBuscaDeslogado0Scene", anuncios);
+                                        break;
+                        }
+                } else if(anuncios.size() >= 6) {
+                        Main.trocarTela("resultadoBuscaDeslogado6Scene", anuncios);
+                }
+
+
+        }
+
+
+
+
+        @FXML
+        protected  void buscaLojasPorCategoria(ActionEvent e){
+
+                String palavra = cbCategorias.getSelectionModel().toString();
+                ArrayList<Loja> anuncios = fachada.buscarLojaPorTitulo(palavra);
+
+
+                if(anuncios.size()<6 && anuncios.size()>=0) {
+
+                        switch (anuncios.size()) {
+                                case 1:
+                                        Main.trocarTela("resultadoBuscaDeslogado1Scene", anuncios);
+                                        break;
+                                case 2:
+                                        Main.trocarTela("resultadoBuscaDeslogado2Scene", anuncios);
+                                        break;
+                                case 3:
+                                        Main.trocarTela("resultadoBuscaDeslogado3Scene", anuncios);
+                                        break;
+                                case 4:
+                                        Main.trocarTela("resultadoBuscaDeslogado4Scene", anuncios);
+                                        break;
+                                case 5:
+                                        Main.trocarTela("resultadoBuscaDeslogado5Scene", anuncios);
+                                        break;
+
+                                case 0:
+                                        Main.trocarTela("resultadoBuscaDeslogado0Scene", anuncios);
+                                        break;
+                        }
+                } else if(anuncios.size() >= 6) {
+                        Main.trocarTela("resultadoBuscaDeslogado6Scene", anuncios);
+                }
+
+
+
+        }
+
 
 
 

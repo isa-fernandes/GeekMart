@@ -1,10 +1,9 @@
 package br.ufrpe.geekMart.gui.controller;
 
+import br.ufrpe.geekMart.exceptions.NaoExisteException;
+import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
-import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
-import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
-import br.ufrpe.geekMart.negocio.classesBasicas.EnumCategorias;
-import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
+import br.ufrpe.geekMart.negocio.classesBasicas.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -23,6 +22,7 @@ public class AnuncioController {
 
     Fachada fachada = Fachada.getInstancia();
     Anuncio user;
+    Image image = new Image("/imagens/estrela.png");
 
     @FXML
     protected  void  initialize(){
@@ -33,6 +33,8 @@ public class AnuncioController {
                     user = (Anuncio)userData;
                     updateComboBoxCategorias();
                     updateComboBoxLojas();
+                    updateEstrelas();
+                    updateAnuncio();
 
                 } }
         });
@@ -40,6 +42,7 @@ public class AnuncioController {
 
         updateComboBoxCategorias();
         updateComboBoxLojas();
+        updateEstrelas();
 
     }
 
@@ -51,7 +54,13 @@ public class AnuncioController {
         this.cbLojas.getItems().setAll(EnumCategorias.values());
     }
 
+    private void updateEstrelas(){ this.cbEstrelas.getItems().setAll(EnumEstrelas.values());
+    }
+
     private void updateAnuncio(){
+        imCentral.setImage(user.getImagens().get(0));
+        im2.setImage(user.getImagens().get(1));
+        im3.setImage(user.getImagens().get(2));
         lbPreco.setText(user.getPreco());
         lbTitulo.setText(user.getTitulo());
         lbCategoria.setText(user.getCategoria().toString());
@@ -66,16 +75,25 @@ public class AnuncioController {
         }
         lbAtivo.setText(ativo);
         if(user.getEstrela() <= 1){
-            Image image = new Image("estrela.png");
             estrela1.setImage(image);
         } if(user.getEstrela() <= 2){
-
+            estrela1.setImage(image);
+            estrela2.setImage(image);
         } if(user.getEstrela() <= 3){
-
+            estrela1.setImage(image);
+            estrela2.setImage(image);
+            estrela3.setImage(image);
         } if(user.getEstrela() <= 4){
-
+            estrela1.setImage(image);
+            estrela2.setImage(image);
+            estrela3.setImage(image);
+            estrela4.setImage(image);
         } if(user.getEstrela() <= 5){
-
+            estrela1.setImage(image);
+            estrela2.setImage(image);
+            estrela3.setImage(image);
+            estrela4.setImage(image);
+            estrela5.setImage(image);
         }
         taDescricao.setText(user.getDescricao());
 
@@ -229,6 +247,20 @@ public class AnuncioController {
         }
 
 
+
+    }
+
+    @FXML
+    protected  void qualificarAction(ActionEvent qa){
+        try {
+            int valor = Integer.parseInt(cbEstrelas.getSelectionModel().toString());
+            fachada.avaliarProduto(user, valor);
+            updateAnuncio();
+        } catch (ParametroNullException ee){
+
+        } catch (NaoExisteException ww){
+
+        }
 
     }
 

@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class LojaController {
 
     Fachada fachada = Fachada.getInstancia();
-    Cliente user;
+    Loja user;
 
     @FXML
     protected  void  initialize(){
@@ -27,9 +27,10 @@ public class LojaController {
             @Override
             public void onScreenChanged(String newScreen, Object userData,Object userData2) {
                 if(newScreen.equals("LojaScene")) {
-                    user = (Cliente)userData;
+                    user = (Loja)userData;
                     updateComboBoxCategorias();
                     updateComboBoxLojas();
+                    updateLoja();
 
                 } }
         });
@@ -46,6 +47,47 @@ public class LojaController {
 
     private void updateComboBoxLojas(){
         this.cbLojas.getItems().setAll(EnumCategorias.values());
+    }
+
+    private  void updateLoja(){
+        lbCategoria.setText(user.getCategoria().toString());
+        lbTitulo.setText(user.getNome());
+        lbPreco.setText(user.getTelefone());
+        imCentral.setImage(user.getImage());
+    }
+
+    @FXML
+    protected  void listarAnunciosDaLoja(ActionEvent la){
+
+        ArrayList<Anuncio> anun = user.getAnuncios();
+
+        if(anun.size()<6 && anun.size()>=0) {
+
+            switch (anun.size()) {
+                case 1:
+                    Main.trocarTela("resultadoBuscaLogado1Scene", anun);
+                    break;
+                case 2:
+                    Main.trocarTela("resultadoBuscaLogado2Scene", anun);
+                    break;
+                case 3:
+                    Main.trocarTela("resultadoBuscaLogado3Scene", anun);
+                    break;
+                case 4:
+                    Main.trocarTela("resultadoBuscaLogado4Scene", anun);
+                    break;
+                case 5:
+                    Main.trocarTela("resultadoBuscaLogado5Scene", anun);
+                    break;
+
+                case 0:
+                    Main.trocarTela("resultadoBuscaLogado0Scene", anun);
+                    break;
+            }
+        } else if(anun.size() >= 6) {
+            Main.trocarTela("resultadoBuscaLogado6Scene", anun);
+        }
+
     }
 
     @FXML
