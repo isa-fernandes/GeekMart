@@ -606,6 +606,7 @@ public class Main extends Application {
 
     }
 
+
     public static void trocarTela(String trc) { trocarTela(trc,null,null,null,null); }
     public static void trocarTela(String trc, Object userData) {trocarTela(trc,userData,null,null,null); }
     public static void trocarTela(String trc, ArrayList<Anuncio> userData2) {trocarTela(trc,null,userData2,null,null); }

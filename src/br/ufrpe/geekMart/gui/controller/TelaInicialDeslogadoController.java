@@ -88,7 +88,7 @@ public class TelaInicialDeslogadoController {
                         Image image2 = new Image("/imagens/estrela.png");
                         Image image3 = new Image("/imagens/estrela.png");
                         Anuncio an = new Anuncio(
-                                huan.getCpf(),
+                                huan,
                                 "69",
                                 "teste",
                                 "Teste",
@@ -127,7 +127,7 @@ public class TelaInicialDeslogadoController {
                                 image3);
 
                         Loja lj = new Loja(
-                                "Loja Teste",
+                                "Loja Cloth Myth",
                                 "123456",
                                 "Loja Teste da GeekMart",
                                 EnumCategorias.CAMISAS,
@@ -200,7 +200,7 @@ public class TelaInicialDeslogadoController {
                                 "1234526",
                                 "Loja Teste da GeekMart2",
                                 EnumCategorias.CAMISAS,
-                                isa);
+                                isa.getCpf());
 
 
                         isa.getLojas().add(lj2);

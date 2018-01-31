@@ -2,6 +2,7 @@ package br.ufrpe.geekMart.gui.controller;
 
 import br.ufrpe.geekMart.negocio.Fachada;
 import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
+import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import br.ufrpe.geekMart.negocio.classesBasicas.EnumCategorias;
 import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
 import javafx.event.ActionEvent;
@@ -14,6 +15,10 @@ import java.util.ArrayList;
 public class BuscaLojasDeslogado1Controller {
 
     Fachada fachada = Fachada.getInstancia();
+    Cliente user;
+    ArrayList<Loja> stores;
+    ArrayList<Loja> proxima;
+
 
     @FXML
     protected  void  initialize(){
@@ -21,9 +26,12 @@ public class BuscaLojasDeslogado1Controller {
             @Override
             public void onScreenChanged(String newScreen, Object userData, ArrayList<Anuncio> userData2,
                                         ArrayList<Anuncio> userData3, ArrayList<Loja> userData4) {
-                if(newScreen.equals("resultadoBuscaDeslogado1Scene")) {
+                if(newScreen.equals("buscasLojasDeslogado1Scene")) {
+                    user = (Cliente)userData;
+                    stores = userData4;
                     updateComboBoxCategorias();
                     updateComboBoxLojas();
+                    updateTela();
 
                 } }
         });
@@ -34,6 +42,17 @@ public class BuscaLojasDeslogado1Controller {
 
     }
 
+    private  void  updateTela() {
+
+        imBusca1.setImage(stores.get(0).getImage());
+        lbTituroII1.setText(stores.get(0).getNome());
+        lbPrecoII1.setText(stores.get(0).getCategoria().toString());
+
+
+
+
+
+    }
 
 
     private  void  updateComboBoxCategorias(){
@@ -43,6 +62,25 @@ public class BuscaLojasDeslogado1Controller {
     private void updateComboBoxLojas(){
         this.cbLojas.getItems().setAll(EnumCategorias.values());
     }
+
+
+    @FXML
+    protected  void irParaAnuncioAction1(ActionEvent e){
+        Main.trocarTela("lojaDeslogadoScene",stores.get(0));
+
+    }
+
+    @FXML
+    protected  void irParaAnuncioAction2(ActionEvent e){
+        Main.trocarTela("lojaDeslogadoScene",stores.get(1));
+
+    }
+
+
+
+
+
+
 
     @FXML
     protected  void buscaAnunciosPorTituloOrdenadoPorPreço(ActionEvent e){
@@ -56,27 +94,27 @@ public class BuscaLojasDeslogado1Controller {
 
             switch (resultado.size()) {
                 case 1:
-                    Main.trocarTela("resultadoBuscaLogado1Scene", resultado);
+                    Main.trocarTela("resultadoBuscaDeslogado1Scene", resultado);
                     break;
                 case 2:
-                    Main.trocarTela("resultadoBuscaLogado2Scene", resultado);
+                    Main.trocarTela("resultadoBuscaDeslogado2Scene", resultado);
                     break;
                 case 3:
-                    Main.trocarTela("resultadoBuscaLogado3Scene", resultado);
+                    Main.trocarTela("resultadoBuscaDeslogado3Scene", resultado);
                     break;
                 case 4:
-                    Main.trocarTela("resultadoBuscaLogado4Scene", resultado);
+                    Main.trocarTela("resultadoBuscaDeslogado4Scene", resultado);
                     break;
                 case 5:
-                    Main.trocarTela("resultadoBuscaLogado5Scene", resultado);
+                    Main.trocarTela("resultadoBuscaDeslogado5Scene", resultado);
                     break;
 
                 case 0:
-                    Main.trocarTela("resultadoBuscaLogado0Scene", resultado);
+                    Main.trocarTela("resultadoBuscaDeslogado0Scene", resultado);
                     break;
             }
         } else if(resultado.size() >= 6) {
-            Main.trocarTela("resultadoBuscaLogado6Scene", resultado);
+            Main.trocarTela("resultadoBuscaDeslogado6Scene", resultado);
         }
 
 
@@ -93,27 +131,27 @@ public class BuscaLojasDeslogado1Controller {
 
             switch (anuncios.size()) {
                 case 1:
-                    Main.trocarTela("resultadoBuscaLogado1Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaDeslogado1Scene", anuncios);
                     break;
                 case 2:
-                    Main.trocarTela("resultadoBuscaLogado2Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaDeslogado2Scene", anuncios);
                     break;
                 case 3:
-                    Main.trocarTela("resultadoBuscaLogado3Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaDeslogado3Scene", anuncios);
                     break;
                 case 4:
-                    Main.trocarTela("resultadoBuscaLogado4Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaDeslogado4Scene", anuncios);
                     break;
                 case 5:
-                    Main.trocarTela("resultadoBuscaLogado5Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaDeslogado5Scene", anuncios);
                     break;
 
                 case 0:
-                    Main.trocarTela("resultadoBuscaLogado0Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaDeslogado0Scene", anuncios);
                     break;
             }
         } else if(anuncios.size() >= 6) {
-            Main.trocarTela("resultadoBuscaLogado6Scene", anuncios);
+            Main.trocarTela("resultadoBuscaDeslogado6Scene", anuncios);
         }
 
 
@@ -133,33 +171,74 @@ public class BuscaLojasDeslogado1Controller {
 
             switch (anuncios.size()) {
                 case 1:
-                    Main.trocarTela("buscasLojasLogado1Scene", anuncios);
+                    Main.trocarTela("buscasLojasDeslogado1Scene", anuncios);
                     break;
                 case 2:
-                    Main.trocarTela("buscasLojasLogado2Scene", anuncios);
+                    Main.trocarTela("buscasLojasDeslogado2Scene", anuncios);
                     break;
                 case 3:
-                    Main.trocarTela("buscasLojasLogado3Scene", anuncios);
+                    Main.trocarTela("buscasLojasDeslogado3Scene", anuncios);
                     break;
                 case 4:
-                    Main.trocarTela("buscasLojasLogado4Scene", anuncios);
+                    Main.trocarTela("buscasLojasDeslogado4Scene", anuncios);
                     break;
                 case 5:
-                    Main.trocarTela("buscasLojasLogado5Scene", anuncios);
+                    Main.trocarTela("buscasLojasDeslogado5Scene", anuncios);
                     break;
 
                 case 0:
-                    Main.trocarTela("buscasLojasLogado0Scene", anuncios);
+                    Main.trocarTela("buscasLojasDeslogado0Scene", anuncios);
                     break;
             }
         } else if(anuncios.size() >= 6) {
-            Main.trocarTela("resultadoBuscaLogado6Scene", anuncios);
+            Main.trocarTela("buscasLojasDeslogado6Scene", anuncios);
         }
 
 
 
     }
 
+    @FXML
+    private Button btVoltar;
+
+    @FXML
+    private Button btProxima;
+
+    @FXML
+    private Button btVerLoja1;
+
+    @FXML
+    private Button btVerLoja2;
+
+    @FXML
+    private Button btVerLoja3;
+
+    @FXML
+    private Button btVerLoja4;
+
+    @FXML
+    private Button btVerLoja5;
+
+    @FXML
+    private Button btVerLoja6;
+
+    @FXML
+    private ImageView imBusca1;
+
+    @FXML
+    private ImageView imBusca2;
+
+    @FXML
+    private ImageView imBusca3;
+
+    @FXML
+    private ImageView imBusca4;
+
+    @FXML
+    private ImageView imBusca5;
+
+    @FXML
+    private ImageView imBusca6;
 
 
     @FXML
@@ -197,6 +276,9 @@ public class BuscaLojasDeslogado1Controller {
 
     @FXML
     private Button btNovaLoja;
+
+    @FXML
+    private  Button btCadastrar;
 
 
     @FXML
@@ -245,63 +327,17 @@ public class BuscaLojasDeslogado1Controller {
     private Label lbTituroII6;
 
     @FXML
-    private Button btEntre;
+    protected  void btHomeAction(ActionEvent e){
+        Main.trocarTela("telaInicialLogadoScene");
+    }
 
     @FXML
-    private Button btCadastrar;
-
-    @FXML
-    private  Button btVoltar;
-
-    @FXML
-    private Button btProxima;
-
-    @FXML
-    private Button btVerLoja1;
-
-    @FXML
-    private Button btVerLoja2;
-
-    @FXML
-    private Button btVerLoja3;
-
-    @FXML
-    private Button btVerLoja4;
-
-    @FXML
-    private Button btVerLoja5;
-
-    @FXML
-    private Button btVerLoja6;
-
-    @FXML
-    private ImageView imBusca1;
-
-    @FXML
-    private ImageView imBusca2;
-
-    @FXML
-    private ImageView imBusca3;
-
-    @FXML
-    private ImageView imBusca4;
-
-    @FXML
-    private ImageView imBusca5;
-
-    @FXML
-    private ImageView imBusca6;
-
-    @FXML
-    protected  void btCadastrarAction(ActionEvent e){ Main.trocarTela("cadastrarNovoClienteScene"); }
+    protected  void btCadastrarAction(ActionEvent e){
+        Main.trocarTela("cadastrarNovoClienteScene"); }
 
     @FXML
     protected  void btEntrarAction(ActionEvent e){
         Main.trocarTela("telaLoginScene");
-    }
-    @FXML
-    protected  void btHomeAction(ActionEvent e){
-        Main.trocarTela("telaInicialLogadoScene");
     }
 
 }

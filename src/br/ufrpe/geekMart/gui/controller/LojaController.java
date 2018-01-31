@@ -1,9 +1,12 @@
 package br.ufrpe.geekMart.gui.controller;
+import br.ufrpe.geekMart.exceptions.NaoExisteException;
+import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
 import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import br.ufrpe.geekMart.negocio.classesBasicas.EnumCategorias;
 import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
+import com.sun.xml.internal.bind.v2.TODO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -251,11 +254,48 @@ public class LojaController {
         }
 
 
-        Main.trocarTela("meusAnunciosScene",user,anuncios); }
+        }
 
     @FXML
     protected  void btMinhasLojasAction(ActionEvent e){
-        Main.trocarTela("minhasLojasScene");
+        try {
+            Cliente cli = (Cliente)fachada.buscaUsuario(user.getCpfCliente());
+
+            ArrayList<Loja> lojas = cli.getLojas();
+
+            if (lojas.size() < 6 && lojas.size() >= 0) {
+
+                switch (lojas.size()) {
+                    case 1:
+                        Main.trocarTela("minhasLojas1Scene", cli);
+                        break;
+                    case 2:
+                        Main.trocarTela("minhasLojas2Scene", cli);
+                        break;
+                    case 3:
+                        Main.trocarTela("minhasLojas3Scene", cli);
+                        break;
+                    case 4:
+                        Main.trocarTela("minhasLojas4Scene", cli);
+                        break;
+                    case 5:
+                        Main.trocarTela("minhasLojas5Scene", cli);
+                        break;
+
+                    case 0:
+                        Main.trocarTela("minhasLojas0Scene", cli);
+                        break;
+                }
+            } else if (lojas.size() >= 6) {
+                Main.trocarTela("minhasLojas6Scene", cli);
+            }
+        }catch (NaoExisteException ww){
+
+        }catch (ParametroNullException pp){
+
+        }
+
+
     }
 
     @FXML

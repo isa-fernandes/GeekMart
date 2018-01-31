@@ -2,6 +2,7 @@ package br.ufrpe.geekMart.gui.controller;
 
 import br.ufrpe.geekMart.negocio.Fachada;
 import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
+import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import br.ufrpe.geekMart.negocio.classesBasicas.EnumCategorias;
 import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
 import javafx.event.ActionEvent;
@@ -13,10 +14,10 @@ import java.util.ArrayList;
 
 public class MinhasLojas6Controller {
 
-    ArrayList<Anuncio> user1, user2;
     Fachada fachada = Fachada.getInstancia();
-    ArrayList<Anuncio> proxima;
-    ArrayList<Anuncio> voltar;
+    Cliente user;
+    ArrayList<Loja> stores;
+    ArrayList<Loja> proxima;
 
 
     @FXML
@@ -26,9 +27,12 @@ public class MinhasLojas6Controller {
             public void onScreenChanged(String newScreen, Object userData, ArrayList<Anuncio> userData2,
                                         ArrayList<Anuncio> userData3, ArrayList<Loja> userData4) {
                 if(newScreen.equals("minhasLojas6Scene")) {
+                    user = (Cliente)userData;
+                    stores = userData4;
                     updateComboBoxCategorias();
                     updateComboBoxLojas();
                     updateTela();
+
                 } }
         });
 
@@ -40,146 +44,64 @@ public class MinhasLojas6Controller {
 
     private  void  updateTela() {
 
-        imBusca1.setImage(user1.get(0).getImagens().get(0));
-        imBusca2.setImage(user1.get(1).getImagens().get(0));
-        imBusca3.setImage(user1.get(2).getImagens().get(0));
-        imBusca4.setImage(user1.get(3).getImagens().get(0));
-        imBusca5.setImage(user1.get(4).getImagens().get(0));
-        imBusca6.setImage(user1.get(5).getImagens().get(0));
-        lbTituroII1.setText(user1.get(0).getTitulo());
-        lbTituroII2.setText(user1.get(1).getTitulo());
-        lbTituroII3.setText(user1.get(2).getTitulo());
-        lbTituroII4.setText(user1.get(3).getTitulo());
-        lbTituroII5.setText(user1.get(4).getTitulo());
-        lbTituroII6.setText(user1.get(5).getTitulo());
-        lbPrecoII1.setText(user1.get(0).getPreco());
-        lbPrecoII2.setText(user1.get(1).getPreco());
-        lbPrecoII3.setText(user1.get(2).getPreco());
-        lbPrecoII4.setText(user1.get(3).getPreco());
-        lbPrecoII5.setText(user1.get(4).getPreco());
-        lbPrecoII6.setText(user1.get(5).getPreco());
+        imBusca1.setImage(stores.get(0).getImage());
+        imBusca2.setImage(stores.get(1).getImage());
+        imBusca3.setImage(stores.get(2).getImage());
+        imBusca4.setImage(stores.get(3).getImage());
+        imBusca5.setImage(stores.get(4).getImage());
+        imBusca6.setImage(stores.get(5).getImage());
+        lbTituroII1.setText(stores.get(0).getNome());
+        lbTituroII2.setText(stores.get(1).getNome());
+        lbTituroII3.setText(stores.get(2).getNome());
+        lbTituroII4.setText(stores.get(3).getNome());
+        lbTituroII5.setText(stores.get(4).getNome());
+        lbTituroII6.setText(stores.get(5).getNome());
+        lbPrecoII1.setText(stores.get(0).getCategoria().toString());
+        lbPrecoII2.setText(stores.get(1).getCategoria().toString());
+        lbPrecoII3.setText(stores.get(2).getCategoria().toString());
+        lbPrecoII4.setText(stores.get(3).getCategoria().toString());
+        lbPrecoII5.setText(stores.get(4).getCategoria().toString());
+        lbPrecoII6.setText(stores.get(5).getCategoria().toString());
+
+    }
+
+
+
+    @FXML
+    protected void editarLojaAction1(ActionEvent e) {
+        Main.trocarTela("alterarLojaScene", stores.get(0));
 
     }
 
     @FXML
-    protected  void irParaAnuncioAction1(ActionEvent e){
-        Main.trocarTela("anuncioScene",user1.get(0));
+    protected void editarLojaAction2(ActionEvent e) {
+        Main.trocarTela("alterarLojaScene", stores.get(1));
 
     }
 
     @FXML
-    protected  void irParaAnuncioAction2(ActionEvent e){
-        Main.trocarTela("anuncioScene",user1.get(1));
+    protected void editarLojaAction3(ActionEvent e) {
+        Main.trocarTela("alterarLojaScene", stores.get(2));
 
     }
 
     @FXML
-    protected  void irParaAnuncioAction3(ActionEvent e){
-        Main.trocarTela("anuncioScene",user1.get(2));
+    protected void editarLojaAction4(ActionEvent e) {
+        Main.trocarTela("alterarLojaScene", stores.get(3));
 
     }
 
     @FXML
-    protected  void irParaAnuncioAction4(ActionEvent e){
-        Main.trocarTela("anuncioScene",user1.get(3));
+    protected void editarLojaActio5(ActionEvent e) {
+        Main.trocarTela("alterarLojaScene", stores.get(4));
 
     }
 
     @FXML
-    protected  void irParaAnuncioAction5(ActionEvent e){
-        Main.trocarTela("anuncioScene",user1.get(4));
+    protected void editarLojaAction6(ActionEvent e) {
+        Main.trocarTela("alterarLojaScene", stores.get(5));
 
     }
-
-    @FXML
-    protected  void irParaAnuncioAction6(ActionEvent e){
-        Main.trocarTela("anuncioScene",user1.get(5));
-
-    }
-
-    @FXML
-    protected  void proximaAction(ActionEvent e){
-        voltar.add(user1.get(0));
-        voltar.add(user1.get(1));
-        voltar.add(user1.get(2));
-        voltar.add(user1.get(3));
-        voltar.add(user1.get(4));
-        voltar.add(user1.get(6));
-
-        user1.remove(0);
-        user1.remove(0);
-        user1.remove(0);
-        user1.remove(0);
-        user1.remove(0);
-        user1.remove(0);
-
-        user2.clear();
-        user2.add(voltar.get(0));
-        user2.add(voltar.get(1));
-        user2.add(voltar.get(2));
-        user2.add(voltar.get(3));
-        user2.add(voltar.get(4));
-        user2.add(voltar.get(5));
-
-
-
-        if(user1.size() - 6 >= 6){
-            Main.trocarTela("resultadoBuscaLogado6Scene",user1, user2);
-        }
-
-        if(user1.size() - 6 <6){
-            switch (user1.size() - 6) {
-                case 1:
-                    Main.trocarTela("resultadoBuscaLogado1Scene",user1,user2);
-                    break;
-                case 2:
-                    Main.trocarTela("resultadoBuscaLogado2Scene",user1,user2);
-                    break;
-                case 3:
-                    Main.trocarTela("resultadoBuscaLogado3Scene",user1,user2);
-                    break;
-                case 4:
-                    Main.trocarTela("resultadoBuscaLogado4Scene",user1,user2);
-                    break;
-                case 5:
-                    Main.trocarTela("resultadoBuscaLogado5Scene",user1,user2);
-                    break;
-                case 0:
-                    Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
-                    alert2.setTitle("Informação");
-                    alert2.setHeaderText("Anúncios");
-                    alert2.setContentText("Não há mais Anúncios");
-                    alert2.showAndWait();
-                    break;
-            }
-        }
-
-    }
-
-    @FXML
-    protected  void voltarAction(ActionEvent e){
-        if(user2 != null) {
-            user1.add(0, user2.get(0));
-            user1.add(1, user2.get(1));
-            user1.add(2, user2.get(2));
-            user1.add(3, user2.get(3));
-            user1.add(4, user2.get(4));
-            user1.add(5, user2.get(5));
-
-            Main.trocarTela("resultadoBuscaLogado6Scene", user1);
-        }else{
-            Alert alertw = new Alert(Alert.AlertType.ERROR);
-            alertw.setTitle("Erro");
-            alertw.setHeaderText("Erro");
-            alertw.setContentText("Não há mais anuncios para essa busca");
-            alertw.showAndWait();
-
-        }
-
-
-    }
-
-
 
     private  void  updateComboBoxCategorias(){
         this.cbCategorias.getItems().setAll(EnumCategorias.values());
@@ -190,181 +112,85 @@ public class MinhasLojas6Controller {
     }
 
     @FXML
-    private Button btVoltar;
+    protected  void proximaAction(ActionEvent e){
 
-    @FXML
-    private Button btProxima;
-
-    @FXML
-    private Button btVerLoja1;
-
-    @FXML
-    private Button btVerLoja2;
-
-    @FXML
-    private Button btVerLoja3;
-
-    @FXML
-    private Button btVerLoja4;
-
-    @FXML
-    private Button btVerLoja5;
-
-    @FXML
-    private Button btVerLoja6;
-
-    @FXML
-    private ImageView imBusca1;
-
-    @FXML
-    private ImageView imBusca2;
-
-    @FXML
-    private ImageView imBusca3;
-
-    @FXML
-    private ImageView imBusca4;
-
-    @FXML
-    private ImageView imBusca5;
-
-    @FXML
-    private ImageView imBusca6;
-
-    @FXML
-    private  Button Editar1;
-
-    @FXML
-    private  Button Editar2;
-
-    @FXML
-    private  Button Editar3;
-
-    @FXML
-    private  Button Editar4;
-
-    @FXML
-    private  Button Editar5;
-
-    @FXML
-    private  Button Editar6;
+        stores.remove(0);
+        stores.remove(0);
+        stores.remove(0);
+        stores.remove(0);
+        stores.remove(0);
+        stores.remove(0);
 
 
+        if(stores.size() - 6 >= 6){
+            Main.trocarTela("buscaLojasLogado6Scene",stores);
+        }
 
-    @FXML
-    private Button btHome;
+        if(stores.size() - 6 <6){
+            switch (stores.size() - 6) {
+                case 1:
+                    Main.trocarTela("buscaLojasLogado1Scene",stores);
+                    break;
+                case 2:
+                    Main.trocarTela("buscaLojasLogado2Scene",stores);
+                    break;
+                case 3:
+                    Main.trocarTela("buscaLojasLogado3Scene",stores);
+                    break;
+                case 4:
+                    Main.trocarTela("buscaLojasLogado4Scene",stores);
+                    break;
+                case 5:
+                    Main.trocarTela("buscaLojasLogado5Scene",stores);
+                    break;
+                case 0:
+                    Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                    alert2.setTitle("Informação");
+                    alert2.setHeaderText("Lojas");
+                    alert2.setContentText("Não há mais Lojas");
+                    alert2.showAndWait();
+                    break;
+            }
+        }
 
-    @FXML
-    private Button btMeusAnuncios;
-
-    @FXML
-    private ComboBox cbCategorias;
-
-    @FXML
-    private Button btBuscar;
-
-    @FXML
-    private Button btMeuCadastro;
-
-    @FXML
-    private TextField tfBuscar;
-
-    @FXML
-    private Button btMinhasLojas;
-
-    @FXML
-    private MenuItem menuSair;
-
-    @FXML
-    private MenuItem menuLoginCliente;
-
-    @FXML
-    private Button btCHAT;
-
-    @FXML
-    private ComboBox cbLojas;
-
-    @FXML
-    private Button btNovaLoja;
-
-
-    @FXML
-    private MenuItem menuLoginAdm;
-
-    @FXML
-    private Button btNovoAnuncio;
-
-    @FXML
-    private MenuItem menuSobreApp;
-
-    @FXML
-    private Label lbPrecoII1;
-
-    @FXML
-    private Label lbTituroII1;
-
-    @FXML
-    private Label lbPrecoII2;
-
-    @FXML
-    private Label lbTituroII2;
-
-    @FXML
-    private Label lbPrecoII3;
-
-    @FXML
-    private Label lbTituroII3;
-
-    @FXML
-    private Label lbPrecoII4;
-
-    @FXML
-    private Label lbTituroII4;
-
-    @FXML
-    private Label lbPrecoII5;
-
-    @FXML
-    private Label lbTituroII5;
-
-    @FXML
-    private Label lbPrecoII6;
-
-    @FXML
-    private Label lbTituroII6;
-
-    @FXML
-    protected  void btHomeAction(ActionEvent e){
-        Main.trocarTela("telaInicialLogadoScene");
     }
 
     @FXML
-    protected  void btMeuCadastroAction(ActionEvent e){
-        Main.trocarTela("cadastroClienteScene");
+    protected  void irParaAnuncioAction1(ActionEvent e){
+        Main.trocarTela("lojaScene",stores.get(0));
+
     }
 
     @FXML
-    protected  void btMeusAnunciosAction(ActionEvent e){ Main.trocarTela("meusAnunciosScene"); }
+    protected  void irParaAnuncioAction2(ActionEvent e){
+        Main.trocarTela("lojaScene",stores.get(1));
 
-    @FXML
-    protected  void btMinhasLojasAction(ActionEvent e){
-        Main.trocarTela("minhasLojasScene");
     }
 
     @FXML
-    protected  void btNovoAnuncioAction(ActionEvent e){
-        Main.trocarTela("cadastrarNovoAnuncioScene");
+    protected  void irParaAnuncioAction3(ActionEvent e){
+        Main.trocarTela("lojaScene",stores.get(2));
+
     }
 
     @FXML
-    protected  void btNovaLojaAction(ActionEvent e){
-        Main.trocarTela("cadastrarNovaLojaScene");
+    protected  void irParaAnuncioAction4(ActionEvent e){
+        Main.trocarTela("lojaScene",stores.get(3));
+
     }
 
     @FXML
-    protected  void btChatAction(ActionEvent e){
-        Main.trocarTela("chatScene");
+    protected  void irParaAnuncioAction5(ActionEvent e){
+        Main.trocarTela("lojaScene",stores.get(4));
+
     }
+
+    @FXML
+    protected  void irParaAnuncioAction6(ActionEvent e){
+        Main.trocarTela("lojaScene",stores.get(5));
+
+    }
+
 
     @FXML
     protected  void buscaAnunciosPorTituloOrdenadoPorPreço(ActionEvent e){
@@ -481,5 +307,226 @@ public class MinhasLojas6Controller {
 
 
     }
+
+    @FXML
+    private Button btVoltar;
+
+    @FXML
+    private Button btProxima;
+
+    @FXML
+    private Button btVerLoja1;
+
+    @FXML
+    private Button btVerLoja2;
+
+    @FXML
+    private Button btVerLoja3;
+
+    @FXML
+    private Button btVerLoja4;
+
+    @FXML
+    private Button btVerLoja5;
+
+    @FXML
+    private Button btVerLoja6;
+
+    @FXML
+    private ImageView imBusca1;
+
+    @FXML
+    private ImageView imBusca2;
+
+    @FXML
+    private ImageView imBusca3;
+
+    @FXML
+    private ImageView imBusca4;
+
+    @FXML
+    private ImageView imBusca5;
+
+    @FXML
+    private ImageView imBusca6;
+
+
+    @FXML
+    private Button btHome;
+
+    @FXML
+    private Button btMeusAnuncios;
+
+    @FXML
+    private ComboBox cbCategorias;
+
+    @FXML
+    private Button btBuscar;
+
+    @FXML
+    private Button btMeuCadastro;
+
+    @FXML
+    private TextField tfBuscar;
+
+    @FXML
+    private Button btMinhasLojas;
+
+    @FXML
+    private MenuItem menuSair;
+
+    @FXML
+    private MenuItem menuLoginCliente;
+
+    @FXML
+    private Button btCHAT;
+
+    @FXML
+    private ComboBox cbLojas;
+
+    @FXML
+    private Button btNovaLoja;
+
+
+    @FXML
+    private MenuItem menuLoginAdm;
+
+    @FXML
+    private Button btNovoAnuncio;
+
+    @FXML
+    private MenuItem menuSobreApp;
+
+    @FXML
+    private Label lbPrecoII1;
+
+    @FXML
+    private Label lbTituroII1;
+
+    @FXML
+    private Label lbPrecoII2;
+
+    @FXML
+    private Label lbTituroII2;
+
+    @FXML
+    private Label lbPrecoII3;
+
+    @FXML
+    private Label lbTituroII3;
+
+    @FXML
+    private Label lbPrecoII4;
+
+    @FXML
+    private Label lbTituroII4;
+
+    @FXML
+    private Label lbPrecoII5;
+
+    @FXML
+    private Label lbTituroII5;
+
+    @FXML
+    private Label lbPrecoII6;
+
+    @FXML
+    private Label lbTituroII6;
+
+    @FXML
+    protected  void btHomeAction(ActionEvent e){
+        Main.trocarTela("telaInicialLogadoScene");
+    }
+
+    @FXML
+    protected  void btMeuCadastroAction(ActionEvent e){
+        Main.trocarTela("cadastroClienteScene");
+    }
+
+    @FXML
+    protected  void btMeusAnunciosAction(ActionEvent e){
+
+        ArrayList<Anuncio> anuncios = user.getAnuncios();
+
+        if(anuncios.size()<6 && anuncios.size()>=0) {
+
+            switch (anuncios.size()) {
+                case 1:
+                    Main.trocarTela("meusAnuncios1Scene", user,anuncios);
+                    break;
+                case 2:
+                    Main.trocarTela("meusAnuncios2Scene",user, anuncios);
+                    break;
+                case 3:
+                    Main.trocarTela("meusAnuncios3Scene",user, anuncios);
+                    break;
+                case 4:
+                    Main.trocarTela("meusAnuncios4Scene",user, anuncios);
+                    break;
+                case 5:
+                    Main.trocarTela("meusAnuncios5Scene", user,anuncios);
+                    break;
+
+                case 0:
+                    Main.trocarTela("meusAnuncios0Scene",user, anuncios);
+                    break;
+            }
+        } else if(anuncios.size() >= 6) {
+            Main.trocarTela("meusAnuncios6Scene",user, anuncios);
+        }
+
+
+       }
+
+    @FXML
+    protected  void btMinhasLojasAction(ActionEvent e){
+
+        ArrayList<Loja> lojas = user.getLojas();
+
+        if(lojas.size()<6 && lojas.size()>=0) {
+
+            switch (lojas.size()) {
+                case 1:
+                    Main.trocarTela("minhasLojas1Scene", user);
+                    break;
+                case 2:
+                    Main.trocarTela("minhasLojas2Scene",user);
+                    break;
+                case 3:
+                    Main.trocarTela("minhasLojas3Scene",user);
+                    break;
+                case 4:
+                    Main.trocarTela("minhasLojas4Scene",user);
+                    break;
+                case 5:
+                    Main.trocarTela("minhasLojas5Scene", user);
+                    break;
+
+                case 0:
+                    Main.trocarTela("minhasLojas0Scene",user);
+                    break;
+            }
+        } else if(lojas.size() >= 6) {
+            Main.trocarTela("minhasLojas6Scene",user);
+        }
+
+
+    }
+
+    @FXML
+    protected  void btNovoAnuncioAction(ActionEvent e){
+        Main.trocarTela("cadastrarNovoAnuncioScene");
+    }
+
+    @FXML
+    protected  void btNovaLojaAction(ActionEvent e){
+        Main.trocarTela("cadastrarNovaLojaScene");
+    }
+
+    @FXML
+    protected  void btChatAction(ActionEvent e){
+        Main.trocarTela("chatScene");
+    }
+
 
 }

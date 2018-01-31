@@ -4,9 +4,11 @@ import br.ufrpe.geekMart.negocio.Fachada;
 import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import br.ufrpe.geekMart.negocio.classesBasicas.EnumCategorias;
+import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
@@ -49,7 +51,7 @@ public class ResultadoBuscaLogado1Contoller {
         }
         lbTituroII1.setText(user1.get(0).getTitulo());
         lbPrecoII1.setText(user1.get(0).getPreco());
-        Image image = user1.get(0).getImagem1();
+        image = user1.get(0).getImagem1();
         imBusca1.setImage(image);
 
 
@@ -228,6 +230,8 @@ public class ResultadoBuscaLogado1Contoller {
 
     @FXML
     private Button btVerAnuncio6;
+    @FXML
+    private ImageView imBusca1;
 
     @FXML
     private ImageView imBusca2;
@@ -371,11 +375,41 @@ public class ResultadoBuscaLogado1Contoller {
         }
 
 
-        Main.trocarTela("meusAnunciosScene",user,anuncios); }
+         }
 
     @FXML
     protected  void btMinhasLojasAction(ActionEvent e){
-        Main.trocarTela("minhasLojasScene");
+
+        ArrayList<Loja> lojas = user.getLojas();
+
+        if(lojas.size()<6 && lojas.size()>=0) {
+
+            switch (lojas.size()) {
+                case 1:
+                    Main.trocarTela("minhasLojas1Scene", user);
+                    break;
+                case 2:
+                    Main.trocarTela("minhasLojas2Scene",user);
+                    break;
+                case 3:
+                    Main.trocarTela("minhasLojas3Scene",user);
+                    break;
+                case 4:
+                    Main.trocarTela("minhasLojas4Scene",user);
+                    break;
+                case 5:
+                    Main.trocarTela("minhasLojas5Scene", user);
+                    break;
+
+                case 0:
+                    Main.trocarTela("minhasLojas0Scene",user);
+                    break;
+            }
+        } else if(lojas.size() >= 6) {
+            Main.trocarTela("minhasLojas6Scene",user);
+        }
+
+
     }
 
     @FXML

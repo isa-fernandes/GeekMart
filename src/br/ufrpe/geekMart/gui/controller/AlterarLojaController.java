@@ -187,67 +187,77 @@ public class AlterarLojaController {
 
         @FXML
         protected  void btHomeAction(ActionEvent e){
-                Main.trocarTela("telaInicialLogadoScene",user.getCliente());
+                Main.trocarTela("telaInicialLogadoScene",user.getCpfCliente());
         }
 
         @FXML
         protected  void btMeuCadastroAction(ActionEvent e){
-                Main.trocarTela("cadastroClienteScene",user.getCliente());
+                Main.trocarTela("cadastroClienteScene",user.getCpfCliente());
         }
 
     @FXML
-    protected  void btMeusAnunciosAction(ActionEvent e){
+    protected  void btMeusAnunciosAction(ActionEvent e) {
+        try {
+            Cliente cl = (Cliente) fachada.buscaUsuario(user.getCpfCliente());
 
-        ArrayList<Anuncio> anuncios = user.getCliente().getAnuncios();
+            ArrayList<Anuncio> anuncios = cl.getAnuncios();
 
-        if(anuncios.size()<6 && anuncios.size()>=0) {
+            if (anuncios.size() < 6 && anuncios.size() >= 0) {
 
-            switch (anuncios.size()) {
-                case 1:
-                    Main.trocarTela("meusAnuncios1Scene", user.getCliente(),anuncios);
-                    break;
-                case 2:
-                    Main.trocarTela("meusAnuncios2Scene",user.getCliente(), anuncios);
-                    break;
-                case 3:
-                    Main.trocarTela("meusAnuncios3Scene",user.getCliente(), anuncios);
-                    break;
-                case 4:
-                    Main.trocarTela("meusAnuncios4Scene",user.getCliente(), anuncios);
-                    break;
-                case 5:
-                    Main.trocarTela("meusAnuncios5Scene", user.getCliente(),anuncios);
-                    break;
+                switch (anuncios.size()) {
+                    case 1:
+                        Main.trocarTela("meusAnuncios1Scene", user.getCpfCliente(), anuncios);
+                        break;
+                    case 2:
+                        Main.trocarTela("meusAnuncios2Scene", user.getCpfCliente(), anuncios);
+                        break;
+                    case 3:
+                        Main.trocarTela("meusAnuncios3Scene", user.getCpfCliente(), anuncios);
+                        break;
+                    case 4:
+                        Main.trocarTela("meusAnuncios4Scene", user.getCpfCliente(), anuncios);
+                        break;
+                    case 5:
+                        Main.trocarTela("meusAnuncios5Scene", user.getCpfCliente(), anuncios);
+                        break;
 
-                case 0:
-                    Main.trocarTela("meusAnuncios0Scene",user.getCliente(), anuncios);
-                    break;
+                    case 0:
+                        Main.trocarTela("meusAnuncios0Scene", user.getCpfCliente(), anuncios);
+                        break;
+                }
+            } else if (anuncios.size() >= 6) {
+                Main.trocarTela("meusAnuncios6Scene", user.getCpfCliente(), anuncios);
             }
-        } else if(anuncios.size() >= 6) {
-            Main.trocarTela("meusAnuncios6Scene",user.getCliente(), anuncios);
+
+
+            Main.trocarTela("meusAnunciosScene", user.getCpfCliente(), anuncios);
+
+        } catch (NaoExisteException ee) {
+
+        } catch (ParametroNullException pp) {
+
         }
+    }
 
-
-        Main.trocarTela("meusAnunciosScene",user.getCliente(),anuncios); }
 
         @FXML
         protected  void btMinhasLojasAction(ActionEvent e){
-                Main.trocarTela("minhasLojasScene",user.getCliente());
+                Main.trocarTela("minhasLojasScene",user.getCpfCliente());
         }
 
         @FXML
         protected  void btNovoAnuncioAction(ActionEvent e){
-                Main.trocarTela("cadastrarNovoAnuncioScene",user.getCliente());
+                Main.trocarTela("cadastrarNovoAnuncioScene",user.getCpfCliente());
         }
 
         @FXML
         protected  void btNovaLojaAction(ActionEvent e){
-                Main.trocarTela("cadastrarNovaLojaScene",user.getCliente());
+                Main.trocarTela("cadastrarNovaLojaScene",user.getCpfCliente());
         }
 
         @FXML
         protected  void btChatAction(ActionEvent e){
-                Main.trocarTela("chatScene",user.getCliente());
+                Main.trocarTela("chatScene",user.getCpfCliente());
         }
 
     @FXML

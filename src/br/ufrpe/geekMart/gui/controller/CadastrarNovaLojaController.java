@@ -214,12 +214,42 @@ public class CadastrarNovaLojaController {
         }
 
 
-        Main.trocarTela("meusAnunciosScene",user,anuncios); }
+    }
 
-        @FXML
-        protected  void btMinhasLojasAction(ActionEvent e){
-                Main.trocarTela("minhasLojasScene",user);
+    @FXML
+    protected  void btMinhasLojasAction(ActionEvent e){
+
+        ArrayList<Loja> lojas = user.getLojas();
+
+        if(lojas.size()<6 && lojas.size()>=0) {
+
+            switch (lojas.size()) {
+                case 1:
+                    Main.trocarTela("minhasLojas1Scene", user);
+                    break;
+                case 2:
+                    Main.trocarTela("minhasLojas2Scene",user);
+                    break;
+                case 3:
+                    Main.trocarTela("minhasLojas3Scene",user);
+                    break;
+                case 4:
+                    Main.trocarTela("minhasLojas4Scene",user);
+                    break;
+                case 5:
+                    Main.trocarTela("minhasLojas5Scene", user);
+                    break;
+
+                case 0:
+                    Main.trocarTela("minhasLojas0Scene",user);
+                    break;
+            }
+        } else if(lojas.size() >= 6) {
+            Main.trocarTela("minhasLojas6Scene",user);
         }
+
+
+    }
 
         @FXML
         protected  void btNovoAnuncioAction(ActionEvent e) {

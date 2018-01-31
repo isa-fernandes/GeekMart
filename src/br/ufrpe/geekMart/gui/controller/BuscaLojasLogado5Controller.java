@@ -16,6 +16,9 @@ public class BuscaLojasLogado5Controller {
 
     Fachada fachada = Fachada.getInstancia();
     Cliente user;
+    ArrayList<Loja> stores;
+    ArrayList<Loja> proxima;
+
 
     @FXML
     protected  void  initialize(){
@@ -24,9 +27,11 @@ public class BuscaLojasLogado5Controller {
             public void onScreenChanged(String newScreen, Object userData, ArrayList<Anuncio> userData2,
                                         ArrayList<Anuncio> userData3, ArrayList<Loja> userData4) {
                 if(newScreen.equals("buscasLojasLogado5Scene")) {
-                        user = (Cliente) userData;
+                    user = (Cliente)userData;
+                    stores = userData4;
                     updateComboBoxCategorias();
                     updateComboBoxLojas();
+                    updateTela();
 
                 } }
         });
@@ -37,6 +42,26 @@ public class BuscaLojasLogado5Controller {
 
     }
 
+    private  void  updateTela() {
+
+        imBusca1.setImage(stores.get(0).getImage());
+        imBusca2.setImage(stores.get(1).getImage());
+        imBusca3.setImage(stores.get(2).getImage());
+        imBusca4.setImage(stores.get(3).getImage());
+        imBusca5.setImage(stores.get(4).getImage());
+        lbTituroII1.setText(stores.get(0).getNome());
+        lbTituroII2.setText(stores.get(1).getNome());
+        lbTituroII3.setText(stores.get(2).getNome());
+        lbTituroII4.setText(stores.get(3).getNome());
+        lbTituroII5.setText(stores.get(4).getNome());
+        lbPrecoII1.setText(stores.get(0).getCategoria().toString());
+        lbPrecoII2.setText(stores.get(1).getCategoria().toString());
+        lbPrecoII3.setText(stores.get(2).getCategoria().toString());
+        lbPrecoII4.setText(stores.get(3).getCategoria().toString());
+        lbPrecoII5.setText(stores.get(4).getCategoria().toString());
+
+
+    }
 
 
     private  void  updateComboBoxCategorias(){
@@ -45,6 +70,156 @@ public class BuscaLojasLogado5Controller {
 
     private void updateComboBoxLojas(){
         this.cbLojas.getItems().setAll(EnumCategorias.values());
+    }
+
+
+    @FXML
+    protected  void irParaAnuncioAction1(ActionEvent e){
+        Main.trocarTela("lojaScene",stores.get(0));
+
+    }
+
+    @FXML
+    protected  void irParaAnuncioAction2(ActionEvent e){
+        Main.trocarTela("lojaScene",stores.get(1));
+
+    }
+
+    @FXML
+    protected  void irParaAnuncioAction3(ActionEvent e){
+        Main.trocarTela("lojaScene",stores.get(2));
+
+    }
+
+    @FXML
+    protected  void irParaAnuncioAction4(ActionEvent e){
+        Main.trocarTela("lojaScene",stores.get(3));
+
+    }
+
+    @FXML
+    protected  void irParaAnuncioAction5(ActionEvent e){
+        Main.trocarTela("lojaScene",stores.get(4));
+
+    }
+
+
+
+
+    @FXML
+    protected  void buscaAnunciosPorTituloOrdenadoPorPreço(ActionEvent e){
+
+        String palavra = tfBuscar.getText();
+        ArrayList<Anuncio> resultado = fachada.buscarAnuncioPorTituloOrdenadoPeloPreco(palavra);
+
+
+
+        if(resultado.size()<6 && resultado.size()>=0) {
+
+            switch (resultado.size()) {
+                case 1:
+                    Main.trocarTela("resultadoBuscaLogado1Scene", resultado);
+                    break;
+                case 2:
+                    Main.trocarTela("resultadoBuscaLogado2Scene", resultado);
+                    break;
+                case 3:
+                    Main.trocarTela("resultadoBuscaLogado3Scene", resultado);
+                    break;
+                case 4:
+                    Main.trocarTela("resultadoBuscaLogado4Scene", resultado);
+                    break;
+                case 5:
+                    Main.trocarTela("resultadoBuscaLogado5Scene", resultado);
+                    break;
+
+                case 0:
+                    Main.trocarTela("resultadoBuscaLogado0Scene", resultado);
+                    break;
+            }
+        } else if(resultado.size() >= 6) {
+            Main.trocarTela("resultadoBuscaLogado6Scene", resultado);
+        }
+
+
+    }
+
+    @FXML
+    protected  void buscaAnunciosPorCategoria(ActionEvent e){
+
+        String palavra = cbCategorias.getSelectionModel().toString();
+        ArrayList<Loja> anuncios = fachada.buscarLojaPorCategoria(palavra);
+
+
+        if(anuncios.size()<6 && anuncios.size()>=0) {
+
+            switch (anuncios.size()) {
+                case 1:
+                    Main.trocarTela("resultadoBuscaLogado1Scene", anuncios);
+                    break;
+                case 2:
+                    Main.trocarTela("resultadoBuscaLogado2Scene", anuncios);
+                    break;
+                case 3:
+                    Main.trocarTela("resultadoBuscaLogado3Scene", anuncios);
+                    break;
+                case 4:
+                    Main.trocarTela("resultadoBuscaLogado4Scene", anuncios);
+                    break;
+                case 5:
+                    Main.trocarTela("resultadoBuscaLogado5Scene", anuncios);
+                    break;
+
+                case 0:
+                    Main.trocarTela("resultadoBuscaLogado0Scene", anuncios);
+                    break;
+            }
+        } else if(anuncios.size() >= 6) {
+            Main.trocarTela("resultadoBuscaLogado6Scene", anuncios);
+        }
+
+
+    }
+
+
+
+
+    @FXML
+    protected  void buscaLojasPorCategoria(ActionEvent e){
+
+        String palavra = cbCategorias.getSelectionModel().toString();
+        ArrayList<Loja> anuncios = fachada.buscarLojaPorTitulo(palavra);
+
+
+        if(anuncios.size()<6 && anuncios.size()>=0) {
+
+            switch (anuncios.size()) {
+                case 1:
+                    Main.trocarTela("buscasLojasLogado1Scene", anuncios);
+                    break;
+                case 2:
+                    Main.trocarTela("buscasLojasLogado2Scene", anuncios);
+                    break;
+                case 3:
+                    Main.trocarTela("buscasLojasLogado3Scene", anuncios);
+                    break;
+                case 4:
+                    Main.trocarTela("buscasLojasLogado4Scene", anuncios);
+                    break;
+                case 5:
+                    Main.trocarTela("buscasLojasLogado5Scene", anuncios);
+                    break;
+
+                case 0:
+                    Main.trocarTela("buscasLojasLogado0Scene", anuncios);
+                    break;
+            }
+        } else if(anuncios.size() >= 6) {
+            Main.trocarTela("resultadoBuscaLogado6Scene", anuncios);
+        }
+
+
+
     }
 
     @FXML
@@ -88,7 +263,6 @@ public class BuscaLojasLogado5Controller {
 
     @FXML
     private ImageView imBusca6;
-
 
 
     @FXML
@@ -216,11 +390,41 @@ public class BuscaLojasLogado5Controller {
         }
 
 
-        Main.trocarTela("meusAnunciosScene",user,anuncios); }
+      }
 
     @FXML
     protected  void btMinhasLojasAction(ActionEvent e){
-        Main.trocarTela("minhasLojasScene");
+
+        ArrayList<Loja> lojas = user.getLojas();
+
+        if(lojas.size()<6 && lojas.size()>=0) {
+
+            switch (lojas.size()) {
+                case 1:
+                    Main.trocarTela("minhasLojas1Scene", user);
+                    break;
+                case 2:
+                    Main.trocarTela("minhasLojas2Scene",user);
+                    break;
+                case 3:
+                    Main.trocarTela("minhasLojas3Scene",user);
+                    break;
+                case 4:
+                    Main.trocarTela("minhasLojas4Scene",user);
+                    break;
+                case 5:
+                    Main.trocarTela("minhasLojas5Scene", user);
+                    break;
+
+                case 0:
+                    Main.trocarTela("minhasLojas0Scene",user);
+                    break;
+            }
+        } else if(lojas.size() >= 6) {
+            Main.trocarTela("minhasLojas6Scene",user);
+        }
+
+
     }
 
     @FXML
@@ -237,6 +441,5 @@ public class BuscaLojasLogado5Controller {
     protected  void btChatAction(ActionEvent e){
         Main.trocarTela("chatScene");
     }
-
 
 }

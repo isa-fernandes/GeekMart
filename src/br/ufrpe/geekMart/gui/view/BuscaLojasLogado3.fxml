@@ -67,10 +67,9 @@
                                     <children>
                                         <VBox prefHeight="433.0" prefWidth="129.0">
                                             <children>
-                                                <ComboBox fx:id="cbCategorias" prefWidth="150.0" promptText="Categorias" />
-                                                <ComboBox fx:id="cbLojas" prefWidth="150.0" promptText="Lojas " />
+                                                <ComboBox fx:id="cbCategorias" onAction="#buscaAnunciosPorCategoria" prefWidth="150.0" promptText="Categorias" />
+                                                <ComboBox fx:id="cbLojas" onAction="#buscaLojasPorCategoria" prefWidth="150.0" promptText="Lojas " />
                                                 <Button fx:id="btHome" mnemonicParsing="false" onAction="#btHomeAction" prefHeight="25.0" prefWidth="128.0" text="Home" />
-                                                <Button fx:id="btVoltar" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Voltar" />
                                             </children>
                                         </VBox>
                                     </children>
@@ -89,7 +88,7 @@
                                 <HBox alignment="CENTER" prefHeight="142.0" prefWidth="574.0" spacing="5.0">
                                     <children>
                                         <TextField fx:id="tfBuscar" prefHeight="25.0" prefWidth="499.0" promptText="Buscar Produto/Loja" />
-                                        <Button fx:id="btBuscar" mnemonicParsing="false" prefHeight="25.0" prefWidth="63.0" text="Buscar">
+                                        <Button fx:id="btBuscar" mnemonicParsing="false" onAction="#buscaAnunciosPorTituloOrdenadoPorPreço" prefHeight="25.0" prefWidth="63.0" text="Buscar">
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
@@ -153,7 +152,7 @@
                                                                 </Label>
                                                                 <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                                     <children>
-                                                                        <Button fx:id="btVerLoja1" mnemonicParsing="false" text="Ver Loja" />
+                                                                        <Button fx:id="btVerLoja1" mnemonicParsing="false" onAction="#irParaAnuncioAction1" text="Ver Loja" />
                                                                     </children>
                                                                 </HBox>
                                                             </children>
@@ -182,7 +181,7 @@
                                                                 </Label>
                                                                 <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                                     <children>
-                                                                        <Button fx:id="btVerLoja2" mnemonicParsing="false" text="Ver Loja" />
+                                                                        <Button fx:id="btVerLoja2" mnemonicParsing="false" onAction="#irParaAnuncioAction2" text="Ver Loja" />
                                                                     </children>
                                                                 </HBox>
                                                             </children>
@@ -220,7 +219,7 @@
                                                                 </Label>
                                                                 <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                                     <children>
-                                                                        <Button fx:id="btVerLoja3" mnemonicParsing="false" text="Ver Loja" />
+                                                                        <Button fx:id="btVerLoja3" mnemonicParsing="false" onAction="#irParaAnuncioAction3" text="Ver Loja" />
                                                                     </children>
                                                                 </HBox>
                                                             </children>
