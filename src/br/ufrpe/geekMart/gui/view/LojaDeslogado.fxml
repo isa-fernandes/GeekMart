@@ -157,7 +157,11 @@
                                                                         <Font size="24.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextArea fx:id="taDescricao" prefHeight="200.0" prefWidth="200.0" />
+                                                <Text fx:id="taDescricao" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="567.0">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Text>
                                                             </children>
                                                         </VBox>
                                                         <HBox prefHeight="37.0" prefWidth="576.0" spacing="200.0">

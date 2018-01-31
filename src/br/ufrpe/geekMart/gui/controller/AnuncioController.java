@@ -9,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 
 import java.util.ArrayList;
 
@@ -307,7 +309,8 @@ public class AnuncioController {
 
 
 
-
+    @FXML
+    private Text taDescricao;
 
 
     @FXML
@@ -337,8 +340,7 @@ public class AnuncioController {
     @FXML
     private Button btMinhasLojas;
 
-    @FXML
-    private TextArea taDescricao;
+
 
     @FXML
     private Label lbEstado;

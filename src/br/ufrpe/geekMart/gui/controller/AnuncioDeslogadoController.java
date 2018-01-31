@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 
@@ -246,7 +247,8 @@ public class AnuncioDeslogadoController {
 
 
 
-
+        @FXML
+        private Text taDescricao;
 
         @FXML
         private Label lbPreco;
@@ -275,8 +277,6 @@ public class AnuncioDeslogadoController {
         @FXML
         private Button btMinhasLojas;
 
-        @FXML
-        private TextArea taDescricao;
 
         @FXML
         private Label lbEstado;

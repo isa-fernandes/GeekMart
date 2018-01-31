@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 
@@ -329,7 +330,8 @@ public class LojaController {
     }
 
 
-
+@FXML
+private Text taDescricao;
 
 
     @FXML
@@ -362,8 +364,6 @@ public class LojaController {
         @FXML
         private Button btMinhasLojas;
 
-        @FXML
-        private TextArea taDescricao;
 
         @FXML
         private MenuItem menuSair;
