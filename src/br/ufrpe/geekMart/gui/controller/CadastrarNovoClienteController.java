@@ -195,8 +195,8 @@ public class CadastrarNovoClienteController {
                                 tfNome.getText(),
                                 tfEmail.getText(),
                                 tfCPF.getText(),
-                                cbEstado.getSelectionModel().toString(),
-                                 c,
+                                tfTelefone.getText(),
+                                c,
                                 pqSenha.getText(),
                                 a, b);
 

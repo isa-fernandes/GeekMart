@@ -45,10 +45,10 @@ public class MeusAnuncios4Controller {
 
     private  void  updateTela() {
 
-        imBusca1.setImage(user1.get(0).getImagens().get(0));
-        imBusca2.setImage(user1.get(1).getImagens().get(0));
-        imBusca3.setImage(user1.get(2).getImagens().get(0));
-        imBusca4.setImage(user1.get(3).getImagens().get(0));
+        imBusca1.setImage(user1.get(0).getImagem1());
+        imBusca2.setImage(user1.get(1).getImagem1());
+        imBusca3.setImage(user1.get(2).getImagem1());
+        imBusca4.setImage(user1.get(3).getImagem1());
         lbTituroII1.setText(user1.get(0).getTitulo());
         lbTituroII2.setText(user1.get(1).getTitulo());
         lbTituroII3.setText(user1.get(2).getTitulo());

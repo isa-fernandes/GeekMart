@@ -28,7 +28,7 @@ public class RepositorioUsuario implements IRepositorioUsuario, Serializable {
     private static RepositorioUsuario lerDoArquivo() {
         RepositorioUsuario instanciaLocal = null;
 
-        File f = new File("lojas.dat");
+        File f = new File("usuarios.dat");
         FileInputStream fileInputStream = null;
         ObjectInputStream objectInputStream = null;
         try {

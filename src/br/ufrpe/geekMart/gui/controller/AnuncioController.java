@@ -10,7 +10,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 
 import java.util.ArrayList;
 
@@ -56,9 +55,9 @@ public class AnuncioController {
     }
 
     private void updateAnuncio(){
-        imCentral.setImage(user.getImagens().get(0));
-        im2.setImage(user.getImagens().get(1));
-        im3.setImage(user.getImagens().get(2));
+        imCentral.setImage(user.getImagem1());
+        im2.setImage(user.getImagem2());
+        im3.setImage(user.getImagem3());
         lbPreco.setText(user.getPreco());
         lbTitulo.setText(user.getTitulo());
         lbCategoria.setText(user.getCategoria().toString());
