@@ -216,7 +216,7 @@ public class TelaLoginController {
         protected  void btCadastrarAction(ActionEvent e){ Main.trocarTela("cadastrarNovoClienteScene"); }
 
         @FXML
-        protected  void fazerLoginAction(ActionEvent e) throws ParametroNullException,NaoExisteException,LoginSemSucessoException,JaExisteException{
+        protected  void fazerLoginAction(ActionEvent e) throws ParametroNullException {
                 try {
                         if(tfCPF.getText().isEmpty())
                                 throw new RuntimeException("O campo cpf não pode ser vazio");

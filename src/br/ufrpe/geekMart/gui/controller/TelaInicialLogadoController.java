@@ -58,34 +58,34 @@ public class TelaInicialLogadoController {
     protected  void buscaAnunciosPorCategoria(ActionEvent e){
 
         String palavra = cbCategorias.getSelectionModel().toString();
-        ArrayList<Loja> anuncios = fachada.buscarLojaPorCategoria(palavra);
+        ArrayList<Anuncio> anuncios = fachada.buscarAnuncioPorCategoriaOrdenadoPeloPreco(palavra);
 
 
         if(anuncios.size()<6 && anuncios.size()>=0) {
 
             switch (anuncios.size()) {
                 case 1:
-                    Main.trocarTela("resultadoBuscaLogado1Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado1Scene", user, anuncios);
                     break;
                 case 2:
-                    Main.trocarTela("resultadoBuscaLogado2Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado2Scene", user, anuncios);
                     break;
                 case 3:
-                    Main.trocarTela("resultadoBuscaLogado3Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado3Scene", user, anuncios);
                     break;
                 case 4:
-                    Main.trocarTela("resultadoBuscaLogado4Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado4Scene", user, anuncios);
                     break;
                 case 5:
-                    Main.trocarTela("resultadoBuscaLogado5Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado5Scene", user, anuncios);
                     break;
 
                 case 0:
-                    Main.trocarTela("resultadoBuscaLogado0Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado0Scene", user, anuncios);
                     break;
             }
         } else if(anuncios.size() >= 6) {
-            Main.trocarTela("resultadoBuscaLogado6Scene", anuncios);
+            Main.trocarTela("resultadoBuscaLogado6Scene", user, anuncios);
         }
 
 

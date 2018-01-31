@@ -237,8 +237,16 @@ public class AnuncioDeslogadoController {
                 fachada.avaliarProduto(user, valor);
                 updateAnuncio();
             } catch (ParametroNullException ee){
+                Alert alertw = new Alert(Alert.AlertType.WARNING);
+                alertw.setTitle("Aviso");
+                alertw.setContentText(ee.getMessage());
+                alertw.showAndWait();
 
             } catch (NaoExisteException ww){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setContentText(ww.getMessage());
+                alert.show();
 
             }
 

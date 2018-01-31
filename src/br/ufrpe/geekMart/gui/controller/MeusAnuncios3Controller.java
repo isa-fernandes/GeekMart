@@ -46,8 +46,8 @@ public class MeusAnuncios3Controller {
     private  void  updateTela() {
 
         imBusca1.setImage(user.getAnuncios().get(0).getImagem1());
-        imBusca2.setImage(user.getAnuncios().get(1).getImagem1());
-        imBusca3.setImage(user.getAnuncios().get(2).getImagem1());
+        imBusca2.setImage(user.getAnuncios().get(1).getImagem2());
+        imBusca3.setImage(user.getAnuncios().get(2).getImagem3());
         lbTituroII1.setText(user1.get(0).getTitulo());
         lbTituroII2.setText(user1.get(1).getTitulo());
         lbTituroII3.setText(user1.get(2).getTitulo());

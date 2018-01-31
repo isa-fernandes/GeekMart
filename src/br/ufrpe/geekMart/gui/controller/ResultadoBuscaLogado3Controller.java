@@ -44,9 +44,9 @@ public class ResultadoBuscaLogado3Controller {
 
     private  void  updateTela() {
 
-        imBusca1.setImage(user1.get(0).getImagens().get(0));
-        imBusca2.setImage(user1.get(1).getImagens().get(0));
-        imBusca3.setImage(user1.get(2).getImagens().get(0));
+        imBusca1.setImage(user1.get(0).getImagem1());
+        imBusca2.setImage(user1.get(1).getImagem1());
+        imBusca3.setImage(user1.get(2).getImagem1());
         lbTituroII1.setText(user1.get(0).getTitulo());
         lbTituroII2.setText(user1.get(1).getTitulo());
         lbTituroII3.setText(user1.get(2).getTitulo());
@@ -373,27 +373,27 @@ public class ResultadoBuscaLogado3Controller {
 
             switch (anuncios.size()) {
                 case 1:
-                    Main.trocarTela("meusAnuncios1Scene", user,anuncios);
+                    Main.trocarTela("meusAnuncios1Scene", anuncios);
                     break;
                 case 2:
-                    Main.trocarTela("meusAnuncios2Scene",user, anuncios);
+                    Main.trocarTela("meusAnuncios2Scene", anuncios);
                     break;
                 case 3:
-                    Main.trocarTela("meusAnuncios3Scene",user, anuncios);
+                    Main.trocarTela("meusAnuncios3Scene", anuncios);
                     break;
                 case 4:
-                    Main.trocarTela("meusAnuncios4Scene",user, anuncios);
+                    Main.trocarTela("meusAnuncios4Scene", anuncios);
                     break;
                 case 5:
-                    Main.trocarTela("meusAnuncios5Scene", user,anuncios);
+                    Main.trocarTela("meusAnuncios5Scene", anuncios);
                     break;
 
                 case 0:
-                    Main.trocarTela("meusAnuncios0Scene",user, anuncios);
+                    Main.trocarTela("meusAnuncios0Scene", anuncios);
                     break;
             }
         } else if(anuncios.size() >= 6) {
-            Main.trocarTela("meusAnuncios6Scene",user, anuncios);
+            Main.trocarTela("meusAnuncios6Scene", anuncios);
         }
 
 

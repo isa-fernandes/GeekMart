@@ -20,8 +20,9 @@ public class Cliente extends Usuario implements Serializable {
 
 
         this.telefone = telefone;
-        this.endereco = new Endereco(endereco.getLogradouro(), endereco.getNumero(), endereco.getBairro(), endereco.getCidade(), endereco.getEstado(), endereco.getCep(),
-                endereco.getComplemento());
+        this.endereco = endereco;/*new Endereco(endereco.getLogradouro(), endereco.getNumero(), endereco.getBairro(),
+                endereco.getCidade(), endereco.getEstado(), endereco.getCep(),
+                endereco.getComplemento())*/;
         this.anuncios = anuncios;
         this.lojas = lojas;
 

@@ -1,7 +1,4 @@
 package br.ufrpe.geekMart.gui.controller;
-import br.ufrpe.geekMart.exceptions.JaExisteException;
-import br.ufrpe.geekMart.exceptions.NaoExisteException;
-import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
 import br.ufrpe.geekMart.negocio.classesBasicas.*;
 import javafx.event.ActionEvent;
@@ -53,11 +50,7 @@ public class TelaInicialDeslogadoController {
                                 "(81)996074398");
 
                         fachada.cadastrarUsuario(g);
-                } catch (NaoExisteException ee){
-
-                }  catch (ParametroNullException ee){
-
-                } catch (JaExisteException ee){
+                } catch (Exception ee){
 
                 }
         }
@@ -150,18 +143,8 @@ public class TelaInicialDeslogadoController {
                         fachada.cadastrarLoja(lj);
                         fachada.cadastrarAnuncio(an); fachada.cadastrarAnuncio(an2);fachada.cadastrarAnuncio(an3);
                         fachada.cadastrarUsuario(huan);
-                } catch (NaoExisteException ee){
+                } catch (Exception ee){
 
-                    System.out.println("1");
-                    ee.printStackTrace();
-                }  catch (ParametroNullException ee){
-
-                    System.out.println("2");
-                    ee.printStackTrace();
-                } catch (JaExisteException ee){
-
-                    System.out.println("3");
-                    ee.printStackTrace();
                 }
         }
 
@@ -217,11 +200,7 @@ public class TelaInicialDeslogadoController {
                         fachada.cadastrarLoja(lj2);
                         fachada.cadastrarAnuncio(an2);
                         fachada.cadastrarUsuario(isa);
-                } catch (NaoExisteException ee){
-
-                }  catch (ParametroNullException ee){
-
-                } catch (JaExisteException ee){
+                } catch (Exception ee){
 
                 }
         }

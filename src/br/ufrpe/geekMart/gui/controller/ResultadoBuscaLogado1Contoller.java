@@ -45,13 +45,9 @@ public class ResultadoBuscaLogado1Contoller {
 
     private  void  updateTela() {
 
-        Image image = user1.get(0).getImagens().get(0);
-        if (!image.isError()) {
-            imBusca1.setImage(image);
-        }
+        Image image = user1.get(0).getImagem1();
         lbTituroII1.setText(user1.get(0).getTitulo());
         lbPrecoII1.setText(user1.get(0).getPreco());
-        image = user1.get(0).getImagem1();
         imBusca1.setImage(image);
 
 
@@ -103,27 +99,27 @@ public class ResultadoBuscaLogado1Contoller {
 
             switch (resultado.size()) {
                 case 1:
-                    Main.trocarTela("resultadoBuscaLogado1Scene", resultado);
+                    Main.trocarTela("resultadoBuscaLogado1Scene", user, resultado);
                     break;
                 case 2:
-                    Main.trocarTela("resultadoBuscaLogado2Scene", resultado);
+                    Main.trocarTela("resultadoBuscaLogado2Scene", user, resultado);
                     break;
                 case 3:
-                    Main.trocarTela("resultadoBuscaLogado3Scene", resultado);
+                    Main.trocarTela("resultadoBuscaLogado3Scene", user, resultado);
                     break;
                 case 4:
-                    Main.trocarTela("resultadoBuscaLogado4Scene", resultado);
+                    Main.trocarTela("resultadoBuscaLogado4Scene", user, resultado);
                     break;
                 case 5:
-                    Main.trocarTela("resultadoBuscaLogado5Scene", resultado);
+                    Main.trocarTela("resultadoBuscaLogado5Scene", user, resultado);
                     break;
 
                 case 0:
-                    Main.trocarTela("resultadoBuscaLogado0Scene", resultado);
+                    Main.trocarTela("resultadoBuscaLogado0Scene", user, resultado);
                     break;
             }
         } else if(resultado.size() >= 6) {
-            Main.trocarTela("resultadoBuscaLogado6Scene", resultado);
+            Main.trocarTela("resultadoBuscaLogado6Scene", user, resultado);
         }
 
 
@@ -133,34 +129,34 @@ public class ResultadoBuscaLogado1Contoller {
     protected  void buscaAnunciosPorCategoria(ActionEvent e){
 
         String palavra = cbCategorias.getSelectionModel().toString();
-        ArrayList<Loja> anuncios = fachada.buscarLojaPorCategoria(palavra);
+        ArrayList<Anuncio> anuncios = fachada.buscarAnuncioPorCategoriaOrdenadoPeloPreco(palavra);
 
 
         if(anuncios.size()<6 && anuncios.size()>=0) {
 
             switch (anuncios.size()) {
                 case 1:
-                    Main.trocarTela("resultadoBuscaLogado1Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado1Scene", user, anuncios);
                     break;
                 case 2:
-                    Main.trocarTela("resultadoBuscaLogado2Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado2Scene", user, anuncios);
                     break;
                 case 3:
-                    Main.trocarTela("resultadoBuscaLogado3Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado3Scene", user, anuncios);
                     break;
                 case 4:
-                    Main.trocarTela("resultadoBuscaLogado4Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado4Scene", user, anuncios);
                     break;
                 case 5:
-                    Main.trocarTela("resultadoBuscaLogado5Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado5Scene", user, anuncios);
                     break;
 
                 case 0:
-                    Main.trocarTela("resultadoBuscaLogado0Scene", anuncios);
+                    Main.trocarTela("resultadoBuscaLogado0Scene", user, anuncios);
                     break;
             }
         } else if(anuncios.size() >= 6) {
-            Main.trocarTela("resultadoBuscaLogado6Scene", anuncios);
+            Main.trocarTela("resultadoBuscaLogado6Scene", user, anuncios);
         }
 
 
@@ -351,27 +347,27 @@ public class ResultadoBuscaLogado1Contoller {
 
             switch (anuncios.size()) {
                 case 1:
-                    Main.trocarTela("meusAnuncios1Scene", user,anuncios);
+                    Main.trocarTela("meusAnuncios1Scene", anuncios);
                     break;
                 case 2:
-                    Main.trocarTela("meusAnuncios2Scene",user, anuncios);
+                    Main.trocarTela("meusAnuncios2Scene", anuncios);
                     break;
                 case 3:
-                    Main.trocarTela("meusAnuncios3Scene",user, anuncios);
+                    Main.trocarTela("meusAnuncios3Scene", anuncios);
                     break;
                 case 4:
-                    Main.trocarTela("meusAnuncios4Scene",user, anuncios);
+                    Main.trocarTela("meusAnuncios4Scene", anuncios);
                     break;
                 case 5:
-                    Main.trocarTela("meusAnuncios5Scene", user,anuncios);
+                    Main.trocarTela("meusAnuncios5Scene", anuncios);
                     break;
 
                 case 0:
-                    Main.trocarTela("meusAnuncios0Scene",user, anuncios);
+                    Main.trocarTela("meusAnuncios0Scene", anuncios);
                     break;
             }
         } else if(anuncios.size() >= 6) {
-            Main.trocarTela("meusAnuncios6Scene",user, anuncios);
+            Main.trocarTela("meusAnuncios6Scene", anuncios);
         }
 
 

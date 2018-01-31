@@ -10,7 +10,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 
 import java.util.ArrayList;
 
@@ -57,6 +56,9 @@ public class AnuncioController {
     }
 
     private void updateAnuncio(){
+        imCentral.setImage(user.getImagem1());
+        im2.setImage(user.getImagem2());
+        im3.setImage(user.getImagem3());
 
 
         lbQtdade.setText(Integer.toString(user.getQuantidadeProdutos()));
@@ -324,8 +326,16 @@ public class AnuncioController {
             fachada.avaliarProduto(user, valor);
             updateAnuncio();
         } catch (ParametroNullException ee){
+            Alert alertw = new Alert(Alert.AlertType.WARNING);
+            alertw.setTitle("Aviso");
+            alertw.setContentText(ee.getMessage());
+            alertw.showAndWait();
 
         } catch (NaoExisteException ww){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setContentText(ww.getMessage());
+            alert.show();
 
         }
 

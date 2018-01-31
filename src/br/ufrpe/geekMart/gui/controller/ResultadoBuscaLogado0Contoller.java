@@ -318,24 +318,24 @@ public class ResultadoBuscaLogado0Contoller {
                     Main.trocarTela("meusAnuncios1Scene", user,anuncios);
                     break;
                 case 2:
-                    Main.trocarTela("meusAnuncios2Scene",user, anuncios);
+                    Main.trocarTela("meusAnuncios2Scene", anuncios);
                     break;
                 case 3:
-                    Main.trocarTela("meusAnuncios3Scene",user, anuncios);
+                    Main.trocarTela("meusAnuncios3Scene", anuncios);
                     break;
                 case 4:
-                    Main.trocarTela("meusAnuncios4Scene",user, anuncios);
+                    Main.trocarTela("meusAnuncios4Scene", anuncios);
                     break;
                 case 5:
-                    Main.trocarTela("meusAnuncios5Scene", user,anuncios);
+                    Main.trocarTela("meusAnuncios5Scene", anuncios);
                     break;
 
                 case 0:
-                    Main.trocarTela("meusAnuncios0Scene",user, anuncios);
+                    Main.trocarTela("meusAnuncios0Scene", anuncios);
                     break;
             }
         } else if(anuncios.size() >= 6) {
-            Main.trocarTela("meusAnuncios6Scene",user, anuncios);
+            Main.trocarTela("meusAnuncios6Scene", anuncios);
         }
 
 

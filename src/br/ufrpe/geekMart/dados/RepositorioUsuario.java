@@ -30,14 +30,18 @@ public class RepositorioUsuario implements IRepositorioUsuario, Serializable {
     private static RepositorioUsuario lerDoArquivo() {
         RepositorioUsuario instanciaLocal = null;
 
-        File f = new File("lojas.dat");
+        File f = new File("usuarios.dat");
         FileInputStream fileInputStream = null;
         ObjectInputStream objectInputStream = null;
         try {
             fileInputStream = new FileInputStream(f);
+            System.out.println("1");
             objectInputStream = new ObjectInputStream(fileInputStream);
+            System.out.println("2");
             Object object = objectInputStream.readObject();
+            System.out.println("3");
             instanciaLocal = (RepositorioUsuario) object;
+            System.out.println("4");
         } catch (Exception e) {
             instanciaLocal = new RepositorioUsuario(100);
         } finally {
