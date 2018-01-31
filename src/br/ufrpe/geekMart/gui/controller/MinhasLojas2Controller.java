@@ -69,12 +69,14 @@ public class MinhasLojas2Controller {
 
     @FXML
     protected  void irParaAnuncioAction1(ActionEvent e){
+        fachada.saveMemoryCardLoja(user.getLojas().get(0));
         Main.trocarTela("lojaScene",stores.get(0));
 
     }
 
     @FXML
     protected  void irParaAnuncioAction2(ActionEvent e){
+        fachada.saveMemoryCardLoja(user.getLojas().get(1));
         Main.trocarTela("lojaScene",stores.get(1));
 
     }
@@ -82,12 +84,14 @@ public class MinhasLojas2Controller {
 
     @FXML
     protected void editarLojaAction1(ActionEvent e) {
+        fachada.saveMemoryCardLoja(user.getLojas().get(0));
         Main.trocarTela("alterarLojaScene", stores.get(0));
 
     }
 
     @FXML
     protected void editarLojaAction2(ActionEvent e) {
+        fachada.saveMemoryCardLoja(user.getLojas().get(1));
         Main.trocarTela("alterarLojaScene", stores.get(1));
 
     }

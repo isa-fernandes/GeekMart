@@ -52,6 +52,7 @@ public class Anuncio implements Serializable {
         this.imagem1=imagem1;
         this.imagem2=imagem2;
         this.imagem3=imagem3;
+        this.ativo= true;
         /*this.imagens.add(prim);
         this.imagens.add(seg);
         this.imagens.add(ter);*/

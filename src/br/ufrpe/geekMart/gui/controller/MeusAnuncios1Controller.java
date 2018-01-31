@@ -59,6 +59,7 @@ public class MeusAnuncios1Controller {
 
     @FXML
     protected  void irParaAnuncioAction1(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(0));
         Main.trocarTela("anuncioScene",user1.get(0));
 
     }
@@ -73,6 +74,7 @@ public class MeusAnuncios1Controller {
 
     @FXML
     protected  void editarAnuncioAction1(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(0));
         Main.trocarTela("alterarAnuncioScene",user1.get(0));
 
     }

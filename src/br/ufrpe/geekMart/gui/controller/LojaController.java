@@ -9,6 +9,7 @@ import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
@@ -18,6 +19,7 @@ public class LojaController {
 
     Fachada fachada = Fachada.getInstancia();
     Loja user;
+    Image image = new Image("/imagens/logoloja1.png");
 
     @FXML
     protected  void  initialize(){
@@ -25,8 +27,8 @@ public class LojaController {
             @Override
             public void onScreenChanged(String newScreen, Object userData, ArrayList<Anuncio> userData2,
                                         ArrayList<Anuncio> userData3, ArrayList<Loja> userData4) {
-                if(newScreen.equals("LojaScene")) {
-                    user = (Loja)userData;
+                if(newScreen.equals("lojaScene")) {
+                    user = fachada.loadMemoryCardLoja();
                     updateComboBoxCategorias();
                     updateComboBoxLojas();
                     updateLoja();
@@ -53,7 +55,7 @@ public class LojaController {
         lbTitulo.setText(user.getNome());
         lbPreco.setText(user.getTelefone());
         System.out.println("ok");
-        imCentral.setImage(user.getImage());
+        imCentral.setImage(image);
     }
 
     @FXML

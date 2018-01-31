@@ -8,6 +8,7 @@ import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class MinhasLojas1Controller {
     Cliente user;
     ArrayList<Loja> stores;
     ArrayList<Loja> proxima;
+    Image image = new Image("/imagens/logoloja1.png");
 
 
     @FXML
@@ -44,7 +46,7 @@ public class MinhasLojas1Controller {
 
     private  void  updateTela() {
 
-        imBusca1.setImage(stores.get(0).getImage());
+        imBusca1.setImage(image);
         lbTituroII1.setText(stores.get(0).getNome());
         lbPrecoII1.setText(stores.get(0).getCategoria().toString());
 
@@ -67,6 +69,7 @@ public class MinhasLojas1Controller {
 
     @FXML
     protected  void irParaAnuncioAction1(ActionEvent e){
+        fachada.saveMemoryCardLoja(user.getLojas().get(0));
         Main.trocarTela("lojaScene",stores.get(0));
 
     }
@@ -74,6 +77,7 @@ public class MinhasLojas1Controller {
 
     @FXML
     protected void editarLojaAction1(ActionEvent e) {
+        fachada.saveMemoryCardLoja(user.getLojas().get(0));
         Main.trocarTela("alterarLojaScene", stores.get(0));
 
     }

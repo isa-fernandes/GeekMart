@@ -69,30 +69,35 @@ public class MeusAnuncios5Controller {
 
     @FXML
     protected  void irParaAnuncioAction1(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(0));
         Main.trocarTela("anuncioScene",user1.get(0));
 
     }
 
     @FXML
     protected  void irParaAnuncioAction2(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(1));
         Main.trocarTela("anuncioScene",user1.get(1));
 
     }
 
     @FXML
     protected  void irParaAnuncioAction3(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(2));
         Main.trocarTela("anuncioScene",user1.get(2));
 
     }
 
     @FXML
     protected  void irParaAnuncioAction4(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(3));
         Main.trocarTela("anuncioScene",user1.get(3));
 
     }
 
     @FXML
     protected  void irParaAnuncioAction5(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(4));
         Main.trocarTela("anuncioScene",user1.get(4));
 
     }
@@ -103,30 +108,35 @@ public class MeusAnuncios5Controller {
 
     @FXML
     protected  void editarAnuncioAction1(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(0));
         Main.trocarTela("alterarAnuncioScene",user1.get(0));
 
     }
 
     @FXML
     protected  void editarAnuncioAction2(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(1));
         Main.trocarTela("alterarAnuncioScene",user1.get(1));
 
     }
 
     @FXML
     protected  void editarAnuncioAction3(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(2));
         Main.trocarTela("alterarAnuncioScene",user1.get(2));
 
     }
 
     @FXML
     protected  void editarAnuncioAction4(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(3));
         Main.trocarTela("alterarAnuncioScene",user1.get(3));
 
     }
 
     @FXML
     protected  void editarAnuncioAction5(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(4));
         Main.trocarTela("alterarAnuncioScene",user1.get(4));
 
     }

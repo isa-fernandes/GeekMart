@@ -61,12 +61,14 @@ public class MeusAnuncios2Controller {
 
     @FXML
     protected  void irParaAnuncioAction1(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(0));
         Main.trocarTela("anuncioScene",user1.get(0));
 
     }
 
     @FXML
     protected  void irParaAnuncioAction2(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(1));
         Main.trocarTela("anuncioScene",user1.get(1));
 
     }
@@ -80,12 +82,14 @@ public class MeusAnuncios2Controller {
 
     @FXML
     protected  void editarAnuncioAction1(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(0));
         Main.trocarTela("alterarAnuncioScene",user1.get(0));
 
     }
 
     @FXML
     protected  void editarAnuncioAction2(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(1));
         Main.trocarTela("alterarAnuncioScene",user1.get(1));
 
     }

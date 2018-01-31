@@ -73,36 +73,42 @@ public class MeusAnuncios6Controller {
 
     @FXML
     protected void irParaAnuncioAction1(ActionEvent e) {
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(0));
         Main.trocarTela("anuncioScene", user1.get(0));
 
     }
 
     @FXML
     protected void irParaAnuncioAction2(ActionEvent e) {
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(1));
         Main.trocarTela("anuncioScene", user1.get(1));
 
     }
 
     @FXML
     protected void irParaAnuncioAction3(ActionEvent e) {
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(2));
         Main.trocarTela("anuncioScene", user1.get(2));
 
     }
 
     @FXML
     protected void irParaAnuncioAction4(ActionEvent e) {
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(3));
         Main.trocarTela("anuncioScene", user1.get(3));
 
     }
 
     @FXML
     protected void irParaAnuncioAction5(ActionEvent e) {
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(4));
         Main.trocarTela("anuncioScene", user1.get(4));
 
     }
 
     @FXML
     protected void irParaAnuncioAction6(ActionEvent e) {
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(5));
         Main.trocarTela("anuncioScene", user1.get(5));
 
     }

@@ -68,9 +68,9 @@ public class AnuncioController {
         lbDataExpira.setText(user.getDataFim().toString());
         String ativo;
         if(user.isAtivo()){
-            ativo = "Falso";
-        } else {
             ativo = "Ativo";
+        } else {
+            ativo = "Falso";
         }
         lbAtivo.setText(ativo);
         if(user.getEstrela() <= 1){

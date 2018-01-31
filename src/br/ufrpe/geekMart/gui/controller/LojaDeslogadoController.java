@@ -25,7 +25,7 @@ public class LojaDeslogadoController {
                 @Override
                 public void onScreenChanged(String newScreen, Object userData, ArrayList<Anuncio> userData2,
                                             ArrayList<Anuncio> userData3, ArrayList<Loja> userData4) {
-                    if(newScreen.equals("LojaScene")) {
+                    if(newScreen.equals("lojaDeslogadoScene")) {
                         user = (Loja)userData;
                         updateComboBoxCategorias();
                         updateComboBoxLojas();
