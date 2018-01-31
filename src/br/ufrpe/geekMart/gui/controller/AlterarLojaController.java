@@ -174,10 +174,10 @@ public class AlterarLojaController {
         private Button btAdd;
 
         @FXML
-        private ListView lvMeusAnuncios;
+        private ListView<Anuncio> lvMeusAnuncios;
 
         @FXML
-        private ListView lvAnunciosDaLoja;
+        private ListView<Anuncio> lvAnunciosDaLoja;
 
         @FXML
         private ComboBox cbLojas;
@@ -346,13 +346,17 @@ public class AlterarLojaController {
     @FXML
     protected void btAddPersonAction(ActionEvent e){
         if(lvMeusAnuncios.getSelectionModel().getSelectedItem() != null) {
-            lvAnunciosDaLoja.getItems().add(lvMeusAnuncios.getSelectionModel().getSelectedItem());
+            Anuncio anuncio = lvMeusAnuncios.getSelectionModel().getSelectedItem();
+            lvAnunciosDaLoja.getItems().add(anuncio);
+            lvMeusAnuncios.getItems().remove(anuncio);
         }
 
     }
     @FXML
     protected void btDelPersonAction(ActionEvent e) {
-        lvAnunciosDaLoja.getItems().remove(lvAnunciosDaLoja.getSelectionModel().getSelectedItem());
+            Anuncio anuncio = lvAnunciosDaLoja.getSelectionModel().getSelectedItem();
+            lvAnunciosDaLoja.getItems().remove(anuncio);
+            lvMeusAnuncios.getItems().add(anuncio);
     }
 
     @FXML

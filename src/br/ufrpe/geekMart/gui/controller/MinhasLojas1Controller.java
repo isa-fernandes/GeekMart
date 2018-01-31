@@ -28,7 +28,7 @@ public class MinhasLojas1Controller {
                                         ArrayList<Anuncio> userData3, ArrayList<Loja> userData4) {
                 if(newScreen.equals("minhasLojas1Scene")) {
                     user = (Cliente)userData;
-                    stores = userData4;
+                    stores = user.getLojas();
                     updateComboBoxCategorias();
                     updateComboBoxLojas();
                     updateTela();

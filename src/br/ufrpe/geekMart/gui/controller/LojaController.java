@@ -6,15 +6,9 @@ import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import br.ufrpe.geekMart.negocio.classesBasicas.EnumCategorias;
 import br.ufrpe.geekMart.negocio.classesBasicas.Loja;
-import com.sun.xml.internal.bind.v2.TODO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
@@ -57,6 +51,7 @@ public class LojaController {
         lbCategoria.setText(user.getCategoria().toString());
         lbTitulo.setText(user.getNome());
         lbPreco.setText(user.getTelefone());
+        System.out.println("ok");
         imCentral.setImage(user.getImage());
     }
 
@@ -290,9 +285,15 @@ public class LojaController {
                 Main.trocarTela("minhasLojas6Scene", cli);
             }
         }catch (NaoExisteException ww){
-
+            Alert alertw = new Alert(Alert.AlertType.ERROR);
+            alertw.setTitle("Erro");
+            alertw.setContentText(ww.getMessage());
+            alertw.showAndWait();
         }catch (ParametroNullException pp){
-
+            Alert alertw = new Alert(Alert.AlertType.WARNING);
+            alertw.setTitle("Aviso");
+            alertw.setContentText(pp.getMessage());
+            alertw.showAndWait();
         }
 
 
@@ -305,7 +306,21 @@ public class LojaController {
 
     @FXML
     protected  void btNovaLojaAction(ActionEvent e){
-        Main.trocarTela("cadastrarNovaLojaScene");
+        try {
+            Cliente cliente = (Cliente) Fachada.getInstancia().buscaUsuario(user.getCpfCliente());
+            Main.trocarTela("cadastrarNovaLojaScene", cliente);
+        } catch (ParametroNullException eParam) {
+            Alert alertw = new Alert(Alert.AlertType.WARNING);
+            alertw.setTitle("Aviso");
+            alertw.setContentText(eParam.getMessage());
+            alertw.showAndWait();
+        } catch (NaoExisteException eNEx) {
+            Alert alertw = new Alert(Alert.AlertType.ERROR);
+            alertw.setTitle("Erro");
+            alertw.setContentText(eNEx.getMessage());
+            alertw.showAndWait();
+        }
+
     }
 
     @FXML

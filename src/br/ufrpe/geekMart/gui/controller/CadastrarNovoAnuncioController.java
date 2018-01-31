@@ -284,7 +284,7 @@ public class CadastrarNovoAnuncioController {
 
 
                 Anuncio g = new Anuncio(
-                        user,
+                        user.getCpf(),
                         tfPreco.getText(),
                         tfTitulo.getText(),
                         taDescricao.getText(),

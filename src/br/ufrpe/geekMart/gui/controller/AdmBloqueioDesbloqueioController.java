@@ -93,6 +93,9 @@ public class AdmBloqueioDesbloqueioController {
         @FXML
         private MenuItem menuSobreApp;
 
+        @FXML
+        private Button btBloqDesbloq;
+
 
         @FXML
         protected void btMeuCadastroADMAction(ActionEvent e) {

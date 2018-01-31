@@ -57,10 +57,11 @@ public class AnuncioDeslogadoController {
 
 
         private void updateAnuncio(){
-            imCentral.setImage(user.getImagens().get(0));
-            im2.setImage(user.getImagens().get(1));
-            im3.setImage(user.getImagens().get(2));
+            imCentral.setImage(user.getImagem1());
+            im2.setImage(user.getImagem2());
+            im3.setImage(user.getImagem3());
             lbPreco.setText(user.getPreco());
+            lbQtdade.setText(Integer.toString(user.getQuantidadeProdutos()));
             lbTitulo.setText(user.getTitulo());
             lbCategoria.setText(user.getCategoria().toString());
             lbEstado.setText(user.getEstado().toString());

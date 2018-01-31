@@ -76,8 +76,8 @@ public class TelaInicialDeslogadoController {
 
                         Cliente huan = new Cliente(
                                 "Huan Christopher",
-                                "071",
                                 "huan@gm",
+                                "071",
                                 "(81)996074398",
                                 end,
                                 "071",
@@ -88,7 +88,7 @@ public class TelaInicialDeslogadoController {
                         Image image2 = new Image("/imagens/estrela.png");
                         Image image3 = new Image("/imagens/estrela.png");
                         Anuncio an = new Anuncio(
-                                huan,
+                                huan.getCpf(),
                                 "69",
                                 "teste",
                                 "Teste",
@@ -101,7 +101,7 @@ public class TelaInicialDeslogadoController {
                                 image3);
 
                         Anuncio an2 = new Anuncio(
-                                huan,
+                                huan.getCpf(),
                                 "89",
                                 "Teste2",
                                 "Teste2",
@@ -114,7 +114,7 @@ public class TelaInicialDeslogadoController {
                                 image3);
 
                         Anuncio an3 = new Anuncio(
-                                huan,
+                                huan.getCpf(),
                                 "100",
                                 "Teste3",
                                 "Teste3",
@@ -182,7 +182,7 @@ public class TelaInicialDeslogadoController {
                         Image image2 = new Image("/imagens/estrela.png");
                         Image image3 = new Image("/imagens/estrela.png");
                         Anuncio an2 = new Anuncio(
-                                isa,
+                                isa.getCpf(),
                                 "89",
                                 "teste2",
                                 "Teste2",
@@ -235,30 +235,29 @@ public class TelaInicialDeslogadoController {
                 String palavra = tfBuscar.getText();
                 ArrayList<Anuncio> resultado = fachada.buscarAnuncioPorTituloOrdenadoPeloPreco(palavra);
 
-
                 Anuncio[] anuncios = fachada.listarAnuncios();
 
                 if(resultado.size()<6 && resultado.size()>=0) {
 
                         switch (resultado.size()) {
                                 case 1:
-                                        Main.trocarTela("resultadoBuscaDeslogado1Scene", anuncios);
+                                        Main.trocarTela("resultadoBuscaDeslogado1Scene", resultado);
                                         break;
                                 case 2:
-                                        Main.trocarTela("resultadoBuscaDeslogado2Scene", anuncios);
+                                        Main.trocarTela("resultadoBuscaDeslogado2Scene", resultado);
                                         break;
                                 case 3:
-                                        Main.trocarTela("resultadoBuscaDeslogado3Scene", anuncios);
+                                        Main.trocarTela("resultadoBuscaDeslogado3Scene", resultado);
                                         break;
                                 case 4:
-                                        Main.trocarTela("resultadoBuscaDeslogado4Scene", anuncios);
+                                        Main.trocarTela("resultadoBuscaDeslogado4Scene", resultado);
                                         break;
                                 case 5:
-                                        Main.trocarTela("resultadoBuscaDeslogado5Scene", anuncios);
+                                        Main.trocarTela("resultadoBuscaDeslogado5Scene", resultado);
                                         break;
 
                                 case 0:
-                                        Main.trocarTela("resultadoBuscaDeslogado0Scene", anuncios);
+                                        Main.trocarTela("resultadoBuscaDeslogado0Scene", resultado);
                                         break;
                         }
                 } else if(resultado.size() >= 6) {

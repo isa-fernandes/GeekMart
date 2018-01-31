@@ -82,7 +82,7 @@ public class CadastrarNovaLojaController {
                 lvMeusAnuncios.getItems().clear();
 
                 for (int i = 0; i < user.getAnuncios().size(); i++) {
-                        lvMeusAnuncios.getItems().add(i, user.getAnuncios().get(i));
+                        lvMeusAnuncios.getItems().addAll(user.getAnuncios());
                 }
 
         }
@@ -160,10 +160,10 @@ public class CadastrarNovaLojaController {
         private Button btAdd;
 
         @FXML
-        private ListView lvMeusAnuncios;
+        private ListView<Anuncio> lvMeusAnuncios;
 
         @FXML
-        private ListView lvAnunciosDaLoja;
+        private ListView<Anuncio> lvAnunciosDaLoja;
 
         @FXML
         private ComboBox cbLojas;
@@ -320,7 +320,7 @@ public class CadastrarNovaLojaController {
 
                         Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
                         alert2.setTitle("Informação");
-                        alert2.setHeaderText("Criação de Anúncio");
+                        alert2.setHeaderText("Criação de Loja");
                         alert2.setContentText("Loja "+tfTitulo.getText()+" criada com sucesso!");
                         alert2.showAndWait();
 
@@ -328,6 +328,7 @@ public class CadastrarNovaLojaController {
                         tfTitulo.setText("");
                         taDescricao.setText("");
                         tfTelefone.setText("");
+                        lvAnunciosDaLoja.getItems().clear();
 
                 } catch (RuntimeException ex){
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -356,13 +357,17 @@ public class CadastrarNovaLojaController {
     @FXML
     protected void btAddPersonAction(ActionEvent e){
         if(lvMeusAnuncios.getSelectionModel().getSelectedItem() != null) {
-            lvAnunciosDaLoja.getItems().add(lvMeusAnuncios.getSelectionModel().getSelectedItem());
+            Anuncio anuncio = lvMeusAnuncios.getSelectionModel().getSelectedItem();
+            lvAnunciosDaLoja.getItems().add(anuncio);
+            lvMeusAnuncios.getItems().remove(anuncio);
         }
 
     }
     @FXML
     protected void btDelPersonAction(ActionEvent e) {
-        lvAnunciosDaLoja.getItems().remove(lvAnunciosDaLoja.getSelectionModel().getSelectedItem());
+            Anuncio anuncio = lvAnunciosDaLoja.getSelectionModel().getSelectedItem();
+        lvAnunciosDaLoja.getItems().remove(anuncio);
+        lvMeusAnuncios.getItems().add(anuncio);
     }
 
     @FXML

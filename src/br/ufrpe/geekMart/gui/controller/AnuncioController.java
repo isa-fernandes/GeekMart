@@ -6,12 +6,7 @@ import br.ufrpe.geekMart.negocio.Fachada;
 import br.ufrpe.geekMart.negocio.classesBasicas.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -141,67 +136,81 @@ public class AnuncioController {
 
     @FXML
     protected  void btHomeAction(ActionEvent e){
-        Main.trocarTela("telaInicialLogadoScene",user.getCliente());
+        Main.trocarTela("telaInicialLogadoScene",user.getCpfCliente());
     }
 
     @FXML
     protected  void btMeuCadastroAction(ActionEvent e){
-        Main.trocarTela("cadastroClienteScene",user.getCliente());
+        Main.trocarTela("cadastroClienteScene",user.getCpfCliente());
     }
 
     @FXML
     protected  void btMeusAnunciosAction(ActionEvent e){
 
-        ArrayList<Anuncio> anuncios = user.getCliente().getAnuncios();
+        try {
+            Cliente cliente = (Cliente) Fachada.getInstancia().buscaUsuario(user.getCpfCliente());
+            ArrayList<Anuncio> anuncios = cliente.getAnuncios();
 
-        if(anuncios.size()<6 && anuncios.size()>=0) {
+            if(anuncios.size()<6 && anuncios.size()>=0) {
 
-            switch (anuncios.size()) {
-                case 1:
-                    Main.trocarTela("meusAnuncios1Scene", user.getCliente(),anuncios);
-                    break;
-                case 2:
-                    Main.trocarTela("meusAnuncios2Scene",user.getCliente(), anuncios);
-                    break;
-                case 3:
-                    Main.trocarTela("meusAnuncios3Scene",user.getCliente(), anuncios);
-                    break;
-                case 4:
-                    Main.trocarTela("meusAnuncios4Scene",user.getCliente(), anuncios);
-                    break;
-                case 5:
-                    Main.trocarTela("meusAnuncios5Scene", user.getCliente(),anuncios);
-                    break;
+                switch (anuncios.size()) {
+                    case 1:
+                        Main.trocarTela("meusAnuncios1Scene", user.getCpfCliente(),anuncios);
+                        break;
+                    case 2:
+                        Main.trocarTela("meusAnuncios2Scene",user.getCpfCliente(), anuncios);
+                        break;
+                    case 3:
+                        Main.trocarTela("meusAnuncios3Scene",user.getCpfCliente(), anuncios);
+                        break;
+                    case 4:
+                        Main.trocarTela("meusAnuncios4Scene",user.getCpfCliente(), anuncios);
+                        break;
+                    case 5:
+                        Main.trocarTela("meusAnuncios5Scene", user.getCpfCliente(),anuncios);
+                        break;
 
-                case 0:
-                    Main.trocarTela("meusAnuncios0Scene",user.getCliente(), anuncios);
-                    break;
+                    case 0:
+                        Main.trocarTela("meusAnuncios0Scene",user.getCpfCliente(), anuncios);
+                        break;
+                }
+            } else if(anuncios.size() >= 6) {
+                Main.trocarTela("meusAnuncios6Scene",user.getCpfCliente(), anuncios);
             }
-        } else if(anuncios.size() >= 6) {
-            Main.trocarTela("meusAnuncios6Scene",user.getCliente(), anuncios);
+
+
+            Main.trocarTela("meusAnunciosScene",user.getCpfCliente(),anuncios);
+        } catch (ParametroNullException eParam) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setContentText(eParam.getMessage());
+            alert.show();
+        } catch (NaoExisteException eNEx) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setContentText(eNEx.getMessage());
+            alert.show();
         }
-
-
-        Main.trocarTela("meusAnunciosScene",user.getCliente(),anuncios); }
+        }
 
     @FXML
     protected  void btMinhasLojasAction(ActionEvent e){
-        Main.trocarTela("minhasLojasScene",user.getCliente());
+        Main.trocarTela("minhasLojasScene",user.getCpfCliente());
     }
 
     @FXML
     protected  void btNovoAnuncioAction(ActionEvent e){
-        Main.trocarTela("cadastrarNovoAnuncioScene",user.getCliente());
+        Main.trocarTela("cadastrarNovoAnuncioScene",user.getCpfCliente());
     }
 
     @FXML
     protected  void btNovaLojaAction(ActionEvent e){
-        Main.trocarTela("cadastrarNovaLojaScene",user.getCliente());
+        Main.trocarTela("cadastrarNovaLojaScene",user.getCpfCliente());
     }
 
     @FXML
     protected  void btChatAction(ActionEvent e){
-        Main.trocarTela("chatScene",user.getCliente());
+        Main.trocarTela("chatScene",user.getCpfCliente());
     }
 
     @FXML

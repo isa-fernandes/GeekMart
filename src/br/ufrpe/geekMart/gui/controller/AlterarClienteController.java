@@ -121,9 +121,15 @@ public class AlterarClienteController {
                         alert.setContentText(ex.getMessage());
                         alert.showAndWait();
                 } catch (ParametroNullException parException) {
-                        //TODO
+                        Alert alertw = new Alert(Alert.AlertType.WARNING);
+                        alertw.setTitle("Aviso");
+                        alertw.setContentText(parException.getMessage());
+                        alertw.showAndWait();
                 } catch (NaoExisteException nExisExcep) {
-                        //TODO
+                        Alert alertw = new Alert(Alert.AlertType.ERROR);
+                        alertw.setTitle("Erro");
+                        alertw.setContentText(nExisExcep.getMessage());
+                        alertw.showAndWait();
                 }
 
 

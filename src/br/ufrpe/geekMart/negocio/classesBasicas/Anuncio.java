@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Anuncio implements Serializable {
-    private Cliente cliente;
+    private String cpfCliente;
     private String preco, telefone;
     private String titulo;
     private String descricao;
@@ -34,9 +34,9 @@ public class Anuncio implements Serializable {
 
     }
 
-    public Anuncio (Cliente cliente, String preco, String titulo, String descricao, EnumCategorias categoria,
+    public Anuncio (String cliente, String preco, String titulo, String descricao, EnumCategorias categoria,
                     EnumEstados estado, int quantidadeProdutos, String telefone, Image imagem1, Image imagem2, Image imagem3) {
-        this.cliente = cliente;
+        this.cpfCliente = cliente;
         this.preco = preco;
         this.titulo = titulo;
         this.descricao = descricao;
@@ -52,7 +52,6 @@ public class Anuncio implements Serializable {
         this.imagem1=imagem1;
         this.imagem2=imagem2;
         this.imagem3=imagem3;
-        this.imagens.clear();
         /*this.imagens.add(prim);
         this.imagens.add(seg);
         this.imagens.add(ter);*/
@@ -60,18 +59,16 @@ public class Anuncio implements Serializable {
 
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         s.defaultReadObject();
-        int i;
-        for (i = 0; i < this.imagens.size(); i++) {
-            this.imagens.set(i, SwingFXUtils.toFXImage(ImageIO.read(s), null));
-        }
+        this.imagem1 = SwingFXUtils.toFXImage(ImageIO.read(s), null);
+        this.imagem2 = SwingFXUtils.toFXImage(ImageIO.read(s), null);
+        this.imagem3 = SwingFXUtils.toFXImage(ImageIO.read(s), null);
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
-        int i;
-        for (i = 0; i < this.imagens.size(); i++) {
-            ImageIO.write(SwingFXUtils.fromFXImage(imagens.get(i), null), "png", s);
-        }
+        ImageIO.write(SwingFXUtils.fromFXImage(imagem1, null), "png", s);
+        ImageIO.write(SwingFXUtils.fromFXImage(imagem2, null), "png", s);
+        ImageIO.write(SwingFXUtils.fromFXImage(imagem3, null), "png", s);
     }
 
     public String getTelefone() {
@@ -180,14 +177,14 @@ public class Anuncio implements Serializable {
         this.estado = estado;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public String getCpfCliente() {
+        return cpfCliente;
     }
     public LocalDate getData() {
         return data;
     }
-    public void setCliente(Cliente cliente){
-        this.cliente = cliente;
+    public void setCpfCliente(String cpfCliente){
+        this.cpfCliente = cpfCliente;
     }
     public void setData () {
         if (this.data == null) {
@@ -221,7 +218,7 @@ public class Anuncio implements Serializable {
         if (!(o instanceof Anuncio)) return false;
         Anuncio anuncio = (Anuncio) o;
         return getQuantidadeProdutos() == anuncio.getQuantidadeProdutos() &&
-                Objects.equals(getCliente(), anuncio.getCliente()) &&
+                Objects.equals(getCpfCliente(), anuncio.getCpfCliente()) &&
                 Objects.equals(getTitulo(), anuncio.getTitulo()) &&
                 Objects.equals(getComentarios(), anuncio.getComentarios());
     }
@@ -252,7 +249,7 @@ public class Anuncio implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getCliente(), getTitulo());
+        return Objects.hash(getCpfCliente(), getTitulo());
     }
 
     @Override

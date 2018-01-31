@@ -14,7 +14,8 @@ public class Cliente extends Usuario implements Serializable {
 
     }
 
-    public Cliente (String nome, String cpf, String email, String telefone, Endereco endereco, String senha, boolean adm, boolean ativo){
+    public Cliente (String nome, String email, String cpf, String telefone, Endereco endereco, String senha,
+                    boolean adm, boolean ativo){
         super(nome, email, cpf, senha,adm,ativo);
 
 

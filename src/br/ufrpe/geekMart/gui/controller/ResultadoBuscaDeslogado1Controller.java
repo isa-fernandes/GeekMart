@@ -45,7 +45,7 @@ public class ResultadoBuscaDeslogado1Controller {
 
     private  void  updateTela() {
 
-        imBusca1.setImage(user1.get(0).getImagens().get(0));
+        imBusca1.setImage(user1.get(0).getImagem1());
         lbTituroII1.setText(user1.get(0).getTitulo());
         lbPrecoII1.setText(user1.get(0).getPreco());
 

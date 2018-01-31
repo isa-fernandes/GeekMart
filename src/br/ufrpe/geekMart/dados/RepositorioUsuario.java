@@ -77,7 +77,6 @@ public class RepositorioUsuario implements IRepositorioUsuario, Serializable {
     public void cadastrarUsuario (Usuario c) {
         this.usuarios[this.proxima] = c;
         this.proxima = this.proxima + 1;
-
         if (this.proxima == this.usuarios.length) {
             this.duplicaArrayUsuarios();
         }
