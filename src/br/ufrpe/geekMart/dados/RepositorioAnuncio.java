@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class RepositorioAnuncio implements IRepositorioAnuncio, Serializable {
     private Anuncio[] anuncios;
     private int proxima;
+    private Anuncio memoryCard;
     private static RepositorioAnuncio instancia;
 
     public static RepositorioAnuncio getInstancia() {
@@ -232,4 +233,11 @@ public class RepositorioAnuncio implements IRepositorioAnuncio, Serializable {
     }
 
 
+    public Anuncio getMemoryCard() {
+        return memoryCard;
+    }
+
+    public void setMemoryCard(Anuncio memoryCard) {
+        this.memoryCard = memoryCard;
+    }
 }

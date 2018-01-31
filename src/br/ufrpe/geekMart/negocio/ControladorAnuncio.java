@@ -213,4 +213,12 @@ public class ControladorAnuncio {
     public void salvarArquivo () {
         this.repositorio.salvarArquivo();
     }
+
+    public void saveMemoryCardAnuncio(Anuncio anuncio){
+        this.repositorio.setMemoryCard(anuncio);
+    }
+
+    public Anuncio loadMemoryCardAnuncio(){
+        return this.repositorio.getMemoryCard();
+    }
 }

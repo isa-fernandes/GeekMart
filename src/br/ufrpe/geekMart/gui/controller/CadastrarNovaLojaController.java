@@ -1,6 +1,5 @@
 package br.ufrpe.geekMart.gui.controller;
 import br.ufrpe.geekMart.exceptions.JaExisteException;
-import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.Fachada;
 import br.ufrpe.geekMart.negocio.classesBasicas.*;
@@ -33,19 +32,16 @@ public class CadastrarNovaLojaController {
                         @Override
                         public void onScreenChanged(String newScreen, Object userData, ArrayList<Anuncio> userData2,
                                                     ArrayList<Anuncio> userData3, ArrayList<Loja> userData4)  {
-                            try{
-                                if(newScreen.equals("cadastrarNovaLojaScene")) {
-                                        user = (Cliente)userData;
-                                        updateComboBoxCategorias();
-                                        updateComboBoxCategoria();
-                                        updateComboBoxLojas();
-                                        updateList();
 
-                                } } catch (NaoExisteException ee){
+                                if (newScreen.equals("cadastrarNovaLojaScene")) {
+                                    user = fachada.loadMemoryCardCliente();
+                                    updateComboBoxCategorias();
+                                    updateComboBoxCategoria();
+                                    updateComboBoxLojas();
+                                    updateList();
 
-                            } catch (ParametroNullException ee ){
+                                }
 
-                            }
                         }
                 });
 
@@ -78,7 +74,7 @@ public class CadastrarNovaLojaController {
         }
 
 
-        private void updateList() throws NaoExisteException, ParametroNullException {
+        private void updateList() {
                 lvMeusAnuncios.getItems().clear();
 
                 for (int i = 0; i < user.getAnuncios().size(); i++) {

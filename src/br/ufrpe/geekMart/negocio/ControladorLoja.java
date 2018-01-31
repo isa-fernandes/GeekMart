@@ -139,4 +139,13 @@ public class ControladorLoja {
     public void salvarArquivo () {
         this.repositorio.salvarArquivo();
     }
+
+
+    public void saveMemoryCardLoja(Loja loja){
+        this.repositorio.setMemoryCard(loja);
+    }
+
+    public Loja loadMemoryCardLoja(){
+        return this.repositorio.getMemoryCard();
+    }
 }

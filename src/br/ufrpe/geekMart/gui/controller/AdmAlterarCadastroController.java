@@ -84,8 +84,15 @@ public class AdmAlterarCadastroController {
                         alert.setContentText(ex.getMessage());
                         alert.showAndWait();
                 } catch (ParametroNullException es){
-
+                        Alert alertw = new Alert(Alert.AlertType.WARNING);
+                        alertw.setTitle("Aviso");
+                        alertw.setContentText(es.getMessage());
+                        alertw.showAndWait();
                 } catch (NaoExisteException rr){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erro");
+                    alert.setContentText(rr.getMessage());
+                    alert.show();
 
                 }
 

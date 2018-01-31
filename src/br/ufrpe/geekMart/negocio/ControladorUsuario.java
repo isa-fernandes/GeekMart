@@ -9,6 +9,8 @@ import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import br.ufrpe.geekMart.negocio.classesBasicas.Usuario;
 
+import java.util.ArrayList;
+
 public class ControladorUsuario {
     private static ControladorUsuario instancia;
     private IRepositorioUsuario repositorio;
@@ -111,5 +113,14 @@ public class ControladorUsuario {
 
     public void salvarArquivo () {
         this.repositorio.salvarArquivo();
+    }
+
+    public void salvarMemoryCardCliente(Cliente cliente){
+
+        this.repositorio.setMemoryCard(cliente);
+    }
+
+    public Cliente loadMemoryCardCliente(){
+        return this.repositorio.getMemoryCard();
     }
 }

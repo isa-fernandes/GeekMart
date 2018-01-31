@@ -27,7 +27,7 @@ public class MeusAnuncios3Controller {
             public void onScreenChanged(String newScreen, Object userData, ArrayList<Anuncio> userData2,
                                         ArrayList<Anuncio> userData3, ArrayList<Loja> userData4) {
                 if(newScreen.equals("meusAnuncios3Scene")) {
-                    user = (Cliente)userData;
+                    user = fachada.loadMemoryCardCliente();
                     user1 = userData2;
                     user2 = userData3;
                     updateComboBoxCategorias();
@@ -65,18 +65,21 @@ public class MeusAnuncios3Controller {
 
     @FXML
     protected  void irParaAnuncioAction1(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(0));
         Main.trocarTela("anuncioScene",user1.get(0));
 
     }
 
     @FXML
     protected  void irParaAnuncioAction2(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(1));
         Main.trocarTela("anuncioScene",user1.get(1));
 
     }
 
     @FXML
     protected  void irParaAnuncioAction3(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(2));
         Main.trocarTela("anuncioScene",user1.get(2));
 
     }
@@ -88,18 +91,21 @@ public class MeusAnuncios3Controller {
 
     @FXML
     protected  void editarAnuncioAction1(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(0));
         Main.trocarTela("alterarAnuncioScene",user1.get(0));
 
     }
 
     @FXML
     protected  void editarAnuncioAction2(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(1));
         Main.trocarTela("alterarAnuncioScene",user1.get(1));
 
     }
 
     @FXML
     protected  void editarAnuncioAction3(ActionEvent e){
+        fachada.saveMemoryCardAnuncio(user.getAnuncios().get(2));
         Main.trocarTela("alterarAnuncioScene",user1.get(2));
 
     }

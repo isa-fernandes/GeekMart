@@ -21,7 +21,7 @@ public class AlterarClienteController {
                         public void onScreenChanged(String newScreen, Object userData, ArrayList<Anuncio> userData2,
                                                     ArrayList<Anuncio> userData3, ArrayList<Loja> userData4) {
                                 if(newScreen.equals("alterarClienteScene")) {
-                                        user=(Cliente)userData;
+                                        user = fachada.loadMemoryCardCliente();
                                         updateComboBoxCategorias();
                                         updateComboBoxLojas();
                                         updateCadastroTela();

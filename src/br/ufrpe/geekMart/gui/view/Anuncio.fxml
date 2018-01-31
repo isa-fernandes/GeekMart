@@ -125,19 +125,19 @@
                                                    <children>
                                                       <Label fx:id="lbTitulo">
                                                          <font>
-                                                            <Font size="36.0" />
+                                                            <Font size="21.0" />
                                                          </font>
                                                       </Label>
                                                       <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="288.0" spacing="51.0">
                                                          <children>
                                                             <Label text="Preço :">
                                                                <font>
-                                                                  <Font size="18.0" />
+                                                                  <Font size="14.0" />
                                                                </font>
                                                             </Label>
                                                             <Label fx:id="lbPreco">
                                                                <font>
-                                                                  <Font size="18.0" />
+                                                                  <Font size="14.0" />
                                                                </font>
                                                             </Label>
                                                          </children>
@@ -146,12 +146,12 @@
                                                          <children>
                                                             <Label text="Categoria :">
                                                                <font>
-                                                                  <Font size="18.0" />
+                                                                  <Font size="14.0" />
                                                                </font>
                                                             </Label>
                                                             <Label fx:id="lbCategoria">
                                                                <font>
-                                                                  <Font size="18.0" />
+                                                                  <Font size="14.0" />
                                                                </font>
                                                             </Label>
                                                          </children>
@@ -160,12 +160,12 @@
                                                          <children>
                                                             <Label text="Quantidade :">
                                                                <font>
-                                                                  <Font size="18.0" />
+                                                                  <Font size="14.0" />
                                                                </font>
                                                             </Label>
                                                             <Label fx:id="lbQtdade">
                                                                <font>
-                                                                  <Font size="18.0" />
+                                                                  <Font size="14.0" />
                                                                </font>
                                                             </Label>
                                                          </children>
@@ -174,12 +174,12 @@
                                                          <children>
                                                             <Label text="Estado :">
                                                                <font>
-                                                                  <Font size="18.0" />
+                                                                  <Font size="14.0" />
                                                                </font>
                                                             </Label>
                                                             <Label fx:id="lbEstado">
                                                                <font>
-                                                                  <Font size="18.0" />
+                                                                  <Font size="14.0" />
                                                                </font>
                                                             </Label>
                                                          </children>
@@ -188,30 +188,30 @@
                                                 </VBox>
                                                 <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                    <children>
-                                                      <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="288.0" spacing="51.0">
+                                                      <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="288.0" spacing="10.0">
                                                          <children>
-                                                            <Label text="Data de Publicação :">
+                                                            <Label text="Início:">
                                                                <font>
-                                                                  <Font size="18.0" />
+                                                                  <Font size="14.0" />
                                                                </font>
                                                             </Label>
                                                             <Label fx:id="lbDataInicio">
                                                                <font>
-                                                                  <Font size="18.0" />
+                                                                  <Font size="14.0" />
                                                                </font>
                                                             </Label>
                                                          </children>
                                                       </HBox>
-                                                      <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="288.0" spacing="51.0">
+                                                      <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="288.0" spacing="10.0">
                                                          <children>
-                                                            <Label text="Data que Expira :">
+                                                            <Label text="Expira :">
                                                                <font>
-                                                                  <Font size="18.0" />
+                                                                  <Font size="14.0" />
                                                                </font>
                                                             </Label>
                                                             <Label fx:id="lbDataExpira">
                                                                <font>
-                                                                  <Font size="18.0" />
+                                                                  <Font size="14.0" />
                                                                </font>
                                                             </Label>
                                                          </children>
@@ -220,12 +220,12 @@
                                                          <children>
                                                             <Label text="Ativo :">
                                                                <font>
-                                                                  <Font size="18.0" />
+                                                                  <Font size="14.0" />
                                                                </font>
                                                             </Label>
                                                             <Label fx:id="lbAtivo">
                                                                <font>
-                                                                  <Font size="18.0" />
+                                                                  <Font size="14.0" />
                                                                </font>
                                                             </Label>
                                                          </children>
@@ -234,7 +234,7 @@
                                                          <children>
                                                             <Label text="Qualificaçao :">
                                                                <font>
-                                                                  <Font size="18.0" />
+                                                                  <Font size="14.0" />
                                                                </font>
                                                             </Label>
                                                             <ImageView fx:id="estrela1" fitHeight="30.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" />

@@ -49,6 +49,14 @@ public class Fachada {
         this.cadastroUsuario.alterarUsuario(usuario,usuarioNovo);
     }
 
+    public void salvarMemoryCardCliente(Cliente cliente){
+        this.cadastroUsuario.salvarMemoryCardCliente(cliente);
+    }
+
+    public Cliente loadMemoryCardCliente(){
+        return this.cadastroUsuario.loadMemoryCardCliente();
+    }
+
 
 
     //ADM
@@ -150,6 +158,14 @@ public class Fachada {
         return this.cadastroAnuncio.listarAnuncios();
     }
 
+    public void saveMemoryCardAnuncio(Anuncio anuncio){
+        this.cadastroAnuncio.saveMemoryCardAnuncio(anuncio);
+    }
+
+    public Anuncio loadMemoryCardAnuncio(){
+        return this.cadastroAnuncio.loadMemoryCardAnuncio();
+    }
+
 
     // LOJA
 
@@ -210,6 +226,14 @@ public class Fachada {
         this.cadastroLoja.salvarArquivo();
         this.cadastroAnuncio.salvarArquivo();
         this.cadastroUsuario.salvarArquivo();
+    }
+
+    public void saveMemoryCardLoja(Loja loja){
+        this.cadastroLoja.saveMemoryCardLoja(loja);
+    }
+
+    public Loja loadMemoryCardLoja(){
+        return this.cadastroLoja.loadMemoryCardLoja();
     }
 
 }

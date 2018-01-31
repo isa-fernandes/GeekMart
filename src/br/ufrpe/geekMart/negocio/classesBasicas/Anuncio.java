@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Anuncio implements Serializable {
+    private static final long serialVersionUID = 7717014184407053937L;
+
     private String cpfCliente;
     private String preco, telefone;
     private String titulo;
@@ -57,15 +59,15 @@ public class Anuncio implements Serializable {
     private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
         s.defaultReadObject();
         this.imagem1 = SwingFXUtils.toFXImage(ImageIO.read(s), null);
-        this.imagem2 = SwingFXUtils.toFXImage(ImageIO.read(s), null);
-        this.imagem3 = SwingFXUtils.toFXImage(ImageIO.read(s), null);
+        /*this.imagem2 = SwingFXUtils.toFXImage(ImageIO.read(s), null);
+        this.imagem3 = SwingFXUtils.toFXImage(ImageIO.read(s), null);*/
     }
 
     private void writeObject(ObjectOutputStream s) throws IOException {
         s.defaultWriteObject();
         ImageIO.write(SwingFXUtils.fromFXImage(imagem1, null), "png", s);
-        ImageIO.write(SwingFXUtils.fromFXImage(imagem2, null), "png", s);
-        ImageIO.write(SwingFXUtils.fromFXImage(imagem3, null), "png", s);
+        /*ImageIO.write(SwingFXUtils.fromFXImage(imagem2, null), "png", s);
+        ImageIO.write(SwingFXUtils.fromFXImage(imagem3, null), "png", s);*/
     }
 
     public String getTelefone() {
@@ -187,10 +189,6 @@ public class Anuncio implements Serializable {
         if (this.data == null) {
             this.data = LocalDate.now();
         }
-    }
-
-    public void setImagens(ArrayList<Image> imagens) {
-        this.imagens = imagens;
     }
 
     public int getQuantidadeAvaliacoes() {

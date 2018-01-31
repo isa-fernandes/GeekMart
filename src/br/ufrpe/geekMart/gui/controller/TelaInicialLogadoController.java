@@ -29,7 +29,7 @@ public class TelaInicialLogadoController {
             public void onScreenChanged(String newScreen, Object userData, ArrayList<Anuncio> userData2,
                                         ArrayList<Anuncio> userData3, ArrayList<Loja> userData4) {
                 if(newScreen.equals("telaInicialLogadoScene")) {
-                    user = (Cliente)userData;
+                    user = fachada.loadMemoryCardCliente();
                     updateComboBoxCategorias();
                     updateComboBoxLojas();
 
@@ -198,7 +198,7 @@ public class TelaInicialLogadoController {
 
         ArrayList<Anuncio> anuncios = user.getAnuncios();
 
-        if(anuncios.size()<6 && anuncios.size()>=0) {
+        if(anuncios.size()<6) {
 
             switch (anuncios.size()) {
                 case 1:

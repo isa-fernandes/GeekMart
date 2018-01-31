@@ -219,10 +219,10 @@ public class LojaController {
 
     @FXML
     protected  void btMeusAnunciosAction(ActionEvent e){
+        Cliente c = fachada.loadMemoryCardCliente();
+        ArrayList<Anuncio> anuncios = c.getAnuncios();
 
-        ArrayList<Anuncio> anuncios = user.getAnuncios();
-
-        if(anuncios.size()<6 && anuncios.size()>=0) {
+        if(anuncios.size()<6) {
 
             switch (anuncios.size()) {
                 case 1:
@@ -254,12 +254,12 @@ public class LojaController {
 
     @FXML
     protected  void btMinhasLojasAction(ActionEvent e){
-        try {
-            Cliente cli = (Cliente)fachada.buscaUsuario(user.getCpfCliente());
+
+            Cliente cli = fachada.loadMemoryCardCliente();
 
             ArrayList<Loja> lojas = cli.getLojas();
 
-            if (lojas.size() < 6 && lojas.size() >= 0) {
+            if (lojas.size() < 6) {
 
                 switch (lojas.size()) {
                     case 1:
@@ -285,17 +285,7 @@ public class LojaController {
             } else if (lojas.size() >= 6) {
                 Main.trocarTela("minhasLojas6Scene", cli);
             }
-        }catch (NaoExisteException ww){
-            Alert alertw = new Alert(Alert.AlertType.ERROR);
-            alertw.setTitle("Erro");
-            alertw.setContentText(ww.getMessage());
-            alertw.showAndWait();
-        }catch (ParametroNullException pp){
-            Alert alertw = new Alert(Alert.AlertType.WARNING);
-            alertw.setTitle("Aviso");
-            alertw.setContentText(pp.getMessage());
-            alertw.showAndWait();
-        }
+
 
 
     }

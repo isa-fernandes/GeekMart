@@ -44,10 +44,16 @@ public class AlterarLojaController {
                                         updateLoja();
 
                                 } }catch (NaoExisteException ee){
+                                Alert alert = new Alert(Alert.AlertType.ERROR);
+                                alert.setTitle("Erro");
+                                alert.setContentText(ee.getMessage());
+                                alert.show();
 
                             } catch (ParametroNullException ee ){
-
-                            }   catch (JaExisteException ee){
+                                Alert alertw = new Alert(Alert.AlertType.WARNING);
+                                alertw.setTitle("Aviso");
+                                alertw.setContentText(ee.getMessage());
+                                alertw.showAndWait();
 
                             }
                         }
@@ -74,7 +80,7 @@ public class AlterarLojaController {
         this.cbCategoria.getItems().setAll(EnumCategorias.values());
     }
 
-    private void updateList() throws NaoExisteException, ParametroNullException, JaExisteException {
+    private void updateList() throws NaoExisteException, ParametroNullException {
         lvMeusAnuncios.getItems().clear();
         Cliente cll = (Cliente)fachada.buscaUsuario(user.getCpfCliente());
 
@@ -84,7 +90,7 @@ public class AlterarLojaController {
 
     }
 
-    private void updateList2() throws NaoExisteException, ParametroNullException, JaExisteException {
+    private void updateList2() {
         lvAnunciosDaLoja.getItems().clear();
         for (int i = 0; i < user.getAnuncios().size(); i++) {
             lvMeusAnuncios.getItems().add(i, user.getAnuncios().get(i));
@@ -233,9 +239,16 @@ public class AlterarLojaController {
             Main.trocarTela("meusAnunciosScene", user.getCpfCliente(), anuncios);
 
         } catch (NaoExisteException ee) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setContentText(ee.getMessage());
+            alert.show();
 
         } catch (ParametroNullException pp) {
-
+            Alert alertw = new Alert(Alert.AlertType.WARNING);
+            alertw.setTitle("Aviso");
+            alertw.setContentText(pp.getMessage());
+            alertw.showAndWait();
         }
     }
 

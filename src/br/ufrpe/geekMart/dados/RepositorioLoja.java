@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class RepositorioLoja implements IRepositorioLoja, Serializable {
     private Loja[] lojas;
     private int proxima = 0;
+    private Loja memoryCard;
     private static RepositorioLoja instancia;
 
     public static RepositorioLoja getInstancia() {
@@ -256,6 +257,14 @@ public class RepositorioLoja implements IRepositorioLoja, Serializable {
         return resultadoBuscaTitulo;
     }
 
+    public Loja getMemoryCard() {
+        return memoryCard;
+    }
+
+    public void setMemoryCard(Loja memoryCard) {
+        this.memoryCard = memoryCard;
+    }
+
     public ArrayList<Loja> buscarLojaPorCategoria(String categoria) {
         int i = 0;
         ArrayList<Loja> resultadoBuscaCategoria = new ArrayList<>();
@@ -277,6 +286,8 @@ public class RepositorioLoja implements IRepositorioLoja, Serializable {
         return resultadoBuscaCategoria;
     }
 }
+
+
 
 
     /*public  void ordenaPorPreco(ArrayList<Loja> an){
