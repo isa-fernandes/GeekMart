@@ -35,7 +35,7 @@ public class CadastrarNovaLojaController {
                                                     ArrayList<Anuncio> userData3, ArrayList<Loja> userData4)  {
                             try{
                                 if(newScreen.equals("cadastrarNovaLojaScene")) {
-                                        user = (Cliente)userData;
+                                    user = fachada.loadMemoryCardCliente();
                                         updateComboBoxCategorias();
                                         updateComboBoxCategoria();
                                         updateComboBoxLojas();

@@ -20,5 +20,7 @@ public interface IRepositorioAnuncio {
     void salvarArquivo();
     ArrayList<Anuncio> buscarAnuncioPorTituloOrdenadoPeloPreco(String palavra);
     ArrayList<Anuncio> buscarAnuncioPorCategoriaOrdenadoPeloPreco(String categoria);
+    Anuncio getMemoryCard();
+    void setMemoryCard(Anuncio memoryCard);
 
 }

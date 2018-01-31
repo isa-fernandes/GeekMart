@@ -28,7 +28,7 @@ public class MinhasLojas0Controller {
                         public void onScreenChanged(String newScreen, Object userData, ArrayList<Anuncio> userData2,
                                                     ArrayList<Anuncio> userData3, ArrayList<Loja> userData4) {
                                 if(newScreen.equals("minhasLojas0Scene")) {
-                                        user = (Cliente)userData;
+                                        user = fachada.loadMemoryCardCliente();
                                         stores = userData4;
                                         updateComboBoxCategorias();
                                         updateComboBoxLojas();

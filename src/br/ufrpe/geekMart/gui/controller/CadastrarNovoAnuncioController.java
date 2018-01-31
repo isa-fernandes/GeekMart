@@ -31,7 +31,7 @@ public class CadastrarNovoAnuncioController {
                         public void onScreenChanged(String newScreen, Object userData, ArrayList<Anuncio> userData2,
                                                     ArrayList<Anuncio> userData3, ArrayList<Loja> userData4) {
                                 if(newScreen.equals("cadastrarNovoAnuncioScene")) {
-                                        user = (Cliente)userData;
+                                       user = fachada.loadMemoryCardCliente();
                                         System.out.println("");
                                         System.out.println(user);
                                         updateComboBoxCategoriaAnuncio();

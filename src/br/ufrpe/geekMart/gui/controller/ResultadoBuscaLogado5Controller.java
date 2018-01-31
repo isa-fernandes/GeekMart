@@ -29,7 +29,7 @@ public class ResultadoBuscaLogado5Controller {
                 if(newScreen.equals("resultadoBuscaLogado5Scene")) {
                     user1 = userData2;
                     user2 = userData3;
-                    user = (Cliente)userData;
+                    user = fachada.loadMemoryCardCliente();
                     updateComboBoxCategorias();
                     updateComboBoxLojas();
                     updateTela();

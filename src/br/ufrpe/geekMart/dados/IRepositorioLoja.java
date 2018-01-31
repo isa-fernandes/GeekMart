@@ -24,4 +24,6 @@ public interface IRepositorioLoja {
     ArrayList<Loja> buscarLojaPorCategoria(String categoria);
     void alterarAnuncioNaLoja (String nomeAntigo, Anuncio anuncio);
     void removerAnuncioDaLoja (String anuncio);
+    Loja getMemoryCard();
+    void setMemoryCard(Loja memoryCard);
 }

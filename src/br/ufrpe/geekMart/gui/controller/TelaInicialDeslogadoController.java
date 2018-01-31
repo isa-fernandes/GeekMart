@@ -46,7 +46,7 @@ public class TelaInicialDeslogadoController {
                         Administrador g = new Administrador(
                                 "Huan Christopher",
                                 "123456",
-                                "adm@adm",
+                                "huan_lima@yahoo.com.br",
                                 "123456",
                                 true,
                                 true,
@@ -66,9 +66,9 @@ public class TelaInicialDeslogadoController {
                 try {
 
                         Endereco end = new Endereco(
-                                "Alto do Deodato",
+                                "Rua Alto do Deodato",
                                 "278",
-                                "Agua Fria",
+                                "Água Fria",
                                 "Recife",
                                 EnumEstados.PE,
                                 "52211500",
@@ -76,7 +76,7 @@ public class TelaInicialDeslogadoController {
 
                         Cliente huan = new Cliente(
                                 "Huan Christopher",
-                                "huan@gm",
+                                "huan_lima@hotmail.com",
                                 "071",
                                 "(81)996074398",
                                 end,
@@ -84,52 +84,61 @@ public class TelaInicialDeslogadoController {
                                 false,
                                 true);
 
-                        Image image1 = new Image("/imagens/estrela.png");
-                        Image image2 = new Image("/imagens/estrela.png");
-                        Image image3 = new Image("/imagens/estrela.png");
+                        Image image1 = new Image("/imagens/dohko1.jpg");
+                        Image image2 = new Image("/imagens/dohko2.jpg");
+                        Image image3 = new Image("/imagens/dohko3.jpg");
+                        Image image4 = new Image("/imagens/camisa1.jpg");
+                        Image image5 = new Image("/imagens/camisa2.jpg");
+                        Image image6 = new Image("/imagens/camisa3.jpg");
+                        Image image7 = new Image("/imagens/nintendo1.jpg");
+                        Image image8 = new Image("/imagens/nintendo2.jpg");
+                        Image image9 = new Image("/imagens/nintendo3.jpg");
+                        Image image10 = new Image("/imagens/logoloja1.png");
                         Anuncio an = new Anuncio(
                                 huan.getCpf(),
-                                "69",
-                                "teste",
-                                "Teste",
+                                "699",
+                                "Cloth Myth Libra",
+                                "Action Figure dos Cavaleiros do Zodíaco\n"+
+                                "Original Bandai",
                                 EnumCategorias.FIGURAS_ESTÁTUAS_E_BONECOS,
                                 EnumEstados.PE,
                                 3,
-                                "996074398",
+                                "(81)996074398",
                                 image1,
                                 image2,
                                 image3);
 
                         Anuncio an2 = new Anuncio(
                                 huan.getCpf(),
-                                "89",
-                                "Teste2",
-                                "Teste2",
-                                EnumCategorias.FIGURAS_ESTÁTUAS_E_BONECOS,
+                                "69",
+                                "Camisa Game of Thrones",
+                                "Camisa 100% Algodão\n"+
+                                "Tamanhos P,M,G e GG",
+                                EnumCategorias.CAMISAS,
                                 EnumEstados.PE,
-                                3,
-                                "996074398",
-                                image1,
-                                image2,
-                                image3);
+                                50,
+                                "(81)996074398",
+                                image4,
+                                image5,
+                                image6);
 
                         Anuncio an3 = new Anuncio(
                                 huan.getCpf(),
-                                "100",
-                                "Teste3",
-                                "Teste3",
-                                EnumCategorias.FIGURAS_ESTÁTUAS_E_BONECOS,
+                                "1800",
+                                "Nintendo Switch",
+                                "Novo Console da Nintendo",
+                                EnumCategorias.GAMES,
                                 EnumEstados.PE,
                                 3,
                                 "996074398",
-                                image1,
-                                image2,
-                                image3);
+                                image7,
+                                image8,
+                                image9);
 
                         Loja lj = new Loja(
-                                "Loja Cloth Myth",
-                                "123456",
-                                "Loja Teste da GeekMart",
+                                "RocketMan GeekStore",
+                                "(81)34518614",
+                                "Loja de Produtos Geeks",
                                 EnumCategorias.CAMISAS,
                                 huan.getCpf());
 

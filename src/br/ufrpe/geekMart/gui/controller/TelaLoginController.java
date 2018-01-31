@@ -229,6 +229,7 @@ public class TelaLoginController {
                                                 Main.trocarTela("admCadastroScene",adm);
                                         } else {
                                                 Cliente cliente = (Cliente)fachada.buscaUsuario(tfCPF.getText());
+                                                fachada.salvarMemoryCardCliente(cliente);
                                                 Main.trocarTela("cadastroClienteScene",cliente);
                                         }
 

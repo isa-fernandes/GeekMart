@@ -3,12 +3,14 @@ package br.ufrpe.geekMart.dados;
 import br.ufrpe.geekMart.exceptions.NaoExisteException;
 import br.ufrpe.geekMart.exceptions.ParametroNullException;
 import br.ufrpe.geekMart.negocio.classesBasicas.Anuncio;
+import br.ufrpe.geekMart.negocio.classesBasicas.Cliente;
 import br.ufrpe.geekMart.negocio.classesBasicas.Usuario;
 
 import java.io.*;
 
 public class RepositorioUsuario implements IRepositorioUsuario, Serializable {
     private Usuario[] usuarios;
+    private Cliente memoryCard;
     private Usuario user;
     private int proxima;
     private static RepositorioUsuario instancia;
@@ -151,5 +153,15 @@ public class RepositorioUsuario implements IRepositorioUsuario, Serializable {
 
     public void setProxima(int proxima) {
         this.proxima = proxima;
+    }
+
+    public Cliente getMemoryCard() {
+        return memoryCard;
+    }
+
+    public void setMemoryCard(Cliente memoryCard) {
+
+        this.memoryCard = memoryCard;
+        System.out.println("Carregament efetuado");
     }
 }

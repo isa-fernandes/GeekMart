@@ -27,7 +27,7 @@ public class BuscaLojasLogado5Controller {
             public void onScreenChanged(String newScreen, Object userData, ArrayList<Anuncio> userData2,
                                         ArrayList<Anuncio> userData3, ArrayList<Loja> userData4) {
                 if(newScreen.equals("buscasLojasLogado5Scene")) {
-                    user = (Cliente)userData;
+                    user = fachada.loadMemoryCardCliente();
                     stores = userData4;
                     updateComboBoxCategorias();
                     updateComboBoxLojas();

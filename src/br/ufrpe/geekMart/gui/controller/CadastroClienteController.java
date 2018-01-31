@@ -27,7 +27,7 @@ public class CadastroClienteController {
                         public void onScreenChanged(String newScreen, Object userData, ArrayList<Anuncio> userData2,
                                                     ArrayList<Anuncio> userData3, ArrayList<Loja> userData4) {
                                 if(newScreen.equals("cadastroClienteScene")) {
-                                        user = (Cliente)userData;
+                                        user = fachada.loadMemoryCardCliente();
                                         System.out.println(user);
                                         updateComboBoxCategorias();
                                         updateComboBoxLojas();
@@ -224,7 +224,7 @@ public class CadastroClienteController {
 
                 ArrayList<Anuncio> anuncios = user.getAnuncios();
 
-                if(anuncios.size()<6 && anuncios.size()>=0) {
+                if(anuncios.size()<6 ) {
 
                         switch (anuncios.size()) {
                                 case 1:
@@ -251,8 +251,7 @@ public class CadastroClienteController {
                         Main.trocarTela("meusAnuncios6Scene",user, anuncios);
                 }
 
-
-                Main.trocarTela("meusAnunciosScene",user,anuncios); }
+                }
 
 
 
